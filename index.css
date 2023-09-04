@@ -1,0 +1,429 @@
+/* import the nice font haha */
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap);
+:root{
+    --primary-color:#007AF3;
+}
+
+
+/* Mobile first design */
+
+body{
+    background: #F2F2F2;
+    margin: 0;
+    font-family: 'Poppins';
+}
+
+.navbar{
+    background-color: white;
+    /* padding around navbar */
+    padding:1em;
+}
+
+.navbar .logo{
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    font-size: 1.2em;
+}
+
+.navbar .logo span{
+    color: var(--primary-color);
+}
+
+.navbar nav{
+    display: none;
+}
+
+.navbar .container{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    place-content: space-between;
+}
+
+.navbar .mobile-menu{
+    cursor: pointer;
+}
+
+a{
+    color: #444444;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* right here only section area move to center */
+section{
+    padding: 5em 2em;
+}
+
+.hero{
+    text-align: center;
+}
+
+.left-col .subhead{
+    text-transform: uppercase;
+    font-weight: bold;
+    color: gray;
+    letter-spacing: .3em;
+}
+
+.left-col h1{
+    font-size: 2.5em;
+    line-height: 1.3em;
+    margin-top: .2em;
+}
+
+.left-col .primary-cta{
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    padding: .6em 1.3em;
+    font-size: 1.4em;
+    border-radius: 5em;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.left-col .watch-video-cta {
+    /* display block uses new line  */
+    display: block;
+    margin-top: 1em;
+}
+
+.left-col .watch-video-cta img{
+    margin-right: .5em;
+}
+
+.hero-img{
+    margin-top: 3em;
+    width: 70%;
+}
+
+.features-section{
+    background: #20272E;
+    color: white;
+}
+
+.features-section .container{
+    text-align: center;
+    margin-top: -3em;
+}
+
+.features-section .myproject-title{
+    font-size: 1.5em;
+    font-weight: bold;       
+}
+
+/* make the list nicer */
+.features-section img{
+    display: none;
+}
+
+/* no carousel??? TT  */
+.testimonial-section{
+    background: var(--primary-color);
+    /* set the text color to white */
+    color: white;
+    padding-top: 10em;
+}
+
+.testimonial-section li{
+    background-color: #006BD6;
+    text-align: center;
+    padding: 2em 1em;
+    width: 80%;
+    /* make it center */
+    margin: 0 auto 5em auto;
+    border-radius: 1em;
+}
+
+.testimonial-section li img{
+    width: 5em;
+    height: 5em;
+    border: 5px solid #006BD6;
+    border-radius: 50%;
+    margin-top: -4.5em;
+}
+
+h2{
+    font-size: 2em;
+}
+
+label{
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: .2em;
+}
+
+input, textarea{
+    width: 100%;
+    padding: .8em;
+    margin-bottom: 1em;
+    border-radius: .3em;
+    border: 1px solid gray;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+input[type="submit"]{
+    background-color: var(--primary-color);
+    border-radius: 3em;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3em;
+    border: none;
+    padding: .8em 2em;
+    margin-bottom: 5em;
+    width: unset;
+    display: inline;
+    cursor: pointer;
+}
+
+iframe{
+    width: 100%;
+    height: 400px;
+}
+
+.map{
+    background-color: #20272E;
+    margin-top: -8em;
+}
+
+/* make the mobile navigation view */
+
+
+/* this is the menu cta (menu btn), used in java script to display the nav bar */
+nav.menu-btnn{
+    display: block;
+}
+
+nav{
+    position: fixed;
+    z-index: 999;
+    width: 66%;
+    right: 0;
+    top: 0;
+    background: #20272E;
+    height: 100vh;
+    padding: 1em;
+}
+
+nav ul.primary-nav {
+    margin-top: 5em;
+}
+
+nav li a{
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: .5em;
+    font-size: 1.3em;
+    text-align: right;
+}
+
+nav li a:hover{
+    font-weight: bold;
+}
+
+.mobile-menu-exit{
+    float: right;
+    margin: .5em;
+    cursor: pointer;
+}
+
+.resume-container img{
+    min-width: 100%;
+    max-width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+    .mobile-menu, .mobile-menu-exit{
+        display: none;
+    }
+
+    .navbar .container{
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-column: 180px auto;
+            grid-template-columns: 180px auto;
+        -webkit-box-pack: unset;
+            -ms-flex-pack: unset;
+                justify-content: unset;
+    }
+
+    .navbar nav {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        background: none;
+        position: unset;
+        height: auto;
+        width: 100%;
+        padding: 0;
+    }
+
+    .navbar nav ul{
+        display: -webkit-box;
+        display:-ms-flexbox;
+        display: flex;
+    }
+
+    .navbar nav a{
+        color: black;
+        font-size: 1em;
+        padding: .1em .5em;
+    }
+
+    .navbar nav ul.primary-nav{
+        margin: 0;
+    }
+
+    .navbar nav ul li.current a{
+        font-weight: bold;
+    }
+
+    .navbar nav li.go-premium-cta a{
+        color: var(--primary-color);
+        border: 3px solid var(--primary-color);
+        border-radius: 5em;
+        font-weight: bold;
+        margin-top: -.2em;
+    }
+
+    .navbar nav li.go-premium-cta a:hover{
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+}
+
+@media only screen and (min-width: 1080px){
+    .container{
+        width: 1080px;
+        margin: 0em auto;
+    }
+
+    section{
+        padding: 10em 4em;
+    }
+
+    .hero .container{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        text-align: left;
+    }
+
+    .hero .container .left-col{
+        margin: 3em 3em 0 5em;
+    }
+
+    .hero .container .left-col h1{
+        width: 80%;
+        font-size: 3em;
+    }
+
+    .hero-img{
+        width: 30%;
+        margin-right: 6em;
+    }
+
+    .hero-cta{
+        display:-webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+    .primary-cta{
+        margin-right:1em ;
+
+    }
+
+    .features-section{
+        position:relative;
+    }
+
+    .features-section .project-grid{
+
+    }
+
+    .features-section .project-grid img{
+        display: block;
+        position: absolute;
+        width: 350px;
+
+    }
+
+    .features-section img{
+        display: block;
+        position: absolute;
+        right: 0;
+        width: 350px;
+        bottom: -2em;
+    }
+
+    .testimonial-section ul{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    
+    .testimonial-section ul li{
+        margin: 0 1em;
+    }
+
+    .contact-section{
+        position: relative;
+    }
+
+    .contact-section .container{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+    .contact-right{
+        position: absolute;
+        right: 0%;
+        top: 0%;
+        width: 45%;
+        height: 100%;
+    }
+
+    .contact-right iframe{
+        height: 100%;
+    }
+}
+
+@media only screen and (min-width: 1450px){
+    .features-section:before{
+        content: '';
+        position: absolute;
+        width: 10%;
+        height: 20em;
+        background-color: var(--primary-color);
+        left: 0;
+        top: -3em;
+    }
+
+    .features-section:after{
+        content: '';
+        position: absolute;
+        width: 200px;
+        height: 20em;
+        background: url("../images/dots.svg") no-repeat;
+        left: 4em;
+        top: 2em;
+
+    }   
+}
