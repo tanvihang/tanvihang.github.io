@@ -106,6 +106,10 @@ section{
 .features-section{
     background: #20272E;
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 .features-section .container{
@@ -120,7 +124,14 @@ section{
 
 /* make the list nicer */
 .features-section img{
-    display: none;
+    /* display: none; */
+    padding-top: 5vh;
+    display: block;
+    max-width: 50vw;
+}
+
+.project-item{
+    cursor: pointer;
 }
 
 /* no carousel??? TT  */
@@ -302,6 +313,36 @@ nav li a:hover{
         color: white;
     }
 
+    .features-section{
+        padding-bottom: 0;
+    }
+
+    .features-section .container{
+        height: 100vh;
+   
+    }
+
+    .project-grid{
+        margin-top: 3vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .project-grid div{
+        display: block;
+        height: 35vh;
+        width: 350px;
+        padding: 0 2vw;
+    }
+
+    .features-section img{
+        /* position:relative; */
+        display: block;
+        width: 350px;
+        position: absolute;
+    }
 }
 
 @media only screen and (min-width: 1080px){
@@ -353,9 +394,6 @@ nav li a:hover{
         position:relative;
     }
 
-    .features-section .project-grid{
-
-    }
 
     .features-section .project-grid img{
         display: block;
@@ -364,13 +402,13 @@ nav li a:hover{
 
     }
 
-    .features-section img{
+    /* .features-section img{
         display: block;
         position: absolute;
         right: 0;
         width: 350px;
         bottom: -2em;
-    }
+    } */
 
     .testimonial-section ul{
         display: -webkit-box;
