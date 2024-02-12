@@ -1,0 +1,66 @@
+/* @font-face{
+    font-family: "Cardo";
+    src:
+        url("../../../../Resources/font/Cardo-Regular.ttf") format("ttf");
+} */
+
+
+@font-face{
+    font-family: "Raleway";
+    src: 
+        url("../../../../Resources/font/raleway-regular-webfont.woff2") format("woff2");
+}
+
+/* base font size */
+
+/* line-height 1.3x letter-spacing .2 */
+p{
+    font-family: "Raleway", sans-serif;
+    font-size: 1rem;
+    line-height: 1.3rem;
+    font-weight: normal;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: "Cardo", serif;
+    font-weight: normal;
+}
+
+/* line-height 1.1x letter-spacing .2 */
+h1{
+    font-size: 8rem;
+    line-height: 8.8rem;
+    letter-spacing: .2rem;
+}
+
+/* line-height 1.1x letter-spacing .15 */
+h2{
+    font-size: 5.653rem;
+    line-height: 6.218rem;
+    letter-spacing: .15rem;
+}
+
+/* line-height 1.1x letter-spacing .15 */
+h3{
+    font-size: 3.998rem;
+    line-height: 4.4rem;
+    letter-spacing: .1rem;
+}
+
+h4{
+    font-size: 2.827rem;
+}
+
+h5{
+    font-size: 2rem;
+}
+
+h6{
+    font-size: 1.414rem;
+    letter-spacing: .08rem;
+}
+
+.small{
+    font-size: 0.707rem;
+    font-family: "Cardo", sans-serif;
+}

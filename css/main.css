@@ -1,0 +1,669 @@
+@import 'base/typography.css';
+@import 'base/colors.css';
+@import 'base/theme.css';
+@import 'base/sizes.css';
+
+*{
+    margin: 0;
+    padding: 0;
+    /* border 1px solid red to check position */
+    /* border: red solid 1px; */
+    box-sizing: border-box;
+}
+
+/* Default styles for all screens */
+html{
+    font-size: 12px
+}
+
+body{
+    background-color: var(--theme-background);
+    color: var(--theme-text);
+}
+
+h1, h2, h3, h4, h5, h6{
+    color: var(--theme-text) !important;
+}
+
+.temp{
+    background-color: var(--theme-background);
+    height: 100vh;
+}
+
+.snapping-vertical2{
+    height: 100vh;
+}
+
+
+/* test */
+.testingHover{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.testhover{
+    height: 200px;
+    width: 300px;
+    background-color: antiquewhite;
+    transition: background-color 1s ;    
+}
+
+.testhover:hover{
+    background-color: burlywood;
+}
+
+.hiddenItem{
+    height: 100px;
+    width: 100px;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute !important;
+    display: none;
+    opacity: 0;
+    transition: background-color 1s ,opacity 1s;
+}
+
+/* test */
+
+
+/* ---------------------Header Section--------------------- */
+
+.header{
+    position: sticky ;
+    width: 100%;
+    top: var(--32px);
+    z-index: 20;
+    height: var(--64px);
+    color: var(--theme-background)!important;
+    background-color: rgba(0, 255, 255, 0);
+}
+
+#header .container{
+    display: block;
+    padding: 0 var(--32px);
+    height: var(--64px);
+}
+
+#header .container .inner-container{
+    display: flex;
+    height: 100%;
+}
+
+#header .container .left-container{
+    display: flex;
+    align-items: center;
+    gap: var(--16px);
+    background-color: var(--theme-text);
+    padding: 0 var(--16px);
+    box-shadow: 6px 6px var(--theme-primary), 9px 9px var(--theme-text);
+    transition: box-shadow .5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition-delay: 1.5s ;
+}
+
+.left-container-hover{
+    transition: box-shadow 2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition-delay: 0s !important;
+    box-shadow: 0px 0px var(--theme-background), 0px px var(--theme-text)!important;
+}
+
+#header .container .left-container img{
+    height: 75%;
+} 
+
+#header .container .right-container{
+    background-color: var(--theme-text);
+    display: flex;
+    align-items: center;
+    justify-content:left;
+    padding: 0px 0;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1s 0.5s;
+    transition-timing-function:cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+#header .container h6{
+    color: var(--theme-background)!important;
+}
+
+#header .container span{
+    height: var(--32px);
+    width: 1px;
+    background-color: var(--theme-background);
+    margin-left: var(--64px);
+}
+
+#header .container .navigation-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    gap: var(--32px);
+}
+
+/* ---------------------Header Section--------------------- */
+
+
+/* ---------------------Hero Section--------------------- */
+
+.hero{
+    position:relative;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero h1{
+    position: absolute;
+    color: var(--dark100);
+    z-index: -1;
+}
+
+#svgMap{
+    position: absolute;
+    height: 90%;
+    width: 90%;
+}
+
+.box_shadow{
+   box-shadow: 10px 5px 5px red;    
+}
+
+#svgMapImage{
+    display: none;
+    position: absolute !important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 250px;
+    width: 250px;
+}
+
+/* ---------------------Hero Section--------------------- */
+
+
+/* ---------------------About Me Section--------------------- */
+.about-me{
+    height: 100vh;
+    width: 100%;
+}
+
+.about-me .about-me-inner{
+    height: 100%;
+    width: 100%;
+    padding: 0 64px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.left-about{
+    height: 60%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.inner-left-about{
+    height: 100%;
+    width: 100%;
+    /* width: fit-content; */
+    /* border-radius: 16px; */
+    overflow: hidden;
+    position: relative;
+}
+
+.left-about .me-pic{
+    height: 100%;
+    width: auto;
+    background-image: var(--theme-about-me-pic);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    position: relative;
+    /* border-radius: 16px; */
+}
+
+.glitch{
+    height: 100%;
+    width: 100%;
+    background-image: var(--theme-about-me-pic);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    transform: translateX(-5%);
+    animation: glitch-anim-1 1.2s linear infinite alternate;
+}
+
+.right-about{
+    position: relative;
+    height: 60%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-about-inner{
+    width: fit-content;
+    z-index: 1;
+}
+
+.right-about #svgWestMalaysia{
+    top: 25%;
+    left: 20%;
+    height: 20%;
+    position: absolute;
+}
+
+.right-about #svgEastMalaysia{
+    top: 45%;
+    left: 30%;
+    height: 25%;
+    position: absolute;
+}
+
+.about-flex{
+    display: flex;
+    align-items: end;
+    gap: 8px;
+}
+
+.right-about h5, .right-about h1{
+    font-family: 'Zhi Mang Xing', cursive;
+    font-weight: lighter;
+}
+
+.right-about .about-name{
+    margin-bottom: var(--64px);
+}
+
+.right-about .about-name h6{
+    margin-left: -32px;
+    
+}
+
+.right-about .about-job{
+    margin-bottom: var(--32px);
+    
+}
+
+/* ---------------------About Me Section--------------------- */
+
+
+/* ---------------------My Work Section--------------------- */
+
+.my-work{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:end;
+}
+
+.my-work .my-work-inner{
+    height: 60%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+}
+
+.my-work .my-work-inner .my-work-title{
+    width: 100%;
+    /* height: min-content; */
+    height: 20%;;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin: 0 var(--64px); */
+}
+
+.my-work .my-work-inner .my-work-title-left{
+    display: flex;
+    align-items: end;
+    margin-left: var(--64px);
+}
+
+.my-work-title-left h1{
+    font-family: 'Zhi Mang Xing', cursive;
+    font-weight: lighter;
+}
+
+.my-work .my-work-inner .my-work-title-right{
+    display: flex;
+    margin-right: var(--64px);
+}
+
+.btn-show-more{
+    margin-top: var(--16px);
+    height: var(--64px);
+    width: 256px;
+    border: none;
+    background-color: var(--theme-accent);
+    color: var(--theme-text);
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 6px 6px var(--theme-primary), 9px 9px var(--theme-text);
+
+    /* animations */
+    transition: .5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition-delay: 0s !important;
+    
+}
+
+.btn-show-more:hover{
+   background-color: var(--theme-button-color);
+   color: var(--theme-background);
+   box-shadow: 0 0 var(--theme-background), 0 0 #151515;
+}
+
+.btn-show-more:before{
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    width: 0%;
+    height: 100%;
+    background: var(--theme-button-color);
+    z-index: -1;
+    transition: 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+.btn-show-more:hover::before{
+    width: 100%;
+    left: 0;
+    right: unset;
+}
+
+.btn-show-more-arrow{
+    height: var(--32px);
+    width: var(--32px);
+    display: inline-block;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.h6{
+    font-family: "Cardo", serif;
+    font-size: 1.414rem;
+    letter-spacing: .08rem;
+
+}
+
+.my-work .break-line{
+    /* position: relative; */
+    width: 100%;
+    height: 3px;
+    background-color: var(--theme-text);
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.my-work-images{
+    height: 80%;
+    /* background-color: var(--theme-primary); */
+    overflow-x: hidden;
+    position: relative;
+}
+
+.my-work-images .containerTEMP{
+    /* width: 300vw; */
+    display: flex;
+    height: 100%;
+}
+
+.my-work-images section{
+    width: 100vw;
+    height:100%;
+}
+
+.image-section{
+    /* background-color: var(--theme-primary); */
+    display: flex;
+    justify-content: space-around;
+    align-items: end;
+    margin-left: 8px;
+}
+
+.image-section div {
+    height: 100%;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    margin-left: 8px;
+}
+
+.image-section-img{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position:center;
+    z-index: 3;
+}
+
+.break-line-text{
+    margin-left: var(--64px);
+    background-color: var(--theme-background);
+    padding: 8px;
+    z-index: 2;
+    border-bottom: var(--theme-primary) solid .2em;
+    position: absolute;
+    bottom: 1%;
+
+    font-family: "Raleway", sans-serif;
+    font-size: 1rem;
+    line-height: 1.3rem;
+}
+
+/* ---------------------My Work Section--------------------- */
+
+.tempp{
+    height: 100vh;
+}
+
+/* ---------------------Animation--------------------- */
+
+
+@keyframes glitch-anim-1 {
+    /* polygon(上， 下， 左， 右) */
+    
+        0%{
+            clip-path: polygon(0 0, 100% 0, 100% 10%, 0 10%);
+        }
+        5%{
+            clip-path: polygon(0 10, 100% 10, 100% 20%, 0 20%);        
+        }
+        10%{
+            clip-path: polygon(0 25%, 100% 25%, 100% 30%, 0 30%);
+        }
+        15%{
+            clip-path: polygon(0 90%, 100% 90%, 100% 100%, 0 100%);        
+        }
+        20%{
+            clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
+        }
+        30%{
+            clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%);
+        }
+        40%{
+            clip-path: polygon(0 35%, 100% 35%, 100% 35%, 0 35%);
+        }
+        50%{
+            clip-path: polygon(0 45%, 100% 45%, 100% 45%, 0 45%);
+        }
+        60%{
+            clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+        }
+        65%{
+            clip-path: polygon(0 60%, 100% 60%, 100% 65%, 0 65%);
+        }
+        70%{
+            clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
+        }
+        80%{
+            clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
+        }
+        85%{
+            clip-path: polygon(0 85%, 100% 85%, 100% 90%, 0 90%);        
+        }
+        90%{
+            clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+        }
+        100%{
+            clip-path: polygon(0 60%, 100% 60%, 100% 60%, 0 60%);
+        }
+    }
+
+
+/* ---------------------Animation--------------------- */
+
+
+/* ---------------------Media Queries--------------------- */
+
+/* Tablet and larger screen */
+/* Ipad */
+@media screen and (min-width: 768px){
+    html{
+        font-size: 12px;
+    }
+
+}
+
+/* Desktop screens and larger */
+/* Small desktop screen */
+@media screen and (min-width: 1280px){
+    html{
+        font-size: 12px;
+    }
+
+    .header{
+        top: var(--16px);
+        z-index: 20;
+        height: 48px;
+    }
+    
+    #header .container{
+        padding: 0 var(--16px);
+        height: 48px;
+    }
+
+    .btn-show-more{
+        margin-top: var(--16px);
+        height: 48px;
+        width: 192px;
+    }
+    
+    .btn-show-more-arrow{
+        height: var(--32px);
+        width: var(--32px);
+        display: inline-block;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+
+    /* ---------------------About Me Section--------------------- */
+    
+    .about-me{
+        height: 100vh;
+        width: 100%;
+        /* overflow: hidden; */
+    }
+    
+    .about-me .about-me-inner{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .left-about{
+        height: 75%;
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    
+    .inner-left-about{
+        height: 100%;
+        width: 75%;
+    }
+    
+    .right-about{
+        height: 75%;
+        width: 40%;
+    }
+    
+    .right-about #svgWestMalaysia{
+        top: 15%;
+        left: 20%;
+        height: 200px;
+        position: absolute;
+    }
+    
+    .right-about #svgEastMalaysia{
+        top: 45%;
+        left: 30%;
+        height: 250px;
+        position: absolute;
+    }
+
+    /* ---------------------About Me Section--------------------- */
+
+}
+
+/* Desktop screens and larger */
+/* Wide desktop screen */
+@media screen and (min-width: 1600px){
+    html{
+        font-size: 14px;
+    }
+
+    .header{
+        top: var(--32px);
+        z-index: 20;
+        height: var(--64px);
+    }
+    
+    #header .container{
+        padding: 0 var(--32px);
+        height: var(--64px);
+    }
+
+    .btn-show-more{
+        margin-top: var(--16px);
+        height: 64px;
+        width: 256px;
+    }
+    
+    .btn-show-more-arrow{
+        height: var(--32px);
+        width: var(--32px);
+        display: inline-block;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+/* ---------------------Media Queries--------------------- */
