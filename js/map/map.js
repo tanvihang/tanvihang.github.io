@@ -27,22 +27,22 @@ const MapModule = (function(){
     
         var country = svgDoc.querySelector(`#${countryCode}`)
         
-        console.log(countryCode);
+        // console.log(countryCode);
         event.stopPropagation();
     }
     
     function mapHover(event,color){
-        console.log(color)
+        // console.log(color)
         var countryCode = getCountryCode(event);
     
         var country = svgDoc.querySelector(`#${countryCode}`);  
     
         country.style.fill = color;
-        console.log(country.id)
+        // console.log(country.id)
     
         var imageList = countryJSONData.countries[countryCode].image;
         var svgMapImage = document.querySelector("#svgMapImage");
-        svgMapImage.style.backgroundImage = "url(../Images/countries/"+countryCode +"/"+ imageList[Math.floor(Math.random() *(imageList.length))] +")"
+        svgMapImage.style.backgroundImage = "url(../assets/Images/countries/"+countryCode +"/"+ imageList[Math.floor(Math.random() *(imageList.length))] +")"
 
     }
     
@@ -122,7 +122,7 @@ const MapModule = (function(){
         })
 
         //paint east west malaysia
-        console.log(westMalaysia)
+        // console.log(westMalaysia)
 
 
         westMalaysia.firstChild.style.fill = theme.colors.primary_trans;

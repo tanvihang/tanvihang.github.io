@@ -36,58 +36,26 @@ h1, h2, h3, h4, h5, h6{
 
 
 /* test */
-.testingHover{
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    display: none;
-}
-
-.testhover{
-    height: 200px;
-    width: 300px;
-    background-color: antiquewhite;
-    transition: background-color 1s ;    
-}
-
-.testhover:hover{
-    background-color: burlywood;
-}
-
-.hiddenItem{
-    height: 100px;
-    width: 100px;
-    background-color: rgba(0, 0, 0, 0);
-    position: absolute !important;
-    display: none;
-    opacity: 0;
-    transition: background-color 1s ,opacity 1s;
-}
 
 /* test */
 
-
-/* ---------------------Header Section--------------------- */
-
-.header{
-    position: sticky ;
-    width: 100%;
-    top: var(--32px);
-    z-index: 20;
-    height: var(--64px);
-    color: var(--theme-background)!important;
-    background-color: rgba(0, 255, 255, 0);
+.hide-mobile{
+    display: none;
 }
 
-#header .container{
+.hide-desktop{
     display: block;
-    padding: 0 var(--32px);
-    height: var(--64px);
+}
+
+/* ---------------------Header Section--------------------- */
+.header .container{
+    height: 100vh;
+    background-color: var(--theme-primary);
 }
 
 #header .container .inner-container{
     display: flex;
+    flex-direction: column;
     height: 100%;
 }
 
@@ -95,52 +63,68 @@ h1, h2, h3, h4, h5, h6{
     display: flex;
     align-items: center;
     gap: var(--16px);
-    background-color: var(--theme-text);
-    padding: 0 var(--16px);
-    box-shadow: 6px 6px var(--theme-primary), 9px 9px var(--theme-text);
-    transition: box-shadow .5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-    transition-delay: 1.5s ;
+    padding: 32px 0;
+    justify-content: center;
+    position:relative
 }
 
-.left-container-hover{
-    transition: box-shadow 2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-    transition-delay: 0s !important;
-    box-shadow: 0px 0px var(--theme-background), 0px px var(--theme-text)!important;
+#header #header-title{
+    font-size: 32px;
+    color: var(--theme-background)!important;
 }
-
-#header .container .left-container img{
-    height: 75%;
-} 
 
 #header .container .right-container{
-    background-color: var(--theme-text);
-    display: flex;
-    align-items: center;
-    justify-content:left;
-    padding: 0px 0;
-    width: 100%;
-    transform: scaleX(0);
-    transform-origin: left;
+    /* transform: scaleX(0); */
+    /* height: 0; */
+    transform-origin: top;
     transition: transform 1s 0.5s;
     transition-timing-function:cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
-#header .container h6{
-    color: var(--theme-background)!important;
+.bars{
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    height: 1px;
+    width: 32px;
 }
 
-#header .container span{
-    height: var(--32px);
-    width: 1px;
+.bars .bar1{
+    display: block;
+    height: 2px;
     background-color: var(--theme-background);
-    margin-left: var(--64px);
+    transform: translateY(6px);
 }
 
-#header .container .navigation-container{
-    width: 100%;
+.bars .bar2{
+    display: block;
+    height: 2px;
+    background-color: var(--theme-background);
+    transform: translateY(-6px);
+}
+
+#header .container .right-container{
     display: flex;
-    justify-content: space-evenly;
-    gap: var(--32px);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--16px);
+    padding: 32px 0;
+    justify-content: center;
+    height: 100%;
+}
+
+
+#header .container .right-container .border-line{
+    width: calc(4 * var(--128px) );
+    border: var(--theme-background) 1px dotted;
+}
+
+#header .right-container h1{
+    color: var(--theme-background) !important;
+}
+
+#header .right-container h5{
+    color: var(--theme-background) !important;
 }
 
 /* ---------------------Header Section--------------------- */
@@ -554,15 +538,12 @@ h1, h2, h3, h4, h5, h6{
         font-size: 12px;
     }
 
-    .header{
-        top: var(--16px);
-        z-index: 20;
-        height: 48px;
+    .hide-mobile{
+        display: block;
     }
     
-    #header .container{
-        padding: 0 var(--16px);
-        height: 48px;
+    .hide-desktop{
+        display: none;
     }
 
     .btn-show-more{
@@ -578,6 +559,105 @@ h1, h2, h3, h4, h5, h6{
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+    }
+
+    .header{
+        position: sticky;
+        height: 0 !important;
+        width: 100%;
+        top: var(--16px);
+        z-index: 20;
+        /* height: 48px; */
+        /* height: var(--64px); */
+        color: var(--theme-background)!important;
+        background-color: rgba(0, 255, 255, 0);
+    }
+
+    #header #header-title{
+        font-size: 16px;
+    }
+
+    .bars{
+        display: none;
+    }
+    
+    #header .container{
+        display: block;
+        padding: 0 var(--16px);
+        height: 48px;
+        background-color: rgba(240, 248, 255, 0);
+    }
+    
+    #header .container .inner-container{
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+    }
+
+    #header .container .right-container h1{
+        display: none;
+    }
+    
+    #header .container .left-container{
+        display: flex;
+        align-items: center;
+        gap: var(--16px);
+        background-color: var(--theme-text) !important;
+        padding: 0 var(--16px);
+        box-shadow: 6px 6px var(--theme-primary), 9px 9px var(--theme-text);
+        transition: box-shadow .5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        transition-delay: 1.5s ;
+    }
+    
+    .left-container-hover{
+        transition: box-shadow 2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        transition-delay: 0s !important;
+        box-shadow: 0px 0px var(--theme-background), 0px px var(--theme-text)!important;
+    }
+    
+    #header .container .left-container img{
+        height: 75%;
+        cursor: pointer;
+    } 
+    
+    #header .container .right-container{
+        background-color: var(--theme-text) !important;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content:left;
+        padding: 0px 0;
+        width: 100%;
+        transform-origin: left;
+
+    }
+    
+    #header .container h6{
+        color: var(--theme-background) !important;
+        cursor:default;
+    }
+    
+    #header .container span{
+        height: var(--32px);
+        width: 1px;
+        background-color: var(--theme-background) !important;
+        margin-left: var(--64px);
+    }
+    
+    #header .container .navigation-container{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        gap: var(--32px);
+    }
+    
+    #header .container .navigation-container p{
+        cursor: pointer;
+        transition: color 1s;
+    }
+    
+    #header .container .navigation-container p:hover{
+        color: var(--theme-primary) !important;
     }
 
 

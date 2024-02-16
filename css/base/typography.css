@@ -8,7 +8,8 @@
 @font-face{
     font-family: "Raleway";
     src: 
-        url("../../../../Resources/font/raleway-regular-webfont.woff2") format("woff2");
+        /* url("../../../../Resources/font/raleway-regular-webfont.woff2") format("woff2"); */
+        url("../../assets/font/raleway-regular-webfont.woff2") format("woff2");
 }
 
 /* base font size */
