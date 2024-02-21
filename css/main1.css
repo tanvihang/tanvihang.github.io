@@ -104,6 +104,7 @@ h1, h2, h3, h4, h5, h6{
     border: 2px var(--theme-text) solid;
     border-radius: 50%;
     background-color: var(--theme-background);
+    opacity: 0.8;
 }
 
 .menu-bar-line{
@@ -246,6 +247,84 @@ h1, h2, h3, h4, h5, h6{
 /* -------------------------AboutMe------------------------- */
 /* -------------------------AboutMe------------------------- */
 
+/* -------------------------MyWork------------------------- */
+/* -------------------------MyWork------------------------- */
+/* -------------------------MyWork------------------------- */
+
+.mywork{
+    height: 75vh;
+}
+
+.mywork h3{
+    text-align: center;
+}
+
+.mywork .carousel{
+    margin-top: var(--4block);
+    margin-bottom: var(--3block);
+    height: 50vh;
+    display: flex;
+
+}
+
+
+.mywork .carousel div{
+    width: 16vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 7vh;
+    /* justify-content: center; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .9;
+}
+
+.mywork .carousel div:nth-child(1){
+    background-image: url(../assets/Images/image/1.JPG);
+}
+
+.mywork .carousel div:nth-child(2){
+    background-image: url(../assets/Images/image/2.JPG);
+}
+
+.mywork .carousel div:nth-child(3){
+    background-image: url(../assets/Images/image/3.JPG);
+}
+
+.mywork .carousel div h5{
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    color: var(--theme-background);
+}
+
+.show-project{
+    width: 100%!important;
+    gap: calc(var(--5block) + 2vh);
+}
+
+.show-project h5{
+    letter-spacing: .5rem;
+    height: auto;
+    writing-mode:horizontal-tb!important;
+    text-orientation:sideways!important;
+}
+
+.show-project p{
+    color: var(--theme-background);
+    width: 15rem;
+    line-height: 2.5rem;
+    font-weight: 100!important;
+    text-align: center;
+}
+
+
+
+
+/* -------------------------MyWork------------------------- */
+/* -------------------------MyWork------------------------- */
+/* -------------------------MyWork------------------------- */
 
 
 /* ---------------------Media Queries--------------------- */
