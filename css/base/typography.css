@@ -30,8 +30,9 @@ h1, h2, h3, h4, h5, h6{
 /* line-height 1.1x letter-spacing .2 */
 h1{
     font-size: 8rem;
-    line-height: 8.8rem;
-    letter-spacing: .2rem;
+    line-height: 10.8rem;
+    /* line-height: 8.8rem; */
+    letter-spacing: .8rem;
 }
 
 /* line-height 1.1x letter-spacing .15 */

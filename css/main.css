@@ -7,16 +7,19 @@
     margin: 0;
     padding: 0;
     /* border 1px solid red to check position */
-    /* border: red solid 1px; */
+    border: red solid 1px;
     box-sizing: border-box;
+
+    /* global left and right padding */
 }
 
 /* Default styles for all screens */
 html{
-    font-size: 12px
+    font-size: 21px !important;
 }
 
 body{
+    background-image: url(../assets/Images/image/LightBackGroundNoise.png);
     background-color: var(--theme-background);
     color: var(--theme-text);
 }
@@ -46,6 +49,117 @@ h1, h2, h3, h4, h5, h6{
 .hide-desktop{
     display: block;
 }
+
+
+/* ---------------------Header Section New--------------------- */
+
+.header1{
+    position: sticky;
+    height: 0px;
+    top: 0;
+    display: flex;
+}
+
+#icon-name{
+    font-weight: bold;
+}
+
+.header1-inner1{
+    position: relative;
+    height: 6rem;
+}
+
+.inner-container1{
+
+    /* used to auto layout better */
+    margin-left: auto;
+    margin-right: auto;
+    width: 100vw;
+    /* using rem instead of px for better xiguan */
+    height: 6rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-container{
+    display: flex;
+    align-items: center;
+    gap: var(--1block);
+    height: 100%;
+}
+
+.icon-container img{
+    min-height: 50%;
+}
+
+.menu-bar{
+    position: absolute;
+    top: 3rem;
+    right: 3rem
+}
+
+.menu-bar .menu-bar-circle{
+    position: absolute;
+    left: -1rem;
+    top: -1.5rem;
+    height: 3rem;
+    width: 3rem;
+    border: 2px var(--theme-text) solid;
+    border-radius: 50%;
+    background-color: var(--theme-background);
+}
+
+.menu-bar .menu-bar-line1{
+    position: absolute;
+    height: 2px;
+    width: 1rem;
+    background-color: var(--theme-text);
+    top: 4px;
+}
+
+.menu-bar .menu-bar-line2{
+    position: absolute;
+    height: 2px;
+    width: 1rem;
+    background-color: var(--theme-text);
+    top: -4px;
+}
+
+/* ---------------------Header Section New--------------------- */
+
+/* ---------------------Hero Section New--------------------- */
+
+.hero1{
+    height: 65vh;
+    margin-top: 6rem;
+    padding: 0 var(--4block);
+}
+
+.hero1-upper-section{
+    padding-top: var(--4block);
+    position: relative;
+}
+
+.hero1-upper-section .upper-section-left{
+    display: flex;
+    flex-direction: column;
+    gap:var(--3block);
+}
+
+.hero1-upper-section .upper-section-right{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.hero1 h6 span{
+    color: var(--theme-primary);
+}
+
+/* ---------------------Hero Section New--------------------- */
+
 
 /* ---------------------Header Section--------------------- */
 .header .container{
