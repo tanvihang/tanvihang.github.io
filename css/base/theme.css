@@ -3,6 +3,7 @@
     --theme-background: #EBE9F0;
     --theme-text: #222831;
     --theme-primary: #5f86709e;
+    --theme-primary-solid:#5F8670;
     --theme-primary-trans: #5f86709e;
     --theme-accent:#150d2664;
     --theme-accent-hover:#150d269f;
@@ -14,6 +15,7 @@
     --theme-background:#222831 ;
     --theme-text: #E5E4CC;
     --theme-primary: #A27B5C;
+    --theme-primary-solid:#A27B5C;
     --theme-primary-trans: #a27b5cd3;
     --theme-accent:#5D99A3;
     --theme-accent-hover:#266C78;

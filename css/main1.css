@@ -96,6 +96,7 @@ h1, h2, h3, h4, h5, h6{
     transform: translateX(-50%); /* Adjust to center horizontally */
     width: 10vw;
     height: 10vw;
+    z-index: 10;
 }
 
 .menu-bar-mobile .menu-bar-circle{
@@ -252,7 +253,7 @@ h1, h2, h3, h4, h5, h6{
 /* -------------------------MyWork------------------------- */
 
 .mywork{
-    height: 75vh;
+    height: 70vh;
 }
 
 .mywork h3{
@@ -319,7 +320,46 @@ h1, h2, h3, h4, h5, h6{
     text-align: center;
 }
 
+.mywork .more-work{
+    text-align: end;
+    padding-right: var(--4block);
+    text-decoration: underline;
+    font-weight: bold ;
+}
 
+.footer{
+    padding: var(--5block) var(--4block);
+    display: flex;
+    gap: var(--3block);
+    height: 40vh;
+    background-color: var(--theme-primary-solid);
+    z-index: 12;
+}
+
+.footer .left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--3block);
+}
+
+.footer .left h6{
+    color: var(--theme-background);
+}
+
+.footer .right{
+    color: var(--theme-background);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--2block);
+    text-align: center;
+}
+
+.footer .right h4{
+    color: var(--theme-background);
+}
 
 
 /* -------------------------MyWork------------------------- */
