@@ -5,6 +5,9 @@
 
 :root{
     --header-height: 15vh;
+    --earth-x:20vw;
+    --earth-y:-8vh;
+    --hero-height: 68vh;
 }
 
 *{
@@ -25,19 +28,26 @@ body{
     background-image: url(../assets/Images/image/LightBackGroundNoise.png);
     background-color: var(--theme-background);
     color: var(--theme-text);
+    /* position: relative; */
 }
 
 h1, h2, h3, h4, h5, h6{
     color: var(--theme-text);
 }
 
-/* ---------------------Header Section New--------------------- */
+
+.temp{
+    height: 100vh;
+}
+
+
+/* -------------------------Menu------------------------- */
 
 .header1{
     position: sticky;
-    height:0;
+    height: 0;
     top: 0;
-    display: flex;
+    z-index: 1;
 }
 
 #icon-name{
@@ -121,17 +131,16 @@ h1, h2, h3, h4, h5, h6{
     transform: translateY(-1vw);
 } 
 
+/* -------------------------Menu------------------------- */
 
-.temp{
-    height: 100vh;
-}
-/* ---------------------Header Section New--------------------- */
 
-/* ---------------------Hero Section New--------------------- */
+/* -------------------------Hero------------------------- */
+/* -------------------------Hero------------------------- */
+/* -------------------------Hero------------------------- */
 
 .hero1{
     /* position: relative; */
-    height: 100vh;
+    height: calc(var(--hero-height) + var(--header-height));
     width: 100%;
     padding: 0 var(--4block);
 }
@@ -159,7 +168,7 @@ h1, h2, h3, h4, h5, h6{
 
 .hero1-lower-section .right{
     max-width: 60%;
-    padding-left: 15vw;
+    transform: translateY(var(--earth-y)) translateX(var(--earth-x));
 }
 
 .hero1-lower-section .right .earth{
@@ -189,7 +198,53 @@ h1, h2, h3, h4, h5, h6{
     text-align: right;
 }
 
-/* ---------------------Hero Section New--------------------- */
+
+/* -------------------------Hero------------------------- */
+/* -------------------------Hero------------------------- */
+/* -------------------------Hero------------------------- */
+
+/* -------------------------AboutMe------------------------- */
+/* -------------------------AboutMe------------------------- */
+/* -------------------------AboutMe------------------------- */
+
+.aboutme{
+    height: 30vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.aboutme .left{
+    padding-top: var(--3block);
+    padding-left: var(--4block);
+    display: flex;
+    flex-direction: column;
+}
+
+.aboutme h5{
+    width: 20vw;
+}
+
+.aboutme .arrow{
+    width: 20vw;
+    min-height: 20vw;
+    background-image: url(../assets/Images/svg/aboutmeArrow.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: translateX(var(--1block));
+}
+
+.aboutme .image{
+    background-image:url(../assets/Images/image/aboutme.JPG);
+    max-height:25vh;
+    min-width: 70vw;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+
+/* -------------------------AboutMe------------------------- */
+/* -------------------------AboutMe------------------------- */
+/* -------------------------AboutMe------------------------- */
 
 
 
