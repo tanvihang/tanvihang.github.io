@@ -42,7 +42,10 @@ function toggleMenuItem(){
     let menuIconName = document.querySelector("#icon-name")
 
     let menuItemSection = document.querySelector(".menu-item-section")
-    
+    let menuItemSectionH4 = document.querySelector("#menu-item-section-h4")
+    let menuItemSectionH5Array = document.querySelectorAll(".menu-items h5")
+    let menuItemSectionSeperationLine = document.querySelector(".seperation-line")
+
     let menuBarCircle = document.querySelector(".menu-bar-circle")
     let menuBarLine1 = document.querySelector(".menu-bar-line1")
     let menuBarLine2 = document.querySelector(".menu-bar-line2")
@@ -52,6 +55,11 @@ function toggleMenuItem(){
     menuIconName.classList.toggle("menu-item-section-open-text")
 
     menuItemSection.classList.toggle("menu-item-section-open-1")
+    menuItemSectionH4.classList.toggle("menu-item-section-innertext")
+    menuItemSectionH5Array.forEach((item)=>{
+        item.classList.toggle("menu-item-section-innertext2")
+    })
+    menuItemSectionSeperationLine.classList.toggle("menu-item-section-open-line");
 
     menuBarCircle.classList.toggle("menu-item-section-open-menu-circle")
     menuBarLine1.classList.toggle("menu-item-section-open-menu-line-1")
