@@ -14,9 +14,10 @@
     --theme-button-color:#222831;
     --theme-icon-pic:url("../../assets/Images/icons/LogoIconBlack.svg");
     --theme-icon-pic-inverted:url("../../assets/Images/icons/LogoIconLightWhite.svg");
+    --theme-header:#f0f8ffe2;
 }
 
-.dark-theme{
+    .dark-theme{
     --theme-background:#222831;
     --theme-text: #E5E4CC;
     --theme-text-inverted:#222831;
@@ -31,5 +32,6 @@
     --theme-button-color:#EBE9F0;
     --theme-icon-pic:url("../../assets/Images/icons/LogoIconBlack.svg");
     --theme-icon-pic-inverted:url("../../assets/Images/icons/LogoIconBlackWhite.svg");
+    --theme-header:#f0f8ffe2;
 }
 

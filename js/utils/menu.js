@@ -51,7 +51,7 @@ function toggleMenuItem(){
     menuIconImage.classList.toggle("menu-item-section-open-icon")
     menuIconName.classList.toggle("menu-item-section-open-text")
 
-    menuItemSection.classList.toggle("menu-item-section-open")
+    menuItemSection.classList.toggle("menu-item-section-open-1")
 
     menuBarCircle.classList.toggle("menu-item-section-open-menu-circle")
     menuBarLine1.classList.toggle("menu-item-section-open-menu-line-1")
