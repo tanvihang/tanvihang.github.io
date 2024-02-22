@@ -3,7 +3,7 @@ import { MapModule } from "./map/map.js";
 import { CarouselImage } from "./utils/carouselImage.js";
 import { Theme } from "./utils/theme.js";
 import { GsapAnimation } from "./utils/gsapAnimation.js";
-
+import { MenuItem } from "./utils/menu.js";
     
 
 window.onload = function(){
@@ -49,7 +49,8 @@ window.onload = function(){
     // logo.addEventListener("mouseenter",handleLogoOver);
     // containerr.addEventListener("mouseleave",handleLogoLeave)
 
-
+    let menuItem = new MenuItem();
+    menuItem.loadMenu(document.documentElement.clientWidth);
 }
 
 

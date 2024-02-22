@@ -2,24 +2,34 @@
 :root{
     --theme-background: #EBE9F0;
     --theme-text: #222831;
+    --theme-text-inverted:#EBE9F0;
+    --theme-text-white:#EBE9F0;
     --theme-primary: #5f86709e;
     --theme-primary-solid:#5F8670;
     --theme-primary-trans: #5f86709e;
+    --theme-primary-trans-90: #5f8670ea;
     --theme-accent:#150d2664;
     --theme-accent-hover:#150d269f;
     --theme-about-me-pic:url("../../assets/Images/image/me2.png");
     --theme-button-color:#222831;
+    --theme-icon-pic:url("../../assets/Images/icons/LogoIconBlack.svg");
+    --theme-icon-pic-inverted:url("../../assets/Images/icons/LogoIconLightWhite.svg");
 }
 
 .dark-theme{
-    --theme-background:#222831 ;
+    --theme-background:#222831;
     --theme-text: #E5E4CC;
+    --theme-text-inverted:#222831;
+    --theme-text-white:#E5E4CC;
     --theme-primary: #A27B5C;
     --theme-primary-solid:#A27B5C;
     --theme-primary-trans: #a27b5cd3;
+    --theme-primary-trans-90: #a27b5cea;
     --theme-accent:#5D99A3;
     --theme-accent-hover:#266C78;
     --theme-about-me-pic:url('../../assets/Images/image/me.png');
     --theme-button-color:#EBE9F0;
+    --theme-icon-pic:url("../../assets/Images/icons/LogoIconBlack.svg");
+    --theme-icon-pic-inverted:url("../../assets/Images/icons/LogoIconBlackWhite.svg");
 }
 
