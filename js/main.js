@@ -39,7 +39,7 @@ import { MenuItem } from "./utils/menu.js";
     
 
 window.onload = function(){
-    // var themeBtn = document.querySelector("#logo-icon");
+    var themeBtn = document.querySelector(".icon-image");
     // var mapSVG = document.querySelector("#svgMap");
     // var westMalaysia = (document.querySelector("#svgWestMalaysia"));
     // westMalaysia = westMalaysia.contentDocument;
@@ -52,12 +52,12 @@ window.onload = function(){
     // var svgDoc = GlobalState.getSvgDoc();
 
     // // Global theme 
-    // let theme = new Theme();
-    // themeBtn.addEventListener('click',()=>{
-    //     document.body.classList.toggle('dark-theme');
-    //     MapModule.changeTheme();
-    //     theme.changeTheme();
-    // })
+    let theme = new Theme();
+    themeBtn.addEventListener('click',()=>{
+        document.body.classList.toggle('dark-theme');
+        MapModule.changeTheme();
+        theme.changeTheme();
+    })
 
     // // Map Module
     // MapModule.init(svgDoc,eastMalaysia,westMalaysia)
@@ -83,6 +83,8 @@ window.onload = function(){
 
     let menuItem = new MenuItem();
     menuItem.loadMenu(document.documentElement.clientWidth);
+
+
 }
 
 

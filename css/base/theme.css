@@ -15,6 +15,7 @@
     --theme-icon-pic:url("../../assets/Images/icons/LogoIconBlack.svg");
     --theme-icon-pic-inverted:url("../../assets/Images/icons/LogoIconLightWhite.svg");
     --theme-header:#f0f8ffe2;
+    --theme-background-noise:url("../../assets/Images/image/LightBackGroundNoise.png")
 }
 
     .dark-theme{
@@ -30,8 +31,9 @@
     --theme-accent-hover:#266C78;
     --theme-about-me-pic:url('../../assets/Images/image/me.png');
     --theme-button-color:#EBE9F0;
-    --theme-icon-pic:url("../../assets/Images/icons/LogoIconBlack.svg");
-    --theme-icon-pic-inverted:url("../../assets/Images/icons/LogoIconBlackWhite.svg");
-    --theme-header:#f0f8ffe2;
+    --theme-icon-pic:url("../../assets/Images/icons/LogoIconDarkWhite.svg");
+    --theme-icon-pic-inverted:url("../../assets/Images/icons/LogoIconDarkWhite.svg");
+    --theme-header:#222831e0;
+    --theme-background-noise:url("../../assets/Images/image/DarkBackGroundNoise.png")
 }
 

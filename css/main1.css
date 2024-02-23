@@ -27,7 +27,7 @@ html{
 }
 
 body{
-    background-image: url(../assets/Images/image/LightBackGroundNoise.png);
+    background-image: var(--theme-background-noise);
     background-color: var(--theme-background);
     color: var(--theme-text);
     /* position: relative; */
@@ -364,7 +364,7 @@ h1, h2, h3, h4, h5, h6{
 /* -------------------------AboutMe------------------------- */
 
 .aboutme{
-    height: 30vh;
+    min-height: 30vh;
     display: flex;
     justify-content: space-between;
 }
@@ -383,10 +383,7 @@ h1, h2, h3, h4, h5, h6{
 .aboutme .arrow{
     width: 20vw;
     min-height: 20vw;
-    background-image: url(../assets/Images/svg/aboutmeArrow.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    transform: translateX(var(--1block));
+    transform: translateX(var(--1block)) translateY(calc(-1 * var(--2block)));
 }
 
 .aboutme .image{
@@ -451,7 +448,11 @@ h1, h2, h3, h4, h5, h6{
 .mywork .carousel div h5{
     writing-mode: vertical-rl;
     text-orientation: upright;
-    color: var(--theme-background);
+    color: var(--theme-text-white);
+}
+
+.mywork .carousel div p{
+    color: var(--theme-text-white);
 }
 
 .show-project{

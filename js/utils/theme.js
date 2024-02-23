@@ -14,12 +14,12 @@ const Theme = (function(){
 
         changeTheme(){
             var theme;
-
+            console.log(this.themeNo)
             if(this.themeNo % 2 == 1){
                 fetch('../assets/theme.json')
                     .then(response => response.json())
                     .then(themes => {
-                        theme = themes.light;
+                        theme = themes.dark;
                         this.paintItems(theme)
                     })
             }else{  
@@ -34,9 +34,15 @@ const Theme = (function(){
         }
 
         paintItems(theme){
-            var rightArrow = document.querySelector("#svg-arrow");
-            rightArrow.fill = theme.colors.button_color;
-            // console.log(rightArrow.children.children)
+            let arrowArr = document.querySelectorAll(".arrow")
+            console.log(arrowArr)
+
+            arrowArr.forEach((arrow)=>{
+                let doc = arrow.contentDocument;
+                let instance = doc.querySelector("svg")
+                instance.style.fill = theme.colors.text
+            })
+
         }
 
     }
