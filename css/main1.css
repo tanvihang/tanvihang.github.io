@@ -34,7 +34,7 @@
     margin: 0;
     padding: 0;
     /* border 1px solid red to check position */
-    border: red solid 1px;
+    /* border: red solid 1px; */
     box-sizing: border-box;
     /* global left and right padding */
 }
@@ -560,7 +560,7 @@ h1, h2, h3, h4, h5, h6{
 
 
 /* Tablet */
-@media screen and (min-width:820px){
+@media screen and (min-width: 980px){
     :root{
         --header-height: 10vh;
         --earth-x:-20vw;
