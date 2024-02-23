@@ -36,6 +36,7 @@ import { CarouselImage } from "./utils/carouselImage.js";
 import { Theme } from "./utils/theme.js";
 import { GsapAnimation } from "./utils/gsapAnimation.js";
 import { MenuItem } from "./utils/menu.js";
+import { Audio } from "./utils/audio.js";
     
 
 window.onload = function(){
@@ -84,7 +85,10 @@ window.onload = function(){
     let menuItem = new MenuItem();
     menuItem.loadMenu(document.documentElement.clientWidth);
 
-
+    function playClickSound(){
+        let audio = document.getElementById("clickSound")
+        audio.onplay();    
+    }
 }
 
 

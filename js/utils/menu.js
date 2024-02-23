@@ -1,3 +1,5 @@
+import { Audio } from "./audio.js";
+
 // make a singleton menu item
 const MenuItem = (function(){
 
@@ -6,8 +8,8 @@ const MenuItem = (function(){
     class MenuItemClass{
         constructor(){
             if(!instance){
+                this.audioInstance = new Audio()
                 this.menuBtn = document.querySelector(".menu-bar-mobile")
-                
                 return this;
             }
 
@@ -20,7 +22,10 @@ const MenuItem = (function(){
         }
 
         loadMobile(){
-            this.menuBtn.addEventListener('click',mobileClick)
+            let audioInstance1 = this.audioInstance;
+            this.menuBtn.addEventListener('click',function(){
+                mobileClick(audioInstance1)
+            })
         }
     }
 
@@ -30,7 +35,8 @@ const MenuItem = (function(){
 
 export {MenuItem}
 
-function mobileClick(){
+function mobileClick(audioInstance){
+    audioInstance.playAudio();
     let menuHeader = document.querySelector(".header1-inner1")
 
     toggleMenuItem()
