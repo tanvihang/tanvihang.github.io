@@ -14,7 +14,6 @@ const Theme = (function(){
 
         changeTheme(){
             var theme;
-            console.log(this.themeNo)
             if(this.themeNo % 2 == 1){
                 fetch('../assets/theme.json')
                     .then(response => response.json())
@@ -35,7 +34,6 @@ const Theme = (function(){
 
         paintItems(theme){
             let arrowArr = document.querySelectorAll(".arrow")
-            console.log(arrowArr)
 
             arrowArr.forEach((arrow)=>{
                 let doc = arrow.contentDocument;
