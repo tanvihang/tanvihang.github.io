@@ -381,7 +381,6 @@ h1, h2, h3, h4, h5, h6{
 
 .aboutme{
     min-height: var(--about-me-min-height);
-    max-height: var(--about-me-min-height);
     display: flex;
     justify-content: space-between;
 }
@@ -404,12 +403,12 @@ h1, h2, h3, h4, h5, h6{
 
         width: 20vw;
         min-height: 20vw;
-        transform: translateX(var(--1block)) translateY(calc(-1 * var(--2block)));
+        transform: translateX(var(--2block)) translateY(calc(1 * var(--1block)));
     }
 
     .aboutme .image{
         background-image:url(../assets/Images/image/aboutme.JPG);
-        max-height:var(--about-me-pic-max-height);
+        /* max-height:var(--about-me-pic-max-height); */
         min-height: var(--about-me-pic-max-height);
         min-width: var(--about-me-pic-min-width);
         background-repeat: no-repeat;
@@ -560,7 +559,7 @@ h1, h2, h3, h4, h5, h6{
 
 
 /* Tablet */
-@media screen and (min-width: 980px){
+@media screen and ( min-device-width: 768px){
     :root{
         --header-height: 10vh;
         --earth-x:-20vw;
@@ -620,7 +619,7 @@ h1, h2, h3, h4, h5, h6{
     }
 
 /* Desktop small */
-@media screen and (min-width:1280px){
+@media screen and (min-device-width:1280px){
     
     html{
         font-size: 21px;
