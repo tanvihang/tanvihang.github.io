@@ -25,9 +25,17 @@
 
 
     --about-me-min-height:30vh;
-    --about-me-pic-max-height:25vh;
+    --about-me-pic-min-height:25vh;
     --about-me-pic-min-width:70vw;
-    --about-me-arrow-url:url(../assets/Images/svg/aboutmeArrow.svg)
+    --about-me-arrow-url:url(../assets/Images/svg/aboutmeArrow.svg);
+    --aboutme-margin-bottom: 0vh;
+
+
+    --mywork-section-height: 70vh;
+    --mywork-carousel-main-max-height:50vh;
+
+
+    --footer-height: 40vh;
 }
 
 *{
@@ -60,6 +68,9 @@ h1, h2, h3, h4, h5, h6{
     height: 100vh;
 }
 
+.hide-mobile{
+    display: none;
+}
 
 /* -------------------------Menu------------------------- */
 /* -------------------------Menu------------------------- */
@@ -69,7 +80,7 @@ h1, h2, h3, h4, h5, h6{
     position: sticky;
     height: 0;
     top: 0;
-    z-index: 1;
+    z-index: 100;
 }
 
     .header1-inner1{
@@ -130,7 +141,7 @@ h1, h2, h3, h4, h5, h6{
         transform: translateX(-50%); /* Adjust to center horizontally */
         width: var(--menu-bar-axis-length);
         height: var(--menu-bar-axis-length);
-        z-index: 10;
+        z-index: 100;
     }
 
         .menu-bar-mobile .menu-bar-circle{
@@ -383,6 +394,8 @@ h1, h2, h3, h4, h5, h6{
     min-height: var(--about-me-min-height);
     display: flex;
     justify-content: space-between;
+
+    margin-bottom: var(--aboutme-margin-bottom);
 }
 
     .aboutme .left{
@@ -409,7 +422,7 @@ h1, h2, h3, h4, h5, h6{
     .aboutme .image{
         background-image:url(../assets/Images/image/aboutme.JPG);
         /* max-height:var(--about-me-pic-max-height); */
-        min-height: var(--about-me-pic-max-height);
+        min-height: var(--about-me-pic-min-height);
         min-width: var(--about-me-pic-min-width);
         background-repeat: no-repeat;
         background-size: contain;
@@ -425,21 +438,20 @@ h1, h2, h3, h4, h5, h6{
 /* -------------------------MyWork------------------------- */
 
 .mywork{
-    height: 70vh;
+    height: var(--mywork-section-height);
 }
 
     .mywork h3{
         text-align: center;
+        margin-bottom: var(--4block);
     }
 
     .mywork .carousel{
-        margin-top: var(--4block);
         margin-bottom: var(--3block);
-        height: 50vh;
-        display: flex;
-
+        height: var(--mywork-carousel-main-max-height);
+        display: flex; 
+        position: relative;
     }
-
 
         .mywork .carousel div{
             width: 16vw;
@@ -518,7 +530,7 @@ h1, h2, h3, h4, h5, h6{
     padding: var(--5block) var(--4block);
     display: flex;
     gap: var(--3block);
-    height: 40vh;
+    height: var(--footer-height);
     background-color: var(--theme-primary-solid);
     z-index: 12;
 }
@@ -578,48 +590,114 @@ h1, h2, h3, h4, h5, h6{
         --hero-section-earth-lensvoyager-text-y-axis: -8vw;
     
         --about-me-min-height:35vh;
-        --about-me-pic-max-height:35vh;
-        --about-me-pic-min-width:75vw;
-        --about-me-arrow-url:url(../assets/Images/svg/AboutMeArrowTablet.svg)
+        --about-me-pic-min-height:25vh;
+        --about-me-pic-min-width:70vw;
+        --about-me-arrow-url:url(../assets/Images/svg/aboutmeArrow.svg);
+        --aboutme-margin-bottom: var(--5block);
+
+        --mywork-section-height: 80vh;
+        --mywork-carousel-main-max-height:35vh;
+        --mywork-project-details-height:20vh;
+
+
+        --footer-height:30vh
     }
     
     html{
-        font-size: 18px;
+        font-size: 21px!important;
     }
     
-    .aboutme{
-    
-        margin:3vh 0 ;
-    }
-    
-        .aboutme .left{
-            position: relative;
-    
-            padding-top: 0;
-            padding-left: var(--4block);
-            display: flex;
-            flex-direction: column;
-        }
-    
-        .aboutme h5{
-            writing-mode: vertical-lr;
-            text-orientation: upright;
-            
-            text-transform: capitalize!important;
-        }
-    
-        .aboutme .arrow{
-            position: absolute;
-            bottom: 0;
-            right: 2vw;
-            max-width: 12vw;
-            min-height: 20vh;
-        }
-    
+    .hide-mobile{
+        display: block;
     }
 
+    .menu-bar-mobile{
+        top: var(--3block);
+        left: var(--4block);
+        transform: none !important;; /* Adjust to center horizontally */
+    }
+
+    .menu-bar-mobile .menu-bar-circle{
+        background-color: transparent;
+    }
+
+    .hero1-upper-section{
+        padding-top: var(--4block); 
+    }
+
+
+    .aboutme .arrow{
+        width: 18vw;
+    }
+
+
+    .mywork .carousel div{
+        width: 30vw;
+        /* max-width: var(--mywork-carousel-main-max-height); */
+        height: calc(var(--mywork-carousel-main-max-height) / 1.5);
+        opacity: .9;
+
+        position: absolute;
+    }
+    
+        .mywork .carousel div h5{
+            writing-mode:horizontal-tb;
+            text-orientation:sideways;
+            color: var(--theme-primary-solid);
+
+            display: none;
+        }
+
+        .mywork .carousel div p{
+            color: var(--theme-text);
+            display: none;
+        }
+
+            .mywork .carousel .show-project{
+                height: var(--mywork-carousel-main-max-height)!important;
+                max-width: 60vw!important;
+                left: 50%;
+                transform: translateX(-50%);
+                opacity: 1!important;
+                z-index: 8;
+            }
+
+            .mywork .carousel .right{
+                right: var(--4block);
+                transform: translateY(50%);
+                bottom: 50%;
+            }
+
+            .mywork .carousel .left{
+                left: var(--4block);
+                transform: translateY(50%);
+                bottom: 50%;
+            }
+         
+    .mywork .mywork-project-details{
+        height: var(--mywork-project-details-height);
+        padding: 0 var(--4block);
+        gap: var(--3block);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+    }
+
+    .mywork .mywork-project-details h5{
+        color: var(--theme-primary-solid);
+    }
+
+
+    .footer{
+        justify-content: center;
+    }
+}
+
+
+
 /* Desktop small */
-@media screen and (min-device-width:1280px){
+@media screen and (min-device-width:1024px){
     
     html{
         font-size: 21px;
