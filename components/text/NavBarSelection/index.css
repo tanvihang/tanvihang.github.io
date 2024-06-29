@@ -1,0 +1,36 @@
+.title {
+  cursor: pointer;
+}
+
+@keyframes titleIn {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes titleOut {
+  from {
+    transform: rotate(10deg);
+  }
+
+  to {
+    transform: rotate(0deg); /* End state: back to normal rotation */
+  }
+}
+
+.title:hover {
+  animation-name: titleIn;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards; 
+  color:var(--link-hover);
+}
+
+.title:not(:hover){
+    animation-name: titleOut;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards; 
+}

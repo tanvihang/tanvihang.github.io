@@ -1,0 +1,140 @@
+@font-face{
+    font-family: 'IBMPlexMono';
+    src: url('/assets/fonts/IBMPlexMono-Light.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 1000;
+}
+
+@font-face{
+    font-family: 'IBMPlexMonoMedium';
+    src: url('/assets/fonts/IBMPlexMono-Medium.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 1000;
+}
+
+@font-face{
+    font-family: 'PPAcma';
+    src: url('/assets/fonts/PPAcma-Black.otf') format('opentype');
+    font-style: normal;
+    /* font-weight: 900; */
+}
+
+:root{
+    /* min 320px, max 1080px */
+    --screen-min-width: 32; 
+    --screen-max-width: 108;
+
+    /* h1 START */
+    --h1-max-size: 13.5;
+    --h1-min-size: 1.0;
+
+    --h1-slope: calc((var(--h1-max-size) - var(--h1-min-size)) / (var(--screen-max-width) - var(--screen-min-width)));
+    --h1-intersection: calc((-1 * var(--screen-min-width) * var(--h1-slope)) + var(--h1-min-size));
+    --h1-preferred: calc(var(--h1-intersection) + (var(--h1-slope) * 100));
+
+    --h1-min: calc(var(--h1-min-size) * 1rem);
+    --h1-mid: calc(var(--h1-preferred) * 1vw);
+    --h1-max: calc(var(--h1-max-size) * 1rem);
+
+    --h1-font-size: clamp(var(--h1-min), var(--h1-mid), var(--h1-max));
+    /* h1 END */
+
+    /* h2 START */
+    --h2-max-size: 7.2;
+    --h2-min-size: 5.0;
+
+    --h2-slope: calc((var(--h2-max-size) - var(--h2-min-size)) / (var(--screen-max-width) - var(--screen-min-width)));
+    --h2-intersection: calc((-1 * var(--screen-min-width) * var(--h2-slope)) + var(--h2-min-size));
+    --h2-preferred: calc(var(--h2-intersection) + (var(--h2-slope) * 100));
+
+    --h2-min: calc(var(--h2-min-size) * 1rem);
+    --h2-mid: calc(var(--h2-preferred) * 1vw);
+    --h2-max: calc(var(--h2-max-size) * 1rem);
+
+    --h2-font-size: clamp(var(--h2-min), var(--h2-mid), var(--h2-max));
+    /* h2 END */
+
+    /* h3 START */
+    --h3-max-size: 4.0;
+    --h3-min-size: 2.8;
+
+    --h3-slope: calc((var(--h3-max-size) - var(--h3-min-size)) / (var(--screen-max-width) - var(--screen-min-width)));
+    --h3-intersection: calc((-1 * var(--screen-min-width) * var(--h3-slope)) + var(--h3-min-size));
+    --h3-preferred: calc(var(--h3-intersection) + (var(--h3-slope) * 100));
+
+    --h3-min: calc(var(--h3-min-size) * 1rem);
+    --h3-mid: calc(var(--h3-preferred) * 1vw);
+    --h3-max: calc(var(--h3-max-size) * 1rem);
+
+    --h3-font-size: clamp(var(--h3-min), var(--h3-mid), var(--h3-max));
+    /* h3 END */
+
+    /* h6 START */
+    --h6-max-size: 1.6;
+    --h6-min-size: 1.6;
+
+    --h6-slope: calc((var(--h6-max-size) - var(--h6-min-size)) / (var(--screen-max-width) - var(--screen-min-width)));
+    --h6-intersection: calc((-1 * var(--screen-min-width) * var(--h6-slope)) + var(--h6-min-size));
+    --h6-preferred: calc(var(--h6-intersection) + (var(--h6-slope) * 100));
+
+    --h6-min: calc(var(--h6-min-size) * 1rem);
+    --h6-mid: calc(var(--h6-preferred) * 1vw);
+    --h6-max: calc(var(--h6-max-size) * 1rem);
+
+    --h6-font-size: clamp(var(--h6-min), var(--h6-mid), var(--h6-max));
+    /* h6 END */
+
+    /* body START */
+    --body-max-size: 1.2;
+    --body-min-size: 1.2;
+
+    --body-slope: calc((var(--body-max-size) - var(--body-min-size)) / (var(--screen-max-width) - var(--screen-min-width)));
+    --body-intersection: calc((-1 * var(--screen-min-width) * var(--body-slope)) + var(--body-min-size));
+    --body-preferred: calc(var(--body-intersection) + (var(--body-slope) * 100));
+
+    --body-min: calc(var(--body-min-size) * 1rem);
+    --body-mid: calc(var(--body-preferred) * 1vw);
+    --body-max: calc(var(--body-max-size) * 1rem);
+
+    --body-font-size: clamp(var(--body-min), var(--body-mid), var(--body-max));
+    /* body END */
+}
+
+
+
+html{
+    /* make font size base to be 10px, because original is 16px */
+    font-size: 62.5%;
+}
+
+body{
+    font-size: var(--body-font-size);
+    font-family: 'IBMPlexMono', sans-serif;
+}
+
+h1{
+    font-size: var(--h1-font-size);
+    font-family: 'PPAcma', serif;
+    letter-spacing: 0.1em;
+    line-height: 100%;
+}
+
+h2{
+    font-size: var(--h2-font-size);
+    font-family: 'PPAcma', serif;
+    line-height: 1.4em;
+}
+
+h3{
+    font-size: var(--h3-font-size);
+    font-family: 'IBMPlexMono', sans-serif;
+    letter-spacing: -0.07em;
+    line-height: 1.4em;
+}
+
+h6{
+    font-size: var(--h6-font-size);
+    font-family: 'IBMPlexMono', sans-serif;
+    line-height: 1.4em;
+}
+

@@ -1,0 +1,110 @@
+
+ .about1{
+    /* background-color: aqua; */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+   & .transparent-box{
+      height: 80%;
+      width: 80%;
+      position: absolute;
+      background-color: rgba(0, 255, 255, 0);
+      z-index: 1;
+   }
+
+    & .about1-box{
+        position: relative;
+        height: 80%;
+        width: 80%;
+        background-image: url("/assets/images/angus.avif");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: left;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        & .dot{
+         position: absolute;
+         background-image: url("/assets/images/dot.png");
+         background-size: contain;
+         background-repeat: no-repeat;
+         height: 25px;
+         width: 17px;
+         opacity: 0;
+
+         transition: opacity 1s linear;
+      }
+
+        & .i{
+         position: relative;
+         display: flex;
+         flex-direction: column;
+         justify-items: start;
+         align-items: center;
+
+         & .dot2{
+            position: absolute;
+            background-image: url("/assets/images/dot.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 25px;
+            width: 17px;
+            top: -25px;
+            transition: opacity 1s linear;
+            /* left: 0px; */
+         }
+
+        }
+
+        & h2{
+           color: var(--bg-primary);
+        }
+
+        & p{
+         color: var(--link-hover);
+        }
+    }
+ }
+
+ .about2{
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    overflow-y: hidden;
+    white-space: nowrap;
+    height: 100vh;
+    width: 300vw;
+
+    & .hori{
+      flex-shrink: 0;
+      height: 100vh;
+      width: 100vw;
+      scroll-snap-align: start;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+    }
+ }
+
+ .show-dot{
+   opacity: 1!important;
+ }
+
+ .hide-dot{
+   opacity: 0 !important;
+ }
+
+.sticky{
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+}

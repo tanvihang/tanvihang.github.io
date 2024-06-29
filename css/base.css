@@ -1,0 +1,13 @@
+@import url('typography.css');
+@import url('color.css');
+
+:root{
+    --ultimate-padding: calc(8px + 1.5625vw);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: burlywood 1px solid; */
+}

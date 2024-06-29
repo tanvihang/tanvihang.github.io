@@ -1,230 +1,163 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>EtherealFocus</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />    <title>Angus Tan</title>
 
-    <link href="./css/main1.css" rel="stylesheet">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
-
-    <script type="module" src="./js/main.js"></script>
-    
-    <!--CSS_REFERENCE-->
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cardo&family=Raleway:ital,wght@0,400;0,600;1,400&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Cardo&family=Raleway:ital,wght@0,400;0,600;1,400&family=Zhi+Mang+Xing&display=swap');
-    </style>
-
+    <link rel="icon" href="assets/images/AutumnLeaf.gif">
+    <link href="./css/base.css" type="text/css" rel="stylesheet">
+    <link href="./css/index.css" type="text/css" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.6.9/build/spline-viewer.js"></script>
 </head>
-<body> 
+<body>
 
-    <!-- without height -->
-    <div class="header1"> 
-        <!-- with height -->
-        <div class="header1-inner1">
-            <div class="inner-container1">
-                <div class="icon-container">
-                    <!-- <img src="./assets/Images/icons/icon.svg"> -->
-                    <div class="icon-image"></div>
-                    <h6 id="icon-name" class="">AngusTan</h6>
-                </div>
-            </div>    
-        </div> 
-
-        <!-- menubar -->
-        <div class="menu-item-section">
-            <h4 id="menu-item-section-h4">Menu</h4>
-            <div class="seperation-line"></div>
-            <div class="menu-items">
-                <h5>All Works</h5>
-                <h5>Photography</h5>
-                <h5>About Me</h5>
-                <h5>Contact</h5>
-            </div>
-        </div>
-    </div>
+    <header-custom title = "ANGUS"></header-custom>
+    
+    <div class="hero-filler"></div>
     
     
-
-    <div class="menu-bar-mobile">
-        <div class="menu-bar-circle"></div>
-        <div class="menu-bar-line">
-            <div class="menu-bar-line1 "></div>
-            <div class="menu-bar-line2"></div>
-        </div>
-    </div>
-
-    <div class="hero1">
-        <div class="hero-main">
-            <div class="hero1-upper-section">
-                <div class="upper-section-left">
-                    <h1>Angus</h1>
-                    <h1>Tan</h1>
-                </div>
-            </div>
-    
-            <div class="hero1-lower-section">
-                <div class="left">
-                    <h6>Bachelor in <span>Computer Science And Technology</span>.</h6>
-                    <h6>Proficient in <span>front-end-development</span>.</h6>
-                    <h6>Passionate for distinctive <span>Web Design</span>.</h6>       
-                </div>
-               
-                <div class="right">
-                    <div class="lens-voyager">
-                        <div class="earth"></div>
-                        <div class="arrow"></div>
-                        <!-- <object id="lensvoyagerarrow" class="arrow" type="image/svg+xml" data="../assets/Images/svg/lensvoyagerArrow.svg"></object> -->
-                        <p>Lens Voyager</p>
+    <div class="section1">
+        <div class="hero-container">
+            <div class="hero-flex1">
+                <div class="hero-flex1-container">
+                    <h3>FOLLOW ME AND</h3>
+                    <h3>EMBARK ON A BESPOKE</h3>
+                    <h3>JOURNEY THROUGH</h3>
+                    <h3>MY UNIQUE LENS!</h3>
+                    <div class="hero-flex1-selection">
+                        <plop-button-custom title = "Who"></plop-button-custom>
+                        <plop-button-custom title = "What"></plop-button-custom>
+                        <plop-button-custom title = "Where"></plop-button-custom>
                     </div>
                 </div>
             </div>
-        </div>
 
-        
-
-    </div>
-    
-    <div class="aboutme">
-        <div class="left">
-            <h5>About Me</h5>
-            <div class="arrow"></div>
-            <!-- <object id="aboutmearrow" class="arrow"  type="image/svg+xml" data="../assets/Images/svg/aboutmeArrow.svg"></object> -->
-        </div>
-        <div class="image"></div>
-    </div>
-
-    <div class="mywork">
-        <h3>My Works</h3>
-        
-        <div class="carousel">
-            <div class="project1 right">
-                <h5>ProjectI</h5>
-            </div>
-            <div class="project2 show-project">
-                <h5>ProjectII</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati a porro repellendus ab asperiores molestias?</p>
-
-            </div>
-            <div class="project3  left">
-                <h5>ProjectIII</h5>
-            </div>
-        </div>
-
-        <p class="more-work">More Works</p>
-
-        <div class="mywork-project-details hide-mobile">
-            <h5 class="title">ProjectII</h5>
-            <p class="details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati a porro repellendus ab asperiores molestias?</p>
-        </div>
-    </div>
-
-    <div class="footer">
-        <div class="left">
-            <h6>All Works</h6>
-            <h6>Photography</h6>
-            <h6>About Me</h6>
-            <p>angustanworkspce@gmail.com</p>
-        </div>
-
-        <div class="right">
-            <p>Designed and built by</p>
-            <h4>AngusTan</h4>
-            <p>All rights reserved ©. 2024.</p>
-        </div>
-    </div>
-
-<!-- 
-    <div class="hero snapping-vertical">
-        <object id="svgMap" type="image/svg+xml" data="../assets/Images/svg/world-map.svg"></object>
-        <div id="svgMapImage"></div>
-        <h1>LENS VOYAGER</h1>
-    </div> -->
-
-<!-- 
-    <div class="about-me snapping-vertical">
-        <div class="about-me-inner">
-            <div class="left-about">
-                <div class="inner-left-about">
-                    <div class="me-pic"></div>
-                    <div class="glitch"></div>
-                </div>       
-            </div>
-            <div class="right-about">
-                <div class="right-about-inner">
-                    <div class="about-flex about-name">
-                        <h1>誉</h1>
-                        <h6>Angus Tan</h6>    
-                    </div>
-                    
-                    <div>
-                        <div class="about-flex about-job">
-                            <h5>程序员</h5>
-                            <p>Developer</p>
-                        </div>
-                        <div class="about-flex about-job">
-                            <h5>设计师</h5>
-                            <p>Designer</p>
-                        </div>
-                        <div class="about-flex about-job">
-                            <h5>摄影师</h5>
-                            <p>Photographer</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <object id="svgWestMalaysia" type="image/svg+xml" data="../assets/Images/svg/westmalaysia.svg"></object>
-                <object id="svgEastMalaysia" type="image/svg+xml" data="../assets/Images/svg/eastmalaysia.svg"></object>
-
-            </div>
-            
-        </div>
-    </div> -->
-
-    <!-- <div class="my-work ">
-        <div class="my-work-inner">
-
-            <div class="my-work-title">
-                <div class="my-work-title-left">
-                    <h1>作品</h1>
-                    <h5>All Work</h5>
-                </div>
-            
-                <div class="my-work-title-right">
-                    <button class="btn-show-more h6">SHOW MORE
-                        <svg id="svg-arrow" class="btn-show-more-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke-width="3" stroke="currentColor" fill="none"><polyline points="18.86 57.47 44.12 30.84 18.86 6.58"/></svg>
-                    </button>
+            <div class="hero-flex2">
+               <div class="hero-flex2-image-container">
+                    <!-- <div class="hero-flex2-image"> -->
+                        <!-- <spline-viewer class="spline" url="https://prod.spline.design/MGUd9JiI7WkKKijd/scene.splinecode"></spline-viewer> -->
+                    <!-- </div> -->
+                    <iframe class="spline" src='https://my.spline.design/untitled-7584123e687abcbb004c3f5a0fa42fdb/' frameborder='0'></iframe>                
                 </div>
             </div>
-
-            <div class="break-line"></div>
-
-            <div class="my-work-images">
-            </div>
-
-            <div class="break-line">
-                <span class="break-line-text">Scroll To Explore.</span>
-            </div>
         </div>
-        
-    </div>  -->
-
-    <!-- <div class="temp snapping_verticalspecial">
-        <h1>Hello</h1>
     </div>
 
-    <div class="temp snapping_vertical2">
-        <h1>Hello</h1>
-    </div> -->
+    <div class="section2">
+        <div class="section2-title">
+            <br>
+            <h2>MY WORKS</h2>
+        </div>
 
-<audio id="clickSound">
-    <source src="../assets/media/sound/mixkit-modern-click-box-check-1120.wav" type="audio/wav">
-    Your browser does not support the audio element.
-</audio>
+        <div class="section2-card-section">
+            <hero-card-custom></hero-card-custom>
+        </div>
+
+    </div>
+
+    <footer-custom></footer-custom>
 
 </body>
+
+<script type="module">
+    
+import './components/header/index.js'
+import './components/button/PlopButton/index.js'
+import './components/card/HeroCard/index.js'
+import './components/footer/index.js'
+import globalContext from './datas/globalContext.js'
+import {works} from './datas/home.js'
+import {elementIsInViewPort, debounce} from './js/IntersectionObserver/vi.js'
+
+const filler = document.querySelector(".hero-filler");
+const heroContainer = document.querySelector(".section1")
+const heroFlex2 = document.querySelector(".hero-flex2")
+const section2 = document.querySelector(".section2");
+const section2CardSection = document.querySelector(".section2-card-section");
+const footer = document.querySelector("footer-custom")
+let section2CardElements;
+
+console.log(footer)
+
+setHeaderHeight()
+loadSection2Work()
+
+// if is mobile
+if(window.innerWidth > 319 && window.innerWidth < 768){
+    window.addEventListener('scroll', debounce(checkItemsInView, 100))
+}
+
+window.addEventListener('scroll', debounce(checkFooterInView, 100))
+
+function setHeaderHeight(height){
+    if(window.innerWidth > 319 && window.innerWidth < 768){
+        filler.style.height = '70px'
+    }else{
+        filler.style.height = '250px'
+    }
+}
+
+function setHeroContainerHeight(height){
+    if(window.innerWidth > 319 && window.innerWidth < 768){
+        const calcHeight = `calc(100vh - 70px)`
+        heroContainer.style.height = calcHeight;
+    }else{
+        const calcHeight = `calc(100vh - 250px)`
+        heroContainer.style.height = calcHeight;
+    }
+}
+
+globalContext.headerHeight.subscribe(()=>{
+    const height = globalContext.headerHeight.getState().height;
+    setHeaderHeight(height)
+
+    setHeroContainerHeight(height)
+    // const calcHeight = `calc(100vh)`
+    // setSection2MarginTop(calcHeight)
+    // setFlex2Margin("500px")
+})
+
+function loadSection2Work(){
+    let innerHtml = ``;
+
+    works.forEach(work => {
+        if(work !== null){
+            let workString = JSON.stringify(work)
+            // create element
+            let element = 
+            `
+                <hero-card-custom
+                    work = '${workString}'
+                ></hero-card-custom>
+            `       
+            innerHtml += element;
+        }
+    });
+
+    section2CardSection.innerHTML = innerHtml
+
+    section2CardElements = document.querySelectorAll("hero-card-custom");
+}
+
+function checkItemsInView(){
+    section2CardElements.forEach(element => {
+        if(elementIsInViewPort(element, 80)){
+            element.shadowRoot.querySelector('.card-block').classList.add("card-block-in-view")
+        }else{
+            element.shadowRoot.querySelector('.card-block').classList.remove("card-block-in-view")            
+        }
+    })
+      
+}
+
+function checkFooterInView(){
+    if(elementIsInViewPort(footer, 20)){
+        footer.shadowRoot.querySelector('.footer').classList.add("outer-container-show")
+    }
+}
+
+
+</script>
 
 
 </html>

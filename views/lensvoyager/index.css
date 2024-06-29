@@ -1,0 +1,27 @@
+
+.hero{
+    /* background-color: aqua; */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & h2{
+        position: absolute; 
+    }
+
+    & #svgMap{
+        height: 70%;
+    }
+
+ }
+
+
+ #svgMapImage{
+    display: none;
+    position: absolute !important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 250px;
+    width: 80%;
+}

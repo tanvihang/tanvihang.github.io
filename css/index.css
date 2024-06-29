@@ -1,0 +1,150 @@
+@media only screen and (min-width: 1080px), only screen and (orientation: landscape) {
+
+  .hero-container {
+    flex-direction: row !important;
+    position: relative;
+  }
+
+  .hero-flex1 {
+    & .hero-flex1-selection {
+      justify-content: start !important;
+    }
+  }
+
+  .hero-flex2 {
+    position: absolute;
+    z-index: 0;
+
+    & .hero-flex2-image {
+      background-position: left !important;
+  
+    }
+  }
+
+  .hero-flex1-selection{
+    display: none !important;
+  }
+
+}
+
+@media only screen and (min-width: 768px) {
+  .section2{
+    & .section2-title{
+      display: block !important;
+      /* padding-top: 10em !important; */
+      text-align: start !important;
+      padding-left: 3em !important;
+    }
+  }
+}
+
+
+/* ---------------------- SECTION 1 ----------------------*/
+
+.section1 {
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  /* position: absolute; */
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-filler {
+  width: 100%;
+  /* background-color: beige; */
+}
+
+.hero-container {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  /* background-color: bisque; */
+}
+
+.hero-flex1 {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+
+  & h3{
+    text-align: center;
+  }
+
+  & .hero-flex1-selection {
+    display: flex;
+    justify-content: center;
+    padding-top: var(--ultimate-padding);
+    gap: var(--ultimate-padding);
+
+  }
+  /* background-color: aquamarine; */
+}
+
+.hero-flex2 {
+  /* background-color: antiquewhite; */
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  /* background-color: aqua; */
+
+  & .hero-flex2-image-container {
+    /* TODO make it responsive size */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    & .hero-flex2-image {
+      height: 100%;
+      width: 100%;
+    
+      background-image: url("../assets/images/AutumnLeaf.gif");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    & iframe{
+      height: 100%;
+      width: 100%;  
+    }
+  }
+}
+
+/* ---------------------- SECTION 1 ----------------------*/
+
+
+/* ---------------------- SECTION 2 ----------------------*/
+
+.section2{
+  height: fit-content;
+  /* background-color: antiquewhite; */
+
+  & .section2-title{
+    display: none;
+  }
+
+  & .section2-card-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--ultimate-padding) * 3);
+    /* background-color: aqua; */
+  }
+
+}
+
+/* ---------------------- SECTION 2 ----------------------*/
+

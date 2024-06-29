@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Angus Tan</title>
+
+    <link rel="icon" href="/assets/images/AutumnLeaf.gif" />
+    <link href="/css/base.css" type="text/css" rel="stylesheet" />
+    <link href="./index.css" type="text/css" rel="stylesheet" />
+    <script
+      type="module"
+      src="https://unpkg.com/@splinetool/viewer@1.6.9/build/spline-viewer.js"
+    ></script>
+  </head>
+  <body>
+    <header-custom title="ANGUS"></header-custom>
+
+    <div class="filler"></div>
+
+    <div class="hero">
+        <object id="svgMap" type="image/svg+xml" data="/assets/svg/world-map.svg"></object>
+        <!-- <h2>LENS VOYAGER</h2> -->
+        <div id="svgMapImage"></div>
+    </div>
+
+    <footer-custom></footer-custom>
+  </body>
+
+  <script type="module">
+    import "/components/header/index.js";
+    import "/components/footer/index.js";
+    import globalContext from "/datas/globalContext.js";
+    import {
+      elementIsInViewPort,
+      debounce,
+    } from "/js/IntersectionObserver/vi.js";
+    import {MapModule} from "/js/Map/map.js"
+
+    const filler = document.querySelector(".filler");
+    const footer = document.querySelector("footer-custom");
+    var mapSVG = document.querySelector("#svgMap");
+    mapSVG = mapSVG.contentDocument;
+
+    setHeaderHeight();
+    MapModule.init(mapSVG);
+
+
+    // height change listener
+    globalContext.headerHeight.subscribe(() => {
+      setHeaderHeight(globalContext.headerHeight.getState().height);
+    });
+
+    window.addEventListener("scroll", debounce(checkItemInView, 100));
+
+
+    function setHeaderHeight(height) {
+      filler.style.height = `${height}px`;
+    }
+
+    function checkItemInView() {
+      // Check footer
+      if (elementIsInViewPort(footer, 20)) {
+        footer.shadowRoot
+          .querySelector(".footer")
+          .classList.add("outer-container-show");
+      }
+
+    }
+
+    // initialize map
+
+
+  </script>
+</html>

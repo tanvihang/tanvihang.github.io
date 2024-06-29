@@ -1,6 +1,3 @@
-import GlobalState from "../state/globalState.js";
-let svgDoc = GlobalState.getSvgDoc();
-
 const MapModule = (function(){
     let svgDoc;
     let eastMalaysia;
@@ -42,7 +39,7 @@ const MapModule = (function(){
     
         var imageList = countryJSONData.countries[countryCode].image;
         var svgMapImage = document.querySelector("#svgMapImage");
-        svgMapImage.style.backgroundImage = "url(../assets/Images/countries/"+countryCode +"/"+ imageList[Math.floor(Math.random() *(imageList.length))] +")"
+        svgMapImage.style.backgroundImage = "url(/assets/Images/countries/"+countryCode +"/"+ imageList[Math.floor(Math.random() *(imageList.length))] +")"
 
     }
     
@@ -77,7 +74,7 @@ const MapModule = (function(){
             //Light theme
             if(themeNo % 2 == 1){
                 themeNo++;
-                fetch('../assets/theme.json')
+                fetch('/assets/theme.json')
                 .then(response => response.json())
                 .then(themes => {
                     theme = themes.light;
@@ -85,7 +82,7 @@ const MapModule = (function(){
                 })
             }else{
                 themeNo++;
-                fetch('../assets/theme.json')
+                fetch('/assets/theme.json')
                 .then(response => response.json())
                 .then(themes => {
                     theme = themes.dark;
@@ -125,8 +122,6 @@ const MapModule = (function(){
         // console.log(westMalaysia)
 
 
-        westMalaysia.firstChild.style.fill = theme.colors.primary_trans;
-        eastMalaysia.firstChild.style.fill = theme.colors.primary_trans;
     }
 
     function init(svgDocument, eastMy, westMy){
@@ -135,7 +130,7 @@ const MapModule = (function(){
         westMalaysia = westMy;
     
         //reading JSON file with fetch, asynchronous is not avaiable for web, its only suitable for node environment
-        fetch("./js/map/mapProperties.json")
+        fetch("/datas/mapProperties.json")
             .then(response => response.json())
             .then(data => {
                 countryJSONData = data

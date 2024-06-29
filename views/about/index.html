@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Angus Tan</title>
+
+    <link rel="icon" href="/assets/images/AutumnLeaf.gif" />
+    <link href="/css/base.css" type="text/css" rel="stylesheet" />
+    <link href="./index.css" type="text/css" rel="stylesheet" />
+    <script
+      type="module"
+      src="https://unpkg.com/@splinetool/viewer@1.6.9/build/spline-viewer.js"
+    ></script>
+  </head>
+  <body>
+    <header-custom title="ANGUS"></header-custom>
+
+    <div class="filler"></div>
+
+    <div class="about1">
+      <div class="transparent-box"></div>
+      <div class="about1-box">
+        <img src="/assets/images/V.png" />
+        <div class="i">
+          <!-- <img  src="/assets/images/dot.png"> -->
+          <div class="dot2"></div>
+          <img src="/assets/images/i.png" />
+        </div>
+        <div class="dot"></div>
+        <!-- <p>Try hover around.</p> -->
+      </div>
+    </div>
+
+    <div class="about2">
+      <div class="hori first-hori">
+        <h2>Hey There!<br>I'm Angus Tan.</h2>
+      </div>
+      <div class="hori">
+        <h2>Graduated From<br>Beijing Institution<br>Of Technology<br>in Computer Science</h2>
+      </div>
+      <div class="hori">
+        <h2>Just skip to the<br>end for<br>summary.<br>(i dont mind.)</h2>
+      </div>
+    </div>
+
+    <footer-custom></footer-custom>
+  </body>
+
+  <script type="module">
+    import "/components/header/index.js";
+    import "/components/footer/index.js";
+    import globalContext from "/datas/globalContext.js";
+    import {
+      elementIsInViewPort,
+      debounce,
+    } from "/js/IntersectionObserver/vi.js";
+
+    const filler = document.querySelector(".filler");
+    const footer = document.querySelector("footer-custom");
+    const about1 = document.querySelector(".transparent-box");
+    const dot = document.querySelector(".dot");
+    const dot2 = document.querySelector(".dot2");
+    const firstHori = document.querySelector(".first-hori")
+    const about2 = document.querySelector(".about2")
+
+
+    const totalHoriWidth = 3 * window.innerWidth;
+    let x = about1.clientWidth /2;
+    let y = about1.clientHeight /2;
+
+    let targetX = 0, targetY = 0;
+    let currentX = 0, currentY = 0;
+    let easingFactor = 0.05;
+
+    let isHorizontalScroll = false;
+
+    setHeaderHeight();
+
+    // height change listener
+    globalContext.headerHeight.subscribe(() => {
+      setHeaderHeight(globalContext.headerHeight.getState().height);
+      x = about1.clientWidth /2;
+      y = about1.clientHeight /2;
+    });
+
+    window.addEventListener("scroll", debounce(checkItemInView, 100));
+
+    window.addEventListener('scroll', () => {
+    const about2Rect = about2.getBoundingClientRect();
+    if (about2Rect.top <= 0 && about2Rect.bottom >= window.innerHeight) {
+      // Lock the vertical scroll and enable horizontal scroll
+      if (!isHorizontalScroll) {
+        window.scrollTo({
+          top: about2.offsetTop,
+          behavior: 'smooth'
+        });
+        isHorizontalScroll = true;
+      }
+      // Calculate the horizontal scroll position
+      const horizontalScroll = window.scrollY - about2.offsetTop;
+      about2.scrollLeft = horizontalScroll;
+    } else if (isHorizontalScroll && window.scrollY > about2.offsetTop + totalHoriWidth - window.innerWidth) {
+      // Unlock vertical scroll after the last horizontal item
+      isHorizontalScroll = false;
+    }
+  });
+
+
+    // dot Evenet listener
+    about1.addEventListener("mousemove",
+      debounce((e) => {
+        targetX = e.offsetX - x;
+        targetY = e.offsetY - y;
+      }, 5)
+    ); // Debounce interval set to 10ms for smooth tracking
+
+    about1.addEventListener("mouseleave",()=>{
+        targetX = 0;
+        targetY = 0;
+        dot.classList.remove("show-dot");
+        dot2.classList.remove("hide-dot")
+    })
+
+    about1.addEventListener("mouseenter",()=>{
+      dot.classList.add("show-dot")
+      dot2.classList.add("hide-dot")
+    })
+
+    about2.addEventListener("wheel",(event)=>{
+      event.preventDefault();
+      about2.scrollLeft += event.deltaY;
+      console.log(about2.scrollLeft)
+    })
+
+    function setHeaderHeight(height) {
+      filler.style.height = `${height}px`;
+    }
+
+    function checkItemInView() {
+      // Check footer
+      if (elementIsInViewPort(footer, 20)) {
+        footer.shadowRoot
+          .querySelector(".footer")
+          .classList.add("outer-container-show");
+      }
+
+      // Check first hori(then stick the screen to top)
+      if(elementIsInViewPort(firstHori, 50)){
+        console.log("First hori in view")
+        firstHori.scrollIntoView({behavior: 'smooth'})
+
+      }
+
+      // if(elementIsInViewPort(about2,90)){
+      //   // then lock the vertical scroll
+      //   if(!isHorizontalScroll){
+      //     console.log("Lock vertical")
+      //     window.scrollTo({
+      //       top:about2.offSetTop,
+      //       behavior: 'smooth'
+      //     })
+      //     isHorizontalScroll = true;
+      //   // Calculate the horizontal scroll position
+      //   const horizontalScroll = window.scrollY - about2.offsetTop;
+      //   about2.scrollLeft = horizontalScroll;
+      // } else if (isHorizontalScroll && window.scrollY > about2.offsetTop + totalHoriWidth - window.innerWidth) {
+      //   // Unlock vertical scroll after the last horizontal item
+      //   isHorizontalScroll = false;
+      // }
+
+
+
+      // }
+
+    }
+
+
+
+    function animate() {
+      currentX += (targetX - currentX) * easingFactor;
+      currentY += (targetY - currentY) * easingFactor;
+      // console.log(targetX)
+      dot.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+      requestAnimationFrame(animate);
+    }
+
+    animate()
+  </script>
+</html>
