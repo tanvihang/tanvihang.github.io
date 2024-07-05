@@ -1,0 +1,93 @@
+{
+    "image_root_path": "/assets/images/Skies/Cumulus/",
+    "images":[
+        {
+            "url": "火车牦牛1",
+            "title": "火车牦牛1",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "火车雪山1",
+            "title": "火车雪山1",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "火车雪山2",
+            "title": "火车雪山2",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "火车雪山3",
+            "title": "火车雪山3",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "火车雪山4",
+            "title": "火车雪山4",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "火车雪山5",
+            "title": "火车雪山5",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "火车雪山6",
+            "title": "火车雪山6",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "南山公园1",
+            "title": "南山公园1",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "南山公园2",
+            "title": "南山公园2",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "南山公园3",
+            "title": "南山公园3",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "南山公园4",
+            "title": "南山公园4",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        }
+    ]
+}

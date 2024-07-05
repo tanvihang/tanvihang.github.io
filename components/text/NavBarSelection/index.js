@@ -1,4 +1,5 @@
 import {globalStyles} from '../../../css/globalstyle.js';
+import globalContext from '/datas/globalContext.js'
 
 class NavBarSelection extends HTMLElement{
     constructor(){

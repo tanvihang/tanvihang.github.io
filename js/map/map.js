@@ -1,158 +1,198 @@
-const MapModule = (function(){
-    let svgDoc;
-    let eastMalaysia;
-    let westMalaysia;
-    let countryList;
-    let countryJSONData;
-    let themeNo;
-    let themeG;
+import globalContext from "../../datas/globalContext.js";
 
-    function getCountryCode(event){
-        var countryCode;
-        if(event.target.id){
-            countryCode = event.target.id; 
-        }
-        else{
-            countryCode = event.target.parentElement.id;
-        }
-    
-        return countryCode;
-    }
-    
-    function mapClick(event){
-        var countryCode = getCountryCode(event);
-    
-        var country = svgDoc.querySelector(`#${countryCode}`)
-        
-        // console.log(countryCode);
-        event.stopPropagation();
-    }
-    
-    function mapHover(event,color){
-        // console.log(color)
-        var countryCode = getCountryCode(event);
-    
-        var country = svgDoc.querySelector(`#${countryCode}`);  
-    
-        country.style.fill = color;
-        // console.log(country.id)
-    
-        var imageList = countryJSONData.countries[countryCode].image;
-        var svgMapImage = document.querySelector("#svgMapImage");
-        svgMapImage.style.backgroundImage = "url(/assets/Images/countries/"+countryCode +"/"+ imageList[Math.floor(Math.random() *(imageList.length))] +")"
+const MapModule = (function () {
+  let svgDoc;
+  let countryList;
+  let themeNo;
+  let theme;
 
-    }
-    
-    function mapLeave(event,color){
-        var countryCode = getCountryCode(event);
-    
-        var country = svgDoc.querySelector(`#${countryCode}`);
-    
-        country.style.fill = color;
-    
-        var svgMapImage = document.querySelector("#svgMapImage");
+  let worldMap = document.querySelector("#svgMap");
+  let countryCanvas = document.querySelector("#country");
+  let backButton = document.querySelector(".back");
+  let countryName = document.querySelector("#countryName")
+  let countryNameBlock = document.querySelector("#countryNameBlock")
 
-        svgMapImage.style.display = "none";
-
+  function getCountryCode(event) {
+    var countryCode;
+    if (event.target.id) {
+      countryCode = event.target.id;
+    } else {
+      countryCode = event.target.parentElement.id;
     }
 
-    function mapMove(event){
-        var countryCode = getCountryCode(event);
-        var svgMapImage = document.querySelector("#svgMapImage");
+    return countryCode;
+  }
 
-        svgMapImage.style.display = "block";
-        svgMapImage.style.top = event.clientY + 50 + "px";
-        svgMapImage.style.left = event.clientX + 70 + "px";
+  function mapClick(event) {
+    var countryCode = getCountryCode(event);
 
+    var country = svgDoc.querySelector(`#${countryCode}`);
+
+    globalContext.selectedCountry.setState({country: countryCode})
+    // re-render by explicity remove and adding object tag
+    if (country) {
+      let newCountryCanvas = document.createElement("object");
+      newCountryCanvas.id = "country";
+      newCountryCanvas.type = "image/svg+xml";
+      newCountryCanvas.data = `/assets/svg/world/${countryCode}.svg`;
+
+      // Paint the province city after tag finish rendered
+      newCountryCanvas.addEventListener("load", () => {
+        // Paint
+        paintProvinceCity(countryCode);
+      });
+
+      countryCanvas.replaceWith(newCountryCanvas);
+      countryCanvas = newCountryCanvas;
+
+      worldMap.classList.toggle("hide");
+      countryCanvas.classList.toggle("show");
+      backButton.classList.toggle("show");
     }
+  }
 
-    function changeTheme(){
+  function provinceClick(event, doc) {
+    let countryCode = getCountryCode(event);
+    let province = doc.querySelector(`#${countryCode}`);
 
-        var theme;
+    globalContext.selectedProvince.setState({province: countryCode})
 
-        if(svgDoc){
-            //Light theme
-            if(themeNo % 2 == 1){
-                themeNo++;
-                fetch('/assets/theme.json')
-                .then(response => response.json())
-                .then(themes => {
-                    theme = themes.light;
-                    paintMap(theme)
-                })
-            }else{
-                themeNo++;
-                fetch('/assets/theme.json')
-                .then(response => response.json())
-                .then(themes => {
-                    theme = themes.dark;
-                    paintMap(theme)
-                })
-            }
-        }
-    
+
+  }
+
+  function mapHover(event, color, doc = svgDoc) {
+    var countryCode = getCountryCode(event);
+
+    var country = doc.querySelector(`#${countryCode}`);
+
+    country.style.fill = color;
+
+    countryName.innerHTML = countryCode
+    countryNameBlock.classList.add("text-animation")
+    if(doc != svgDoc){
     }
+  }
 
-    function paintMap(theme){
+  function mapLeave(event, color, doc = svgDoc) {
+    var countryCode = getCountryCode(event);
+    // console.log(countryCode);
 
-        themeG = theme;
-        var list = svgDoc.querySelectorAll(`[id]`);
-    
-        if(list.length>0){
-            list.forEach(item => {
-                item.style.fill = theme.colors.primary_trans;
-            });
-        }
+    var country = doc.querySelector(`#${countryCode}`);
 
+    country.style.fill = color;
 
-        //check database to color the country
-        countryList.forEach(country => {
-            var countryObj = svgDoc.querySelectorAll(`#${country}`);
+    // var svgMapImage = document.querySelector("#svgMapImage");
 
-            countryObj.forEach(coun =>{
-                coun.style.fill=theme.colors.accent_trans;
-                coun.addEventListener('click', mapClick);
-                coun.addEventListener('mouseover',function(event){mapHover(event,theme.colors.accent_hover_trans)});
-                coun.addEventListener('mouseleave',function(event){mapLeave(event,theme.colors.accent_trans)});
-                coun.addEventListener('mousemove',function(event){mapMove(event)})
-            })
-        })
+    // svgMapImage.style.display = "none";
 
-        //paint east west malaysia
-        // console.log(westMalaysia)
-
-
+    countryNameBlock.classList.remove("text-animation")
+    if(doc != svgDoc){
     }
+  }
 
-    function init(svgDocument, eastMy, westMy){
-        svgDoc = svgDocument;
-        eastMalaysia = eastMy;
-        westMalaysia = westMy;
-    
-        //reading JSON file with fetch, asynchronous is not avaiable for web, its only suitable for node environment
-        fetch("/datas/mapProperties.json")
-            .then(response => response.json())
-            .then(data => {
-                countryJSONData = data
-                countryList = countryJSONData.hasTravelled
-            })
-            .catch(error => {
-                console.log("Error fetching Json", error)
-            })
+  function mapMove(event) {
+    var countryCode = getCountryCode(event);
+    var svgMapImage = document.querySelector("#svgMapImage");
 
-        themeNo = 1;
-    
-        changeTheme();
+    // svgMapImage.style.display = "block";
+    // svgMapImage.style.top = event.clientY + 50 + "px";
+    // svgMapImage.style.left = event.clientX + 70 + "px";
+  }
+
+  function changeTheme() {
+    if (svgDoc) {
+      //Light theme
+      if (themeNo % 2 == 1) {
+        themeNo++;
+        fetch("/assets/theme.json")
+          .then((response) => response.json())
+          .then((themes) => {
+            theme = themes.light;
+            paintMap(theme);
+          });
+      } else {
+        themeNo++;
+        fetch("/assets/theme.json")
+          .then((response) => response.json())
+          .then((themes) => {
+            theme = themes.dark;
+            paintMap(theme);
+          });
+      }
     }
+  }
 
-    return{
-        init: init,
-        changeTheme: changeTheme
-    };
+  function paintMap(theme) {
+    countryList = globalContext.hasTravelled;
 
+    for (let countryId in countryList.state) {
+      let country = countryList.state[countryId];
+
+      var countryObj = svgDoc.querySelectorAll(`#${country}`);
+
+      countryObj.forEach((coun) => {
+        coun.style.fill = theme.colors.accent_trans;
+        coun.style.cursor = "pointer";
+        coun.addEventListener("click", mapClick);
+        coun.addEventListener("mouseover", function (event) {
+          mapHover(event, theme.colors.accent_hover_trans);
+        });
+        coun.addEventListener("mouseleave", function (event) {
+          mapLeave(event, theme.colors.accent_trans);
+        });
+        coun.addEventListener("mousemove", function (event) {
+          mapMove(event);
+        });
+      });
+    }
+  }
+
+  function paintProvinceCity(countryCode) {
+    let hasTravelled;
+    let countryCanvas = document.querySelector("#country");
+    countryCanvas = countryCanvas.contentDocument;
+
+    // Fetch the province coresponding city
+    fetch(`/datas/country/${countryCode}.json`)
+      .then((response) => (response = response.json()))
+      .then((response) => {
+        hasTravelled = response.hasTravelled;
+        paintMapColor(hasTravelled, countryCanvas);
+      })
+      .catch((error) => console.log(error));
+  }
+
+  function paintMapColor(ids, svg) {
+    ids.forEach((id) => {
+      // console.log(id);
+      let place = svg.querySelector(`#${id}`);
+      place.style.fill = theme.colors.accent_trans;
+      place.style.cursor = "pointer";
+      place.addEventListener("click", function (event) {
+        provinceClick(event, svg);
+      });
+      place.addEventListener("mouseover", function (event) {
+        mapHover(event, theme.colors.accent_hover_trans, svg);
+      });
+      place.addEventListener("mouseleave", function (event) {
+        mapLeave(event, theme.colors.accent_trans, svg);
+      });
+    });
+  }
+
+  function init(svgDocument) {
+    svgDoc = svgDocument;
+
+    themeNo = 1;
+
+    changeTheme();
+  }
+
+  return {
+    init: init,
+    changeTheme: changeTheme,
+    paintProvinceCity: paintProvinceCity,
+  };
 })();
 
-
-
-
-export {MapModule}
+export { MapModule };

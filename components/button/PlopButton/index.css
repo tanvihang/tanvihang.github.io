@@ -52,3 +52,10 @@
     animation-fill-mode: forwards; /* Keep the end state after animation */
   }
   
+  .plop-button-selected{
+    border: var(--link-hover) 1px solid;
+
+    & p{
+      color: var(--link-hover) ;
+    }
+  }

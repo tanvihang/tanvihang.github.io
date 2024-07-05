@@ -1,0 +1,8 @@
+{
+    "category":["Skies", "Humanity", "Seasons", "Creativity"],
+    "Skies":["Cumulus", "Stratus"],
+    "Humanity":["Potrait"],
+    "Seasons":["Spring", "Summer", "Autumn", "Winter"],
+    "Creativity":["Abstract"],
+    "Country":[]
+}

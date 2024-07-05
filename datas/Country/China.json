@@ -1,0 +1,270 @@
+{
+    "hasTravelled": ["Henan","Zhejiang", "Jiangsu", "Gansu", "Innermongolia","Beijing", "Shanghai", "Hebei", "Qinghai", "Shandong", "Fujian","Jiangxi"],
+    "provinces": {
+        "CNSN": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNSH": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNCQ": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNZJ": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNJX": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNYN": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNSD": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNLN": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNXZ": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "Gansu": "/datas/Country/China/Gansu.json",
+        "CNHK": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNQH": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNBJ": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNMO": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNNM": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNHB": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNAH": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNGZ": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNNX": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNJS": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNXJ": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNSX": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNHN": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNSC": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNGX": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNJL": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNTW": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNHE": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNTJ": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNGD": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNFJ": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNHL": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNHA": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        },
+        "CNHI": {
+            "url": [],
+            "title": [],
+            "description": [],
+            "location": [],
+            "date": [],
+            "tags": []
+        }
+    }
+}

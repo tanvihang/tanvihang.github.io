@@ -1,27 +1,90 @@
+@media only screen and (min-width: 1080px) {
+}
 
-.hero{
-    /* background-color: aqua; */
-    height: 100vh;
+@media only screen and (min-width: 768px) {
+}
+
+.hero {
+  /* background-color: aqua; */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  & #countryNameBlock {
+    position: absolute;
+    z-index: -1;
+    /* padding: var(--ultimate-padding); */
+    /* width: 0; */
+
+    /* opacity: 0; */
+    transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  & h2 {
+    letter-spacing: 0.3em;
+    color: var(--bg-primary);
+    /* transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1); */
+  }
+
+  & #svgMap {
+    height: 70%;
+    /* display: none; */
+  }
+
+  & #country {
+    height: 70%;
+    opacity: 0;
+    display: none;
+    transition: opacity 2s linear;
+  }
+
+  & .back {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    display: none;
+  }
+}
+
+#svgMapImage {
+  display: none;
+  position: absolute !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 250px;
+  width: 80%;
+}
+
+.hero-selector{
     display: flex;
+    gap: var(--ultimate-padding);
     align-items: center;
     justify-content: center;
+    padding-bottom: var(--ultimate-padding);
+}
 
-    & h2{
-        position: absolute; 
-    }
-
-    & #svgMap{
-        height: 70%;
-    }
-
- }
+.image-gallery{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ultimate-padding);
+}
 
 
- #svgMapImage{
-    display: none;
-    position: absolute !important;
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 250px;
-    width: 80%;
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+  opacity: 1 !important;
+
+  transition: opacity 2s linear !important;
+}
+
+.text-animation {
+  background-color: tomato;
 }

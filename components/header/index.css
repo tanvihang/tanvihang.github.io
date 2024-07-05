@@ -125,3 +125,7 @@
 .pad-top-outer{
   top:16px;
 }
+
+.header-selected-color{
+  color: var(--link-hover);
+}
