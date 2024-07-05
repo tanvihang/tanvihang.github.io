@@ -55,7 +55,7 @@ def CreateFile(data, output):
     
 
 # Things to change for every new Map
-countryCode = "my"
+countryCode = "China"
 prefix = "MY"
 root_directory = GetRoot()
 

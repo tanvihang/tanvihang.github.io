@@ -101,29 +101,30 @@ const MapModule = (function () {
 
   function changeTheme() {
     if (svgDoc) {
-      //Light theme
-      if (themeNo % 2 == 1) {
-        themeNo++;
-        fetch("/assets/theme.json")
-          .then((response) => response.json())
-          .then((themes) => {
-            theme = themes.light;
-            paintMap(theme);
-          });
-      } else {
-        themeNo++;
-        fetch("/assets/theme.json")
-          .then((response) => response.json())
-          .then((themes) => {
-            theme = themes.dark;
-            paintMap(theme);
-          });
-      }
+      // //Light theme
+      // if (themeNo % 2 == 1) {
+      //   themeNo++;
+      //   fetch("/assets/theme.json")
+      //     .then((response) => response.json())
+      //     .then((themes) => {
+      //       theme = themes.light;
+      //       paintMap(theme);
+      //     });
+      // } else {
+      //   themeNo++;
+      //   fetch("/assets/theme.json")
+      //     .then((response) => response.json())
+      //     .then((themes) => {
+      //       theme = themes.dark;
+      //       paintMap(theme);
+      //     });
+      // }
     }
   }
 
   function paintMap(theme) {
     countryList = globalContext.hasTravelled;
+    console.log(countryList)
 
     for (let countryId in countryList.state) {
       let country = countryList.state[countryId];
@@ -180,12 +181,21 @@ const MapModule = (function () {
     });
   }
 
-  function init(svgDocument) {
+  async function init(svgDocument) {
     svgDoc = svgDocument;
 
     themeNo = 1;
 
-    changeTheme();
+    // changeTheme();
+    await fetch("/assets/theme.json")
+    .then((response) => response.json())
+    .then((themes) => {
+      theme = themes.light;
+      console.log("Paint")
+      paintMap(theme);
+    });
+
+    console.log("AFTER")
   }
 
   return {
