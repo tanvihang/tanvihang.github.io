@@ -32,15 +32,71 @@
       </div>
     </div>
 
-    <div class="about2">
-      <div class="hori first-hori">
-        <h2>Hey There!<br>I'm Angus Tan.</h2>
+    <div class="about-main">
+      <div class="scroll-reveal">
+        <h2>HEY THERE<br />I'M ANGUS TAN.</h2>
       </div>
-      <div class="hori">
-        <h2>Graduated From<br>Beijing Institution<br>Of Technology<br>in Computer Science</h2>
+
+      <div class="about-description">
+        <div class="scroll-description-position">
+          <h4>
+            I'm a
+            <span style="text-decoration: underline">Frontend Developer</span>
+          </h4>
+          <h4>
+            Striving to becoming
+            <span style="text-decoration: underline"
+              >professional web developer/designer</span
+            >
+          </h4>
+          <h4>
+            specialized in creating cUStOm and
+            <span class="unique-description">unique</span> website.
+          </h4>
+        </div>
+
+        <div class="scroll-description-position">
+          <h4>
+            In my free time
+            <span class="show-gif-on-hover"
+              ><img src="/assets/images/Gifs/clock.webp"
+            /></span>
+          </h4>
+          <h4>
+            I like to do
+            <span class="link-on-hover" style="text-decoration: underline" 
+              ><a style="text-decoration: none; color: teal;" href="/views/lensvoyager/">PHOTOGRAPHY</a></span
+            >!
+          </h4>
+          <h4>Scenery, Abstract and Portrait.</h4>
+          <h4>(I did all of it)</h4>
+        </div>
       </div>
-      <div class="hori">
-        <h2>Just skip to the<br>end for<br>summary.<br>(i dont mind.)</h2>
+    </div>
+
+    <div class="about-experience">
+      <div class="scroll-reveal">
+        <h2>EXPERIENCES & EDUCATION</h2>
+      </div>
+
+      <div class="about-description">
+        
+        <div class="scroll-description-position">
+          <h4>
+            CURRENT<br />
+            LOOKING FOR WORK
+          </h4>
+        </div>
+
+        <div class="scroll-description-position">
+          <h4>
+            2020-2024<br />
+            BEIJING INSTITUTION OF TECHNOLOGY<br />
+            Computer Science and Technology<br />
+            3.4/4.0 GPA
+          </h4>
+        </div>
+
       </div>
     </div>
 
@@ -61,77 +117,50 @@
     const about1 = document.querySelector(".transparent-box");
     const dot = document.querySelector(".dot");
     const dot2 = document.querySelector(".dot2");
-    const firstHori = document.querySelector(".first-hori")
-    const about2 = document.querySelector(".about2")
-
+    const firstHori = document.querySelector(".first-hori");
+    const about2 = document.querySelector(".about2");
 
     const totalHoriWidth = 3 * window.innerWidth;
-    let x = about1.clientWidth /2;
-    let y = about1.clientHeight /2;
+    let x = about1.clientWidth / 2;
+    let y = about1.clientHeight / 2;
 
-    let targetX = 0, targetY = 0;
-    let currentX = 0, currentY = 0;
+    let targetX = 0,
+      targetY = 0;
+    let currentX = 0,
+      currentY = 0;
     let easingFactor = 0.05;
-
-    let isHorizontalScroll = false;
 
     setHeaderHeight();
 
     // height change listener
     globalContext.headerHeight.subscribe(() => {
       setHeaderHeight(globalContext.headerHeight.getState().height);
-      x = about1.clientWidth /2;
-      y = about1.clientHeight /2;
+      x = about1.clientWidth / 2;
+      y = about1.clientHeight / 2;
     });
 
     window.addEventListener("scroll", debounce(checkItemInView, 100));
 
-    window.addEventListener('scroll', () => {
-    const about2Rect = about2.getBoundingClientRect();
-    if (about2Rect.top <= 0 && about2Rect.bottom >= window.innerHeight) {
-      // Lock the vertical scroll and enable horizontal scroll
-      if (!isHorizontalScroll) {
-        window.scrollTo({
-          top: about2.offsetTop,
-          behavior: 'smooth'
-        });
-        isHorizontalScroll = true;
-      }
-      // Calculate the horizontal scroll position
-      const horizontalScroll = window.scrollY - about2.offsetTop;
-      about2.scrollLeft = horizontalScroll;
-    } else if (isHorizontalScroll && window.scrollY > about2.offsetTop + totalHoriWidth - window.innerWidth) {
-      // Unlock vertical scroll after the last horizontal item
-      isHorizontalScroll = false;
-    }
-  });
-
-
     // dot Evenet listener
-    about1.addEventListener("mousemove",
+    about1.addEventListener(
+      "mousemove",
       debounce((e) => {
         targetX = e.offsetX - x;
         targetY = e.offsetY - y;
       }, 5)
     ); // Debounce interval set to 10ms for smooth tracking
 
-    about1.addEventListener("mouseleave",()=>{
-        targetX = 0;
-        targetY = 0;
-        dot.classList.remove("show-dot");
-        dot2.classList.remove("hide-dot")
-    })
+    about1.addEventListener("mouseleave", () => {
+      targetX = 0;
+      targetY = 0;
+      dot.classList.remove("show-dot");
+      dot2.classList.remove("hide-dot");
+    });
 
-    about1.addEventListener("mouseenter",()=>{
-      dot.classList.add("show-dot")
-      dot2.classList.add("hide-dot")
-    })
-
-    about2.addEventListener("wheel",(event)=>{
-      event.preventDefault();
-      about2.scrollLeft += event.deltaY;
-      console.log(about2.scrollLeft)
-    })
+    about1.addEventListener("mouseenter", () => {
+      dot.classList.add("show-dot");
+      dot2.classList.add("hide-dot");
+    });
 
     function setHeaderHeight(height) {
       filler.style.height = `${height}px`;
@@ -146,36 +175,12 @@
       }
 
       // Check first hori(then stick the screen to top)
-      if(elementIsInViewPort(firstHori, 50)){
-        console.log("First hori in view")
-        firstHori.scrollIntoView({behavior: 'smooth'})
-
-      }
-
-      // if(elementIsInViewPort(about2,90)){
-      //   // then lock the vertical scroll
-      //   if(!isHorizontalScroll){
-      //     console.log("Lock vertical")
-      //     window.scrollTo({
-      //       top:about2.offSetTop,
-      //       behavior: 'smooth'
-      //     })
-      //     isHorizontalScroll = true;
-      //   // Calculate the horizontal scroll position
-      //   const horizontalScroll = window.scrollY - about2.offsetTop;
-      //   about2.scrollLeft = horizontalScroll;
-      // } else if (isHorizontalScroll && window.scrollY > about2.offsetTop + totalHoriWidth - window.innerWidth) {
-      //   // Unlock vertical scroll after the last horizontal item
-      //   isHorizontalScroll = false;
-      // }
-
-
+      // if(elementIsInViewPort(firstHori, 50)){
+      //   console.log("First hori in view")
+      //   firstHori.scrollIntoView({behavior: 'smooth'})
 
       // }
-
     }
-
-
 
     function animate() {
       currentX += (targetX - currentX) * easingFactor;
@@ -186,6 +191,6 @@
       requestAnimationFrame(animate);
     }
 
-    animate()
+    animate();
   </script>
 </html>

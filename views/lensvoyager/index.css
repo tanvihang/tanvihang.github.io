@@ -30,6 +30,16 @@
 
   & #svgMap {
     height: 70%;
+    opacity: 1;
+    display: block;
+
+    transition-property: opacity, display;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+
+    @starting-style{
+      opacity: 0 !important;
+    }
     /* display: none; */
   }
 
@@ -37,7 +47,10 @@
     height: 70%;
     opacity: 0;
     display: none;
-    transition: opacity 2s linear;
+    transition-property: opacity, display;
+    transition-duration: 1.5s;
+    transition-timing-function:ease-in;
+    /* transition-behavior: allow-discrete; */
   }
 
   & .back {
@@ -76,13 +89,16 @@
 
 .hide {
   display: none !important;
+  opacity: 0 !important;
 }
 
 .show {
   display: block !important;
   opacity: 1 !important;
 
-  transition: opacity 2s linear !important;
+  @starting-style{
+    opacity: 0 !important; 
+  }
 }
 
 .text-animation {

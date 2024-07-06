@@ -30,6 +30,12 @@
     justify-content: center;
     align-items: center;
 
+    opacity: 0;
+
+    animation: image-card-container linear forwards;
+    animation-timeline: view();
+    animation-range: 10% 30%;
+
     & .image-card-img{
         max-width: 300px;
         height: auto;
@@ -57,3 +63,8 @@
     }
 }
 
+@keyframes image-card-container {
+    to{
+        opacity: 1;
+    }
+}

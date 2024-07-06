@@ -37,7 +37,7 @@ class Footer extends HTMLElement{
                         </div>
                         <h3>BROWSE MORE WORKS</h3>
                         <h3>CHECK OUT MY PHOTOGRAPHY</h3>
-                        <h6>[.LENSVOYAGER]</h6>
+                        <h6 class="goto-photo"><a style="text-decoration: none; color: var(--link-hover);" href="/views/lensvoyager/">[.LENSVOYAGER]</a></h6>
                     </div>
 
                     <div class = "footer-end">

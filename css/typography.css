@@ -69,6 +69,21 @@
     --h3-font-size: clamp(var(--h3-min), var(--h3-mid), var(--h3-max));
     /* h3 END */
 
+    /* h4 START */
+    --h4-max-size: 2.8;
+    --h4-min-size: 2.0;
+
+    --h4-slope: calc((var(--h4-max-size) - var(--h4-min-size)) / (var(--screen-max-width) - var(--screen-min-width)));
+    --h4-intersection: calc((-1 * var(--screen-min-width) * var(--h4-slope)) + var(--h4-min-size));
+    --h4-preferred: calc(var(--h4-intersection) + (var(--h4-slope) * 100));
+
+    --h4-min: calc(var(--h4-min-size) * 1rem);
+    --h4-mid: calc(var(--h4-preferred) * 1vw);
+    --h4-max: calc(var(--h4-max-size) * 1rem);
+
+    --h4-font-size: clamp(var(--h4-min), var(--h4-mid), var(--h4-max));
+    /* h4 END */
+
     /* h6 START */
     --h6-max-size: 1.6;
     --h6-min-size: 1.6;
@@ -129,6 +144,13 @@ h3{
     font-size: var(--h3-font-size);
     font-family: 'IBMPlexMono', sans-serif;
     letter-spacing: -0.07em;
+    line-height: 1.4em;
+}
+
+h4{
+    font-size: var(--h4-font-size);
+    font-family: 'PPAcma', serif;
+    letter-spacing: 0.2;
     line-height: 1.4em;
 }
 

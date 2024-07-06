@@ -27,6 +27,8 @@
     display: flex;
     flex-direction: column;
     justify-content: end;
+
+    
 }
 
 .outer-container-show{
@@ -56,4 +58,35 @@
 .line{
     height: 1px;
     background-color: var(--text-primary-transparent-50);
+}
+
+.goto-photo{
+    color: var(--link-hover);    
+}
+
+.goto-photo:hover{
+    animation: goto-photohover 1s linear infinite;
+
+}
+
+@keyframes goto-photohover {
+    20%{
+        transform: translate(0, 0%);
+    }
+    
+    40%{
+        transform: translate(0, 5%);
+    }
+    
+    60%{
+        transform: translate(0, 12%);
+    }
+    
+    80%{
+        transform: translate(0, 5%);
+    }
+    
+    100%{
+        transform: translate(0, 0%);
+    }
 }

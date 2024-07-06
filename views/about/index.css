@@ -1,110 +1,215 @@
+@media only screen and (min-width: 1080px) {
 
- .about1{
-    /* background-color: aqua; */
-    height: 100vh;
+  .unique-description{
+    animation-range: 20% 35% !important;
+  }
+  .scroll-reveal h2 {
+    animation-range: 0% 45% !important;
+  }
+
+}
+
+@media only screen and (min-width: 768px) {
+
+  .unique-description{
+    animation-range: 10% 25% !important;
+  }
+
+  .scroll-reveal h2 {
+    animation-range: 0% 25% !important;
+  }
+
+  .about-main{
+    padding-bottom: calc(var(--ultimate-padding) * 5) !important;
+  }
+}
+
+.about1 {
+  /* background-color: aqua; */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & .transparent-box {
+    height: 80%;
+    width: 80%;
+    position: absolute;
+    background-color: rgba(0, 255, 255, 0);
+    z-index: 1;
+  }
+
+  & .about1-box {
+    position: relative;
+    height: 80%;
+    width: 80%;
+    background-image: url("/assets/images/angus.avif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left;
+
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 
-   & .transparent-box{
-      height: 80%;
-      width: 80%;
+    & .dot {
       position: absolute;
-      background-color: rgba(0, 255, 255, 0);
-      z-index: 1;
-   }
+      background-image: url("/assets/images/dot.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 25px;
+      width: 17px;
+      opacity: 0;
 
-    & .about1-box{
-        position: relative;
-        height: 80%;
-        width: 80%;
-        background-image: url("/assets/images/angus.avif");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: left;
-
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-
-        & .dot{
-         position: absolute;
-         background-image: url("/assets/images/dot.png");
-         background-size: contain;
-         background-repeat: no-repeat;
-         height: 25px;
-         width: 17px;
-         opacity: 0;
-
-         transition: opacity 1s linear;
-      }
-
-        & .i{
-         position: relative;
-         display: flex;
-         flex-direction: column;
-         justify-items: start;
-         align-items: center;
-
-         & .dot2{
-            position: absolute;
-            background-image: url("/assets/images/dot.png");
-            background-size: contain;
-            background-repeat: no-repeat;
-            height: 25px;
-            width: 17px;
-            top: -25px;
-            transition: opacity 1s linear;
-            /* left: 0px; */
-         }
-
-        }
-
-        & h2{
-           color: var(--bg-primary);
-        }
-
-        & p{
-         color: var(--link-hover);
-        }
+      transition: opacity 1s linear;
     }
- }
 
- .about2{
-    display: flex;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    overflow-y: hidden;
-    white-space: nowrap;
-    height: 100vh;
-    width: 300vw;
-
-    & .hori{
-      flex-shrink: 0;
-      height: 100vh;
-      width: 100vw;
-      scroll-snap-align: start;
-
+    & .i {
+      position: relative;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-items: start;
       align-items: center;
 
-      text-align: center;
+      & .dot2 {
+        position: absolute;
+        background-image: url("/assets/images/dot.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 25px;
+        width: 17px;
+        top: -25px;
+        transition: opacity 1s linear;
+        /* left: 0px; */
+      }
     }
- }
 
- .show-dot{
-   opacity: 1!important;
- }
+    & h2 {
+      color: var(--bg-primary);
+    }
 
- .hide-dot{
-   opacity: 0 !important;
- }
+    & p {
+      color: var(--link-hover);
+    }
+  }
+}
 
-.sticky{
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
+.about-main{
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: calc(var(--ultimate-padding) * 5) 0 calc(var(--ultimate-padding) * 2) calc(var(--ultimate-padding) * 2);
+
+}
+
+.about-experience{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  padding: 0 calc(var(--ultimate-padding) * 2);
+
+  text-align: end;
+}
+
+.about-description{
+  display: flex;
+  flex-direction: column;
+  gap: var(--ultimate-padding);
+}
+
+.scroll-reveal h2 {
+  text-align: center;
+  display: inline;
+  color: hsl(0 0% 10% / 0.3);
+
+  background-image: linear-gradient(
+    90deg,
+    var(--text-primary),
+    var(--text-primary)
+  );
+  background-clip: text;
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+
+  animation: scroll-reveal linear forwards;
+  animation-timeline: view();
+  animation-range: 0% 60%;
+}
+
+@keyframes scroll-reveal {
+  to {
+    background-size: 100% 100%;
+  }
+}
+
+.scroll-description-position{
+  
+   transform: translate(0, 15%);
+
+   animation: scroll-description-position linear forwards;
+   animation-timeline: view();
+   animation-range: 20% 50%;
+}
+
+@keyframes scroll-description-position{
+   to{
+      transform: translate(0, 0%);
+   }
+}
+
+.show-gif-on-hover{
+  cursor: default;
+
+  & img{
+    height: 35px;
+    object-fit: contain;
+    object-position: center;
+  }
+}
+
+.link-on-hover:hover{
+  color: blueviolet;
+  
+}
+
+
+.unique-description{
+  background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,154,0,1) 10%, rgba(208,222,33,1) 20%, rgba(79,220,74,1) 30%, rgba(63,218,216,1) 40%, rgba(47,201,226,1) 50%, rgba(28,127,238,1) 60%, rgba(95,21,242,1) 70%, rgba(186,12,248,1) 80%, rgba(251,7,217,1) 90%, rgba(255,0,0,1) 100%);
+  /* background-clip: text; */
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+
+  animation: unique-description linear forwards;
+  animation-timeline: view();
+  animation-range: 35% 55%;
+
+}
+
+@keyframes unique-description{
+  to{
+    background-size: 100% 100%;
+    color: white;
+  }
+}
+
+
+
+.show-dot {
+  opacity: 1 !important;
+}
+
+.hide-dot {
+  opacity: 0 !important;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 }

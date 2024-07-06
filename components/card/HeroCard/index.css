@@ -94,6 +94,12 @@
 
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 
+    opacity: 0;
+
+    animation: card-block linear forwards;
+    animation-timeline: view();
+    animation-range: 10% 30%;
+
     & .card-main-info{
        
         & .card-main-info-sub{
@@ -101,6 +107,13 @@
             align-items: baseline;
             gap: var(--ultimate-padding)
         }
+    }
+
+}
+
+@keyframes card-block {
+    to{
+        opacity: 1;
     }
 }
 

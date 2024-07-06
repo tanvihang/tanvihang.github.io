@@ -29,11 +29,18 @@
 
 @media only screen and (min-width: 768px) {
   .section2{
+
     & .section2-title{
       display: block !important;
       /* padding-top: 10em !important; */
       text-align: start !important;
       padding-left: 3em !important;
+
+      transform: translate(-30%, 0%);
+      
+      animation: section2-title linear forwards;
+      animation-timeline: view();
+      animation-range: 0% 60%;
     }
   }
 }
@@ -144,6 +151,16 @@
     /* background-color: aqua; */
   }
 
+}
+
+@keyframes section2-title{
+  50%{
+    transform: translate(10%, 0%);
+  }
+
+  100%{
+    transform: translate(0%, 0%);
+  }
 }
 
 /* ---------------------- SECTION 2 ----------------------*/

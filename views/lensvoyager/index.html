@@ -19,28 +19,30 @@
     <div class="filler"></div>
 
     <div class="hero">
-        <div class="back">
-          <plop-button-custom
-              title = "back"
-              cta = "BackWorldMap"
-          ></plop-button-custom>
-        </div>
+      <div class="back">
+        <plop-button-custom
+          title="back"
+          cta="BackWorldMap"
+        ></plop-button-custom>
+      </div>
 
-        <object id="svgMap" type="image/svg+xml" data="/assets/svg/world-map.svg"></object>
-        <object id="country" type="image/svg+xml"></object>
-        <div id="countryNameBlock">
-          <h2 id="countryName"></h2>
-        </div>
-        <!-- <div id="svgMapImage"></div> -->
+      <object
+        id="svgMap"
+        type="image/svg+xml"
+        data="/assets/svg/world-map.svg"
+      ></object>
+      <object id="country" type="image/svg+xml"></object>
+      <div id="countryNameBlock">
+        <h2 id="countryName"></h2>
+      </div>
+      <!-- <div id="svgMapImage"></div> -->
     </div>
 
     <!-- Selector -->
     <div id="photo-category" class="hero-selector"></div>
     <div id="photo-category-sub" class="hero-selector"></div>
 
-    <div class="image-gallery">
-      
-    </div>
+    <div class="image-gallery"></div>
 
     <footer-custom></footer-custom>
   </body>
@@ -48,27 +50,26 @@
   <script type="module">
     import "/components/header/index.js";
     import "/components/footer/index.js";
-    import "/components/button/PlopButton/index.js"
-    import "/components/card/ImageCard/index.js"
+    import "/components/button/PlopButton/index.js";
+    import "/components/card/ImageCard/index.js";
     import globalContext from "/datas/globalContext.js";
     import {
       elementIsInViewPort,
       debounce,
     } from "/js/IntersectionObserver/vi.js";
-    import {MapModule} from "/js/Map/map.js"
-    import CategoryChooser from "/js/CategoryChooser/categoryChooser.js"
+    import { MapModule } from "/js/Map/map.js";
+    import CategoryChooser from "/js/CategoryChooser/categoryChooser.js";
 
     const filler = document.querySelector(".filler");
     const footer = document.querySelector("footer-custom");
     var mapSVG = document.querySelector("#svgMap");
     mapSVG = mapSVG.contentDocument;
-    const photoCategory = document.querySelector("#photo-category")
-    const photoCategorySub = document.querySelector("#photo-category-sub")
-    const imageGallery = document.querySelector(".image-gallery")
+    const photoCategory = document.querySelector("#photo-category");
+    const photoCategorySub = document.querySelector("#photo-category-sub");
+    const imageGallery = document.querySelector(".image-gallery");
 
-    let previousSelectedCategory = ""
-    let previousSelectedSubCategory = ""
-
+    let previousSelectedCategory = "";
+    let previousSelectedSubCategory = "";
 
     setHeaderHeight();
     MapModule.init(mapSVG);
@@ -80,73 +81,102 @@
 
     // for province only
     // listen to selected province to rerender the image list
-    globalContext.selectedProvince.subscribe(()=>{
-      console.log(globalContext.selectedProvince.getState().province)
-      readImageJSON("province", globalContext.selectedProvince.getState().province)
-        .then(data => renderImage(data))
-        .catch(error => renderNoImage())
-    })
+    globalContext.selectedProvince.subscribe(() => {
+      console.log(globalContext.selectedProvince.getState().province);
+      readImageJSON(
+        "province",
+        globalContext.selectedProvince.getState().province
+      )
+        .then((data) =>
+          renderImage(data, globalContext.selectedProvince.getState().province)
+        )
+        .catch((error) => renderNoImage());
 
+      if (previousSelectedCategory != "") {
+        let itemPre = `#category-${previousSelectedCategory}`;
+        let pre = document
+          .querySelector(itemPre)
+          .shadowRoot.querySelector(".container");
+        pre.classList.remove("plop-button-selected");
+      }
+      if (previousSelectedSubCategory != "") {
+        try {
+          let pre = document
+            .querySelector(`#${previousSelectedSubCategory}`)
+            .shadowRoot.querySelector(".container");
+          pre.classList.remove("plop-button-selected");
+        } catch {}
+      }
+    });
 
-    globalContext.selectedCategory.subscribe(()=>{
+    globalContext.selectedCategory.subscribe(() => {
       // toggle color
-      let currentSelected = globalContext.selectedCategory.getState().category
+      let currentSelected = globalContext.selectedCategory.getState().category;
 
-      let item = `#category-${currentSelected}`
-      let cur = document.querySelector(item).shadowRoot.querySelector(".container");
-      cur.classList.add("plop-button-selected")
+      let item = `#category-${currentSelected}`;
+      let cur = document
+        .querySelector(item)
+        .shadowRoot.querySelector(".container");
+      cur.classList.add("plop-button-selected");
 
-
-
-      if(previousSelectedCategory != ""){
-        let itemPre = `#category-${previousSelectedCategory}`
-        let pre = document.querySelector(itemPre).shadowRoot.querySelector(".container");
-        pre.classList.remove("plop-button-selected")    
+      if (previousSelectedCategory != "") {
+        let itemPre = `#category-${previousSelectedCategory}`;
+        let pre = document
+          .querySelector(itemPre)
+          .shadowRoot.querySelector(".container");
+        pre.classList.remove("plop-button-selected");
       }
 
       // render it
-      let subChooser = new CategoryChooser("/datas/photography.json",globalContext.selectedCategory.getState().category,photoCategorySub)
-      previousSelectedCategory = currentSelected
-
-
-    })
+      let subChooser = new CategoryChooser(
+        "/datas/photography.json",
+        globalContext.selectedCategory.getState().category,
+        photoCategorySub
+      );
+      previousSelectedCategory = currentSelected;
+    });
 
     // For others than province
-    globalContext.selectedSubCategory.subscribe(()=>{
-      let currentSelected = globalContext.selectedSubCategory.getState().subCategory
+    globalContext.selectedSubCategory.subscribe(() => {
+      let currentSelected =
+        globalContext.selectedSubCategory.getState().subCategory;
 
-      console.log("Current: " + currentSelected)
-      console.log("Previous: " + previousSelectedSubCategory)
+      console.log("Current: " + currentSelected);
+      console.log("Previous: " + previousSelectedSubCategory);
 
-      let splitCur = currentSelected.split("-")
+      let splitCur = currentSelected.split("-");
 
-      readImageJSON(splitCur[0],splitCur[1])
-        .then(data => renderImage(data))
-        .catch(error => renderNoImage())
+      readImageJSON(splitCur[0], splitCur[1])
+        .then((data) => renderImage(data, splitCur[1]))
+        .catch((error) => renderNoImage());
 
-      let cur = document.querySelector(`#${currentSelected}`).shadowRoot.querySelector(".container");
-      cur.classList.add("plop-button-selected")
+      let cur = document
+        .querySelector(`#${currentSelected}`)
+        .shadowRoot.querySelector(".container");
+      cur.classList.add("plop-button-selected");
 
-      if(previousSelectedSubCategory != ""){
-        try{
-          let pre = document.querySelector(`#${previousSelectedSubCategory}`).shadowRoot.querySelector(".container");
-          pre.classList.remove("plop-button-selected")    
-        }catch{
-        }
+      if (previousSelectedSubCategory != "") {
+        try {
+          let pre = document
+            .querySelector(`#${previousSelectedSubCategory}`)
+            .shadowRoot.querySelector(".container");
+          pre.classList.remove("plop-button-selected");
+        } catch {}
       }
 
-      previousSelectedSubCategory = currentSelected
-
-    })
-
-
+      previousSelectedSubCategory = currentSelected;
+    });
 
     window.addEventListener("scroll", debounce(checkItemInView, 100));
 
-    document.addEventListener("DOMContentLoaded",() => {
-        // load first category chooser
-        let mainChooser = new CategoryChooser("/datas/photography.json", "category", photoCategory) 
-    })
+    document.addEventListener("DOMContentLoaded", () => {
+      // load first category chooser
+      let mainChooser = new CategoryChooser(
+        "/datas/photography.json",
+        "category",
+        photoCategory
+      );
+    });
 
     function setHeaderHeight(height) {
       filler.style.height = `${height}px`;
@@ -159,41 +189,36 @@
           .querySelector(".footer")
           .classList.add("outer-container-show");
       }
-
     }
 
-    async function readImageJSON(type, name){
+    async function readImageJSON(type, name) {
+      let jsonFilePath = "/datas/";
 
-      let jsonFilePath = "/datas/"
+      if (type == "province") {
+        let country = globalContext.selectedCountry.getState().country;
 
-      if(type == "province"){
-        let country = globalContext.selectedCountry.getState().country; 
-        
-        jsonFilePath += `Country/${country}/${name}.json`
-      }
-      else{
-        jsonFilePath += `${type}/${name}.json`
+        jsonFilePath += `Country/${country}/${name}.json`;
+      } else {
+        jsonFilePath += `${type}/${name}.json`;
       }
 
-      try{
-        const response = await fetch(jsonFilePath)
-        const data = await response.json()
-        return data
+      try {
+        const response = await fetch(jsonFilePath);
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        console.error("Fetch error");
+        throw error;
       }
-      catch(error){
-        console.error("Fetch error")
-        throw error
-      }
-
     }
 
-    function renderImage(jsonData){
+    function renderImage(jsonData, title) {
       let imagePath = jsonData.image_root_path;
 
-      let wholeHTML = ``
+      let wholeHTML = `<h2>${title}</h2>`;
 
-      jsonData.images.forEach(image => {
-        let path = imagePath + image.url + ".avif"
+      jsonData.images.forEach((image) => {
+        let path = imagePath + image.url + ".avif";
         let innerHTML = `
           <image-card-custom 
             title = ${image.title}
@@ -204,18 +229,18 @@
             tags = ${image.tags}
           >
           </image-card-custom>
-        `
+        `;
 
         wholeHTML += innerHTML;
-      })
+      });
 
-      imageGallery.innerHTML = wholeHTML
+      imageGallery.innerHTML = wholeHTML;
 
-      lazyLoad()
-
+      lazyLoad();
+      snapToView();
     }
 
-    function renderNoImage(){
+    function renderNoImage() {
       let wholeHTML = `
         <image-card-custom 
           title = "Whoops"
@@ -226,12 +251,15 @@
           tags = ""
         >
         </image-card-custom>
-      `
+      `;
     }
 
-    function lazyLoad(){
+    function lazyLoad() {}
 
+    function snapToView() {
+      setTimeout(() => {
+        photoCategory.scrollIntoView({ behavior: "smooth" });
+      }, 300);
     }
-
   </script>
 </html>
