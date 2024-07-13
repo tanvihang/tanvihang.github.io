@@ -4,7 +4,7 @@
 
 ### Section 2
 
-#### scroll event improvement
+#### scroll event improvement (DONE)
 
 1. cache docuemnt query
 
@@ -26,11 +26,41 @@ const debounce = (func, wait) => {
 }
 ```
 
-### header fix
-TODO experiment height change animation
+### header fix (DONE)
+fixed: using header height change listener to update the header height.
 
-### footer fix
+### footer fix (DONE)
 TODO experiment animation percentage for every scroll
+**done**: used elementInView function written using getBoundingClientRect
+better approach: use CSS animate, works perfectly!
+```css
+   animation-timeline: view();
+   animation-range: 20% 50%;
+```
 
-### lazy load cards
+### lazy load cards (TODO)
 TODO implement
+not done: still need to find better approach
+
+## LENS VOYAGER PAGE
+### map changing (DONE)
+map go from `display: none;` into `display: block` animation.
+```
+.component{
+    display: none;
+    opacity: 0;
+}
+
+.show{
+    display: block;
+    opacity: 1;
+
+    @starting-style{
+        opacity: 0;
+    }
+}
+```
+
+### world map load weird occur (TODO)
+problems is when first load sometimes it does not render the country selection.
+

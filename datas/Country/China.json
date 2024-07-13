@@ -98,14 +98,7 @@
             "date": [],
             "tags": []
         },
-        "CNMO": {
-            "url": [],
-            "title": [],
-            "description": [],
-            "location": [],
-            "date": [],
-            "tags": []
-        },
+        "CNMO": "/datas/Country/China/Innermongolia.json",
         "CNNM": {
             "url": [],
             "title": [],
