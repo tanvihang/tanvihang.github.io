@@ -154,7 +154,7 @@ const MapModule = (function () {
     countryCanvas = countryCanvas.contentDocument;
 
     // Fetch the province coresponding city
-    fetch(`/datas/Country/${countryCode}.json`)
+    fetch(`/datas/Countries/${countryCode}.json`)
       .then((response) => (response = response.json()))
       .then((response) => {
         hasTravelled = response.hasTravelled;

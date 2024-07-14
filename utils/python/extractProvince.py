@@ -35,19 +35,7 @@ def CreateFile(data, output):
     jsonData["provinces"] = {}
     
     for province in data:
-        jsonData["provinces"][province] = {
-            "image_root_path": "",
-            "images": [
-                {
-                    "url": "",
-                    "title": "",
-                    "description": "",
-                    "location": "",
-                    "date": "",
-                    "tags": []
-                }
-            ]  
-        }
+        jsonData["provinces"][province] = ""
         
         
     with open(output, "w", encoding="utf-8") as f:
