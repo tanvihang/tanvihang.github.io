@@ -1,0 +1,357 @@
+{
+    "image_root_path": "/assets/images/Countries/China/Beijing/",
+    "images": [
+        {
+            "url": "故宫10",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "国博1",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "地坛2",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "故宫17",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "故宫11",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "十里堡6",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "国博3",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "居庸关3",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "圆明园8",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "故宫8",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "亦庄4",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "亦庄2",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "故宫1",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "地坛5",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "居庸关4",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "居庸关7",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "故宫7",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "故宫9",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "地坛4",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "故宫5",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "圆明园5",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "十里堡5",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "圆明园2",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "亦庄1",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "人文4",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "圆明园1",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "故宫12",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "故宫18",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "圆明园6",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "居庸关5",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "圆明园8-Enhanced-NR",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "居庸关1",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "十里堡3",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "故宫6",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "故宫4",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "国博2",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "居庸关6",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "居庸关2",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "箭楼1",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "故宫2",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "圆明园4",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "故宫13",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "地坛3",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "十里堡4",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        }
+    ]
+}

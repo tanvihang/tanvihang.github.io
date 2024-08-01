@@ -4,7 +4,7 @@
         max-height: 50vh;
 
         & .image1-block{
-            width: 50% !important;
+            width: 30% !important;
         }
 
         & .image2-block{
@@ -18,6 +18,7 @@
             object-position: top;
         }
     }
+
 }
 
 @media only screen and (min-width: 768px) {
@@ -58,7 +59,7 @@
     }
 
     .card-sub-info{
-        flex-grow: 3;
+        flex-grow: 3 !important;
 
         flex-direction: row !important;
         gap: var(--ultimate-padding);

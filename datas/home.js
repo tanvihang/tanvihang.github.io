@@ -8,35 +8,22 @@ const works = [
     image2: '/assets/images/2.avif',
     image1Name: 'Pic1',
     image2Name: 'Pic2',
-    description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis suscipit quas saepe, nostrum sint molestiae!',
-    tags: ['Vue', 'React Native', 'C#'],
+    description: 'An Android-based real-time price comparison system for second-hand goods, utilizing web scraping technology and a client-server architecture to achieve real-time price comparison across multiple data sources.',
+    tags: ['Vue', 'React Native', 'C#', 'Scrapy'],
     cta: "softwaredevelopment/timmyapp"
   },
   {
-    title: 'TOWN BY THE OCEAN',
+    title: 'Vitalz',
     year: '2024',
-    jobType: 'Photography',
-    projectType: 'Freshness',
-    image1: '/assets/images/3.avif',
-    image2: '/assets/images/4.avif',
+    jobType: 'Web Development',
+    projectType: 'Freelance',
+    image1: '/assets/images/vitalz1.gif',
+    image2: '/assets/images/vitalz2.png',
     image1Name: 'Pic 1',
     image2Name: 'Pic 2',
-    description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis suscipit quas saepe, nostrum sint molestiae!',
-    tags: ['Humanity', 'Sea', 'Sky'],
+    description: 'Handcrafted web from Zero to One.',
+    tags: ['React.JS', 'GSAP', 'Framer'],
     cta: "photography/townbytheocean"
-  },
-  {
-    title: 'DUN HUANG',
-    year: '2024',
-    jobType: 'Photography',
-    projectType: 'Epic',
-    image1: '/assets/images/5.avif',
-    image2: '/assets/images/6.avif',
-    image1Name: 'Pic 1',
-    image2Name: 'Pic 2',
-    description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis suscipit quas saepe, nostrum sint molestiae!',
-    tags: ['Humanity', 'Desert', 'Sky'],
-    cta: "photography/dunhuang"
   }
 ];
 

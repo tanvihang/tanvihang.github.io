@@ -220,14 +220,7 @@
             "date": [],
             "tags": []
         },
-        "CNFJ": {
-            "url": [],
-            "title": [],
-            "description": [],
-            "location": [],
-            "date": [],
-            "tags": []
-        },
+        "CNFJ": "/datas/Country/China/Fujian.json",
         "CNHL": {
             "url": [],
             "title": [],

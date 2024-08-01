@@ -25,12 +25,12 @@ class ImageCard extends HTMLElement{
     }
 
     async render(){
-        const title = this.getAttribute("title")
-        const url = this.getAttribute("url")
-        const description = this.getAttribute("description")
-        const location = this.getAttribute("location")
-        const date = this.getAttribute("date")
-        const tags = this.getAttribute("tags")
+        const imgDict = this.getAttribute("imgDict")
+        console.log(imgDict)
+        const imgJson = JSON.parse(imgDict)
+
+        const convertedTitle = imgJson.title.replaceAll("/s/", " ")
+        const convertedDescription = imgJson.description.replaceAll("/s/", " ")
 
         this.shadowRoot.innerHTML = `
             <style>
@@ -39,14 +39,14 @@ class ImageCard extends HTMLElement{
 
             <div class = "image-card-container">
                 <div class = "image-card-img">
-                    <img data-src = ${url} class = "lazy-load" >
+                    <img data-src = ${imgJson.url} class = "lazy-load" >
                 </div>
 
                 <div class = "image-card-info">
-                    <h6>${title}</h6>
-                    <p>${description}</p>
-                    <p>${date}</p>
-                    <p>${location}</p>
+                    <h6>${convertedTitle}</h6>
+                    <p>${convertedDescription}</p>
+                    <p>${imgJson.date}</p>
+                    <p>${imgJson.location}</p>
                 </div>
 
             </div>

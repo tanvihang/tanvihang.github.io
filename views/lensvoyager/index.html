@@ -219,14 +219,21 @@
 
       jsonData.images.forEach((image) => {
         let path = imagePath + image.url + ".avif";
+
+        let imgDict = {
+            title : image.title,
+            url : path,
+            description : image.description,
+            location : image.location,
+            date : image.date,
+            tags : image.tags
+        }
+
+        let imgDictString = JSON.stringify(imgDict)
+
         let innerHTML = `
           <image-card-custom 
-            title = ${image.title}
-            url = ${path}
-            description = ${image.description}
-            location = ${image.location}
-            date = ${image.date}
-            tags = ${image.tags}
+            imgDict = ${imgDictString}
           >
           </image-card-custom>
         `;
