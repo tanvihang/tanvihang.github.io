@@ -70,8 +70,8 @@
   .container {
     /* background-color: aqua!important; */
 
-    /* padding-top: 8px; */
-    padding-bottom: 8px;
+    padding-top: 4px;
+    /* padding-bottom: 8px; */
     height: auto;
     display: flex;
     flex-direction: row;
@@ -93,7 +93,7 @@
     cursor: default;
     opacity: 1;
     transition: all 2s ease;
-
+    line-height: 100% !important;
   }
 
   .nav-container {

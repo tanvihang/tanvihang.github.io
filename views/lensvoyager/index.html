@@ -19,6 +19,8 @@
     <div class="filler"></div>
 
     <div class="hero">
+
+      <!-- Back button -->
       <div class="back">
         <plop-button-custom
           title="back"
@@ -26,14 +28,28 @@
         ></plop-button-custom>
       </div>
 
-      <object
-        id="svgMap"
-        type="image/svg+xml"
-        data="/assets/svg/world-map.svg"
-      ></object>
-      <object id="country" type="image/svg+xml"></object>
-      <div id="countryNameBlock">
-        <h2 id="countryName"></h2>
+      <!-- Mobile move indicator gif -->
+      <div class="mobile-scroll-indicator">
+        <img class="mobile-scroll-eye-indicator" src="/assets/svg/others/eye.svg" width="25px">
+        <p>((scroll to look around))</p>
+      </div>
+
+
+      <div class="map-container">
+        <!-- World Map -->
+        <object
+          id="svgMap"
+          type="image/svg+xml"
+          data="/assets/svg/world-map.svg"
+        ></object>
+
+        <!-- Country Map -->
+        <object id="country" type="image/svg+xml"></object>
+
+        <!-- Country/State Name -->
+        <div id="countryNameBlock">
+          <h2 id="countryName"></h2>
+        </div>
       </div>
       <!-- <div id="svgMapImage"></div> -->
     </div>
@@ -221,15 +237,15 @@
         let path = imagePath + image.url + ".avif";
 
         let imgDict = {
-            title : image.title,
-            url : path,
-            description : image.description,
-            location : image.location,
-            date : image.date,
-            tags : image.tags
-        }
+          title: image.title,
+          url: path,
+          description: image.description,
+          location: image.location,
+          date: image.date,
+          tags: image.tags,
+        };
 
-        let imgDictString = JSON.stringify(imgDict)
+        let imgDictString = JSON.stringify(imgDict);
 
         let innerHTML = `
           <image-card-custom 

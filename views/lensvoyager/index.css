@@ -1,4 +1,20 @@
 @media only screen and (min-width: 1080px) {
+
+  #svgMap {
+    position:relative !important;
+  }
+
+
+  #country {
+    position:relative !important;
+
+  }
+
+  
+.mobile-scroll-indicator{
+  display: none !important;
+}
+
 }
 
 @media only screen and (min-width: 768px) {
@@ -28,10 +44,46 @@
     /* transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1); */
   }
 
+  & .back {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    display: none;
+    z-index: 2;
+  }
+}
+
+.mobile-scroll-indicator{
+  position: absolute;
+  top: 5vw;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.map-container{
+  height: 100vh;
+  width: 100%;
+  position: relative;
+
+  overflow-y: scroll;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  animation: map-container 2s linear;
+
+  /* background-color: aqua; */
+
   & #svgMap {
     height: 70%;
     opacity: 1;
-    display: block;
+    display: block ;
+    left: 0;
+    position: absolute;
 
     transition-property: opacity, display;
     transition-duration: 1s;
@@ -45,6 +97,9 @@
 
   & #country {
     height: 70%;
+    position: absolute;
+    left: 0;
+    /* width: 100%; */
     opacity: 0;
     display: none;
     transition-property: opacity, display;
@@ -52,18 +107,15 @@
     transition-timing-function:ease-in;
     /* transition-behavior: allow-discrete; */
   }
+}
 
-  & .back {
-    position: absolute;
-    left: 10%;
-    top: 10%;
-    display: none;
-  }
+.map-container::-webkit-scrollbar{
+  display: none;
 }
 
 #svgMapImage {
   display: none;
-  position: absolute !important;
+  position: absolute;
   background-size: contain;
   background-repeat: no-repeat;
   height: 250px;
@@ -103,4 +155,36 @@
 
 .text-animation {
   background-color: tomato;
+}
+
+
+.mobile-scroll-eye-indicator{
+  animation: mobile-scroll-eye-indicator 5s linear infinite;
+
+}
+
+@keyframes mobile-scroll-eye-indicator{
+  0%{
+    transform: translateX(15%); 
+  }
+  50%{
+    transform: translateX(-15%); 
+  }
+  100%{
+    transform: translateX(15%); 
+  }
+
+}
+
+@keyframes map-container {
+  0%{
+    transform: translateX(15%); 
+  }
+  50%{
+    transform: translateX(7%); 
+  }
+  100%{
+    transform: translateX(0%); 
+  }
+  
 }
