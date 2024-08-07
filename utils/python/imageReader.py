@@ -78,11 +78,11 @@ def CompareJsonAndWrite(file, imageFolder, newSet):
 root_dir = GetRoot()
 
 # 2. Set the image folder
-image_folder_path_url = "/assets/images/Countries/China/Henan"
+image_folder_path_url = "/assets/images/Countries/China/Hebei"
 image_folder_path = f'{root_dir}{image_folder_path_url}'
 
 # 3. Set the json file (Need to alter this to be more dynamic)
-image_json_file = f'{root_dir}/datas/Countries/China/Henan.json'
+image_json_file = f'{root_dir}/datas/Countries/China/Hebei.json'
 
 # 4. Get images set
 image_set = ReadFolderImages(image_folder_path)

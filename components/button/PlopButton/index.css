@@ -1,61 +1,81 @@
-.outer-container{
-    display: flex;
-    align-items: center;
-}
-
-.container {
-    border: black 1px solid;
-    border-radius: 30px;
-    cursor: pointer;
-    position: relative; /* Ensure the container remains in place during animation */
-    height: fit-content;
-
-    & p {
-      padding: 4px 8px;
-    }
-  }
-  
-  @keyframes PlopRotateIn {
-    from {
-      transform: rotate(0deg); /* Start state: normal rotation */
-    }
-  
-    to {
-      transform: rotate(10deg); /* End state: rotated */
-    }
-  }
-  
-  @keyframes PlopRotateOut {
-    from {
-      transform: rotate(10deg); /* Start state: rotated */
-    }
-  
-    to {
-      transform: rotate(0deg); /* End state: back to normal rotation */
-    }
-  }
-  
+@media only screen and (min-width: 1080px) {
   .container:hover {
     animation-name: PlopRotateIn; /* Apply animation on hover in */
     animation-duration: 0.3s; /* Set animation duration */
     animation-fill-mode: forwards; /* Keep the end state after animation */
     border-color: var(--link-hover) !important;
-    
-    & p{
-        color: var(--link-hover) !important;
+
+    & p {
+      color: var(--link-hover) !important;
     }
-}
-  
+  }
+
   .container:not(:hover) {
     animation-name: PlopRotateOut; /* Apply animation when not hovering */
     animation-duration: 0.3s; /* Set animation duration */
     animation-fill-mode: forwards; /* Keep the end state after animation */
   }
-  
-  .plop-button-selected{
-    border: var(--link-hover) 1px solid;
+}
 
-    & p{
-      color: var(--link-hover) ;
-    }
+.outer-container {
+  display: flex;
+  align-items: center;
+
+  outline: none;
+}
+
+.container {
+  border: black 1px solid;
+  border-radius: 30px;
+  cursor: pointer;
+  position: relative; /* Ensure the container remains in place during animation */
+  height: fit-content;
+
+  outline: none;
+
+
+  & p {
+    padding: 4px 8px;
   }
+}
+
+@keyframes PlopRotateIn {
+  from {
+    transform: rotate(0deg); /* Start state: normal rotation */
+  }
+
+  to {
+    transform: rotate(10deg); /* End state: rotated */
+  }
+}
+
+@keyframes PlopRotateOut {
+  from {
+    transform: rotate(10deg); /* Start state: rotated */
+  }
+
+  to {
+    transform: rotate(0deg); /* End state: back to normal rotation */
+  }
+}
+
+.container:active {
+  animation-name: PlopRotateIn; /* Apply animation on hover in */
+  animation-duration: 0.3s; /* Set animation duration */
+  animation-fill-mode: forwards; /* Keep the end state after animation */
+  border-color: var(--link-hover) !important;
+
+  outline: none;
+
+  & p {
+    color: var(--link-hover) !important;
+  }
+}
+
+.plop-button-selected {
+  border: var(--link-hover) 1px solid;
+
+  & p {
+    color: var(--link-hover);
+  }
+}

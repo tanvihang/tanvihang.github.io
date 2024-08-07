@@ -39,10 +39,16 @@ class Header extends HTMLElement{
                         <nav-bar-selection-custom title = 'ABOUT' cta = 'about'></nav-bar-selection-custom>
                         <nav-bar-selection-custom title = 'PROJECTS' cta = 'projects'></nav-bar-selection-custom>
                         <nav-bar-selection-custom title = 'OPEN FOR WORK' cta = 'openForWork' icon = "/assets/images/AutumnLeaf.gif"></nav-bar-selection-custom>
-                        <plop-button-custom title = "MENU" icon = "/assets/images/AutumnLeaf.gif"></plop-button-custom>
+                        <plop-button-custom id="menu-button" title = "MENU" icon = "/assets/images/AutumnLeaf.gif"></plop-button-custom>
                     </div>
                 </div>
+
+                <div class = "menu-mobile">
+                    menu shown on mobile only
+                </div>
+
             </div>
+            
         `
 
         await Promise.resolve();
@@ -53,10 +59,15 @@ class Header extends HTMLElement{
         const container = this.shadowRoot.querySelector(".container");
         const tt = this.shadowRoot.querySelector(".title");
         const navContainer = this.shadowRoot.querySelector(".nav-container");
-
+        const menuButton = this.shadowRoot.querySelector("#menu-button")
+        const menuMobile = this.shadowRoot.querySelector(".menu-mobile")
 
         tt.addEventListener('click', ()=>{
             window.location.assign('/index.html')
+        })
+
+        menuButton.addEventListener('touchstart', ()=>{
+            menuMobile.classList.toggle("menu-mobile-show")
         })
 
         // scroll animation

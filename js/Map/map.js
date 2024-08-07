@@ -172,10 +172,16 @@ const MapModule = (function () {
       place.addEventListener("click", function (event) {
         provinceClick(event, svg);
       });
+      place.addEventListener("touchstart", function (event) {
+        provinceClick(event, svg);
+      });
       place.addEventListener("mouseover", function (event) {
         mapHover(event, theme.colors.accent_hover_trans, svg);
       });
       place.addEventListener("mouseleave", function (event) {
+        mapLeave(event, theme.colors.accent_trans, svg);
+      });
+      place.addEventListener("touchend", function (event) {
         mapLeave(event, theme.colors.accent_trans, svg);
       });
     });
