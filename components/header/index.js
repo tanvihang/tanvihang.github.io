@@ -32,13 +32,15 @@ class Header extends HTMLElement {
 
             <div class = "outer-container">
                 <div class = "container">
-                    <h1 class = "title">${title}</h1>
-                    <div class = "nav-container">
-                        <nav-bar-selection-custom title = '[.LENSVOYAGER]' cta = 'lensvoyager'}></nav-bar-selection-custom>
-                        <nav-bar-selection-custom title = 'ABOUT' cta = 'about'></nav-bar-selection-custom>
-                        <nav-bar-selection-custom title = 'PROJECTS' cta = 'projects'></nav-bar-selection-custom>
-                        <nav-bar-selection-custom title = 'OPEN FOR WORK' cta = 'openForWork' icon = "/assets/images/AutumnLeaf.gif"></nav-bar-selection-custom>
-                        <plop-button-custom id="menu-button" title = "MENU" icon = "/assets/images/AutumnLeaf.gif"></plop-button-custom>
+                    <div class = "inner-container">
+                        <h1 class = "title">${title}</h1>
+                        <div class = "nav-container">
+                            <nav-bar-selection-custom title = '[.LENSVOYAGER]' cta = 'lensvoyager'}></nav-bar-selection-custom>
+                            <nav-bar-selection-custom title = 'ABOUT' cta = 'about'></nav-bar-selection-custom>
+                            <nav-bar-selection-custom title = 'PROJECTS' cta = 'projects'></nav-bar-selection-custom>
+                            <nav-bar-selection-custom title = 'OPEN FOR WORK' cta = 'openForWork' icon = "/assets/images/AutumnLeaf.gif"></nav-bar-selection-custom>
+                            <plop-button-custom id="menu-button" title = "MENU" icon = "/assets/images/AutumnLeaf.gif"></plop-button-custom>
+                        </div>
                     </div>
                 </div>
 

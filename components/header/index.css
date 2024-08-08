@@ -10,10 +10,17 @@
 
     padding-top: 0px !important;
     flex-direction: column !important;
+    align-items: center !important;
     justify-content: end !important;
     gap: 0px !important;
     height: 250px !important; 
     transition: all 2s ease !important;
+  }
+
+  .inner-container{
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100%;
   }
 
   .nav-container {
@@ -96,6 +103,14 @@
     background-color: transparent;
     transition: all 0.5s ease-in-out;
     /* transition:height 0.3s ease-out; */
+  }
+
+  .inner-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
   }
 
   h1 {
