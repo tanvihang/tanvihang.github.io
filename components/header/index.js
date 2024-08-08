@@ -42,11 +42,16 @@ class Header extends HTMLElement {
                             <plop-button-custom id="menu-button" title = "MENU" icon = "/assets/images/AutumnLeaf.gif"></plop-button-custom>
                         </div>
                     </div>
+
+                    <div class = "menu-mobile">
+                        <nav-bar-selection-custom title = '[.LENSVOYAGER]' cta = 'lensvoyager'}></nav-bar-selection-custom>
+                        <nav-bar-selection-custom title = 'ABOUT' cta = 'about'></nav-bar-selection-custom>
+                        <nav-bar-selection-custom title = 'PROJECTS' cta = 'projects'></nav-bar-selection-custom>
+                        <nav-bar-selection-custom title = 'OPEN FOR WORK' cta = 'openForWork'></nav-bar-selection-custom>
+                    </div>
                 </div>
 
-                <div class = "menu-mobile">
-                    menu shown on mobile only
-                </div>
+
 
             </div>
             
@@ -73,9 +78,26 @@ class Header extends HTMLElement {
       if (isCollapsed) {
         console.log("Close");
         collapseSection(section);
-      } else {
+        menuMobile.classList.remove("menu-mobile-show");
+
+        if(navContainer.classList.contains("scroll-container") && scrollInitial == true){
+            navContainer.classList.remove("scroll-container");
+            delayedHideOff()
+            flag = 0;
+        }
+
+      } 
+      else {
+
+        if(!navContainer.classList.contains("scroll-container")){
+            navContainer.classList.add("scroll-container");
+            delayedHideOn()
+            flag = 1;
+        }
+
         console.log("Open");
         expandSection(section);
+        menuMobile.classList.add("menu-mobile-show");
       }
 
       // menuMobile.classList.toggle("menu-mobile-show")
@@ -84,6 +106,7 @@ class Header extends HTMLElement {
 
     // scroll animation
     var flag = 0;
+    var scrollInitial = true;
     window.addEventListener("scroll", function () {
       var scrollPosition = scrollY;
 
@@ -91,11 +114,34 @@ class Header extends HTMLElement {
         navContainer.classList.add("scroll-container");
         this.setTimeout(delayedHideOn, 100);
         flag = 1;
+        scrollInitial = false;
+
+
+
       }
       if (scrollPosition == 0) {
         navContainer.classList.remove("scroll-container");
         this.setTimeout(delayedHideOff, 100);
         flag = 0;
+        scrollInitial = true;
+
+        var isCollapsed = container.getAttribute("data-collapsed") === "true";
+  
+        if (isCollapsed) {
+            console.log("Close");
+            collapseSection(container);
+            menuMobile.classList.remove("menu-mobile-show");
+    
+            if(navContainer.classList.contains("scroll-container") && scrollInitial == true){
+                navContainer.classList.remove("scroll-container");
+                delayedHideOff()
+                flag = 0;
+            }
+    
+          }
+
+        menuMobile.classList.remove("menu-mobile-show");
+
       }
     });
 
@@ -133,14 +179,14 @@ class Header extends HTMLElement {
 
       element.style.height = sectionHeight + "px";
 
-      console.log(sectionHeight)
+      console.log(sectionHeight);
 
       function transitionEndHandler(e) {
         element.removeEventListener("transitionend", transitionEndHandler);
-        element.style.height = 81 + 'px';
+        element.style.height = 81 + "px";
       }
 
-      element.addEventListener('transitionend',transitionEndHandler)
+      element.addEventListener("transitionend", transitionEndHandler);
 
       element.setAttribute("data-collapsed", "false");
     }
@@ -148,11 +194,11 @@ class Header extends HTMLElement {
     function expandSection(element) {
       // get the height of the element's inner content, regardless of its actual size
       var sectionHeight = element.scrollHeight;
-      console.log(sectionHeight)
+      console.log(sectionHeight);
 
       // temporarily disable all css transitions
       var elementTransition = element.style.transition;
-      console.log(elementTransition)
+      console.log(elementTransition);
       element.style.transition = "";
 
       // on the next frame (as soon as the previous style change has taken effect),

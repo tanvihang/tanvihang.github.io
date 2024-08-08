@@ -3,7 +3,7 @@
     --text-primary-transparent-50: #33333371;
     --link-hover: #E3955D;
     --bg-primary: #ffffff;
-    --header-scroll-bg:hsla(0, 3%, 85%, 0.65);
+    --header-scroll-bg:hsl(90, 31%, 95%);
 }
 
 html{

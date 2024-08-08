@@ -1,3 +1,14 @@
+@media only screen and (min-width:1080px) {
+  
+}
+
+@media only screen and (min-width:768px) {
+  p{
+    font-size: 12px !important;
+    font-family: 'IBMPlexMono', sans-serif !important;
+   }
+}
+
 .title {
   cursor: pointer;
 }
@@ -20,6 +31,12 @@
   to {
     transform: rotate(0deg); /* End state: back to normal rotation */
   }
+}
+
+p{
+ font-size: large; 
+ font-family: 'PPAcma', serif;
+
 }
 
 .title:hover {

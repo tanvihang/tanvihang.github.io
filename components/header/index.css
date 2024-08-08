@@ -84,14 +84,14 @@
   .container {
     /* background-color: aqua!important; */
 
-    padding-top: 16px;
+    padding-top: 8px;
     /* padding-bottom: 8px; */
     height: auto;
     /* max-height: 64px !important; */
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content:center;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-start;
     gap: 16px;
 
     border-radius: 30px;
@@ -138,12 +138,10 @@
 }
 
 .menu-mobile{
-  position: absolute !important;
-  top: 50vh;
-  left: 50%;
   display: none;
+  /* background-color: aqua; */
+  width: 100%;
 
-  transform: translateX(-50%);
 }
 
 .scroll-height{
@@ -164,7 +162,11 @@
 }
 
 .menu-mobile-show{
-  display: block !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
 }
 
 .menu-mobile-extend{
