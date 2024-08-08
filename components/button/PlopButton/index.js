@@ -55,6 +55,8 @@ class PlopButton extends HTMLElement {
     container.addEventListener("click", () => {
       let ctaSplit = cta.split("-");
 
+      console.log(ctaSplit)
+
       switch (ctaSplit[0]) {
         case "BackWorldMap":
           let worldMap = document.querySelector("#svgMap");

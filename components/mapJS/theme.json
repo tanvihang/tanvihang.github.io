@@ -1,0 +1,28 @@
+{
+    "light": {
+      "colors": {
+        "primary": "#5F8670",
+        "primary_trans": "#5f86709e",
+        "accent": "#958AAE",
+        "accent_trans": "#958aae9d",
+        "accent_hover":"#585264",
+        "accent_hover_trans":"#585264a8",
+        "background": "#EBE9F0",
+        "text": "#222831",
+        "button_color": "#222831"
+      }
+    },
+    "dark": {
+      "colors": {
+        "primary": "#A27B5C",
+        "primary_trans": "#a27b5cd3",
+        "accent": "#5D99A3",
+        "accent_trans": "#5d98a3c0",
+        "accent_hover":"#266C78",
+        "accent_hover_trans":"#266c78bb",
+        "background": "#222831",
+        "text": "#E5E4CC",
+        "button_color": "#EBE9F0"
+      }
+    }
+  }

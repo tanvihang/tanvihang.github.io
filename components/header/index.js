@@ -24,14 +24,18 @@ class Header extends HTMLElement {
 
   async render() {
     const title = this.getAttribute("title") || "Default Title";
-
     this.shadowRoot.innerHTML = `
             <style>
                 @import url('/components/header/index.css');
             </style>
 
+            <!-- Used for sticky purpose -->
             <div class = "outer-container">
+            
+                <!-- Contains shown menu and hidden menu -->
                 <div class = "container">
+                
+                    <!-- Shown menu --> 
                     <div class = "inner-container">
                         <h1 class = "title">${title}</h1>
                         <div class = "nav-container">
@@ -43,6 +47,7 @@ class Header extends HTMLElement {
                         </div>
                     </div>
 
+                    <!-- Hidden menu -->
                     <div class = "menu-mobile">
                         <nav-bar-selection-custom title = '[.LENSVOYAGER]' cta = 'lensvoyager'}></nav-bar-selection-custom>
                         <nav-bar-selection-custom title = 'ABOUT' cta = 'about'></nav-bar-selection-custom>
@@ -50,9 +55,6 @@ class Header extends HTMLElement {
                         <nav-bar-selection-custom title = 'OPEN FOR WORK' cta = 'openForWork'></nav-bar-selection-custom>
                     </div>
                 </div>
-
-
-
             </div>
             
         `;
@@ -62,51 +64,53 @@ class Header extends HTMLElement {
     // DOM
     const outerContainer = this.shadowRoot.querySelector(".outer-container");
     const container = this.shadowRoot.querySelector(".container");
+    const innerContainer = this.shadowRoot.querySelector(".inner-container");
     const tt = this.shadowRoot.querySelector(".title");
     const navContainer = this.shadowRoot.querySelector(".nav-container");
     const menuButton = this.shadowRoot.querySelector("#menu-button");
     const menuMobile = this.shadowRoot.querySelector(".menu-mobile");
 
+    // Global variable
+    var menuMobileHeight;
+    var flag = 0;
+    var scrollInitial = true;
+
+
+    // Event listeners Title
     tt.addEventListener("click", () => {
       window.location.assign("/index.html");
     });
 
+    // Event listener menu button
     menuButton.addEventListener("touchstart", () => {
-      var section = this.shadowRoot.querySelector(".container");
-      var isCollapsed = section.getAttribute("data-collapsed") === "true";
+      var isNotCollapsed = container.getAttribute("data-collapsed") === "true";
 
-      if (isCollapsed) {
-        console.log("Close");
-        collapseSection(section);
+      if (isNotCollapsed) {
+        collapseSection(container);
         menuMobile.classList.remove("menu-mobile-show");
 
-        if(navContainer.classList.contains("scroll-container") && scrollInitial == true){
-            navContainer.classList.remove("scroll-container");
-            delayedHideOff()
-            flag = 0;
+        // When at top of the screen
+        if (
+          navContainer.classList.contains("scroll-container") &&
+          scrollInitial == true
+        ) {
+          navContainer.classList.remove("scroll-container");
+          delayedHideOff();
+          flag = 0;
         }
-
-      } 
-      else {
-
-        if(!navContainer.classList.contains("scroll-container")){
-            navContainer.classList.add("scroll-container");
-            delayedHideOn()
-            flag = 1;
-        }
-
-        console.log("Open");
-        expandSection(section);
+      } else {
+        expandSection(container);
         menuMobile.classList.add("menu-mobile-show");
+        // When at top of the screen
+        if (!navContainer.classList.contains("scroll-container")) {
+          navContainer.classList.add("scroll-container");
+          delayedHideOn();
+          flag = 1;
+        }
       }
-
-      // menuMobile.classList.toggle("menu-mobile-show")
-      // container.classList.toggle("menu-mobile-extend")
     });
 
-    // scroll animation
-    var flag = 0;
-    var scrollInitial = true;
+    // Event Listener - Scroll animation
     window.addEventListener("scroll", function () {
       var scrollPosition = scrollY;
 
@@ -115,9 +119,6 @@ class Header extends HTMLElement {
         this.setTimeout(delayedHideOn, 100);
         flag = 1;
         scrollInitial = false;
-
-
-
       }
       if (scrollPosition == 0) {
         navContainer.classList.remove("scroll-container");
@@ -125,29 +126,32 @@ class Header extends HTMLElement {
         flag = 0;
         scrollInitial = true;
 
-        var isCollapsed = container.getAttribute("data-collapsed") === "true";
-  
-        if (isCollapsed) {
-            console.log("Close");
-            collapseSection(container);
-            menuMobile.classList.remove("menu-mobile-show");
-    
-            if(navContainer.classList.contains("scroll-container") && scrollInitial == true){
-                navContainer.classList.remove("scroll-container");
-                delayedHideOff()
-                flag = 0;
-            }
-    
+        var isNotCollapsed =
+          container.getAttribute("data-collapsed") === "true";
+
+        // Collapse the opened menu if back to top
+        if (isNotCollapsed) {
+          collapseSection(container);
+          menuMobile.classList.remove("menu-mobile-show");
+
+          if (
+            navContainer.classList.contains("scroll-container") &&
+            scrollInitial == true
+          ) {
+            navContainer.classList.remove("scroll-container");
+            delayedHideOff();
+            flag = 0;
           }
+        }
 
         menuMobile.classList.remove("menu-mobile-show");
-
       }
     });
 
-    setHeaderHeight();
+    // Wait for things to render then only set the header height
+    setTimeout(setHeaderHeight, 100)
 
-    // window size change
+    // Window size change
     window.addEventListener("resize", function () {
       setHeaderHeight();
     });
@@ -166,7 +170,7 @@ class Header extends HTMLElement {
 
     // State
     function setHeaderHeight() {
-      const offsetHeight = container.offsetHeight;
+      const offsetHeight = container.scrollHeight;
       console.log(offsetHeight);
       // outerContainer.style.height = `${offsetHeight}px`
       outerContainer.style.height = `0px`;
@@ -179,11 +183,9 @@ class Header extends HTMLElement {
 
       element.style.height = sectionHeight + "px";
 
-      console.log(sectionHeight);
-
       function transitionEndHandler(e) {
         element.removeEventListener("transitionend", transitionEndHandler);
-        element.style.height = 81 + "px";
+        element.style.height = menuMobileHeight + "px";
       }
 
       element.addEventListener("transitionend", transitionEndHandler);
@@ -194,6 +196,7 @@ class Header extends HTMLElement {
     function expandSection(element) {
       // get the height of the element's inner content, regardless of its actual size
       var sectionHeight = element.scrollHeight;
+      menuMobileHeight = sectionHeight;
       console.log(sectionHeight);
 
       // temporarily disable all css transitions
@@ -209,9 +212,8 @@ class Header extends HTMLElement {
         element.style.transition = elementTransition;
 
         // on the next frame (as soon as the previous style change has taken effect),
-        // have the element transition to height: 0
         requestAnimationFrame(function () {
-          element.style.height = 80 + "vh";
+          element.style.height = 95 + "vh";
         });
       });
 
