@@ -32,9 +32,9 @@ class PlopButton extends HTMLElement {
                 @import url('/components/button/PlopButton/index.css')
             </style>
 
-            <div class = "outer-container">
-                <div class = "container">
-                    <p class = "title">${title}</p>
+            <div class = "outer-container no-highlight">
+                <div class = "container no-highlight">
+                    <p class = "title no-highlight">${title}</p>
                 </div>
             </div>
         `;

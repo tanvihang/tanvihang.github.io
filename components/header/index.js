@@ -43,7 +43,7 @@ class Header extends HTMLElement {
                             <nav-bar-selection-custom title = 'ABOUT' cta = 'about'></nav-bar-selection-custom>
                             <nav-bar-selection-custom title = 'PROJECTS' cta = 'projects'></nav-bar-selection-custom>
                             <nav-bar-selection-custom title = 'OPEN FOR WORK' cta = 'openForWork' icon = "/assets/images/AutumnLeaf.gif"></nav-bar-selection-custom>
-                            <plop-button-custom id="menu-button" title = "MENU" icon = "/assets/images/AutumnLeaf.gif"></plop-button-custom>
+                            <plop-button-custom class = "no-highlight" id="menu-button" title = "MENU" icon = "/assets/images/AutumnLeaf.gif"></plop-button-custom>
                         </div>
                     </div>
 

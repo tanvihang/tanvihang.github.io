@@ -194,6 +194,8 @@ class MapJS extends HTMLElement {
         return countryCode;
       }
 
+    
+    //   The one that provides you functionality when selected province/state 省
       function provinceClick(event, doc) {
         let countryCode = getCountryCode(event);
         let province = doc.querySelector(`#${countryCode}`);

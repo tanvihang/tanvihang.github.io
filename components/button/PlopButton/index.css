@@ -21,7 +21,6 @@
   display: flex;
   align-items: center;
 
-  outline: none;
 }
 
 .container {
@@ -78,4 +77,15 @@
   & p {
     color: var(--link-hover);
   }
+}
+
+
+.no-highlight {
+  user-select: none;  /* Prevents text selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  outline: none;  /* Removes the focus outline */
+  box-shadow: none;
 }

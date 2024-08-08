@@ -175,3 +175,13 @@
 
   /* transition: max-height 2s linear; */
 }
+
+.no-highlight {
+  user-select: none;  /* Prevents text selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  outline: none;  /* Removes the focus outline */
+  box-shadow: none;
+}
