@@ -77,12 +77,13 @@
   .container {
     /* background-color: aqua!important; */
 
-    padding-top: 4px;
+    padding-top: 16px;
     /* padding-bottom: 8px; */
     height: auto;
+    /* max-height: 64px !important; */
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content:center;
     gap: 16px;
 
@@ -93,7 +94,8 @@
     margin-right: 0;
     border: none;
     background-color: transparent;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease-in-out;
+    /* transition:height 0.3s ease-out; */
   }
 
   h1 {
@@ -126,8 +128,6 @@
   left: 50%;
   display: none;
 
-
-
   transform: translateX(-50%);
 }
 
@@ -150,4 +150,11 @@
 
 .menu-mobile-show{
   display: block !important;
+}
+
+.menu-mobile-extend{
+  height: 80vh !important;
+  /* transform: scaleY(3); */
+
+  /* transition: max-height 2s linear; */
 }
