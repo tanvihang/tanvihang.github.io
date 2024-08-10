@@ -1,14 +1,7 @@
 {
     "hasTravelled": ["Kualalumpur", "Selangor"],
     "provinces": {
-        "MY12": {
-            "url": [],
-            "title": [],
-            "description": [],
-            "location": [],
-            "date": [],
-            "tags": []
-        },
+        "Kualalumpur": "/datas/Country/Malaysia/Kualalumpur.json",
         "MY09": {
             "url": [],
             "title": [],
