@@ -8,6 +8,7 @@ const GlobalStateManager = (function(){
     const selectedProvince = new ViStateManager({province:""})
     const selectedCategory = new ViStateManager({category:""})
     const selectedSubCategory = new ViStateManager({subCategory:""})
+    const currentPage = new ViStateManager({currentPage: ""})
     
     fetch("/datas/mapProperties.json")
     .then(response => response.json())
@@ -29,7 +30,8 @@ const GlobalStateManager = (function(){
         selectedCountry,
         selectedProvince,
         selectedCategory,
-        selectedSubCategory
+        selectedSubCategory,
+        currentPage
     }
 
 })();

@@ -34,7 +34,7 @@
 }
 
 p{
- font-size: large; 
+ font-size: x-large; 
  font-family: 'PPAcma', serif;
 
 }
@@ -50,4 +50,11 @@ p{
     animation-name: titleOut;
     animation-duration: 0.3s;
     animation-fill-mode: forwards; 
+}
+
+
+.current-page{
+  color: #5D70A6;
+  font-size: xx-large;
+
 }

@@ -49,10 +49,25 @@ class Header extends HTMLElement {
 
                     <!-- Hidden menu -->
                     <div class = "menu-mobile">
-                        <nav-bar-selection-custom title = '[.LENSVOYAGER]' cta = 'lensvoyager'}></nav-bar-selection-custom>
-                        <nav-bar-selection-custom title = 'ABOUT' cta = 'about'></nav-bar-selection-custom>
-                        <nav-bar-selection-custom title = 'PROJECTS' cta = 'projects'></nav-bar-selection-custom>
-                        <nav-bar-selection-custom title = 'OPEN FOR WORK' cta = 'openForWork'></nav-bar-selection-custom>
+                      <div class = "menu-mobile-selection">
+                        <nav-bar-selection-custom id="menu-lensvoyager" title = '[.LENSVOYAGER]' cta = 'lensvoyager'}></nav-bar-selection-custom>
+                        <nav-bar-selection-custom id="menu-about" title = 'ABOUT' cta = 'about'></nav-bar-selection-custom>
+                        <nav-bar-selection-custom id = "menu-projects" title = 'PROJECTS' cta = 'projects'></nav-bar-selection-custom>
+                        <nav-bar-selection-custom title id = "menu-openforwork" = 'OPEN FOR WORK' cta = 'openForWork'></nav-bar-selection-custom>
+                      </div>
+
+                      <div class = "menu-mobile-footer">
+
+                        <div class = "menu-mobile-footer-1">
+                          <h1>AT</h1>
+                        </div>
+
+                        <div class = "menu-mobile-footer-2">
+                          <h3>@2024</h3>
+                          <h6>angustanworkspce.</h6>
+                        </div>
+                      </div>
+                      
                     </div>
                 </div>
             </div>
@@ -75,6 +90,15 @@ class Header extends HTMLElement {
     var flag = 0;
     var scrollInitial = true;
 
+    // Get current page
+    console.log("Current page")
+
+    let curPage = window.location.href.toString().split("/");
+    curPage = curPage[curPage.length -2]
+
+    const menuElement =  this.shadowRoot.querySelector(`#menu-${curPage}`).shadowRoot.querySelector("p")
+    menuElement.classList.add("current-page")
+
 
     // Event listeners Title
     tt.addEventListener("click", () => {
@@ -87,6 +111,8 @@ class Header extends HTMLElement {
 
       if (isNotCollapsed) {
         collapseSection(container);
+        container.classList.remove("menu-mobile-open")
+        outerContainer.classList.add("pad-top-outer")
         menuMobile.classList.remove("menu-mobile-show");
 
         // When at top of the screen
@@ -94,13 +120,16 @@ class Header extends HTMLElement {
           navContainer.classList.contains("scroll-container") &&
           scrollInitial == true
         ) {
+          outerContainer.classList.remove("pad-top-outer")
           navContainer.classList.remove("scroll-container");
           delayedHideOff();
           flag = 0;
         }
       } else {
         expandSection(container);
+        container.classList.add("menu-mobile-open");
         menuMobile.classList.add("menu-mobile-show");
+        outerContainer.classList.remove("pad-top-outer")
         // When at top of the screen
         if (!navContainer.classList.contains("scroll-container")) {
           navContainer.classList.add("scroll-container");
@@ -116,12 +145,16 @@ class Header extends HTMLElement {
 
       if (scrollPosition > 1 && flag == 0) {
         navContainer.classList.add("scroll-container");
+        outerContainer.classList.add("pad-top-outer");
         this.setTimeout(delayedHideOn, 100);
         flag = 1;
         scrollInitial = false;
       }
       if (scrollPosition == 0) {
+        container.classList.remove("menu-mobile-open")
         navContainer.classList.remove("scroll-container");
+        outerContainer.classList.remove("pad-top-outer");
+
         this.setTimeout(delayedHideOff, 100);
         flag = 0;
         scrollInitial = true;
@@ -159,13 +192,13 @@ class Header extends HTMLElement {
     function delayedHideOn() {
       tt.classList.add("hide-h1");
       container.classList.add("scroll-height");
-      outerContainer.classList.add("pad-top-outer");
+      // outerContainer.classList.add("pad-top-outer");
     }
 
     function delayedHideOff() {
       tt.classList.remove("hide-h1");
       container.classList.remove("scroll-height");
-      outerContainer.classList.remove("pad-top-outer");
+      // outerContainer.classList.remove("pad-top-outer");
     }
 
     // State
@@ -213,7 +246,7 @@ class Header extends HTMLElement {
 
         // on the next frame (as soon as the previous style change has taken effect),
         requestAnimationFrame(function () {
-          element.style.height = 95 + "vh";
+          element.style.height = 100 + "vh";
         });
       });
 
