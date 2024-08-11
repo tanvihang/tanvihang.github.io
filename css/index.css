@@ -155,7 +155,7 @@
 
 @keyframes section2-title{
   50%{
-    transform: translate(10%, 0%);
+    transform: translate(0%, 0%);
   }
 
   100%{

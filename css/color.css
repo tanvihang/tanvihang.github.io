@@ -4,6 +4,7 @@
     --link-hover: #E3955D;
     --bg-primary: #ffffff;
     --header-scroll-bg:hsl(90, 31%, 95%);
+    --header-scroll-bg-desktop: hsla(0, 0%, 100%, 0.705);
 }
 
 html{

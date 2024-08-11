@@ -39,8 +39,8 @@
   }
 
   .scroll-container {
-    /* border: var(--text-primary) 1px solid; */
-    background-color: var(--header-scroll-bg);
+    border: var(--text-primary) 1px solid;
+    background-color: var(--header-scroll-bg-desktop);
   
     transition: all 1.5s ease;
     transition-delay: 0.3s;
@@ -69,6 +69,8 @@
   .menu-mobile{
     display: none;
   }
+
+  
 
 }
 

@@ -53,7 +53,7 @@ class Header extends HTMLElement {
                         <nav-bar-selection-custom id="menu-lensvoyager" title = '[.LENSVOYAGER]' cta = 'lensvoyager'}></nav-bar-selection-custom>
                         <nav-bar-selection-custom id="menu-about" title = 'ABOUT' cta = 'about'></nav-bar-selection-custom>
                         <nav-bar-selection-custom id = "menu-projects" title = 'PROJECTS' cta = 'projects'></nav-bar-selection-custom>
-                        <nav-bar-selection-custom title id = "menu-openforwork" = 'OPEN FOR WORK' cta = 'openForWork'></nav-bar-selection-custom>
+                        <nav-bar-selection-custom id = "menu-openforwork" title = 'OPEN FOR WORK' cta = 'openForWork'></nav-bar-selection-custom>
                       </div>
 
                       <div class = "menu-mobile-footer">
@@ -96,9 +96,14 @@ class Header extends HTMLElement {
     let curPage = window.location.href.toString().split("/");
     curPage = curPage[curPage.length -2]
 
-    const menuElement =  this.shadowRoot.querySelector(`#menu-${curPage}`).shadowRoot.querySelector("p")
-    menuElement.classList.add("current-page")
+    try{
+      const menuElement =  this.shadowRoot.querySelector(`#menu-${curPage}`).shadowRoot.querySelector("p")
+      menuElement.classList.add("current-page")
+  
+    }catch(error){
 
+    }
+    
 
     // Event listeners Title
     tt.addEventListener("click", () => {
