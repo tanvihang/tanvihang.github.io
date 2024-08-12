@@ -43,7 +43,7 @@ class Header extends HTMLElement {
                             <nav-bar-selection-custom title = 'ABOUT' cta = 'about'></nav-bar-selection-custom>
                             <nav-bar-selection-custom title = 'PROJECTS' cta = 'projects'></nav-bar-selection-custom>
                             <nav-bar-selection-custom title = 'OPEN FOR WORK' cta = 'openForWork' icon = "/assets/images/AutumnLeaf.gif"></nav-bar-selection-custom>
-                            <plop-button-custom class = "no-highlight" id="menu-button" title = "MENU" icon = "/assets/images/AutumnLeaf.gif"></plop-button-custom>
+                            <plop-button-custom id="menu-button" title = "MENU" icon = "/assets/images/AutumnLeaf.gif"></plop-button-custom>
                         </div>
                     </div>
 
@@ -63,7 +63,7 @@ class Header extends HTMLElement {
                         </div>
 
                         <div class = "menu-mobile-footer-2">
-                          <h3>@2024</h3>
+                          <h6>@2024</h6>
                           <h6>angustanworkspce.</h6>
                         </div>
                       </div>
@@ -114,10 +114,13 @@ class Header extends HTMLElement {
     menuButton.addEventListener("touchstart", () => {
       var isNotCollapsed = container.getAttribute("data-collapsed") === "true";
 
+      // The one i should be looking out
       if (isNotCollapsed) {
         collapseSection(container);
+
         container.classList.remove("menu-mobile-open")
         outerContainer.classList.add("pad-top-outer")
+        
         menuMobile.classList.remove("menu-mobile-show");
 
         // When at top of the screen
@@ -127,10 +130,12 @@ class Header extends HTMLElement {
         ) {
           outerContainer.classList.remove("pad-top-outer")
           navContainer.classList.remove("scroll-container");
+          
           delayedHideOff();
           flag = 0;
         }
-      } else {
+      } 
+      else {
         expandSection(container);
         container.classList.add("menu-mobile-open");
         menuMobile.classList.add("menu-mobile-show");
@@ -148,7 +153,7 @@ class Header extends HTMLElement {
     window.addEventListener("scroll", function () {
       var scrollPosition = scrollY;
 
-      if (scrollPosition > 1 && flag == 0) {
+      if (scrollPosition > 3 && flag == 0) {
         navContainer.classList.add("scroll-container");
         outerContainer.classList.add("pad-top-outer");
         this.setTimeout(delayedHideOn, 100);
@@ -196,13 +201,13 @@ class Header extends HTMLElement {
 
     function delayedHideOn() {
       tt.classList.add("hide-h1");
-      container.classList.add("scroll-height");
+      container.classList.add("menu-mobile-scroll-down");
       // outerContainer.classList.add("pad-top-outer");
     }
-
+    
     function delayedHideOff() {
       tt.classList.remove("hide-h1");
-      container.classList.remove("scroll-height");
+      container.classList.remove("menu-mobile-scroll-down");
       // outerContainer.classList.remove("pad-top-outer");
     }
 
@@ -218,18 +223,29 @@ class Header extends HTMLElement {
 
     function collapseSection(element) {
       var sectionHeight = element.scrollHeight;
-
+    
+      // Temporarily disable the transition
+      element.style.transition = "none";
+      
+      // Set the height explicitly
       element.style.height = sectionHeight + "px";
-
+      
+      // Trigger a reflow to make sure the change takes effect
+      element.offsetHeight; // This line forces a reflow
+      
+      // Re-enable the transition
+      element.style.transition = "";
+    
       function transitionEndHandler(e) {
         element.removeEventListener("transitionend", transitionEndHandler);
         element.style.height = menuMobileHeight + "px";
       }
-
+    
       element.addEventListener("transitionend", transitionEndHandler);
-
+    
       element.setAttribute("data-collapsed", "false");
     }
+    
 
     function expandSection(element) {
       // get the height of the element's inner content, regardless of its actual size
@@ -251,7 +267,7 @@ class Header extends HTMLElement {
 
         // on the next frame (as soon as the previous style change has taken effect),
         requestAnimationFrame(function () {
-          element.style.height = 100 + "vh";
+          element.style.height = 100 + "dvh";
         });
       });
 

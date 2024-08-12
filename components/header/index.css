@@ -14,7 +14,7 @@
     justify-content: end !important;
     gap: 0px !important;
     height: 250px !important; 
-    transition: all 2s ease !important;
+    transition: height 2s ease !important;
   }
 
   .inner-container{
@@ -43,7 +43,7 @@
     background-color: var(--header-scroll-bg-desktop);
   
     transition: all 1.5s ease;
-    transition-delay: 0.3s;
+    /* transition-delay: 0.3s; */
 
 
   }
@@ -54,7 +54,7 @@
     display: none;
   }
   
-  .scroll-height{
+  .menu-mobile-scroll-down{
     height: 80px !important;
 
     margin-top: 0px !important;
@@ -63,7 +63,7 @@
     border: none !important;
     background-color: transparent !important;
   
-    transition: all 1s ease !important;
+    transition: height 1s ease !important;
   }
 
   .menu-mobile{
@@ -74,6 +74,8 @@
 
 }
 
+/* ----------------------MOBILE SCREEN---------------------- */
+
 @media only screen and (min-width: 320px) {
   .outer-container {
     position: sticky;
@@ -81,15 +83,12 @@
     z-index: 1000;
 
     transition: all 0.5s ease;
-
   }
   
   .container {
-    /* background-color: aqua!important; */
     padding-top: 8px;
-    /* padding-bottom: 8px; */
     height: auto;
-    /* max-height: 64px !important; */
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -99,24 +98,23 @@
     border-radius: 30px;
 
     margin-top: 0;
-    margin-left: 0;
-    margin-right: 0;
-
-    margin-left: 32px ;
-    margin-right: 32px ;
+    margin-left: 16px ;
+    margin-right: 16px ;
+    padding-left: 16px;
+    padding-right: 16px;
 
     border: none;
     background-color: transparent;
     transition: all 0.5s ease-in-out;
-    /* transition:height 0.3s ease-out; */
   }
 
   .inner-container{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 8px;
+    width: 100% !important;
   }
 
   h1 {
@@ -146,20 +144,18 @@
 .menu-mobile{
   display: none;
   opacity: 0;
-  /* background-color: aqua; */
   width: 100%;
   overflow: visible !important;
 
-  transition-property: opacity, display;
-  transition-duration: 1s;
-  transition-delay: 0.5s;
-  transition-timing-function: ease-in;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-delay: 0.3s;
+
 
   & .menu-mobile-selection{
     display: flex;
     flex-direction: column !important;
     height: 100%;
-    gap: 32px;
+    gap: 8px;
     justify-content: flex-start;
     align-items: flex-start;
 
@@ -185,7 +181,7 @@
         line-height: 0;
         transform: translateY(30px);
 
-        background: linear-gradient(45deg, #9B482F, #9B482F,#9B482Fd5,#9b482fad,#9b482f9b,#9B482Fd5);
+        background: linear-gradient(45deg, #EF5A6F, #EF5A6F,#ef5a6ede,#ef5a6ecf,#ef5a6ebd,#EF5A6Fd5);
         background-size: 300%;
         background-clip: text;
         -webkit-background-clip: text;
@@ -200,42 +196,55 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+
+      & h6{
+        color: var(--header-scroll-text) !important;
+      }
     }
   }
 
 }
 
-.scroll-height{
+/* Alter the container */
+.menu-mobile-scroll-down{
   z-index: 999;
 
-  /* margin-left: 32px ;
-  margin-right: 32px ; */
   border: var(--text-primary) 1px solid;
   background-color: var(--header-scroll-bg);
+  height: auto;
 
+  /* margin: 16px !important; */
 }
+
 
 .menu-mobile-open{
   margin-left: 0 !important;
   margin-right: 0 !important;
+
+  background-color: var(--header-scroll-bg-show) !important;
 
   border-radius: 0% !important;
 
   touch-action: none;
 
 }
+/* Alter the container */
+
+
+/* Alter the outer container */
 
 .pad-top-outer{
   top:16px;
 }
 
+/* Alter the outer container */
+
 .header-selected-color{
   color: var(--link-hover);
 }
 
-/* THIS for animation */
+/* THIS for animation, both hide and show */
 .menu-mobile-show{
-
   height: 100% !important;
 
   display: flex !important;
@@ -243,7 +252,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 32px;
-  padding: 16px 32px;
+  padding: 8px 0px;
 
   opacity: 1 !important;
   
@@ -255,22 +264,6 @@
   }
 }
 
-.menu-mobile-extend{
-  height: 80vh !important;
-  /* transform: scaleY(3); */
-
-  /* transition: max-height 2s linear; */
-}
-
-.no-highlight {
-  user-select: none;  /* Prevents text selection */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-
-  outline: none;  /* Removes the focus outline */
-  box-shadow: none;
-}
 
 
 @keyframes animate-color-text {

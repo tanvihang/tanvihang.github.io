@@ -6,6 +6,7 @@
   p{
     font-size: 12px !important;
     font-family: 'IBMPlexMono', sans-serif !important;
+    color: var(--text-primary) !important;
    }
 }
 
@@ -34,9 +35,9 @@
 }
 
 p{
- font-size: x-large; 
- font-family: 'PPAcma', serif;
-
+  font-size: var(--h5-font-size);
+  font-family: 'IBMPlexMono', sans-serif;
+  color: var(--header-scroll-text) !important;
 }
 
 .title:hover {
@@ -54,7 +55,6 @@ p{
 
 
 .current-page{
-  color: #5D70A6;
-  font-size: xx-large;
-
+  color: #EF5A6F !important;
+  font-size: x-large;
 }
