@@ -21,3 +21,9 @@
   justify-content: center;
   gap: var(--ultimate-padding);
 }
+
+.scroll-top-button{
+  position: fixed;
+  bottom: 8px;
+  right: 8px;  
+}

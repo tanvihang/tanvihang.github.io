@@ -1,5 +1,12 @@
 # LENS VOYAGER
 
+Update Log
+| Date      | Features                           |
+| --------- | ---------------------------------- |
+| 2024/8/31 | Added scroll to top in lensvoyager |
+
+
+---
 ## HOME PAGE
 
 ### Section 2

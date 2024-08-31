@@ -1,0 +1,26 @@
+@media only screen and (min-width: 1080px) {
+    
+}
+
+@media only screen and (min-width: 768px) {
+    
+}
+
+.container{
+    background-color: #958AAE;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    opacity: 0;
+
+    cursor: pointer;
+
+    transition: opacity 0.2s linear;
+}
+
+.container-show{
+    opacity: 1;
+}
