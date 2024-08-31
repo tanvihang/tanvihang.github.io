@@ -23,6 +23,8 @@
 }
 
 .scroll-top-button{
+  z-index: 10;
+
   position: fixed;
   bottom: 8px;
   right: 8px;  
