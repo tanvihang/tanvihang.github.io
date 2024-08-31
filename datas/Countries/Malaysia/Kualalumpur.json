@@ -2,39 +2,7 @@
     "image_root_path": "/assets/images/Countries/Malaysia/Kualalumpur/",
     "images": [
         {
-            "url": "吉隆坡_国家清真寺1",
-            "title": "SET-TITLE",
-            "description": "",
-            "location": "",
-            "date": "",
-            "tags": []
-        },
-        {
-            "url": "吉隆坡_扫街2",
-            "title": "SET-TITLE",
-            "description": "",
-            "location": "",
-            "date": "",
-            "tags": []
-        },
-        {
-            "url": "吉隆坡_吉隆坡塔2",
-            "title": "SET-TITLE",
-            "description": "",
-            "location": "",
-            "date": "",
-            "tags": []
-        },
-        {
-            "url": "吉隆坡_吉隆坡塔4",
-            "title": "SET-TITLE",
-            "description": "",
-            "location": "",
-            "date": "",
-            "tags": []
-        },
-        {
-            "url": "吉隆坡_吉隆坡塔1",
+            "url": "吉隆坡_人文1",
             "title": "SET-TITLE",
             "description": "",
             "location": "",
@@ -50,23 +18,7 @@
             "tags": []
         },
         {
-            "url": "吉隆坡_双峰塔1",
-            "title": "SET-TITLE",
-            "description": "",
-            "location": "",
-            "date": "",
-            "tags": []
-        },
-        {
-            "url": "吉隆坡_双峰塔2",
-            "title": "SET-TITLE",
-            "description": "",
-            "location": "",
-            "date": "",
-            "tags": []
-        },
-        {
-            "url": "吉隆坡_118大楼1",
+            "url": "吉隆坡_Pavillion_街道1",
             "title": "SET-TITLE",
             "description": "",
             "location": "",
@@ -82,7 +34,7 @@
             "tags": []
         },
         {
-            "url": "吉隆坡_扫街3",
+            "url": "吉隆坡_吉隆坡塔1",
             "title": "SET-TITLE",
             "description": "",
             "location": "",
@@ -90,7 +42,7 @@
             "tags": []
         },
         {
-            "url": "吉隆坡_扫街1",
+            "url": "吉隆坡_扫街2",
             "title": "SET-TITLE",
             "description": "",
             "location": "",
@@ -98,7 +50,7 @@
             "tags": []
         },
         {
-            "url": "吉隆坡_118大楼4",
+            "url": "吉隆坡_双峰塔2",
             "title": "SET-TITLE",
             "description": "",
             "location": "",
@@ -106,7 +58,7 @@
             "tags": []
         },
         {
-            "url": "吉隆坡_吉隆坡塔5",
+            "url": "吉隆坡_吉隆坡塔2",
             "title": "SET-TITLE",
             "description": "",
             "location": "",
@@ -122,7 +74,15 @@
             "tags": []
         },
         {
-            "url": "吉隆坡_人文1",
+            "url": "吉隆坡_118大楼4",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "吉隆坡_国庆日1",
             "title": "SET-TITLE",
             "description": "",
             "location": "",
@@ -146,7 +106,79 @@
             "tags": []
         },
         {
-            "url": "吉隆坡_Pavillion_街道1",
+            "url": "吉隆坡_国家清真寺1",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "吉隆坡_国庆日5",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "吉隆坡_国庆日4",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "吉隆坡_双峰塔1",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "吉隆坡_国庆日2",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "吉隆坡_吉隆坡塔5",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "吉隆坡_118大楼3",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "吉隆坡_扫街3",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "吉隆坡_国庆日3",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "吉隆坡_国庆日6",
             "title": "SET-TITLE",
             "description": "",
             "location": "",
@@ -162,7 +194,23 @@
             "tags": []
         },
         {
-            "url": "吉隆坡_118大楼3",
+            "url": "吉隆坡_118大楼1",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "吉隆坡_吉隆坡塔4",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "吉隆坡_扫街1",
             "title": "SET-TITLE",
             "description": "",
             "location": "",
