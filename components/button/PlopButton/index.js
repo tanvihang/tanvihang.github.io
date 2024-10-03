@@ -83,6 +83,12 @@ class PlopButton extends HTMLElement {
             subCategory: cta,
           });
           break;
+
+        case "Yoyo":
+          globalContext.selectedSubCategory.setState({
+            subCategory: cta,
+          });
+          break;
       }
     });
   }
