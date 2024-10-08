@@ -39,11 +39,11 @@ class Header extends HTMLElement {
                     <div class = "inner-container">
                         <h1 class = "title">${title}</h1>
                         <div class = "nav-container">
-                            <nav-bar-selection-custom title = '[.LENSVOYAGER]' cta = 'lensvoyager'}></nav-bar-selection-custom>
-                            <nav-bar-selection-custom title = 'ABOUT' cta = 'about'></nav-bar-selection-custom>
-                            <nav-bar-selection-custom title = 'PROJECTS' cta = 'projects'></nav-bar-selection-custom>
-                            <nav-bar-selection-custom title = 'OPEN FOR WORK' cta = 'openForWork' icon = "/assets/images/AutumnLeaf.gif"></nav-bar-selection-custom>
-                            <plop-button-custom id="menu-button" title = "MENU" icon = "/assets/images/AutumnLeaf.gif"></plop-button-custom>
+                            <nav-bar-selection-custom id="menu-desk-lensvoyager" title = '[.LENSVOYAGER]' cta = 'lensvoyager'}></nav-bar-selection-custom>
+                            <nav-bar-selection-custom id="menu-desk-about" title = 'ABOUT' cta = 'about'></nav-bar-selection-custom>
+                            <nav-bar-selection-custom id = "menu-desk-projects" title = 'PROJECTS' cta = 'projects'></nav-bar-selection-custom>
+                            <nav-bar-selection-custom id = "menu-desk-openforwork" title = 'OPEN FOR WORK' cta = 'openForWork' icon = "/assets/images/AutumnLeaf.gif"></nav-bar-selection-custom>
+                            <plop-button-custom disable = true id="menu-button" title = "MENU" icon = "/assets/images/AutumnLeaf.gif"></plop-button-custom>
                         </div>
                     </div>
 
@@ -86,9 +86,11 @@ class Header extends HTMLElement {
     const menuMobile = this.shadowRoot.querySelector(".menu-mobile");
 
     // Global variable
-    var menuMobileHeight;
+    var menuMobileHeight = 0;
     var flag = 0;
     var scrollInitial = true;
+    var initialOpen = true;
+    var initialHeight;
 
     // Get current page
     console.log("Current page")
@@ -98,7 +100,9 @@ class Header extends HTMLElement {
 
     try{
       const menuElement =  this.shadowRoot.querySelector(`#menu-${curPage}`).shadowRoot.querySelector("p")
+      const menuElementDesk =  this.shadowRoot.querySelector(`#menu-desk-${curPage}`).shadowRoot.querySelector("p")
       menuElement.classList.add("current-page")
+      menuElementDesk.classList.add("current-page")
   
     }catch(error){
 
@@ -222,8 +226,10 @@ class Header extends HTMLElement {
     }
 
     function collapseSection(element) {
+      // var sectionHeight = element.scrollHeight;
       var sectionHeight = element.scrollHeight;
-    
+      console.log("Before closing - " + sectionHeight)
+
       // Temporarily disable the transition
       element.style.transition = "none";
       
@@ -238,7 +244,7 @@ class Header extends HTMLElement {
     
       function transitionEndHandler(e) {
         element.removeEventListener("transitionend", transitionEndHandler);
-        element.style.height = menuMobileHeight + "px";
+        element.style.height = initialHeight + "px";
       }
     
       element.addEventListener("transitionend", transitionEndHandler);
@@ -249,9 +255,15 @@ class Header extends HTMLElement {
 
     function expandSection(element) {
       // get the height of the element's inner content, regardless of its actual size
+
       var sectionHeight = element.scrollHeight;
+      
       menuMobileHeight = sectionHeight;
-      console.log(sectionHeight);
+
+      if(initialOpen){
+        initialHeight = menuMobileHeight;
+        initialOpen = false;
+      } 
 
       // temporarily disable all css transitions
       var elementTransition = element.style.transition;

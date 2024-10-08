@@ -197,6 +197,22 @@
   }
 }
 
+.uiux-description{
+  color: white;
+  background-color: black;
+  padding: calc(var(--ultimate-padding)/5);
+
+  animation: uiux-description linear forwards;
+  animation-timeline: view();
+  animation-range: 25% 55%
+
+}
+
+@keyframes uiux-description {
+  to{
+    padding: calc(var(--ultimate-padding)/1.5);
+  }
+}
 
 
 .show-dot {
@@ -213,3 +229,11 @@
   left: 0;
   width: 100%;
 }
+
+.scroll-top-button{
+  z-index: 10;
+  
+    position: fixed;
+    bottom: 8px;
+    right: 8px;  
+  }

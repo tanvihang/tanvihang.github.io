@@ -60,7 +60,10 @@
     let previousSelectedCategory = "";
     let previousSelectedSubCategory = "";
 
-    setHeaderHeight();
+    // set time out
+    setTimeout(() => {
+      setHeaderHeight();
+    }, 500)
 
     // height change listener
     globalContext.headerHeight.subscribe(() => {

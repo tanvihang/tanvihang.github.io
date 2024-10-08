@@ -10,7 +10,7 @@
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.6.9/build/spline-viewer.js"></script>
 </head>
 <body>
-
+    <scroll-top-button class="scroll-top-button"></scroll-top-button>
     <header-custom title = "ANGUS"></header-custom>
     
     <div class="hero-filler"></div>
@@ -68,6 +68,7 @@ import './components/footer/index.js'
 import globalContext from './datas/globalContext.js'
 import {works} from './datas/home.js'
 import {elementIsInViewPort, debounce} from './js/IntersectionObserver/vi.js'
+import "/components/button/ScrollTopButton/index.js"
 
 const filler = document.querySelector(".hero-filler");
 const heroContainer = document.querySelector(".section1")

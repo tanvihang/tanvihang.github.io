@@ -79,12 +79,12 @@ root_dir = GetRoot()
 
 # 2. Set the image folder
 # countries - /assets/images/Countries/Malaysia/Pahang
-image_folder_path_url = "/assets/images/Yoyo/2024"
+image_folder_path_url = "/assets/images/Countries/Malaysia/Johor"
 image_folder_path = f'{root_dir}{image_folder_path_url}'
 
 # 3. Set the json file (Need to alter this to be more dynamic)
 # countries - {root_dir}/datas/Countries/Malaysia/Pahang.json
-image_json_file = f'{root_dir}/datas/Yoyo/2024.json'
+image_json_file = f'{root_dir}/datas/Countries/Malaysia/Johor.json'
 
 # 4. Get images set
 image_set = ReadFolderImages(image_folder_path)

@@ -22,10 +22,11 @@ class PlopButton extends HTMLElement {
 
   async render() {
     const title = this.getAttribute("title") || "Default Title";
-
+    const disable = this.getAttribute("disable") || "false";
     // cta naming convention type-specific type
     const cta = this.getAttribute("CTA") || "404";
     const icon = this.getAttribute("icon");
+
 
     this.shadowRoot.innerHTML = `
             <style>
@@ -56,6 +57,19 @@ class PlopButton extends HTMLElement {
       let ctaSplit = cta.split("-");
 
       console.log(ctaSplit)
+
+      if(disable == "true"){
+
+        container.style.pointerEvents = "none";
+        container.style.opacity = "0.6";
+
+        setTimeout(() => {
+          container.style.pointerEvents = "auto";
+          container.style.opacity = "1";            
+        }, 1000);
+
+        return;
+      }
 
       switch (ctaSplit[0]) {
         case "BackWorldMap":
@@ -90,6 +104,9 @@ class PlopButton extends HTMLElement {
           });
           break;
       }
+
+
+
     });
   }
 }

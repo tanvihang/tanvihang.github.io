@@ -1,16 +1,9 @@
 {
-    "hasTravelled": ["Kualalumpur", "Pahang"],
+    "hasTravelled": ["Kualalumpur", "Pahang", "Johor"],
     "provinces": {
         "Kualalumpur": "/datas/Country/Malaysia/Kualalumpur.json",
         "Pahang": "/datas/Country/Malaysia/Pahang.json",
-        "MY02": {
-            "url": [],
-            "title": [],
-            "description": [],
-            "location": [],
-            "date": [],
-            "tags": []
-        },
+        "Johor": "/datas/Country/Malaysia/Johor.json",
         "MY03": {
             "url": [],
             "title": [],
