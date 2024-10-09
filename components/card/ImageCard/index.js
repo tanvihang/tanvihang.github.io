@@ -26,7 +26,7 @@ class ImageCard extends HTMLElement{
 
     async render(){
         const imgDict = this.getAttribute("imgDict")
-        console.log(imgDict)
+        // console.log(imgDict)
         const imgJson = JSON.parse(imgDict)
 
         const convertedTitle = imgJson.title.replaceAll("/s/", " ")
@@ -49,11 +49,15 @@ class ImageCard extends HTMLElement{
                     <p>${imgJson.location}</p>
                 </div>
 
+
+
+
             </div>
         `
 
         await Promise.resolve()
 
+        const imageCardImage = this.shadowRoot.querySelector(".image-card-img")
         const imageCard = this.shadowRoot.querySelector(".image-card-container")
         const imageCardInfo = this.shadowRoot.querySelector(".image-card-info")
         const lazyLoadImage = this.shadowRoot.querySelector(".lazy-load")
@@ -67,11 +71,32 @@ class ImageCard extends HTMLElement{
             imageCard.addEventListener("mouseleave",()=>{
                 imageCardInfo.classList.remove("show-info")
             })
+        }else{
+            imageCardImage.addEventListener("click", () => {
+                console.log("clicked")
+                // render image
+                const fullScreenElementPic = document.querySelector('#mobile-image-fullscreen-pic');
+                fullScreenElementPic.innerHTML = `<img src = ${imgJson.url} alt="Full Image">`;
+                
+                // render infos
+                const fullScreenElementInfo = document.querySelector('#mobile-image-fullscreen-info');
+                fullScreenElementInfo.innerHTML = `
+                    <h6>${convertedTitle}</h6>
+                    <p>${convertedDescription}</p>
+                    <p>${imgJson.date}</p>
+                    <p>${imgJson.location}</p>
+                `
+                
+                
+                // show the block
+                const fullScreenElement = document.querySelector('#mobile-image-fullscreen');
+                fullScreenElement.classList.add('show');
+            })
         }
 
         // lazy load
         if("IntersectionObserver" in window){
-            console.log("HI")
+            // console.log("HI")
             const imageObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     const image = entry.target

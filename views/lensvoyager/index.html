@@ -27,6 +27,19 @@
     <div id="photo-category-sub" class="hero-selector"></div>
     
     <div class="image-gallery"></div>
+
+    <!-- Full screen image -->
+    <div id="mobile-image-fullscreen" class="mobile-image-full">
+
+      <div id="mobile-image-fullscreen-pic" class="image-card-img">
+      </div>
+      <div id="mobile-image-fullscreen-info"></div>
+
+      <div>
+        <h1 class="info-h1">AT</h1>
+      </div>
+
+    </div>
     
 
 
@@ -56,6 +69,10 @@
     const photoCategory = document.querySelector("#photo-category");
     const photoCategorySub = document.querySelector("#photo-category-sub");
     const imageGallery = document.querySelector(".image-gallery");
+
+    const mobileImageFullScreen = document.querySelector("#mobile-image-fullscreen")
+    const mobileImageFullScreenPic = document.querySelector("#mobile-image-fullscreen-pic")
+    const mobileImageFullScreenInfo = document.querySelector("#mobile-image-fullscreen-info")
 
     let previousSelectedCategory = "";
     let previousSelectedSubCategory = "";
@@ -168,6 +185,20 @@
         photoCategory
       );
     });
+
+    mobileImageFullScreen.addEventListener('click', () => {
+      mobileImageFullScreen.classList.remove('show')
+    })
+
+    mobileImageFullScreenPic.addEventListener('click', (e) => {
+      e.stopPropagation();
+      console.log("Clicked on image");
+    })
+
+    mobileImageFullScreenInfo.addEventListener('click', (e) => {
+      e.stopPropagation();
+      console.log("Clicked on info")
+    })
 
     function setHeaderHeight(height) {
       filler.style.height = `${height}px`;
