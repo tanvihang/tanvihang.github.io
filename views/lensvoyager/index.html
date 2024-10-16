@@ -82,6 +82,8 @@
       setHeaderHeight();
     }, 500)
 
+
+    
     // height change listener
     globalContext.headerHeight.subscribe(() => {
       setHeaderHeight(globalContext.headerHeight.getState().height);
@@ -200,9 +202,18 @@
       console.log("Clicked on info")
     })
 
-    function setHeaderHeight(height) {
-      filler.style.height = `${height}px`;
+    // function setHeaderHeight(height) {
+    //   filler.style.height = `${height}px`;
+    // }
+
+
+    function setHeaderHeight(height){
+    if(window.innerWidth > 319 && window.innerWidth < 768){
+        filler.style.height = '70px'
+    }else{
+        filler.style.height = '250px'
     }
+}
 
     function checkItemInView() {
       // Check footer

@@ -55,8 +55,11 @@
         justify-content: center;
 
 
+        
+        
         width: 0;
         opacity: 0;
+        max-width: 90vw !important;
 
         transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
 

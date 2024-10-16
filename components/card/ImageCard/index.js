@@ -32,28 +32,43 @@ class ImageCard extends HTMLElement{
         const convertedTitle = imgJson.title.replaceAll("/s/", " ")
         const convertedDescription = imgJson.description.replaceAll("/s/", " ")
 
-        this.shadowRoot.innerHTML = `
-            <style>
-                @import url('/components/card/ImageCard/index.css')
-            </style>
-
-            <div class = "image-card-container">
-                <div class = "image-card-img">
-                    <img data-src = ${imgJson.url} class = "lazy-load" >
+        if(window.innerWidth > 319 && window.innerWidth < 768){
+            this.shadowRoot.innerHTML = `
+                <style>
+                    @import url('/components/card/ImageCard/index.css')
+                </style>
+    
+                <div class = "image-card-container">
+                    <div class = "image-card-img">
+                        <img data-src = ${imgJson.url} class = "lazy-load" >
+                    </div>
+    
                 </div>
-
-                <div class = "image-card-info">
-                    <h6>${convertedTitle}</h6>
-                    <p>${convertedDescription}</p>
-                    <p>${imgJson.date}</p>
-                    <p>${imgJson.location}</p>
+            `
+        }else{
+            this.shadowRoot.innerHTML = `
+                <style>
+                    @import url('/components/card/ImageCard/index.css')
+                </style>
+    
+                <div class = "image-card-container">
+                    <div class = "image-card-img">
+                        <img data-src = ${imgJson.url} class = "lazy-load" >
+                    </div>
+    
+                    <div class = "image-card-info">
+                        <h6>${convertedTitle}</h6>
+                        <p>${convertedDescription}</p>
+                        <p>${imgJson.date}</p>
+                        <p>${imgJson.location}</p>
+                    </div>
+    
                 </div>
+            `
 
+        }
+        
 
-
-
-            </div>
-        `
 
         await Promise.resolve()
 

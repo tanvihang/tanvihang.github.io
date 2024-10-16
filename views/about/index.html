@@ -165,9 +165,17 @@
       dot2.classList.add("hide-dot");
     });
 
-    function setHeaderHeight(height) {
-      filler.style.height = `${height}px`;
+    // function setHeaderHeight(height) {
+    //   filler.style.height = `${height}px`;
+    // }
+
+    function setHeaderHeight(height){
+    if(window.innerWidth > 319 && window.innerWidth < 768){
+        filler.style.height = '70px'
+    }else{
+        filler.style.height = '250px'
     }
+}
 
     function checkItemInView() {
       // Check footer
