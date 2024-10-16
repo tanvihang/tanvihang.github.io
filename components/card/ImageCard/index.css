@@ -12,14 +12,15 @@
 
     img{
         object-fit: cover !important;
-        max-height: 500px !important;
+        /* max-height: 500px !important; */
+        max-height: calc(100vh/1.5) !important;
     }
 }
 
 @media only screen and (min-width: 768px){
     .image-card-container{
         & .image-card-img{
-            max-width: 600px !important;
+            max-width: calc(100vw / 2.5) !important;
         }
     }
 }

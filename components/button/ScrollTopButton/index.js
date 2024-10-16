@@ -54,7 +54,6 @@ class ScrollTopButton extends HTMLElement {
         topFunction()    
     })
 
-    container.addEventListener("")
 
   }
 }

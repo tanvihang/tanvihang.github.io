@@ -42,7 +42,7 @@ class Header extends HTMLElement {
                             <nav-bar-selection-custom id="menu-desk-lensvoyager" title = '[.LENSVOYAGER]' cta = 'lensvoyager'}></nav-bar-selection-custom>
                             <nav-bar-selection-custom id="menu-desk-about" title = 'ABOUT' cta = 'about'></nav-bar-selection-custom>
                             <nav-bar-selection-custom id = "menu-desk-projects" title = 'PROJECTS' cta = 'projects'></nav-bar-selection-custom>
-                            <nav-bar-selection-custom id = "menu-desk-openforwork" title = 'OPEN FOR WORK' cta = 'openForWork' icon = "/assets/images/AutumnLeaf.gif"></nav-bar-selection-custom>
+                            <nav-bar-selection-custom id = "menu-desk-openForWork" title = 'OPEN FOR WORK' cta = 'openForWork' icon = "/assets/images/AutumnLeaf.gif"></nav-bar-selection-custom>
                             <plop-button-custom disable = true id="menu-button" title = "MENU" icon = "/assets/images/AutumnLeaf.gif"></plop-button-custom>
                         </div>
                     </div>
@@ -53,7 +53,7 @@ class Header extends HTMLElement {
                         <nav-bar-selection-custom id="menu-lensvoyager" title = '[.LENSVOYAGER]' cta = 'lensvoyager'}></nav-bar-selection-custom>
                         <nav-bar-selection-custom id="menu-about" title = 'ABOUT' cta = 'about'></nav-bar-selection-custom>
                         <nav-bar-selection-custom id = "menu-projects" title = 'PROJECTS' cta = 'projects'></nav-bar-selection-custom>
-                        <nav-bar-selection-custom id = "menu-openforwork" title = 'OPEN FOR WORK' cta = 'openForWork'></nav-bar-selection-custom>
+                        <nav-bar-selection-custom id = "menu-openForWork" title = 'OPEN FOR WORK' cta = 'openForWork'></nav-bar-selection-custom>
                       </div>
 
                       <div class = "menu-mobile-footer">

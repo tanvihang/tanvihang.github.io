@@ -1,0 +1,43 @@
+@media only screen and (min-width: 1080px) {
+
+
+  }
+  
+  @media only screen and (min-width: 768px) {
+
+  }
+  
+  .empty {
+    /* background-color: aqua; */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  
+  }
+  
+
+  
+  .show-dot {
+    opacity: 1 !important;
+  }
+  
+  .hide-dot {
+    opacity: 0 !important;
+  }
+  
+  .sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  
+  .scroll-top-button{
+    z-index: 10;
+    
+      position: fixed;
+      bottom: 8px;
+      right: 8px;  
+    }
