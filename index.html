@@ -99,6 +99,10 @@ if(window.innerWidth > 319 && window.innerWidth < 768){
     window.addEventListener('scroll', debounce(checkItemsInView, 100))
 }
 
+window.onload = function(){
+    console.log("Window loaded")
+}
+
 window.addEventListener('scroll', debounce(checkFooterInView, 100))
 
 function setHeaderHeight(height){
