@@ -42,6 +42,7 @@ class ImageCard extends HTMLElement{
 
             <div class = "image-card-container">
 
+            
             <div class = "image-card-img">
                     <div class="loading-spinner"></div> <!-- Loading indicator -->
                     <img data-src = ${imgJson.url} class = "lazy-load hidden" >
@@ -117,7 +118,7 @@ if ("IntersectionObserver" in window) {
                 // console.log("Rendered - " + image.src)
 
                 image.onload = () => {
-                    // console.log("Image loaded:", image.src);
+                    console.log("Image loaded:", image.src);
                     spinner.classList.add("hidden");  // Hide spinner
                     image.classList.add("show");      // Make the image visible
                 };
