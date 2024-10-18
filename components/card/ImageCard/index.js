@@ -41,10 +41,13 @@ class ImageCard extends HTMLElement{
             </style>
 
             <div class = "image-card-container">
-                <div class = "image-card-img">
+
+            <div class = "image-card-img">
                     <div class="loading-spinner"></div> <!-- Loading indicator -->
                     <img data-src = ${imgJson.url} class = "lazy-load hidden" >
                 </div>
+
+
 
                 ${
                     mobileLayout ? '' :
@@ -102,39 +105,41 @@ class ImageCard extends HTMLElement{
         }
 
         // lazy load
-        if ("IntersectionObserver" in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const image = entry.target;
-                        const spinner = image.previousElementSibling;
-        
-                        // Start loading the image
-                        image.src = image.dataset.src;
-        
-                        // When the image loads, hide the spinner
-                        image.onload = () => {
-                            spinner.classList.add("hidden"); // Hide spinner
-                            image.classList.remove("hidden"); // Show image
-                        };
-        
-                        // Handle loading errors
-                        image.onerror = () => {
-                            spinner.textContent = "Failed to load";
-                        };
-        
-                        observer.unobserve(image); // Stop observing this image
-                    }
-                });
-            }, {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1,
-            });
-        
-            imageObserver.observe(this.shadowRoot.querySelector(".lazy-load"));
-        }
-        
+if ("IntersectionObserver" in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const image = entry.target;
+                const spinner = image.previousElementSibling;
+
+                // Start loading the image
+                image.src = image.dataset.src;
+                // console.log("Rendered - " + image.src)
+
+                image.onload = () => {
+                    // console.log("Image loaded:", image.src);
+                    spinner.classList.add("hidden");  // Hide spinner
+                    image.classList.add("show");      // Make the image visible
+                };
+                
+
+                // Handle loading errors
+                image.onerror = () => {
+                    spinner.textContent = "Failed to load";
+                };
+
+                observer.unobserve(image); // Stop observing this image
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+    });
+
+    imageObserver.observe(this.shadowRoot.querySelector(".lazy-load"));
+}
+
 
 
     }

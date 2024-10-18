@@ -104,5 +104,12 @@
 }
 
 .hidden {
-    display: none;
+    visibility: hidden;  /* Keep the element in the flow */
+    opacity: 0;           /* Make it invisible */
+    transition: opacity 0.3s ease-in-out;  /* Smooth fade-in */
+}
+
+.show {
+    visibility: visible;
+    opacity: 1;
 }
