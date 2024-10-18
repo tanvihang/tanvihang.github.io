@@ -21,6 +21,12 @@
 </script>
 
 <body>
+
+    <!-- Loader -->
+    <div id="loader" class="loader">
+        <div class="loader-text">ANGUS</div>
+    </div>
+    
     <scroll-top-button class="scroll-top-button"></scroll-top-button>
     <header-custom title = "ANGUS"></header-custom>
     
@@ -99,9 +105,26 @@ if(window.innerWidth > 319 && window.innerWidth < 768){
     window.addEventListener('scroll', debounce(checkItemsInView, 100))
 }
 
-window.onload = function(){
-    console.log("Window loaded")
-}
+window.onload = function() {
+            const loader = document.getElementById('loader');
+            const minLoadTime = 2000;  // Minimum loading time (2 seconds)
+            const startTime = performance.now();  // Capture the start time
+
+            const endLoading = () => {
+                const elapsedTime = performance.now() - startTime;
+                const remainingTime = minLoadTime - elapsedTime;
+
+                if (remainingTime > 0) {
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, remainingTime);
+                } else {
+                    loader.style.display = 'none';
+                }
+            };
+
+            endLoading();
+        };
 
 window.addEventListener('scroll', debounce(checkFooterInView, 100))
 
