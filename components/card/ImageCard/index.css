@@ -21,6 +21,8 @@
     .image-card-container{
         & .image-card-img{
             max-width: calc(100vw / 2.5) !important;
+            min-height: 200px;
+
         }
     }
 }
@@ -40,6 +42,7 @@
     & .image-card-img{
         max-width: 300px;
         height: auto;
+        min-height: 200px;
 
         & img{
             width: 100%;
@@ -81,3 +84,25 @@
       opacity: 0 !important;
     }
   }
+
+
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid black;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hidden {
+    display: none;
+}

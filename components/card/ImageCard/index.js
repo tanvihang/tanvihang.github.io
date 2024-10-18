@@ -32,44 +32,36 @@ class ImageCard extends HTMLElement{
         const convertedTitle = imgJson.title.replaceAll("/s/", " ")
         const convertedDescription = imgJson.description.replaceAll("/s/", " ")
 
-        if(window.innerWidth > 319 && window.innerWidth < 768){
-            this.shadowRoot.innerHTML = `
-                <style>
-                    @import url('/components/card/ImageCard/index.css')
-                </style>
-    
-                <div class = "image-card-container">
-                    <div class = "image-card-img">
-                        <img data-src = ${imgJson.url} class = "lazy-load" >
-                    </div>
-    
+        const mobileLayout = window.innerWidth > 319 && window.innerWidth < 768;
+
+
+        this.shadowRoot.innerHTML = `
+            <style>
+                @import url('/components/card/ImageCard/index.css')
+            </style>
+
+            <div class = "image-card-container">
+                <div class = "image-card-img">
+                    <div class="loading-spinner"></div> <!-- Loading indicator -->
+                    <img data-src = ${imgJson.url} class = "lazy-load hidden" >
                 </div>
-            `
-        }else{
-            this.shadowRoot.innerHTML = `
-                <style>
-                    @import url('/components/card/ImageCard/index.css')
-                </style>
-    
-                <div class = "image-card-container">
-                    <div class = "image-card-img">
-                        <img data-src = ${imgJson.url} class = "lazy-load" >
-                    </div>
-    
+
+                ${
+                    mobileLayout ? '' :
+                    `
                     <div class = "image-card-info">
                         <h6>${convertedTitle}</h6>
                         <p>${convertedDescription}</p>
                         <p>${imgJson.date}</p>
                         <p>${imgJson.location}</p>
                     </div>
-    
-                </div>
-            `
+                    `
+                }
 
-        }
+            </div>
+        `
+
         
-
-
         await Promise.resolve()
 
         const imageCardImage = this.shadowRoot.querySelector(".image-card-img")
@@ -110,22 +102,39 @@ class ImageCard extends HTMLElement{
         }
 
         // lazy load
-        if("IntersectionObserver" in window){
-            // console.log("HI")
+        if ("IntersectionObserver" in window) {
             const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    const image = entry.target
-                    image.src = image.dataset.src
-                    observer.unobserve(image);
-                })
-            },{
-                root: null, // Use the viewport as the root
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const image = entry.target;
+                        const spinner = image.previousElementSibling;
+        
+                        // Start loading the image
+                        image.src = image.dataset.src;
+        
+                        // When the image loads, hide the spinner
+                        image.onload = () => {
+                            spinner.classList.add("hidden"); // Hide spinner
+                            image.classList.remove("hidden"); // Show image
+                        };
+        
+                        // Handle loading errors
+                        image.onerror = () => {
+                            spinner.textContent = "Failed to load";
+                        };
+        
+                        observer.unobserve(image); // Stop observing this image
+                    }
+                });
+            }, {
+                root: null,
                 rootMargin: '0px',
-                threshold: 0.1 // Trigger when 10% of the image is in view
-            })
-
-            imageObserver.observe(lazyLoadImage)
+                threshold: 0.1,
+            });
+        
+            imageObserver.observe(this.shadowRoot.querySelector(".lazy-load"));
         }
+        
 
 
     }
