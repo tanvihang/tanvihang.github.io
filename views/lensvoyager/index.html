@@ -45,7 +45,7 @@
 
       <div id="mobile-image-fullscreen-pic" class="image-card-img">
       </div>
-      <div id="mobile-image-fullscreen-info"></div>
+      <div id="mobile-image-fullscreen-info" ></div>
 
       <div>
         <h1 class="info-h1">AT</h1>
@@ -263,7 +263,9 @@
     function renderImage(jsonData, title) {
       let imagePath = jsonData.image_root_path;
 
-      let wholeHTML = `<h2>${title}</h2>`;
+      console.log(jsonData.images.length)
+
+      let wholeHTML = `<h2>${title} <span style="font-size: 0.2em;">(${jsonData.images.length})</span></h2>`;
 
       jsonData.images.forEach((image) => {
         let path = imagePath + image.url + ".avif";

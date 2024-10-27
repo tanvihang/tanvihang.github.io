@@ -1,5 +1,5 @@
 {
-    "hasTravelled": ["Henan","Zhejiang", "Jiangsu", "Gansu", "Innermongolia","Beijing", "Shanghai", "Hebei", "Qinghai", "Shandong", "Fujian","Jiangxi", "Tianjin"],
+    "hasTravelled": ["Henan", "Jiangsu", "Gansu", "Innermongolia","Beijing", "Shanghai", "Hebei", "Qinghai", "Shandong", "Fujian","Jiangxi", "Tianjin"],
     "provinces": {
         "CNSN": {
             "url": [],
