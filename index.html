@@ -53,7 +53,7 @@
         <div class="hero-container">
             <div class="hero-flex1">
                 <div class="hero-flex1-container">
-                    <h5>I help businesses build interactive and user-centric design that engage audiences and drive growth.</h5>
+                    <h5 class="hero-text appear-text1">I help businesses build interactive and user-centric design that engage audiences and drive growth.</h5>
                     <cta-button-custom title="REACH OUT"></cta-button-custom>
                 </div>
                 
@@ -67,7 +67,8 @@
     <div class="section2 services pad" id="services">
         <!-- <h1>SERVICES,</h1> -->
          <div class="section2-header">
-            <h5>
+            <div class="filler-block"></div>
+            <h5 class="services-text appear-text1">
                 Wanted to build a websites? I craft premium web experiences that are tailored to your brand focused on growing your business.
             </h5>
          </div>
@@ -78,7 +79,7 @@
         
     </div>
     
-    <div class="section4 about pad" id="about">
+    <div class="section4 about" id="about">
         <!-- <h1>ABOUT,</h1> -->
 
     </div>
@@ -270,6 +271,58 @@ function handleLeaveBack(id, tocHeader) {
     }
 }
 
+// GSAP for h5
+ScrollTrigger.create({
+    trigger: ".services-text",
+    start: "top 80%",
+    onEnter: () => {
+        gsap.fromTo(".services-text", 
+            {
+                opacity: 0,
+                y: 100
+            },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 2,
+                ease: "power2.out"
+            }
+        );
+    },
+    onLeaveBack: () => {
+        gsap.to(".services-text", 
+            {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: "power2.in"
+            }
+        );
+    }
+});
+
+gsap.fromTo(".hero-text",
+    {
+        opacity: 0,
+        x: -100,
+        duration: 2
+    },
+    {
+        opacity: 1,
+        x: 0,
+        duration: 2,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: ".hero-text",
+            start: "top 80%",
+            toggleActions: "play reverse play reverse"
+            // This makes the animation play when scrolling down,
+            // reverse when scrolling up, play again when scrolling down, etc.
+        }
+    }
+);
+
+
 
 /**
  * ! GSAP animation ENDS here
@@ -300,29 +353,6 @@ Object.values(tocHeaders).forEach((header) => {
     });
 });
 
-
-
-
-// window.onload = function() {
-//             const loader = document.getElementById('loader');
-//             const minLoadTime = 2000;  // Minimum loading time (2 seconds)
-//             const startTime = performance.now();  // Capture the start time
-
-//             const endLoading = () => {
-//                 const elapsedTime = performance.now() - startTime;
-//                 const remainingTime = minLoadTime - elapsedTime;
-
-//                 if (remainingTime > 0) {
-//                     setTimeout(() => {
-//                         loader.style.display = 'none';
-//                     }, remainingTime);
-//                 } else {
-//                     loader.style.display = 'none';
-//                 }
-//             };
-
-//             endLoading();
-//         };
 
 window.addEventListener('scroll', debounce(checkFooterInView, 100))
 
@@ -359,6 +389,71 @@ function checkFooterInView(){
     }
 }
 
+// Add this to your script section
+function adjustFillerBlockHeight() {
+    const servicesText = document.querySelector('.services-text');
+    const fillerBlock = document.querySelector('.filler-block');
+    if (servicesText && fillerBlock) {
+        const textHeight = servicesText.offsetHeight;
+        fillerBlock.style.height = `${textHeight}px`;
+        fillerBlock.style.width = `${textHeight}px`; // Make it square based on text height
+    }
+}
+
+// Call it initially and on window resize
+window.addEventListener('load', adjustFillerBlockHeight);
+window.addEventListener('resize', adjustFillerBlockHeight);
+
+// Also call it after GSAP animations complete
+ScrollTrigger.create({
+    trigger: ".services-text",
+    start: "top 80%",
+    onEnter: () => {
+        gsap.fromTo(".services-text", 
+            {
+                opacity: 0,
+                y: 100
+            },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 2,
+                ease: "power2.out",
+                onComplete: adjustFillerBlockHeight // Add this
+            }
+        );
+        gsap.fromTo(".filler-block",
+            {
+                opacity: 0,
+                y: 100
+            },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 2,
+                ease: "power2.out"
+            }
+        );
+    },
+    onLeaveBack: () => {
+        gsap.to(".services-text", 
+            {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: "power2.in"
+            }
+        );
+        gsap.to(".filler-block",
+            {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: "power2.in"
+            }
+        );
+    }
+});
 
 </script>
 

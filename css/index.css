@@ -155,6 +155,12 @@
     object-fit: cover;
   }
 
+  .filler-block {
+    display: block !important; /* Show on tablet and up */
+    width: auto;
+    height: auto;
+  }
+
 }
 
 .pad{
@@ -235,7 +241,6 @@
   justify-content: flex-end;
   align-items: flex-start;
   flex-direction: column;
-  /* background-color: bisque; */
 }
 
 .hero-flex1 {
@@ -288,10 +293,21 @@
   flex-direction: row;
   gap: var(--spacing-fluid-md);
   align-items: flex-start;
+
   max-height: calc(12 * 1.4em);
 }
 
-
+.filler-block {
+  display: none; /* Hide by default on mobile */
+  overflow: hidden;
+  border-radius: 20px;
+  background-image: url('../assets/images/gradient1.jpeg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+  opacity: 0;
+}
 
 .section2-header-img-container{
   height: auto;
@@ -337,4 +353,18 @@
   opacity: 1;
   /* display: none; */
   height: 0;
+}
+
+
+/* ---------------------- GSAP ----------------------*/
+
+.appear-text1{
+  opacity: 0;
+}
+
+/* ---------------------- GSAP END ----------------------*/
+
+.services-text {
+    flex: 1;
+    max-width: 70%;
 }
