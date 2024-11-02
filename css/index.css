@@ -157,7 +157,7 @@
 
 }
 
-body{
+.pad{
   padding-left: var(--spacing-fluid-lg);
   padding-right: var(--spacing-fluid-lg);
 }
