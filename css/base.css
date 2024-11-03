@@ -16,8 +16,13 @@
     --spacing-fluid-md: calc(12px + 0.5vw); 
     --spacing-fluid-lg: calc(16px + 1vw); 
     --spacing-fluid-xl: calc(24px + 1vw); 
+    --spacing-fluid-xxl: calc(32px + 1vw); 
 
     --ultimate-padding: var(--spacing-lg); /* Replacing with consistent spacing */
+
+      --header-height: calc(70px * 1.7);
+      --title-height: calc(1.4em * 1rem);
+      --card-spacing: var(--spacing-fluid-lg);
 }
 
 
