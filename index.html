@@ -72,6 +72,115 @@
                 Wanted to build a websites? I craft premium web experiences that are tailored to your brand focused on growing your business.
             </h5>
          </div>
+
+         <div class="section2-card-section">
+            <div class="section2-card-container">
+                <div class="section2-card-header">
+                    <h3>
+                        (01)
+                    </h3>
+                    <h3>
+                        Web Development
+                    </h3>
+                </div>
+
+                <div class="section2-card-content">
+                    <h6>Frontend Developer with 2 years of experience, specializing in custom-coded websites that capture user attention and guide seamless task completion.</h6>
+                    
+                    <div class="section2-card-content-list">
+                        <ol>
+                            <li>
+                                <h5>
+                                    Enhance Performance
+                                </h5>
+                            </li>
+                            <li>
+                                <h5>
+                                    Animation
+                                </h5>
+                            </li>
+                            <li>
+                                <h5>
+                                    Custom-coded
+                                </h5>
+                            </li>
+                        </ol>
+                    </div>
+                
+                </div>
+            </div>
+            <div class="section2-card-container">
+                <div class="section2-card-header">
+                    <h3>
+                        (02)
+                    </h3>
+                    <h3>
+                        Web Design
+                    </h3>
+                </div>
+
+                <div class="section2-card-content">
+                    <h6>Carefully study your business to optimize empathy with your client, user-centric design to maximize conversion rate.</h6>
+                    
+                    <div class="section2-card-content-list">
+                        <ol>
+                            <li>
+                                <h5>
+                                    Responsive Design
+                                </h5>
+                            </li>
+                            <li>
+                                <h5>
+                                    Wireframing
+                                </h5>
+                            </li>
+                            <li>
+                                <h5>
+                                    UX Writing
+                                </h5>
+                            </li>
+                        </ol>
+                    </div>
+                
+                </div>
+            </div>
+            <div class="section2-card-container">
+                <div class="section2-card-header">
+                    <h3>
+                        (03)
+                    </h3>
+                    <h3>
+                        Photography
+                    </h3>
+                </div>
+
+                <div class="section2-card-content">
+                    <h6>Your website needs captivating visuals to connect with your audience. I help you showcase your products through photography that stands out and enhances your digital presence.</h6>
+                    
+                    <div class="section2-card-content-list">
+                        <ol>
+                            <li>
+                                <h5>
+                                    Lightnings
+                                </h5>
+                            </li>
+                            <li>
+                                <h5>
+                                    Photo Editing
+                                </h5>
+                            </li>
+                            <li>
+                                <h5>
+                                    Fine-tuned
+                                </h5>
+                            </li>
+                        </ol>
+                    </div>
+                
+                </div>
+            </div>
+         </div>
+
     </div>
     
     <div class="section3 works pad" id="works">
@@ -84,8 +193,6 @@
 
     </div>
 
-
-
     <footer-custom></footer-custom>
 
 </body>
@@ -96,6 +203,10 @@ import './components/header/index.js'
 import './components/button/PlopButton/index.js'
 import './components/card/HeroCard/index.js'
 import './components/footer/index.js'
+
+import './js/Home/animations.js'
+import {setHeaderHeight, adjustFillerBlockHeight} from './js/Home/utils.js'
+
 import globalContext from './datas/globalContext.js'
 import {works} from './datas/home.js'
 import {elementIsInViewPort, debounce} from './js/IntersectionObserver/vi.js'
@@ -110,20 +221,15 @@ const footer = document.querySelector("footer-custom");
 const stickyToc = document.querySelector(".sticky-toc");
 let section2CardElements;
 
-
-
+// 1. Set header height
 setHeaderHeight()
-// loadSection2Work()
 
-/**
- * ! GSAP animation STARTS here
-*/
+// 2. Check if footer is in view
+window.addEventListener('scroll', debounce(checkFooterInView, 100))
 
-
-gsap.registerPlugin(ScrollTrigger);
-
-const sequence = ['intro', 'services', 'works', 'about'];
-let titleArr = [];
+// Call it initially and on window resize
+window.addEventListener('load', adjustFillerBlockHeight);
+window.addEventListener('resize', adjustFillerBlockHeight);
 
 const sections = document.querySelectorAll("div[id]");
 const tocHeaders = {
@@ -133,203 +239,7 @@ const tocHeaders = {
     about: document.getElementById("toc-about")
 };
 
-
-const showElement = (element) => {
-    gsap.fromTo(
-        element,
-        { opacity: 0, height: 0, y: 0 },
-        {
-            opacity: 1,
-            height: element.scrollHeight,
-            y: 0,
-            duration: 0.6,
-            ease: "power1.inOut"
-        }
-    );
-};
-
-const hideElement = (element) => {
-    gsap.to(element, {
-        opacity: 0,
-        height: 0,
-        duration: 0.6,
-        ease: "power1.inOut",
-    });
-};
-
-const hideStickyToc = () => {
-    gsap.fromTo(
-        stickyToc,
-        {
-            opacity: 1,
-            y: 0        
-        },
-        {
-            opacity: 0,
-            y: 500,
-            duration: 0.6,
-            ease: "power1.inOut"
-        }
-    )
-}
-
-const showStickyToc = () => {
-    gsap.to(
-        stickyToc,{
-            opacity: 1,
-            y: 0,
-        }
-    )
-}
-
-const highlightText = (element) => {
-    gsap.fromTo(
-        element,
-        {
-            color: "#333333",
-        },
-        {
-            color: "#7D715C",
-        }
-    )
-}
-
-const disableHighlightText = (element) => {
-    gsap.to(
-        element,
-        {
-            color: "#333333",
-        }
-    )
-}
-
-// Register ScrollTrigger for the footer
-ScrollTrigger.create({
-    trigger: footer,
-    start: "top 75%",
-    onEnter:() => hideStickyToc(),
-    onLeaveBack: () => showStickyToc()
-
-})
-
-// Register ScrollTrigger for each section
-sections.forEach((section, index) => {
-    const id = section.id;
-    const tocHeader = tocHeaders[id];
-
-    ScrollTrigger.create({
-        trigger: section,
-        start: "top 50%",  // Trigger when top of section hits 80% of viewport
-        end: "bottom 50%", // End when bottom of section hits 20% of viewport
-        onEnter: () => {
-            handleEnter(id, tocHeader)
-            highlightText(tocHeader)
-        },
-        onLeaveBack: () => {
-            handleLeaveBack(id, tocHeader)
-        },
-        onLeave: () => {
-            disableHighlightText(tocHeader)
-        },
-        onEnterBack: () => {
-            highlightText(tocHeader)
-        },
-        scrub: true, // Animates based on scroll position
-    });
-
-    // Another handler
-    
-});
-
-// Handle section enter logic
-function handleEnter(id, tocHeader) {
-    if (!titleArr.includes(id)) {
-        const position = sequence.indexOf(id);
-
-        if (titleArr.length === 0 && id !== sequence[0]) {
-            // Add all elements up to the current one in sequence
-            for (let i = 0; i <= position; i++) {
-                titleArr.push(sequence[i]);
-                showElement(tocHeaders[sequence[i]]);
-            }
-        } else {
-            titleArr.push(id);
-            showElement(tocHeader);
-        }
-    }
-}
-
-// Handle section leave back logic
-function handleLeaveBack(id, tocHeader) {
-    console.log(id)
-    if (id === titleArr[titleArr.length - 1]) {
-        titleArr.pop();
-        hideElement(tocHeader);
-    }
-    else if(titleArr.length == sequence.length){
-        console.log("END")
-    }
-}
-
-// GSAP for h5
-ScrollTrigger.create({
-    trigger: ".services-text",
-    start: "top 80%",
-    onEnter: () => {
-        gsap.fromTo(".services-text", 
-            {
-                opacity: 0,
-                y: 100
-            },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 2,
-                ease: "power2.out"
-            }
-        );
-    },
-    onLeaveBack: () => {
-        gsap.to(".services-text", 
-            {
-                opacity: 0,
-                y: 50,
-                duration: 1,
-                ease: "power2.in"
-            }
-        );
-    }
-});
-
-gsap.fromTo(".hero-text",
-    {
-        opacity: 0,
-        x: -100,
-        duration: 2
-    },
-    {
-        opacity: 1,
-        x: 0,
-        duration: 2,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: ".hero-text",
-            start: "top 80%",
-            toggleActions: "play reverse play reverse"
-            // This makes the animation play when scrolling down,
-            // reverse when scrolling up, play again when scrolling down, etc.
-        }
-    }
-);
-
-
-
-/**
- * ! GSAP animation ENDS here
-*/
-
-
-// Add click event listeners to each TOC header for smooth scrolling
+// 3. Add click event listeners to each TOC header for smooth scrolling
 Object.values(tocHeaders).forEach((header) => {
     header.addEventListener('click', (event) => {
         const sectionId = event.target.id.replace('toc-', ''); // Extract section id
@@ -353,17 +263,6 @@ Object.values(tocHeaders).forEach((header) => {
     });
 });
 
-
-window.addEventListener('scroll', debounce(checkFooterInView, 100))
-
-function setHeaderHeight(height){
-    if(window.innerWidth > 319 && window.innerWidth < 768){
-        filler.style.height = '70px'
-    }else{
-        filler.style.height = '250px'
-    }
-}
-
 function setHeroContainerHeight(height){
     if(window.innerWidth > 319 && window.innerWidth < 768){
         const calcHeight = `calc(100vh - 70px)`
@@ -377,11 +276,8 @@ function setHeroContainerHeight(height){
 globalContext.headerHeight.subscribe(()=>{
     const height = globalContext.headerHeight.getState().height;
     setHeaderHeight(height)
-
     // setHeroContainerHeight(height)
 })
-
-
 
 function checkFooterInView(){
     if(elementIsInViewPort(footer, 20)){
@@ -389,71 +285,7 @@ function checkFooterInView(){
     }
 }
 
-// Add this to your script section
-function adjustFillerBlockHeight() {
-    const servicesText = document.querySelector('.services-text');
-    const fillerBlock = document.querySelector('.filler-block');
-    if (servicesText && fillerBlock) {
-        const textHeight = servicesText.offsetHeight;
-        fillerBlock.style.height = `${textHeight}px`;
-        fillerBlock.style.width = `${textHeight}px`; // Make it square based on text height
-    }
-}
 
-// Call it initially and on window resize
-window.addEventListener('load', adjustFillerBlockHeight);
-window.addEventListener('resize', adjustFillerBlockHeight);
-
-// Also call it after GSAP animations complete
-ScrollTrigger.create({
-    trigger: ".services-text",
-    start: "top 80%",
-    onEnter: () => {
-        gsap.fromTo(".services-text", 
-            {
-                opacity: 0,
-                y: 100
-            },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 2,
-                ease: "power2.out",
-                onComplete: adjustFillerBlockHeight // Add this
-            }
-        );
-        gsap.fromTo(".filler-block",
-            {
-                opacity: 0,
-                y: 100
-            },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 2,
-                ease: "power2.out"
-            }
-        );
-    },
-    onLeaveBack: () => {
-        gsap.to(".services-text", 
-            {
-                opacity: 0,
-                y: 50,
-                duration: 1,
-                ease: "power2.in"
-            }
-        );
-        gsap.to(".filler-block",
-            {
-                opacity: 0,
-                y: 50,
-                duration: 1,
-                ease: "power2.in"
-            }
-        );
-    }
-});
 
 </script>
 

@@ -163,8 +163,8 @@ const initAnimations = () => {
             ease: "power2.out",
             scrollTrigger: {
                 trigger: ".hero-text",
-                start: "top 80%",
-                toggleActions: "play reverse play reverse"
+                start: "top 100%",
+                toggleActions: "play none none none"
             }
         }
     );
@@ -193,34 +193,13 @@ const initAnimations = () => {
             gsap.fromTo(".filler-block",
                 {
                     opacity: 0,
-                    x: -50
+                    y: 100
                 },
                 {
                     opacity: 1,
-                    x: 0,
-                    duration: 1.5,
+                    y: 0,
+                    duration: 2,
                     ease: "power2.out"
-                }
-            );
-        },
-        onLeaveBack: () => {
-            // Text reverse animation
-            gsap.to(".services-text", 
-                {
-                    opacity: 0,
-                    y: 50,
-                    duration: 1,
-                    ease: "power2.in"
-                }
-            );
-
-            // Filler block reverse animation
-            gsap.to(".filler-block",
-                {
-                    opacity: 0,
-                    x: -50,
-                    duration: 1,
-                    ease: "power2.in"
                 }
             );
         }
