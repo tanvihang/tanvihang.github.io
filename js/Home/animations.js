@@ -18,6 +18,7 @@ const tocHeaders = {
 const stickyToc = document.querySelector(".sticky-toc");
 const footer = document.querySelector("footer-custom");
 
+
 // Animation utility functions
 const showElement = (element) => {
     gsap.fromTo(
@@ -47,7 +48,7 @@ const hideStickyToc = () => {
         stickyToc,
         {
             opacity: 1,
-            y: 0        
+            y: 0
         },
         {
             opacity: 0,
@@ -61,9 +62,9 @@ const hideStickyToc = () => {
 const showStickyToc = () => {
     gsap.to(
         stickyToc, {
-            opacity: 1,
-            y: 0,
-        }
+        opacity: 1,
+        y: 0,
+    }
     );
 };
 
@@ -112,6 +113,9 @@ function handleLeaveBack(id, tocHeader) {
         hideElement(tocHeader);
     }
 }
+
+
+
 
 // Initialize animations
 const initAnimations = () => {
@@ -175,7 +179,7 @@ const initAnimations = () => {
         start: "top 80%",
         onEnter: () => {
             // Text animation
-            gsap.fromTo(".services-text", 
+            gsap.fromTo(".services-text",
                 {
                     opacity: 0,
                     y: 100
@@ -204,6 +208,7 @@ const initAnimations = () => {
             );
         }
     });
+
 };
 
 // Initialize all animations when the document is ready

@@ -56,7 +56,7 @@
     flex-direction: row;
     gap: var(--spacing-fluid-md);
     align-items: flex-start;
-    max-height: calc(8 * 1.4em);
+
   }
   
   .filler{
@@ -84,8 +84,12 @@
     height: auto;
   }
 
-  .section2-sticky-2{
+  .section2-sticky-1{
+    margin-bottom: 24vh !important;
+  }
 
+  .section2-sticky-2{
+    margin-bottom: 12vh !important;
     top: calc(var(--header-height) + 10em) !important;
   }
 
@@ -93,6 +97,7 @@
 
     top: calc(var(--header-height) + 20em) !important;
   }
+
 
 }
 
@@ -340,6 +345,9 @@
   flex-direction: column;
   padding-top: var(--spacing-fluid-lg);
   gap: 15vh; 
+
+  min-height: 300vh;
+  position: relative;
 }
 
 /* Section 2 Card START */
@@ -351,6 +359,9 @@
   padding-top: var(--spacing-fluid-lg);
   border-top: 1px solid currentColor;
   height: calc(100vh - (70px * 1.5));
+
+  position: relative;
+  z-index: 1;
 }
 
 
@@ -414,18 +425,21 @@
 .section2-sticky-1{
   position: sticky;
   top: var(--header-height);
+  margin-bottom: 20vh;
 }
 
 .section2-sticky-2{
   position: sticky;
   background-color: var(--bg-primary);
   top: calc(var(--header-height) + 8em);
+  margin-bottom: 10vh;
+
+
 }
 
 .section2-sticky-3{
   position: sticky;
   background-color: var(--bg-primary);
-  top: calc(var(--header-height) + 16em);
 }
 
 
