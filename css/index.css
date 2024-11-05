@@ -1,10 +1,9 @@
-@media only screen and (min-width: 1080px), only screen and (orientation: landscape) {
-
+@media only screen and (min-width: 1080px),
+  only screen and (orientation: landscape) {
   .hero-container {
     flex-direction: row !important;
     position: relative;
   }
-
 
   .hero-flex1 {
     display: flex;
@@ -16,23 +15,23 @@
     height: 100%;
     gap: var(--spacing-fluid-lg);
     /* background-color: aqua; */
-  
-    & .hero-flex1-container{
+
+    & .hero-flex1-container {
       max-width: 40%;
       /* background-color: aquamarine; */
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-  
-      & h5{
+
+      & h5 {
         width: 70%;
       }
     }
-  
-    & img{
+
+    & img {
       max-width: 40%;
     }
-  
+
     /* background-color: aquamarine; */
   }
 
@@ -42,37 +41,35 @@
 
     & .hero-flex2-image {
       background-position: left !important;
-  
     }
   }
 
-  .hero-flex1-selection{
+  .hero-flex1-selection {
     display: none !important;
   }
 
-  .section2-header{
+  .section2-header {
     display: flex;
     position: relative;
     flex-direction: row;
     gap: var(--spacing-fluid-md);
     align-items: flex-start;
-
   }
-  
-  .filler{
+
+  .filler {
     height: calc(8 * 1.4em);
     width: calc(8 * 1.4em);
     overflow: hidden;
-  
+
     border-top-left-radius: 20%;
-  
-    background-image: url('../assets/images/gradient1.jpeg');
+
+    background-image: url("../assets/images/gradient1.jpeg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
   }
-  
-  .section2-header-img-container{
+
+  .section2-header-img-container {
     height: auto;
     max-width: 100%;
     object-fit: cover;
@@ -84,169 +81,118 @@
     height: auto;
   }
 
-  .section2-sticky-1{
+  .section2-sticky-1 {
     margin-bottom: 24vh !important;
   }
 
-  .section2-sticky-2{
+  .section2-sticky-2 {
     margin-bottom: 12vh !important;
     top: calc(var(--header-height) + 10em) !important;
   }
 
-  .section2-sticky-3{
-
+  .section2-sticky-3 {
     top: calc(var(--header-height) + 20em) !important;
   }
-
-
 }
 
 @media only screen and (min-width: 768px) {
+  .max-width {
+    max-width: 60% !important;
+  }
 
   .hero-flex1 {
     justify-content: center !important;
-  
-    & .hero-flex1-container{
+
+    & .hero-flex1-container {
       max-width: 60% !important;
       flex-direction: row !important;
       align-items: flex-end !important;
     }
-  
-    & img{
+
+    & img {
       max-width: 60% !important;
     }
   }
 
-
-
-  .sticky-toc{
+  .sticky-toc {
     display: block !important;
     position: fixed !important;
     bottom: 0;
     right: var(--spacing-fluid-lg);
     align-items: end;
-    
-    & .sticky-toc-container{
 
+    & .sticky-toc-container {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
 
-      & .intro{
+      & .intro {
         /* background-color: aqua; */
         width: fit-content;
       }
     }
   }
 
-  .toc-title{
+  .toc-title {
     cursor: pointer;
     transition: transform 0.3s ease;
-    
   }
 
-  .toc-title:hover{
+  .toc-title:hover {
     transform: translateX(-10%) !important;
   }
 
-  .section2-header{
+  .section2-header {
     display: flex;
     position: relative;
     flex-direction: row;
     gap: var(--spacing-fluid-md);
     align-items: flex-start;
   }
-  
-  .filler{
+
+  .filler {
     height: calc(8 * 1.4em) !important;
     width: calc(8 * 1.4em) !important;
     overflow: hidden !important;
-  
-  
-    background-image: url('../assets/images/gradient1.jpeg');
+
+    background-image: url("../assets/images/gradient1.jpeg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
   }
-  
 
-  .section2{
+  .section2 {
     max-width: 60% !important;
   }
-  
-  .section2-header-img-container{
+
+  .section2-header-img-container {
     height: auto;
     max-width: 100%;
     object-fit: cover;
   }
 
-
-
   & li::after {
     width: calc(100% - 5em) !important;
   }
 
+  .section3-works-container {
+    width: 60% !important;
+  }
 }
 
-.pad{
+/** ---------------------- CSS Start HERE (MOBILE) ----------------------*/
+
+.pad {
   padding-left: var(--spacing-fluid-lg);
   padding-right: var(--spacing-fluid-lg);
+  padding-top: calc(70px * 1.5);
 }
 
+.max-width {
+  max-width: 100%;
+}
 
-/* ---------------------- LOADER ----------------------*/
-        /* Loader styles */
-        .loader {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: #ffffff;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 9999;
-          transition: opacity 1s ease; /* Fade transition */
-          opacity: 1; /* Initial opacity */
-      }
-
-      .loader.hidden {
-          opacity: 0; /* Final opacity for fade-out */
-          pointer-events: none; /* Prevent interaction during fade-out */
-      }
-
-      .loader-text {
-          font-size: var(--h1-font-size);
-          font-family: 'PPAcma', serif;
-          letter-spacing: 0.1em;
-          font-weight: bold;
-          color: gray;
-          position: relative;
-          overflow: hidden;
-      }
-
-      .loader-text::after {
-          content: 'ANGUS';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 0;
-          height: 100%;
-          color: black;
-          background: black;
-          overflow: hidden;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: loading 2s linear forwards;
-      }
-
-      @keyframes loading {
-          0% { width: 0; }
-          100% { width: 100%; }
-      }
-
-/* ---------------------- SECTION 1 ----------------------*/
+/** ---------------------- SECTION 1 ----------------------*/
 
 .section1 {
   height: 100vh;
@@ -257,7 +203,6 @@
 
 .hero-filler {
   width: 100%;
-  /* background-color: beige; */
 }
 
 .hero-container {
@@ -279,7 +224,7 @@
   gap: var(--spacing-fluid-lg);
   /* background-color: aqua; */
 
-  & .hero-flex1-container{
+  & .hero-flex1-container {
     max-width: 100%;
     /* background-color: aquamarine; */
     display: flex;
@@ -288,32 +233,24 @@
     gap: var(--spacing-fluid-md);
     flex-direction: column;
 
-    & h5{
+    & h5 {
       width: 70%;
     }
   }
 
-  & img{
+  & img {
     max-width: 80%;
   }
 
   /* background-color: aquamarine; */
 }
 
+/** ---------------------- SECTION 1 END----------------------*/
 
 
-/* ---------------------- SECTION 1 END----------------------*/
+/** ---------------------- SECTION 2 START----------------------*/
 
-
-/* ---------------------- SECTION 2 START----------------------*/
-
-.section2{
-  max-width: 100%;
-  padding-top: calc(70px * 1.5);
-
-}
-
-.section2-header{
+.section2-header {
   display: flex;
   position: relative;
   flex-direction: row;
@@ -325,8 +262,8 @@
 .filler-block {
   display: none; /* Hide by default on mobile */
   overflow: hidden;
-  border-radius: 20px;
-  background-image: url('../assets/images/gradient1.jpeg');
+  border-radius: var(--radius-rounded);
+  background-image: url("../assets/images/gradient1.jpeg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -334,46 +271,37 @@
   opacity: 0;
 }
 
-.section2-header-img-container{
+.section2-header-img-container {
   height: auto;
   max-width: 100%;
   object-fit: cover;
 }
 
-.section2-card-section{
+.section2-card-section {
   display: flex;
   flex-direction: column;
   padding-top: var(--spacing-fluid-lg);
-  gap: 15vh; 
-
-  min-height: 300vh;
-  position: relative;
+  gap: 15vh;
 }
 
 /* Section 2 Card START */
 
-.section2-card-container{
+.section2-card-container {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-fluid-xxl);
   padding-top: var(--spacing-fluid-lg);
   border-top: 1px solid currentColor;
   height: calc(100vh - (70px * 1.5));
-
-  position: relative;
-  z-index: 1;
 }
 
-
-.section2-card-header{
+.section2-card-header {
   display: flex;
   flex-direction: row;
   gap: var(--spacing-fluid-md);
-
 }
 
-
-.section2-card-content{
+.section2-card-content {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-fluid-md);
@@ -396,12 +324,12 @@
   }
 
   & li::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 5em;
     width: calc(100%);
-    height: .5px;
+    height: 0.5px;
     background-color: currentColor;
   }
 
@@ -422,62 +350,77 @@
   }
 }
 
-.section2-sticky-1{
+.section2-sticky-1 {
   position: sticky;
   top: var(--header-height);
   margin-bottom: 20vh;
 }
 
-.section2-sticky-2{
+.section2-sticky-2 {
   position: sticky;
-  background-color: var(--bg-primary);
+  background-color: var(--surface-base);
   top: calc(var(--header-height) + 8em);
   margin-bottom: 10vh;
-
-
 }
 
-.section2-sticky-3{
+.section2-sticky-3 {
   position: sticky;
-  background-color: var(--bg-primary);
+  background-color: var(--surface-base);
 }
-
-
 
 /* Section 2 Card END */
 
-/* ---------------------- SECTION 2 END ----------------------*/
+/** ---------------------- SECTION 2 END ----------------------*/
+
+/** ---------------------- SECTION 3 START----------------------*/
+
+.section3 {
+  height: 200vh;
+  background-color: var(--surface-base-invert);
+  border-radius: var(--spacing-fluid-lg) var(--spacing-fluid-lg) 0 0 ;
 
 
-
-/* ---------------------- SECTION 3 START----------------------*/
-
-.section3{
-  height: 100vh;
-
-}
-
-/* ---------------------- SECTION 3 END----------------------*/
-
-
-/* ---------------------- SECTION 4 START----------------------*/
-
-.section4{
-  height: 100vh;
-}
-
-/* ---------------------- SECTION 4 END----------------------*/
-
-.scroll-top-button{
-  z-index: 10;
-  
-    position: fixed;
-    bottom: 8px;
-    right: 8px;  
+  & h5, h3 {
+    color: var(--text-body-invert);
   }
+}
 
+.section3-works-container {
+  padding: 12vh 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface-base-invert);
 
-.sticky-toc{
+}
+
+.section3-works-card-container {
+  border-top: 1px solid var(--border-body);
+  padding: var(--spacing-fluid-md) 0;
+}
+
+.section3-works-card-container:last-child {
+  border-bottom: 1px solid var(--border-body);
+}
+
+/** ---------------------- SECTION 3 END----------------------*/
+
+/** ---------------------- SECTION 4 START----------------------*/
+
+.section4 {
+  height: 100vh;
+}
+
+/** ---------------------- SECTION 4 END----------------------*/
+
+.scroll-top-button {
+  z-index: 10;
+
+  position: fixed;
+  bottom: 8px;
+  right: 8px;
+}
+
+.sticky-toc {
   display: none;
 }
 
@@ -487,18 +430,15 @@
   height: 0;
 }
 
+/** ---------------------- GSAP ----------------------*/
 
-/* ---------------------- GSAP ----------------------*/
-
-.appear-text1{
+.appear-text1 {
   opacity: 0;
 }
 
-/* ---------------------- GSAP END ----------------------*/
+/** ---------------------- GSAP END ----------------------*/
 
 .services-text {
-    flex: 1;
-    max-width: 70%;
+  flex: 1;
+  max-width: 70%;
 }
-
-

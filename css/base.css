@@ -2,6 +2,8 @@
 @import url('color.css');
 
 :root {
+
+    /** ---------------------- Spacing ----------------------*/
     --spacing-xxs: 4px;   /* Extra Extra Small */
     --spacing-xs: 8px;    /* Extra Small */
     --spacing-sm: 12px;   /* Small */
@@ -20,9 +22,22 @@
 
     --ultimate-padding: var(--spacing-lg); /* Replacing with consistent spacing */
 
-      --header-height: calc(70px * 1.7);
-      --title-height: calc(1.4em * 1rem);
-      --card-spacing: var(--spacing-fluid-lg);
+    /** ---------------------- Radius ----------------------*/
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-rounded: 32px;
+    --radius-rounded-lg: 48px;
+    --radius-full: 9999px;
+
+    /** ---------------------- Others ----------------------*/
+
+    --header-height: calc(70px * 1.7);
+    --title-height: calc(1.4em * 1rem);
+    --card-spacing: var(--spacing-fluid-lg);
+
+    --window-width-mobile: 319px;
+    --window-width-tablet: 768px;
+    --window-width-desktop: 1080px;
 }
 
 

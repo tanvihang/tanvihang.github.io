@@ -1,0 +1,87 @@
+@media only screen and (min-width: var(--window-width-desktop)){
+
+
+}
+
+@media only screen and (min-width: var(--window-width-tablet)){
+
+}
+
+.work-card-container{
+    width: 100%;
+    border-top: 1px solid var(--border-body);
+    padding: var(--spacing-md) 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+
+    transition: height 0.8s ease-out;
+    background-color: var(--surface-base-invert);
+
+}
+
+.work-card-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: var(--spacing-lg);
+}
+
+.circle-container{
+    border-radius: var(--radius-full);
+    background-color: var(--surface-base);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+
+    cursor: pointer;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 10px solid var(--text-body);  /* This creates the triangle */
+    transform: rotate(90deg) translateY(-2px);  /* Rotate to point right */
+    transition: transform 0.3s ease;
+
+}
+
+.circle-container.rotated .triangle {
+    transform: rotate(180deg) translateY(-3px); 
+}
+
+.work-card-content {
+    transition: opacity 1.0s ease;
+    opacity: 1;
+    overflow: hidden;
+    height: auto;
+}
+
+.work-card-content.collapsed {
+    opacity: 0;
+}
+
+.work-card-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.work-image-card-empty{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D398B0;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xxl) 0;
+}
+

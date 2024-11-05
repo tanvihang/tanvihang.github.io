@@ -64,7 +64,7 @@
 
     </div>
 
-    <div class="section2 services pad" id="services">
+    <div class="section2 services pad max-width" id="services">
         <!-- <h1>SERVICES,</h1> -->
          <div class="section2-header">
             <div class="filler-block"></div>
@@ -161,7 +161,7 @@
                         <ol>
                             <li>
                                 <h5>
-                                    Lightnings
+                                    Lightings
                                 </h5>
                             </li>
                             <li>
@@ -186,8 +186,10 @@
     </div>
     
     <div class="section3 works pad" id="works">
-        <!-- <h1>WORKS,</h1> -->
+        <h5>Selected Works</h5>
         
+        <div class="section3-works-container">
+        </div>
     </div>
     
     <div class="section4 about" id="about">
@@ -215,14 +217,13 @@ import {works} from './datas/home.js'
 import {elementIsInViewPort, debounce} from './js/IntersectionObserver/vi.js'
 import "/components/button/ScrollTopButton/index.js"
 import "/components/button/CTAButton/index.js"
+import "/components/card/WorkCard/index.js"
 
 const filler = document.querySelector(".hero-filler");
 const heroContainer = document.querySelector(".section1")
-const section2 = document.querySelector(".section2");
-const section2CardSection = document.querySelector(".section2-card-section");
 const footer = document.querySelector("footer-custom");
 const stickyToc = document.querySelector(".sticky-toc");
-let section2CardElements;
+const section3WorksContainer = document.querySelector(".section3-works-container");
 
 // 1. Set header height
 setHeaderHeight()
@@ -267,7 +268,7 @@ Object.values(tocHeaders).forEach((header) => {
 });
 
 function setHeroContainerHeight(height){
-    if(window.innerWidth > 319 && window.innerWidth < 768){
+    if(window.innerWidth > scale.windowWidth.mobile && window.innerWidth < scale.windowWidth.tablet){
         const calcHeight = `calc(100vh - 70px)`
         heroContainer.style.height = calcHeight;
     }else{
@@ -280,6 +281,14 @@ globalContext.headerHeight.subscribe(()=>{
     const height = globalContext.headerHeight.getState().height;
     setHeaderHeight(height)
     // setHeroContainerHeight(height)
+})
+
+window.addEventListener('DOMContentLoaded', ()=>{
+    works.forEach((work)=>{
+        const workCard = document.createElement("work-card-custom")
+        workCard.setAttribute("imgDict", JSON.stringify(work))
+        section3WorksContainer.appendChild(workCard)
+    })
 })
 
 function checkFooterInView(){
