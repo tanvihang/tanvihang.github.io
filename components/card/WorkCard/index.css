@@ -1,9 +1,26 @@
-@media only screen and (min-width: var(--window-width-desktop)){
+@media only screen and (min-width: 1080px){
+
+    .work-card-container{
+        cursor: pointer !important;
+        border-top: 0px !important;
+
+        h5{
+            transition: transform 0.5s ease;
+            color: var(--text-placeholder) !important;
+        }
+    }
+
+    .work-card-container:hover{
+        h5{
+            transform: translateY(-20px);
+            color: var(--text-body-invert) !important;
+        }
+    }
 
 
 }
 
-@media only screen and (min-width: var(--window-width-tablet)){
+@media only screen and (min-width: 768px){
 
 }
 
@@ -47,13 +64,13 @@
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
     border-bottom: 10px solid var(--text-body);  /* This creates the triangle */
-    transform: rotate(90deg) translateY(-2px);  /* Rotate to point right */
+    transform: rotate(0deg);  /* Rotate to point right */
     transition: transform 0.3s ease;
 
 }
 
 .circle-container.rotated .triangle {
-    transform: rotate(180deg) translateY(-3px); 
+    transform: rotate(180deg); 
 }
 
 .work-card-content {

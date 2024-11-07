@@ -5,7 +5,7 @@ const works = [
     year: '2024',
     jobType: 'Healthcare',
     projectType: 'Freelance',
-    image1: '/assets/images/vitalz1.gif',
+    image1: '/assets/images/vitalz.png',
     tags: ['React.JS', 'GSAP', 'Framer'],
     cta: "photography/townbytheocean",
     last: false
@@ -16,7 +16,7 @@ const works = [
     year: '2024',
     jobType: 'Concept',
     projectType: 'Personal',
-    image1: '',
+    image1: '/assets/images/hygieia.png',
     tags: ['React.JS', 'GSAP', 'Figma'],
     cta: "photography/townbytheocean",
     last: true

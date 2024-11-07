@@ -153,9 +153,16 @@ class WorkCard extends HTMLElement {
         circleContainer.classList.toggle("rotated");
     });
 
+
     // hover show info for computer(screen width > 1079)
-    if (window.innerWidth > scale.windowWidth.desktop) {
+    if (window.innerWidth >= scale.windowWidth.desktop) {
+
+        // hide the triangle and circle container
+        triangle.style.display = "none";
+        circleContainer.style.display = "none";
+
     } else {
+
     }
   }
 }

@@ -184,14 +184,19 @@
 
 
     </div>
+
     
     <div class="section3 works pad" id="works">
+        <div class="section3-hover-container">
+            <img class="section3-hover-container-img" />
+        </div>
         <h5>Selected Works</h5>
         
         <div class="section3-works-container">
         </div>
     </div>
-    
+
+
     <div class="section4 about" id="about">
         <!-- <h1>ABOUT,</h1> -->
 
@@ -211,6 +216,7 @@ import './components/footer/index.js'
 import './js/Home/animations.js'
 import './js/Home/resize.js'
 import {setHeaderHeight, adjustFillerBlockHeight} from './js/Home/utils.js'
+import {showHoverInfo} from './js/Home/hover.js'
 
 import globalContext from './datas/globalContext.js'
 import {works} from './datas/home.js'
@@ -284,11 +290,15 @@ globalContext.headerHeight.subscribe(()=>{
 })
 
 window.addEventListener('DOMContentLoaded', ()=>{
-    works.forEach((work)=>{
+    works.forEach((work, index)=>{
         const workCard = document.createElement("work-card-custom")
         workCard.setAttribute("imgDict", JSON.stringify(work))
+        workCard.setAttribute("id", `work-card-${index}`)
         section3WorksContainer.appendChild(workCard)
     })
+
+    showHoverInfo();
+
 })
 
 function checkFooterInView(){

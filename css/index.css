@@ -93,6 +93,44 @@
   .section2-sticky-3 {
     top: calc(var(--header-height) + 20em) !important;
   }
+
+
+  .section3-works-container {
+    padding: 0vh 0 !important;
+    margin: 12vh 0 !important;
+
+    h5 {
+      z-index: 10 !important;
+    }
+  }
+
+  /**  Desktop section 3 hover  */
+  .section3-hover-container{
+    display: block !important;
+    height: 0vh;
+    width: 50vh;
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+    overflow: hidden;
+
+
+    transform: translateY(-50%);
+    transition: height 0.3s ease-out,opacity 0.3s ease-out;
+    transform-origin: center center;
+
+    & img {
+      height: 35vh;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+}
+
+.section3-hover-container-show{
+  height: 35vh !important;
+}
+
 }
 
 @media only screen and (min-width: 768px) {
@@ -378,7 +416,7 @@
   height: 200vh;
   background-color: var(--surface-base-invert);
   border-radius: var(--spacing-fluid-lg) var(--spacing-fluid-lg) 0 0 ;
-
+  position: relative;
 
   & h5, h3 {
     color: var(--text-body-invert);
@@ -400,6 +438,10 @@
 
 .section3-works-card-container:last-child {
   border-bottom: 1px solid var(--border-body);
+}
+
+.section3-hover-container{
+  display: none;
 }
 
 /** ---------------------- SECTION 3 END----------------------*/

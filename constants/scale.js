@@ -31,9 +31,9 @@ const radius = {
 }
 
 const windowWidth = {
-    mobile: "319px",
-    tablet: "768px",
-    desktop: "1080px",
+    mobile: 319,
+    tablet: 768,
+    desktop: 1080,
 }
 
 export default {
