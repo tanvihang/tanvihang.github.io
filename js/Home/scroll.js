@@ -12,6 +12,9 @@ const tocHeaders = {
     works: document.getElementById("toc-works"),
     about: document.getElementById("toc-about")
 };
+const section3 = document.querySelector(".section3");
+
+let section3Top;
 
 /**
  * Header Height Management
@@ -39,9 +42,14 @@ function setHeroContainerHeight() {
  */
 function checkFooterInView() {
     if(elementIsInViewPort(footer, 20)) {
+        console.log("footer")
         footer.shadowRoot.querySelector('.footer').classList.add("outer-container-show");
     }
 }
+
+function scrollDebounceFunction() {
+    section3Top = section3.getBoundingClientRect().top;
+}   
 
 /**
  * TOC Click Handlers
@@ -82,29 +90,30 @@ function handleResize() {
  * Initialize all scroll and resize related functionality
  */
 function initScrollHandlers() {
-    // Initial setup
-    setHeaderHeight();
+    // // Initial setup
+    // setHeaderHeight();
     
-    // Global context subscription
-    globalContext.headerHeight.subscribe(() => {
-        const height = globalContext.headerHeight.getState().height;
-        setHeaderHeight(height);
-    });
+    // // Global context subscription
+    // globalContext.headerHeight.subscribe(() => {
+    //     const height = globalContext.headerHeight.getState().height;
+    //     setHeaderHeight(height);
+    // });
 
-    // Scroll event listeners
-    window.addEventListener('scroll', debounce(checkFooterInView, 100));
+    // // Scroll event listeners
+    // window.addEventListener('scroll', debounce(checkFooterInView, 100));
+    window.addEventListener('scroll', debounce(scrollDebounceFunction, 100));
 
-    // Resize event listeners
-    window.addEventListener('resize', debounce(handleResize, 100));
+    // // Resize event listeners
+    // window.addEventListener('resize', debounce(handleResize, 100));
 
-    // Load event listeners
-    window.addEventListener('load', () => {
-        adjustFillerBlockHeight();
-        handleResize();
-    });
+    // // Load event listeners
+    // window.addEventListener('load', () => {
+    //     adjustFillerBlockHeight();
+    //     handleResize();
+    // });
 
-    // Initialize TOC click handlers
-    initTOCClickHandlers();
+    // // Initialize TOC click handlers
+    // initTOCClickHandlers();
 }
 
 // Initialize everything when the document is ready
@@ -115,5 +124,6 @@ export {
     setHeaderHeight,
     setHeroContainerHeight,
     checkFooterInView,
-    handleResize
+    handleResize,
+    section3Top
 };

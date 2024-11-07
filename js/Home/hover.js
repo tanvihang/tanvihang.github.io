@@ -1,5 +1,5 @@
 import {debounce} from "./utils.js"
-
+import {section3Top} from "./scroll.js"
 // When hover on work card for computer, show the info
 
 
@@ -33,13 +33,10 @@ export const showHoverInfo = ()=>{
     // hoverContainer.style.transition = "left 0.05s cubic-bezier(0.25, 0.1, 0.25, 1), top 0.05s cubic-bezier(0.25, 0.1, 0.25, 1)";
     section3.addEventListener("mousemove", (event)=>{
 
-        const debouncedMouseMove = debounce(()=>{
             const mouseX = event.clientX;
             const mouseY = event.clientY;
             hoverContainer.style.left = `${mouseX}px`;
-            hoverContainer.style.top = `${mouseY}px`;
-        }, 0)
-        
-        section3.addEventListener("mousemove", debouncedMouseMove)
+            hoverContainer.style.top = `${mouseY - section3Top}px`;
+
     })
 }
