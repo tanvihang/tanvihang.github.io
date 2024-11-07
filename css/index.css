@@ -98,17 +98,13 @@
   .section3-works-container {
     padding: 0vh 0 !important;
     margin: 12vh 0 !important;
-
-    h5 {
-      z-index: 10 !important;
-    }
   }
 
   /**  Desktop section 3 hover  */
   .section3-hover-container{
     display: block !important;
     height: 0vh;
-    width: 50vh;
+    width: 35vw;
     position: absolute;
     z-index: 3;
     pointer-events: none;
@@ -120,15 +116,22 @@
     transform-origin: center center;
 
     & img {
-      height: 35vh;
+      height: 0;
       width: 100%;
       object-fit: cover;
+
+      transition: height 0.3s ease-out,opacity 0.3s ease-out;
+
     }
     
 }
 
 .section3-hover-container-show{
-  height: 35vh !important;
+  height: 45vh !important;
+
+  & img{
+    height: 45vh !important;
+  }
 }
 
 }
@@ -158,6 +161,7 @@
     bottom: 0;
     right: var(--spacing-fluid-lg);
     align-items: end;
+    z-index: 100;
 
     & .sticky-toc-container {
       display: flex;
@@ -413,7 +417,7 @@
 /** ---------------------- SECTION 3 START----------------------*/
 
 .section3 {
-  height: 200vh;
+  height: 100vh;
   background-color: var(--surface-base-invert);
   border-radius: var(--spacing-fluid-lg) var(--spacing-fluid-lg) 0 0 ;
   position: relative;
@@ -450,6 +454,8 @@
 
 .section4 {
   height: 100vh;
+  background-color: var(--surface-base-invert);
+  border-radius:  0 0 var(--spacing-fluid-lg) var(--spacing-fluid-lg) ;
 }
 
 /** ---------------------- SECTION 4 END----------------------*/

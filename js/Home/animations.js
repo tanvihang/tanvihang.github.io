@@ -1,3 +1,4 @@
+import { tokensColors } from '../../constants/colors.js';
 import { adjustFillerBlockHeight } from './utils.js';
 
 // Initialize GSAP
@@ -8,16 +9,22 @@ const sequence = ['intro', 'services', 'works', 'about'];
 let titleArr = [];
 
 // Get DOM elements
-const sections = document.querySelectorAll("div[id]");
+const sections = document.querySelectorAll("div[id]")
 const tocHeaders = {
     intro: document.getElementById("toc-intro"),
     services: document.getElementById("toc-services"),
     works: document.getElementById("toc-works"),
     about: document.getElementById("toc-about")
 };
+const tocAngus = document.getElementById("toc-angus");
+
 const stickyToc = document.querySelector(".sticky-toc");
 const footer = document.querySelector("footer-custom");
 
+const section3 = document.querySelector(".section3");
+const darkSection = document.querySelector(".dark-section");
+
+let isColorChange = false;
 
 // Animation utility functions
 const showElement = (element) => {
@@ -81,13 +88,24 @@ const highlightText = (element) => {
 };
 
 const disableHighlightText = (element) => {
-    gsap.to(
-        element,
+
+    if(isColorChange) { 
+        gsap.to(
+            element,
+        {
+            color: "#FFFFFF",
+            }
+        );
+    }else{
+        gsap.to(
+            element,
         {
             color: "#333333",
-        }
-    );
+            }
+        );
+    }
 };
+
 
 // Section handlers
 function handleEnter(id, tocHeader) {
@@ -114,8 +132,120 @@ function handleLeaveBack(id, tocHeader) {
     }
 }
 
+const changeToWhite = () => {
+    isColorChange = true;
+    gsap.to(Object.values(tocHeaders).filter(header => 
+        header.style.opacity !== "0" && header.style.color !== "#7D715C"
+    ), {
+        color: tokensColors.textBodyInvert,
+        duration: 0.3
+    });
+    gsap.to(tocAngus, {
+        color: tokensColors.textBodyInvert,
+        duration: 0.3
+    });
+}
 
+const changeToBlack = () => {
+    isColorChange = false;
+    gsap.to(Object.values(tocHeaders).filter(header => 
+        header.style.opacity !== "0" && header.style.color !== "#7D715C"
+    ), {
+        color: tokensColors.textBody,
+        duration: 0.3
+    });
+    gsap.to(tocAngus, {
+        color: tokensColors.textBody,
+        duration: 0.3
+    });
+}
 
+// Section animations
+const initSectionAnimations = () => {
+
+    sections.forEach((section) => {
+        const id = section.id;
+        const tocHeader = tocHeaders[id];
+
+        ScrollTrigger.create({
+            trigger: section,
+            start: "top 90%",
+            end: "bottom 90%",
+            onEnter: () => {
+                handleEnter(id, tocHeader);
+                // Add small delay to ensure section3 animation runs first
+                gsap.delayedCall(0.01, () => highlightText(tocHeader));
+            },
+            onLeaveBack: () => {
+                handleLeaveBack(id, tocHeader);
+            },
+            onLeave: () => {
+                gsap.delayedCall(0.01, () => disableHighlightText(tocHeader));
+            },
+            onEnterBack: () => {
+                gsap.delayedCall(0.01, () => highlightText(tocHeader));
+            },
+            scrub: true,
+        });
+    });
+
+        // Hero text animation
+        gsap.fromTo(".hero-text",
+            {
+                opacity: 0,
+                x: -100,
+                duration: 2
+            },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 2,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: ".hero-text",
+                    start: "top 100%",
+                    toggleActions: "play none none none"
+                }
+            }
+        );
+    
+        // Services section animations
+        ScrollTrigger.create({
+            trigger: ".services-text",
+            start: "top 80%",
+            onEnter: () => {
+                // Text animation
+                gsap.fromTo(".services-text",
+                    {
+                        opacity: 0,
+                        y: 100
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 2,
+                        ease: "power2.out",
+                        onComplete: adjustFillerBlockHeight
+                    }
+                );
+    
+                // Filler block animation
+                gsap.fromTo(".filler-block",
+                    {
+                        opacity: 0,
+                        y: 100
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 2,
+                        ease: "power2.out"
+                    }
+                );
+            }
+        });
+
+};
 
 // Initialize animations
 const initAnimations = () => {
@@ -127,87 +257,28 @@ const initAnimations = () => {
         onLeaveBack: () => showStickyToc()
     });
 
-    // Section animations
-    sections.forEach((section) => {
-        const id = section.id;
-        const tocHeader = tocHeaders[id];
-
-        ScrollTrigger.create({
-            trigger: section,
-            start: "top 50%",
-            end: "bottom 50%",
-            onEnter: () => {
-                handleEnter(id, tocHeader);
-                highlightText(tocHeader);
-            },
-            onLeaveBack: () => {
-                handleLeaveBack(id, tocHeader);
-            },
-            onLeave: () => {
-                disableHighlightText(tocHeader);
-            },
-            onEnterBack: () => {
-                highlightText(tocHeader);
-            },
-            scrub: true,
-        });
-    });
-
-    // Hero text animation
-    gsap.fromTo(".hero-text",
-        {
-            opacity: 0,
-            x: -100,
-            duration: 2
-        },
-        {
-            opacity: 1,
-            x: 0,
-            duration: 2,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: ".hero-text",
-                start: "top 100%",
-                toggleActions: "play none none none"
-            }
-        }
-    );
-
-    // Services section animations
+    // Section3 color change animation
     ScrollTrigger.create({
-        trigger: ".services-text",
-        start: "top 80%",
+        trigger: darkSection,
+        start: "top 90%",
+        end: "bottom 90%",
         onEnter: () => {
-            // Text animation
-            gsap.fromTo(".services-text",
-                {
-                    opacity: 0,
-                    y: 100
-                },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 2,
-                    ease: "power2.out",
-                    onComplete: adjustFillerBlockHeight
-                }
-            );
-
-            // Filler block animation
-            gsap.fromTo(".filler-block",
-                {
-                    opacity: 0,
-                    y: 100
-                },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 2,
-                    ease: "power2.out"
-                }
-            );
+            changeToWhite();
+        },
+        onLeave: () => {
+            changeToBlack();
+        },
+        onEnterBack: () => {
+            changeToWhite();
+        },
+        onLeaveBack: () => {
+            changeToBlack();
         }
     });
+
+    // Initialize section animations after section3 setup
+    initSectionAnimations();
+
 
 };
 

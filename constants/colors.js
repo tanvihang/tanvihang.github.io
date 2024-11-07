@@ -61,4 +61,4 @@ const tokensColors = {
     borderBodyInvert: primitivesColors.grey200,
 }
 
-export default colors
+export {tokensColors}

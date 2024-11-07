@@ -51,31 +51,6 @@ function scrollDebounceFunction() {
     section3Top = section3.getBoundingClientRect().top;
 }   
 
-/**
- * TOC Click Handlers
- */
-function initTOCClickHandlers() {
-    Object.values(tocHeaders).forEach((header) => {
-        header.addEventListener('click', (event) => {
-            const sectionId = event.target.id.replace('toc-', '');
-            
-            if (sectionId === 'intro') {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            } else {
-                const section = document.getElementById(sectionId);
-                if (section) {
-                    section.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            }
-        });
-    });
-}
 
 /**
  * Resize Handlers
@@ -90,30 +65,9 @@ function handleResize() {
  * Initialize all scroll and resize related functionality
  */
 function initScrollHandlers() {
-    // // Initial setup
-    // setHeaderHeight();
-    
-    // // Global context subscription
-    // globalContext.headerHeight.subscribe(() => {
-    //     const height = globalContext.headerHeight.getState().height;
-    //     setHeaderHeight(height);
-    // });
 
-    // // Scroll event listeners
-    // window.addEventListener('scroll', debounce(checkFooterInView, 100));
     window.addEventListener('scroll', debounce(scrollDebounceFunction, 100));
 
-    // // Resize event listeners
-    // window.addEventListener('resize', debounce(handleResize, 100));
-
-    // // Load event listeners
-    // window.addEventListener('load', () => {
-    //     adjustFillerBlockHeight();
-    //     handleResize();
-    // });
-
-    // // Initialize TOC click handlers
-    // initTOCClickHandlers();
 }
 
 // Initialize everything when the document is ready
