@@ -29,6 +29,7 @@
     cursor: pointer;
     position: relative; /* Ensure the container remains in place during animation */
     height: fit-content;
+    -webkit-tap-highlight-color: transparent;
   
     outline: none;
   

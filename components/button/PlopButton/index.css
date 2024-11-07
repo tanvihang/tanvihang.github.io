@@ -85,6 +85,7 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 
   outline: none;  /* Removes the focus outline */
   box-shadow: none;

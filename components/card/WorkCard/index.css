@@ -12,7 +12,7 @@
 
     .work-card-container:hover{
         h5{
-            transform: translateY(-20px);
+            /* transform: translateY(-20px); */
             color: var(--text-body-invert) !important;
         }
     }
@@ -55,7 +55,9 @@
     align-items: center;
     transition: transform 0.3s ease;
 
+
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .triangle {
@@ -78,14 +80,17 @@
     opacity: 1;
     overflow: hidden;
     height: auto;
+    width: 100%;
+    position: relative;
+    /* background-color: aqua; */
 }
 
 .work-card-content.collapsed {
     opacity: 0;
 }
 
-.work-card-image {
-    width: 100%;
+.work-image-card {
+    width: 80%;
     height: auto;
     object-fit: cover;
     display: block;

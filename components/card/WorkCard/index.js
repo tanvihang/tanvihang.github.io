@@ -56,7 +56,7 @@ class WorkCard extends HTMLElement {
                 <div class = "work-card-content">
                     ${
                       !isDesktop() && image1
-                        ? `<img class= "work-image-card" src="${image1}" alt="${title}" width = 200px object-fit = "cover">`
+                        ? `<img class= "work-image-card" src="${image1}" alt="${title}" >`
                         : !isDesktop() && !image1
                         ? `<div class = "work-image-card-empty">
                             <h1 style="color: var(--text-body-invert);">WIP</h1>

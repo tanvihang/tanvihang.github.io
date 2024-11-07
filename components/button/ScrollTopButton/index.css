@@ -18,6 +18,7 @@
 
     cursor: pointer;
 
+    -webkit-tap-highlight-color: transparent;
     transition: opacity 0.2s linear;
 }
 
