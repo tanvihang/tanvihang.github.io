@@ -299,6 +299,9 @@
 
 /** ---------------------- SECTION 2 START----------------------*/
 
+
+
+
 .section2-header {
   display: flex;
   position: relative;
@@ -377,7 +380,8 @@
     position: absolute;
     bottom: 0;
     left: 5em;
-    width: calc(100%);
+    width: 0% !important;
+    transition: width 2.5s ease-out;
     height: 0.5px;
     background-color: currentColor;
   }
@@ -397,6 +401,10 @@
   h6 {
     font-family: "IBMPlexMonoMedium";
   }
+}
+
+li.animate::after{
+  width: 100% !important;
 }
 
 .section2-sticky-1 {
