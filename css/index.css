@@ -129,7 +129,13 @@ only screen and (orientation: landscape) {
   }
 
   .section3-text-h6 {
-    display: flex !important;
+    color: var(--text-body) !important;
+    cursor: pointer;
+
+    transition: color 0.3s ease-out;
+  }
+  .section3-text-h6:hover {
+    color: var(--text-body) !important;
   }
 
   .section3-hover-container-show {
@@ -470,7 +476,7 @@ li.animate::after {
 }
 
 .section3-text-h6 {
-  display: none;
+  color: var(--text-body-invert) !important;
 }
 
 /** ---------------------- SECTION 3 END----------------------*/
