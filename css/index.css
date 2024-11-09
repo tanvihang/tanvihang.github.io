@@ -1,5 +1,5 @@
 @media only screen and (min-width: 1080px),
-  only screen and (orientation: landscape) {
+only screen and (orientation: landscape) {
   .hero-container {
     flex-direction: row !important;
     position: relative;
@@ -78,7 +78,8 @@
   }
 
   .filler-block {
-    display: block !important; /* Show on tablet and up */
+    display: block !important;
+    /* Show on tablet and up */
     width: auto;
     height: auto;
   }
@@ -103,7 +104,7 @@
   }
 
   /**  Desktop section 3 hover  */
-  .section3-hover-container{
+  .section3-hover-container {
     display: block !important;
     height: 0vh;
     width: 35vw;
@@ -114,7 +115,7 @@
 
 
     transform: translateY(-50%);
-    transition: height 0.3s ease-out,opacity 0.3s ease-out;
+    transition: height 0.3s ease-out, opacity 0.3s ease-out;
     transform-origin: center center;
 
     & img {
@@ -122,25 +123,28 @@
       width: 100%;
       object-fit: cover;
 
-      transition: height 0.3s ease-out,opacity 0.3s ease-out;
+      transition: height 0.3s ease-out, opacity 0.3s ease-out;
 
     }
-    
-}
-
-.section3-hover-container-show{
-  height: 45vh !important;
-
-  & img{
-    height: 45vh !important;
   }
-}
+
+  .section3-text-h6 {
+    display: flex !important;
+  }
+
+  .section3-hover-container-show {
+    height: 45vh !important;
+
+    & img {
+      height: 45vh !important;
+    }
+  }
 
 }
 
 @media only screen and (min-width: 768px) {
 
-  .hide{
+  .hide {
     display: none !important;
   }
 
@@ -312,7 +316,8 @@
 }
 
 .filler-block {
-  display: none; /* Hide by default on mobile */
+  display: none;
+  /* Hide by default on mobile */
   overflow: hidden;
   border-radius: var(--radius-rounded);
   background-image: url("../assets/images/gradient1.jpeg");
@@ -403,7 +408,7 @@
   }
 }
 
-li.animate::after{
+li.animate::after {
   width: 100% !important;
 }
 
@@ -434,10 +439,11 @@ li.animate::after{
 .section3 {
   height: 100vh;
   background-color: var(--surface-base-invert);
-  border-radius: var(--spacing-fluid-lg) var(--spacing-fluid-lg) 0 0 ;
+  border-radius: var(--spacing-fluid-lg) var(--spacing-fluid-lg) 0 0;
   position: relative;
 
-  & h5, h3 {
+  & h5,
+  h3 {
     color: var(--text-body-invert);
   }
 }
@@ -459,7 +465,11 @@ li.animate::after{
   border-bottom: 1px solid var(--border-body);
 }
 
-.section3-hover-container{
+.section3-hover-container {
+  display: none;
+}
+
+.section3-text-h6 {
   display: none;
 }
 
@@ -470,7 +480,7 @@ li.animate::after{
 .section4 {
   height: 100vh;
   background-color: var(--surface-base-invert);
-  border-radius:  0 0 var(--spacing-fluid-lg) var(--spacing-fluid-lg) ;
+  border-radius: 0 0 var(--spacing-fluid-lg) var(--spacing-fluid-lg);
 }
 
 /** ---------------------- SECTION 4 END----------------------*/

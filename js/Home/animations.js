@@ -27,6 +27,7 @@ const servicesCards = document.querySelectorAll(".section2-card-container");
 
 const section3 = document.querySelector(".section3");
 const darkSection = document.querySelector(".dark-section");
+const section3Text = document.querySelectorAll(".section3-text");
 
 let isColorChange = false;
 
@@ -280,6 +281,37 @@ const initSectionAnimations = () => {
 
         })
     })
+
+    //* Section2 parallax animation
+   gsap.to(
+    section2,
+    {
+        y: 500,
+        scale: 0.9,
+        opacity: 0,
+        scrollTrigger: {
+            trigger: darkSection,
+            start: "top 100%",
+            end: "top 40%",
+            scrub: true,
+        }
+    }
+   )
+
+
+   section3Text.forEach((text) => {
+    gsap.fromTo(text, {
+        y: 100,
+    }, {
+        y: 0,
+        scrollTrigger: {
+            trigger: darkSection,
+            start: "top 100%",
+            end: "top 20%",
+            scrub: true,
+        }
+    })
+   })
 
 
 };

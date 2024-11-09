@@ -48,7 +48,7 @@ class WorkCard extends HTMLElement {
 
             <div class ="work-card-container">
                 <div class="work-card-header">
-                    <h5 style="color: var(--text-body-invert);">(0${id}) ${title}</h5>
+                    <h5 class="section3-text" style="color: var(--text-body-invert);">(0${id}) ${title}</h5>
                     <div class="circle-container">
                         <div class="triangle"></div>
                     </div>
