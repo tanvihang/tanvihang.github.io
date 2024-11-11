@@ -26,6 +26,8 @@
 
 }
 
+
+
 .about1 {
   /* background-color: aqua; */
   height: 100vh;
@@ -105,7 +107,9 @@
   align-items: start;
   justify-content: center;
   padding-top: calc(var(--ultimate-padding) * 5);
-  padding-left: calc(var(--ultimate-padding));
+  /* padding-left: calc(var(--ultimate-padding)); */
+  padding-left: var(--spacing-fluid-lg);
+  padding-right: var(--spacing-fluid-lg);
   padding-bottom: calc(var(--ultimate-padding) * 2);
 
 }
@@ -115,8 +119,7 @@
   flex-direction: column;
   align-items: end;
   justify-content: center;
-  padding-right: calc(var(--ultimate-padding));
-
+  padding-right: var(--spacing-fluid-lg);
   text-align: end;
 }
 
@@ -140,9 +143,9 @@
   background-size: 0% 100%;
   background-repeat: no-repeat;
 
-  animation: scroll-reveal linear forwards;
+  /* animation: scroll-reveal linear forwards;
   animation-timeline: view();
-  animation-range: 0% 60%;
+  animation-range: 0% 60%; */
 }
 
 @keyframes scroll-reveal {
@@ -188,9 +191,9 @@
   background-size: 0% 100%;
   background-repeat: no-repeat;
 
-  animation: unique-description linear forwards;
+  /* animation: unique-description linear forwards;
   animation-timeline: view();
-  animation-range: 35% 55%;
+  animation-range: 35% 55%; */
 
 }
 
@@ -206,9 +209,9 @@
   background-color: black;
   padding: calc(var(--ultimate-padding)/5);
 
-  animation: uiux-description linear forwards;
+  /* animation: uiux-description linear forwards;
   animation-timeline: view();
-  animation-range: 25% 55%
+  animation-range: 25% 55% */
 
 }
 

@@ -14,6 +14,10 @@
     ></script>
   </head>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-VPFYQJ4C7S"></script>
   <script>
@@ -30,7 +34,7 @@
 
     <div class="filler"></div>
 
-    <div class="about1">
+    <div class="pad about1">
       <div class="transparent-box"></div>
       <div class="about1-box">
         <img src="/assets/images/V.png" />
@@ -125,6 +129,7 @@
       debounce,
     } from "/js/IntersectionObserver/vi.js";
     import "/components/button/ScrollTopButton/index.js"
+    import "/js/About/animation.js"
 
     const filler = document.querySelector(".filler");
     const footer = document.querySelector("footer-custom");
@@ -190,18 +195,11 @@
 
     function checkItemInView() {
       // Check footer
-      if (elementIsInViewPort(footer, 20)) {
+      if (elementIsInViewPort(footer, 5)) {
         footer.shadowRoot
           .querySelector(".footer")
           .classList.add("outer-container-show");
       }
-
-      // Check first hori(then stick the screen to top)
-      // if(elementIsInViewPort(firstHori, 50)){
-      //   console.log("First hori in view")
-      //   firstHori.scrollIntoView({behavior: 'smooth'})
-
-      // }
     }
 
     function animate() {
