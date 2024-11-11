@@ -1,5 +1,4 @@
-@media only screen and (min-width: 1080px),
-only screen and (orientation: landscape) {
+@media only screen and (min-width: 1080px) {
   .hero-container {
     flex-direction: row !important;
     position: relative;
@@ -229,6 +228,15 @@ only screen and (orientation: landscape) {
     max-width: 100%;
     object-fit: cover;
   }
+
+  .section2-sticky-1 {
+    margin-bottom: 20vh !important;
+  }
+  
+  .section2-sticky-2 {
+    margin-bottom: 10vh !important;
+  }
+
 
   & li::after {
     width: calc(100% - 5em) !important;

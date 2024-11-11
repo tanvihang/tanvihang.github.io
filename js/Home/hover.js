@@ -5,6 +5,11 @@ import {section3Top} from "./scroll.js"
 
 export const showHoverInfo = ()=>{
 
+    // Check if device has hover capability (typically means it's a computer)
+    const hasHover = window.matchMedia('(hover: hover)').matches;
+
+    // Only proceed if device has hover capability
+    if (!hasHover) return;
 
     const hoverContainer = document.querySelector(".section3-hover-container");
     const section3 = document.querySelector(".section3");

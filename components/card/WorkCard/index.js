@@ -24,8 +24,10 @@ class WorkCard extends HTMLElement {
   }
 
   async render() {
+    const hasHover = window.matchMedia('(hover: hover)').matches;
+
     const isDesktop = () => {
-      return window.innerWidth > scale.windowWidth.desktop;
+      return window.innerWidth > scale.windowWidth.desktop && hasHover;
     };
 
     const imgDict = this.getAttribute("imgDict");
@@ -154,8 +156,10 @@ class WorkCard extends HTMLElement {
     });
 
 
+
+    
     // hover show info for computer(screen width > 1079)
-    if (window.innerWidth >= scale.windowWidth.desktop) {
+    if (hasHover && window.innerWidth >= scale.windowWidth.desktop) {
 
         // hide the triangle and circle container
         triangle.style.display = "none";
