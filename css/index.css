@@ -584,7 +584,7 @@ li.animate::after {
 .section4-text-container {
   display: flex;
   flex-direction: column;
-  gap: 20vh;
+  gap: 10vh;
 }
 
 .section4-text {
@@ -602,14 +602,14 @@ li.animate::after {
 .section4-sticky-2 {
   position: sticky;
   top: calc(var(--header-height) + 4em);
-  margin-bottom: 100vh;
+  margin-bottom: 80vh;
   /* background-color: var(--surface-base); */
 }
 
 .section4-sticky-3 {
   position: sticky;
   top: calc(var(--header-height) + 4em);
-  margin-bottom: 40vh;
+  margin-bottom: 30vh;
   /* background-color: var(--surface-base); */
 }
 
