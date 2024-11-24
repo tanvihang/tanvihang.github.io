@@ -270,6 +270,10 @@
     width: 60% !important;
   }
 
+  .section4-text-container {
+    gap: 60vh !important;
+  }
+
   .section4-sticky-1 {
     top: var(--header-height) !important;
     margin-bottom: 42vh !important;
@@ -580,7 +584,7 @@ li.animate::after {
 .section4-text-container {
   display: flex;
   flex-direction: column;
-  gap: 60vh;
+  gap: 20vh;
 }
 
 .section4-text {
@@ -590,25 +594,30 @@ li.animate::after {
 .section4-sticky-1 {
   position: sticky;
   top: var(--header-height);
-  margin-bottom: 60vh;
+  margin-bottom: 20vh;
 }
+
+/* 30vh gap * 3 = 90vh, each text about 10vh */
 
 .section4-sticky-2 {
   position: sticky;
   top: calc(var(--header-height) + 4em);
-  margin-bottom: 30vh;
+  margin-bottom: 100vh;
+  /* background-color: var(--surface-base); */
 }
 
 .section4-sticky-3 {
   position: sticky;
-  top: calc(var(--header-height) + 17em);
-  margin-bottom: 18vh;
+  top: calc(var(--header-height) + 4em);
+  margin-bottom: 40vh;
+  /* background-color: var(--surface-base); */
 }
 
 .section4-sticky-4 {
   position: sticky;
-  top: calc(var(--header-height) + 21em);
-  margin-bottom: 5vh;
+  top: calc(var(--header-height) + 4em);
+  margin-bottom: 0vh;
+  /* background-color: var(--surface-base); */
 }
 
 /** ---------------------- SECTION 4 END----------------------*/
