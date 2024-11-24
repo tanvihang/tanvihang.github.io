@@ -84,11 +84,11 @@
   }
 
   .section2-sticky-1 {
-    margin-bottom: 24vh !important;
+    /* margin-bottom: 24vh !important; */
   }
 
   .section2-sticky-2 {
-    margin-bottom: 12vh !important;
+    /* margin-bottom: 12vh !important; */
     top: calc(var(--header-height) + 10em) !important;
   }
 
@@ -230,11 +230,11 @@
   }
 
   .section2-sticky-1 {
-    margin-bottom: 20vh !important;
+    /* margin-bottom: 20vh !important; */
   }
   
   .section2-sticky-2 {
-    margin-bottom: 10vh !important;
+    /* margin-bottom: 10vh !important; */
   }
 
 
@@ -429,20 +429,22 @@ li.animate::after {
 .section2-sticky-1 {
   position: sticky;
   top: var(--header-height);
-  margin-bottom: 20vh;
+  /* margin-bottom: 20vh; */
 }
 
 .section2-sticky-2 {
   position: sticky;
   background-color: var(--surface-base);
   top: calc(var(--header-height) + 8em);
-  margin-bottom: 10vh;
+  /* margin-bottom: 10vh; */
 }
 
 .section2-sticky-3 {
   position: sticky;
   background-color: var(--surface-base);
 }
+
+
 
 /* Section 2 Card END */
 

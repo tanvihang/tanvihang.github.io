@@ -166,6 +166,8 @@ class MapJS extends HTMLElement {
 
         countryName.innerHTML = countryCode;
         countryNameBlock.classList.add("text-animation");
+
+        
       }
 
       function mapLeave(event, color, doc = svgDoc) {
