@@ -52,7 +52,7 @@ class NavBarSelection extends HTMLElement{
         if (titleDOM) {
             titleDOM.addEventListener('click', () => {
                 console.log("GOTO " + cta)
-                window.location.assign(`/docs/${cta}/index.html`)
+                window.location.assign(`/${cta}/index.html`)
             });
         }
     }
