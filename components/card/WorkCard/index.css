@@ -35,7 +35,7 @@
     gap: var(--spacing-xl);
 
     transition: height 0.8s ease-out;
-    background-color: var(--surface-base-invert);
+    /* background-color: var(--surface-base-invert); */
 
 }
 
