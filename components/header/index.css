@@ -114,20 +114,20 @@
     background-color: transparent;
     opacity: 1;
     /* background-color: red; */
-    /* transition: all 0.5s ease-in-out, opacity 0.5s ease-in-out; */
-    transition-property: opacity, display;
+    transition: all 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    /* transition-property: opacity, display;
     transition-duration: 1s;
     transition-timing-function: ease-out;
 
     @starting-style {
       opacity: 0 !important;
-    }
+    } */
   }
 
-  .container-scroll-down{
+  /* .container-scroll-down{
     display: none !important;
     opacity: 0 !important;
-  }
+  } */
 
   .inner-container{
     display: flex;
