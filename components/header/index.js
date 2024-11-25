@@ -153,6 +153,9 @@ class Header extends HTMLElement {
       }
     });
 
+    let lastScrollPosition = 0;
+    let scrollDown = false;
+
     // Event Listener - Scroll animation
     window.addEventListener("scroll", function () {
       var scrollPosition = scrollY;
@@ -164,6 +167,7 @@ class Header extends HTMLElement {
         flag = 1;
         scrollInitial = false;
       }
+
       if (scrollPosition == 0) {
         container.classList.remove("menu-mobile-open")
         navContainer.classList.remove("scroll-container");
@@ -192,7 +196,24 @@ class Header extends HTMLElement {
         }
 
         menuMobile.classList.remove("menu-mobile-show");
+
+        return;
       }
+
+      if(scrollPosition > lastScrollPosition && scrollPosition > 300 && !scrollDown){
+        console.log("Scrolling down")
+        // container.classList.add("container-scroll-down")
+        setTimeout(delayedScrollDown, 100)
+        scrollDown = true;
+      }
+      else if(scrollPosition < lastScrollPosition && scrollPosition > 300 && scrollDown){
+        console.log("Scrolling up")
+        // container.classList.remove("container-scroll-down")
+        setTimeout(delayedScrollUp, 100)
+        scrollDown = false;
+      }
+
+      lastScrollPosition = scrollPosition;
     });
 
     // Wait for things to render then only set the header height
@@ -213,6 +234,16 @@ class Header extends HTMLElement {
       tt.classList.remove("hide-h1");
       container.classList.remove("menu-mobile-scroll-down");
       // outerContainer.classList.remove("pad-top-outer");
+    }
+
+    function delayedScrollDown(){
+      // outerContainer.classList.add("outer-container-scroll-down")
+      container.classList.add("container-scroll-down")
+    }
+
+    function delayedScrollUp(){
+      // outerContainer.classList.remove("outer-container-scroll-down")
+      container.classList.remove("container-scroll-down")
     }
 
     // State

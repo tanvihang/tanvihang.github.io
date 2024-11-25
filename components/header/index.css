@@ -83,6 +83,13 @@
     z-index: 1000;
 
     transition: all 0.5s ease;
+
+    transform: translateY(0%);
+
+  }
+
+  .outer-container-scroll-down{
+    transform: translateY(-150%);
   }
   
   .container {
@@ -105,7 +112,21 @@
 
     border: none;
     background-color: transparent;
-    transition: all 0.5s ease-in-out;
+    opacity: 1;
+    /* background-color: red; */
+    /* transition: all 0.5s ease-in-out, opacity 0.5s ease-in-out; */
+    transition-property: opacity, display;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+
+    @starting-style {
+      opacity: 0 !important;
+    }
+  }
+
+  .container-scroll-down{
+    display: none !important;
+    opacity: 0 !important;
   }
 
   .inner-container{
