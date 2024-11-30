@@ -258,7 +258,7 @@ const section3WorksContainer = document.querySelector(".section3-works-container
 setHeaderHeight()
 
 // 2. Check if footer is in view
-window.addEventListener('scroll', debounce(checkFooterInView, 100))
+window.addEventListener('scroll', debounce(checkFooterInView, 5))
 
 // Call it initially and on window resize
 window.addEventListener('load', adjustFillerBlockHeight);
@@ -325,7 +325,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
 })
 
 function checkFooterInView(){
-    if(elementIsInViewPort(footer, 5)){
+    if(elementIsInViewPort(footer, 1)){
         footer.shadowRoot.querySelector('.footer').classList.add("outer-container-show")
     }
 }

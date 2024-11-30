@@ -30,6 +30,7 @@ const darkSection = document.querySelector(".dark-section");
 const section3Text = document.querySelectorAll(".section3-text");
 const section4Text = document.querySelectorAll(".section4-text");
 
+
 let isColorChange = false;
 
 // Animation utility functions
@@ -347,6 +348,7 @@ const initSectionAnimations = () => {
 
 
 
+
 };
 
 // Initialize animations
@@ -378,6 +380,10 @@ const initAnimations = () => {
         }
     });
 
+    const header = document.querySelector("header-custom");
+    const shadowRoot = header.shadowRoot;
+    const outerContainer = shadowRoot.querySelector(".outer-container");
+    console.log(shadowRoot)
     // Initialize section animations after section3 setup
     initSectionAnimations();
 

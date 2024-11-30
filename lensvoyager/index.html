@@ -189,7 +189,7 @@
       previousSelectedSubCategory = currentSelected;
     });
 
-    window.addEventListener("scroll", debounce(checkItemInView, 100));
+    window.addEventListener("scroll", debounce(checkItemInView, 5));
 
     document.addEventListener("DOMContentLoaded", () => {
       // load first category chooser

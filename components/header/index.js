@@ -200,18 +200,18 @@ class Header extends HTMLElement {
         return;
       }
 
-      if(scrollPosition > lastScrollPosition && scrollPosition > 300 && !scrollDown){
-        console.log("Scrolling down")
-        // container.classList.add("container-scroll-down")
-        setTimeout(delayedScrollDown, 100)
-        scrollDown = true;
-      }
-      else if(scrollPosition < lastScrollPosition && scrollPosition > 300 && scrollDown){
-        console.log("Scrolling up")
-        // container.classList.remove("container-scroll-down")
-        setTimeout(delayedScrollUp, 100)
-        scrollDown = false;
-      }
+      // if(scrollPosition > lastScrollPosition && scrollPosition > 300 && !scrollDown){
+      //   console.log("Scrolling down")
+      //   // container.classList.add("container-scroll-down")
+      //   setTimeout(delayedScrollDown, 100)
+      //   scrollDown = true;
+      // }
+      // else if(scrollPosition < lastScrollPosition && scrollPosition > 300 && scrollDown){
+      //   console.log("Scrolling up")
+      //   // container.classList.remove("container-scroll-down")
+      //   setTimeout(delayedScrollUp, 100)
+      //   scrollDown = false;
+      // }
 
       lastScrollPosition = scrollPosition;
     });

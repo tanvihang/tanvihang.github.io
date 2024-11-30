@@ -221,6 +221,19 @@
   }
 }
 
+.google-description{
+  background: linear-gradient(90deg, 
+  #4285F4 0%,   /* Blue */
+  #DB4437 33%,  /* Red */
+  #F4B400 66%,  /* Yellow */ /* Green */
+  #0F9D58 100%  /* Blue */
+  );
+  background-clip: text; /* Clip the background to the text */
+  -webkit-background-clip: text; /* For Safari */
+  color: transparent; /* Make the text color transparent */
+  text-align: center; /* Center the text */
+}
+
 
 .show-dot {
   opacity: 1 !important;
