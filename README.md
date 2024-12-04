@@ -1,25 +1,40 @@
-# LENS VOYAGER
+# Personal Website
+Visit the site - [tanvihang.github.io](https://tanvihang.github.io)
 
-Update Log
-| Date      | Features                           |
-| --------- | ---------------------------------- |
-| 2024/8/31 | Added scroll to top in lensvoyager |
+---
+
+- [Personal Website](#personal-website)
+- [About \& Goals](#about--goals)
+  - [About](#about)
+  - [Upcoming goals](#upcoming-goals)
+- [Optimization \& Technique](#optimization--technique)
+    - [1. Scroll event improvement](#1-scroll-event-improvement)
+    - [2. Lazy load cards](#2-lazy-load-cards)
+    - [3. Animation from display `none` to `something`](#3-animation-from-display-none-to-something)
 
 
 ---
-## HOME PAGE
 
-### Section 2
+# About & Goals
 
-#### scroll event improvement (DONE)
+## About
+**What** - This repo mainly act as my career portfolio, including UI/UX design, frontend developer.
 
-1. cache docuemnt query
+**Why** - For this project I aim to learn as much frontend development as possible using minimal framework or use framework after understanding the hassle of boilerplate code.
 
-```js
-section2CardElements = document.querySelectorAll("hero-card-custom");
-```
+## Upcoming goals
+| Tasks                                 | Completion |
+| ------------------------------------- | ---------- |
+| State listener                        |            |
+| Refactor js code into smaller section |            |
+| Design and implement project screen   |            |
+| Include CTA to easy contact           |            |
 
-2. Debounce function
+
+---
+# Optimization & Technique
+### 1. Scroll event improvement
+Debounce function
 ```js
 window.addEventListener('scroll', debounce(checkItemsInView, 100))
 
@@ -33,25 +48,10 @@ const debounce = (func, wait) => {
 }
 ```
 
-### header fix (DONE)
-fixed: using header height change listener to update the header height.
+### 2. Lazy load cards 
 
-### footer fix (DONE)
-TODO experiment animation percentage for every scroll
-**done**: used elementInView function written using getBoundingClientRect
-better approach: use CSS animate, works perfectly!
-```css
-   animation-timeline: view();
-   animation-range: 20% 50%;
-```
-
-### lazy load cards (TODO)
-TODO implement
-not done: still need to find better approach
-
-## LENS VOYAGER PAGE
-### map changing (DONE)
-map go from `display: none;` into `display: block` animation.
+### 3. Animation from display `none` to `something`
+go from `display: none;` into `display: block` animation.
 ```
 .component{
     display: none;
@@ -68,6 +68,4 @@ map go from `display: none;` into `display: block` animation.
 }
 ```
 
-### world map load weird occur (TODO)
-problems is when first load sometimes it does not render the country selection.
-
+<div style="text-align:right">Last Modified @ 2024/12/04 UTC +08:00</div>
