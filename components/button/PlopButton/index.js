@@ -103,6 +103,14 @@ class PlopButton extends HTMLElement {
             subCategory: cta,
           });
           break;
+        
+        case "CNY":
+          globalContext.selectedSubCategory.setState({
+            subCategory: cta,
+          });
+          break;
+
+        
       }
 
 

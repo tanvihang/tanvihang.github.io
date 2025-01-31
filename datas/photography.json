@@ -1,9 +1,10 @@
 {
-    "category":["Seasons","Yoyo"],
+    "category":["Seasons","Yoyo","CNY"],
     "Skies":["Cumulus", "Stratus"],
     "Humanity":["Portrait"],
     "Seasons":["Spring", "Summer", "Autumn", "Winter"],
     "Creativity":["Abstract"],
     "Yoyo":["2024"],
+    "CNY": ["2025"],
     "Country":[]
 }

@@ -6,8 +6,9 @@ def GetRoot():
     cur_dir = os.path.dirname(os.path.abspath(__file__))
 
     parts = cur_dir.split(os.sep)
+    print(parts)
     # Find the index of 'LensVoyager'
-    index = parts.index('LensVoyager')
+    index = parts.index('tanvihang.github.io')
 
     # Join the parts up to and including 'LensVoyager'
     root_directory = os.sep.join(parts[:index + 1])
@@ -65,6 +66,9 @@ def CompareJsonAndWrite(file, imageFolder, newSet):
             new_image = create_image_dict(url[0])
             filtered_images.append(new_image)
             print(f"New image added: {url[0]}")
+            
+    # Sort the images by URL 
+    filtered_images.sort(key=lambda x: x['url'])        
     
     data['images'] = filtered_images
     
@@ -79,12 +83,12 @@ root_dir = GetRoot()
 
 # 2. Set the image folder
 # countries - /assets/images/Countries/Malaysia/Pahang
-image_folder_path_url = "/assets/images/Countries/Malaysia/Johor"
+image_folder_path_url = "/assets/images/CNY/2025"
 image_folder_path = f'{root_dir}{image_folder_path_url}'
 
 # 3. Set the json file (Need to alter this to be more dynamic)
 # countries - {root_dir}/datas/Countries/Malaysia/Pahang.json
-image_json_file = f'{root_dir}/datas/Countries/Malaysia/Johor.json'
+image_json_file = f'{root_dir}/datas/CNY/2025.json'
 
 # 4. Get images set
 image_set = ReadFolderImages(image_folder_path)
