@@ -177,7 +177,7 @@ class GalleryScene {
                     x: scale, 
                     y: scale, 
                     z: scale, 
-                    duration: 0.1
+                    duration: 0.15
                 });
             }
 
@@ -224,7 +224,7 @@ class GalleryScene {
                 // x: mesh.scale.x * 0.8 , 
                 // y: mesh.scale.y * 0.8 , 
                 // z: mesh.scale.z * 0.8 , 
-                duration: 0.1,
+                duration: 0.25,
                 onUpdate: () => {
                     this.renderer.render(this.scene, this.camera); // Ensure re-rendering during animation
                 }
