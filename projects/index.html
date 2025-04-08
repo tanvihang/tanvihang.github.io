@@ -1,87 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <title>Angus Tan</title>
 
-    <link rel="icon" href="/assets/images/AutumnLeaf.gif" />
-    <link href="/css/base.css" type="text/css" rel="stylesheet" />
-    <link href="./index.css" type="text/css" rel="stylesheet" />
-    <script
-      type="module"
-      src="https://unpkg.com/@splinetool/viewer@1.6.9/build/spline-viewer.js"
-    ></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Angus Tan</title>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VPFYQJ4C7S"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  <link rel="icon" href="/assets/images/AutumnLeaf.gif" />
+  <link href="/css/base.css" type="text/css" rel="stylesheet" />
+  <link href="./index.css" type="text/css" rel="stylesheet" />
+</head>
 
-    gtag('config', 'G-VPFYQJ4C7S');
-  </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VPFYQJ4C7S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
 
-  <body>
-    <scroll-top-button class="scroll-top-button"></scroll-top-button>
-    <header-custom title="ANGUS"></header-custom>
+  gtag('config', 'G-VPFYQJ4C7S');
+</script>
 
-    <div class="filler"></div>
+<body>
+  <scroll-top-button class="scroll-top-button"></scroll-top-button>
+  <header-custom title="ANGUS"></header-custom>
 
-    <div class="empty">
-      <h2>WIP</h2>
-      <p>projects</p>
-    </div>
+  <div class="filler"></div>
 
-    <footer-custom></footer-custom>
-  </body>
+  <!-- <div class="empty">
+    <h2>WIP</h2>
+    <p>projects</p>
+  </div> -->
 
-  <script type="module">
-    import "/components/header/index.js";
-    import "/components/footer/index.js";
-    import globalContext from "/datas/globalContext.js";
-    import {
-      elementIsInViewPort,
-      debounce,
-    } from "/js/IntersectionObserver/vi.js";
-    import "/components/button/ScrollTopButton/index.js"
+  <canvas id="infinte-gallery"></canvas>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/controls/OrbitControls.js"></script>
+  
+  <footer-custom></footer-custom>
+</body>
 
-    const filler = document.querySelector(".filler");
-    const footer = document.querySelector("footer-custom");
+<script type="module">
+  import "/components/header/index.js";
+  import "/components/footer/index.js";
+  import globalContext from "/datas/globalContext.js";
+  import {
+    elementIsInViewPort,
+    debounce,
+  } from "/js/IntersectionObserver/vi.js";
+  import "/components/button/ScrollTopButton/index.js"
 
-    setHeaderHeight();
+  import "/js/ThreeJS/infiniteGallery.js"
 
-    window.addEventListener("scroll", debounce(checkItemInView, 5));
+  const filler = document.querySelector(".filler");
+  const footer = document.querySelector("footer-custom");
 
-    // function setHeaderHeight(height) {
-    //   filler.style.height = `${height}px`;
+  setHeaderHeight();
+
+  window.addEventListener("scroll", debounce(checkItemInView, 5));
+
+  // function setHeaderHeight(height) {
+  //   filler.style.height = `${height}px`;
+  // }
+
+  function setHeaderHeight(height) {
+    if (window.innerWidth > 319 && window.innerWidth < 768) {
+      filler.style.height = '70px'
+    } else {
+      filler.style.height = '250px'
+    }
+  }
+
+  function checkItemInView() {
+    // Check footer
+    if (elementIsInViewPort(footer, 5)) {
+      footer.shadowRoot
+        .querySelector(".footer")
+        .classList.add("outer-container-show");
+    }
+
+    // Check first hori(then stick the screen to top)
+    // if(elementIsInViewPort(firstHori, 50)){
+    //   console.log("First hori in view")
+    //   firstHori.scrollIntoView({behavior: 'smooth'})
+
     // }
+  }
 
-    function setHeaderHeight(height){
-    if(window.innerWidth > 319 && window.innerWidth < 768){
-        filler.style.height = '70px'
-    }else{
-        filler.style.height = '250px'
-    }
-}
+</script>
 
-    function checkItemInView() {
-      // Check footer
-      if (elementIsInViewPort(footer, 5)) {
-        footer.shadowRoot
-          .querySelector(".footer")
-          .classList.add("outer-container-show");
-      }
-
-      // Check first hori(then stick the screen to top)
-      // if(elementIsInViewPort(firstHori, 50)){
-      //   console.log("First hori in view")
-      //   firstHori.scrollIntoView({behavior: 'smooth'})
-
-      // }
-    }
-
-  </script>
 </html>
