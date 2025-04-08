@@ -21,6 +21,9 @@ class GalleryScene {
         this.canvas.width = this.renderSize.width * window.devicePixelRatio;  // Adjust for device pixel ratio
         this.canvas.height = this.renderSize.height * window.devicePixelRatio; // Adjust for device pixel ratio
 
+
+        console.log("Device Pixel Ratio " + window.devicePixelRatio)
+
         // Set canvas CSS to match the visual size
         this.canvas.style.width = `${this.renderSize.width}px`;
         this.canvas.style.height = `${this.renderSize.height}px`;
@@ -40,6 +43,8 @@ class GalleryScene {
         this.controls = this.createControls();
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
+
+        this.mouseDownPos = { x: 0, y: 0 }
 
         this.loadImages();
 
@@ -86,16 +91,20 @@ class GalleryScene {
 
         const textureLoader = new THREE.TextureLoader();
 
+        //? Why screen factor?
+        //? Because in 3d world it's not pixel as unit. The unit in 3d world is relative to 3d scene 
         let screenFactor;
+
         let innerWidth = window.innerWidth;
 
-        if(innerWidth > 1080){
-            screenFactor = innerWidth * 0.003
-        }else if (window.innerWidth > 720){
-            screenFactor = innerWidth * 0.003
-            
-        }else{
-            screenFactor = innerWidth * 0.0055
+        if (innerWidth > 1080) {
+            screenFactor = innerWidth * 0.005
+        } else if (window.innerWidth > 720) {
+            screenFactor = innerWidth * 0.007
+
+        } else {
+            screenFactor = innerWidth * 0.01
+            console.log(screenFactor)
 
         }
 
@@ -119,7 +128,10 @@ class GalleryScene {
                 Math.sin(angle) * radius
             );
 
-            mesh.userData = { projectIndex: index };
+            mesh.userData = { 
+                projectIndex: index,
+                baseScale: 0.7
+            };
 
             // mesh.lookAt(new THREE.Vector3(0,0,0))
             mesh.lookAt(this.camera.position)
@@ -133,7 +145,10 @@ class GalleryScene {
     addEventListeners() {
         window.addEventListener("resize", () => this.onWindowResize());
         // this.canvas.addEventListener("click", (event) => this.onMouseClick(event));
-
+        this.canvas.addEventListener("pointerdown", (event) => { this.onMouseDown(event) });
+        this.canvas.addEventListener("pointerup", (event) => this.onMouseUp(event));
+        this.canvas.addEventListener("mousedown", (event) => { this.onMouseDown(event) });
+        this.canvas.addEventListener("mouseup", (event) => this.onMouseUp(event));
     }
 
     animate() {
@@ -154,8 +169,17 @@ class GalleryScene {
             const normalizedDistance = Math.min(1, Math.max(0, (distance - minDistance) / (maxDistance - minDistance)));
 
             // 控制缩放（近处最大，远处最小）
-            const scale = 1 + scaleFactor * (1 - normalizedDistance);
-            mesh.scale.set(scale, scale, scale);
+            const scale = mesh.userData.baseScale * (1 + scaleFactor * (1 - normalizedDistance));
+            
+            if(!this.isMouseDown){
+                // mesh.scale.set(scale, scale, scale);
+                gsap.to(mesh.scale, {
+                    x: scale, 
+                    y: scale, 
+                    z: scale, 
+                    duration: 0.1
+                });
+            }
 
             // 控制透明度（近处最清晰，远处最透明）
             mesh.material.opacity = Math.max(0.2, 1 - normalizedDistance);
@@ -181,6 +205,57 @@ class GalleryScene {
             const projectIndex = clickedProject.userData.projectIndex;
             alert(`Clicked on project: ${this.config.projectImages[projectIndex]}`);
         }
+
+        console.log(event)
+    }
+
+    //* Calculate the move position
+    onMouseDown(event) {
+
+        this.isMouseDown = true;
+        this.mouseDownPos = { x: event.clientX, y: event.clientY }
+
+        console.log("DOWN")
+        this.projects.forEach(mesh => {
+            gsap.to(mesh.scale, {
+                x: mesh.scale.x * 0.8 , 
+                y: mesh.scale.y * 0.8 , 
+                z: mesh.scale.z * 0.8 , 
+                duration: 0.1,
+                onUpdate: () => {
+                    this.renderer.render(this.scene, this.camera); // Ensure re-rendering during animation
+                }
+            });
+        });
+    }
+
+    //* Mouse up
+    onMouseUp(event) {
+        this.isMouseDown = false;
+
+
+        const moveDistance = Math.sqrt(
+            Math.pow(event.clientX - this.mouseDownPos.x, 2) + Math.pow(event.clientY - this.mouseDownPos.y, 2)
+        )
+
+        const clickThreshold = 5
+
+        if (moveDistance < clickThreshold) {
+            this.onMouseClick(event)
+        }
+
+        console.log("UP")
+        // this.projects.forEach(mesh => {
+        //     gsap.to(mesh.scale, {
+        //         x: mesh.userData.baseScale, 
+        //         y: mesh.userData.baseScale, 
+        //         z: mesh.userData.baseScale, 
+        //         duration: 0.2, 
+        //         onUpdate: () => {
+        //             this.renderer.render(this.scene, this.camera); // Ensure re-rendering during animation
+        //         }
+        //     });
+        // });
     }
 
     //* Handle Window Resizing
