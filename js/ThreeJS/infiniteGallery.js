@@ -18,12 +18,22 @@ class GalleryScene {
             height: window.innerHeight * 0.8
         };
 
+        this.canvas.width = this.renderSize.width * window.devicePixelRatio;  // Adjust for device pixel ratio
+        this.canvas.height = this.renderSize.height * window.devicePixelRatio; // Adjust for device pixel ratio
+
+        // Set canvas CSS to match the visual size
+        this.canvas.style.width = `${this.renderSize.width}px`;
+        this.canvas.style.height = `${this.renderSize.height}px`;
+
+
         this.projects = []; // Holds Three.js objects
 
         this.init();
     }
 
     init() {
+
+
         this.scene = new THREE.Scene();
         this.camera = this.createCamera();
         this.renderer = this.createRenderer();
@@ -54,6 +64,7 @@ class GalleryScene {
         const renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: true });
         renderer.setSize(this.renderSize.width, this.renderSize.height);
         renderer.setClearColor(0xfaf9fa)
+        renderer.setPixelRatio(window.devicePixelRatio);
         return renderer;
     }
 
@@ -75,7 +86,19 @@ class GalleryScene {
 
         const textureLoader = new THREE.TextureLoader();
 
-        const screenFactor = Math.min(window.innerWidth, window.innerHeight) * 0.005;
+        let screenFactor;
+        let innerWidth = window.innerWidth;
+
+        if(innerWidth > 1080){
+            screenFactor = innerWidth * 0.003
+        }else if (window.innerWidth > 720){
+            screenFactor = innerWidth * 0.003
+            
+        }else{
+            screenFactor = innerWidth * 0.0055
+
+        }
+
         const imageWidth = screenFactor * 1.5;  // 调整宽高比例
         const imageHeight = screenFactor;
 
