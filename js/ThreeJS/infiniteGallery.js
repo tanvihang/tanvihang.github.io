@@ -34,9 +34,16 @@ class GalleryScene {
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
 
+        //* For panning
         this.mouseDownPos = { x: 0, y: 0 };
         this.isTouching = false;
         this.touchStartY = 0;
+
+        //* For auto rotating
+        this.nearestObject = null;
+        this.nearestIndex = -1
+        this.autoRotateTarget = new THREE.Vector3();
+
 
         this.loadImages();
 
@@ -238,7 +245,6 @@ class GalleryScene {
 
         this.isMouseDown = false;
 
-
         const moveDistance = Math.sqrt(
             Math.pow(event.clientX - this.mouseDownPos.x, 2) + Math.pow(event.clientY - this.mouseDownPos.y, 2)
         )
@@ -249,16 +255,16 @@ class GalleryScene {
             this.onMouseClick(event)
         }
 
+
+        let { nearestObject, nearestIndex } = getNearestObject(this.camera, this.projects);
+
+        if (nearestObject) {
+            this.nearestObject = nearestObject;
+
+            this.startAutoRotation(nearestIndex);
+        }
+
     }
-
-    onTouchStart(event) {
-
-    }
-
-    onTouchEnd(event) {
-
-    }
-
 
     //* Handle Window Resizing
     onWindowResize() {
@@ -270,7 +276,78 @@ class GalleryScene {
         this.renderer.setSize(this.renderSize.width, this.renderSize.height);
     }
 
+    startAutoRotation(nearestIndex) {
+        const targetObject = this.projects[nearestIndex];
 
+
+
+        //* 找相机以及最靠近图片的夹角
+        //* Damn get back to trig, i forgot alot..
+        const angle = this.getAngleBetweenCameraAndObject(this.camera, targetObject)
+
+        console.log("ORI camera pos, ", this.camera.position)
+
+        const newX = this.camera.position.x * Math.cos(angle)
+        const newZ = this.camera.position.z * Math.sin(angle)
+
+        console.log("New camera pos", newX, this.camera.position.y, newZ)
+
+        // gsap.to(this.camera.position, {
+        //     x: this.camera.position.x * Math.cos(angle), // Calculate the new X position
+        //     y: this.camera.position.y,       // Keep the Y position the same
+        //     z: this.camera.position.z * Math.sin(angle), // Calculate the new Z position
+        //     duration: 1, // Duration of 1 second for the animation
+        //     onUpdate: () => {
+        //         this.renderer.render(this.scene, this.camera); // Ensure re-rendering during animation
+        //     }
+        // });
+    }
+
+    getAngleBetweenCameraAndObject(camera, object) {
+        // Assuming the camera and object positions are on the x-z plane
+        const cameraAngle = Math.atan2(camera.position.z, camera.position.x); // Camera angle
+        const objectAngle = Math.atan2(object.position.z, object.position.x); // Object angle
+
+        // Angle difference
+        let angleDifference = cameraAngle - objectAngle;
+
+        // Ensure the angle is in the range -π to π
+        if (angleDifference > Math.PI) {
+            angleDifference -= 2 * Math.PI;
+        } else if (angleDifference < -Math.PI) {
+            angleDifference += 2 * Math.PI;
+        }
+
+        return angleDifference;
+    }
+
+
+    updateCameraPositionAroundOrbit(newAngle) {
+
+        this.camera.position.x = 2 * radius * Math.cos(newAngle); // Update X position
+        this.camera.position.z = 2 * radius * Math.sin(newAngle); // Update Z position
+
+    }
+
+
+}
+
+//* Function to get the nearest object
+function getNearestObject(camera, objects) {
+    let minDistance = Infinity;
+    let nearestObject = null;
+    let nearestIndex = -1;
+
+    objects.forEach((mesh, index) => {
+        const distance = camera.position.distanceTo(mesh.position);
+        if (distance < minDistance) {
+            minDistance = distance;
+            nearestObject = mesh;
+            nearestIndex = index;
+        }
+    })
+
+    return { nearestObject, nearestIndex };
 }
 
 const radius = 45;
