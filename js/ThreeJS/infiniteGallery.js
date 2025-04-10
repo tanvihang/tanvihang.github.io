@@ -16,7 +16,7 @@ class GalleryScene {
 
         this.renderSize = {
             width: window.innerWidth,
-            height: window.innerHeight * 0.8 //* Take 80% of the height
+            height: window.innerHeight //* Take 80% of the height
         };
 
         this.projects = []; // Holds Three.js objects
@@ -68,7 +68,7 @@ class GalleryScene {
     createControls() {
         const controls = new THREE.OrbitControls(this.camera, this.canvas);
 
-        controls.minPolarAngle = Math.PI / 1.9;  // 限制最低角度
+        controls.minPolarAngle = Math.PI / 2.1;  // 限制最低角度
         controls.maxPolarAngle = Math.PI / 1.9;  // 限制最高角度
 
         controls.enableDamping = this.config.controls.enableDamping;
@@ -91,14 +91,14 @@ class GalleryScene {
 
 
         if (innerWidth > 2160) {
-            screenFactor = innerWidth * 0.003
+            screenFactor = innerWidth * 0.00008 * this.config.circle.radius
         }
         else if (innerWidth > 1080) {
-            screenFactor = innerWidth * 0.005
+            screenFactor = innerWidth * 0.00012 * this.config.circle.radius
         } else if (window.innerWidth > 720) {
-            screenFactor = innerWidth * 0.007
+            screenFactor = innerWidth * 0.00017 * this.config.circle.radius
         } else {
-            screenFactor = innerWidth * 0.01
+            screenFactor = innerWidth * 0.00023 * this.config.circle.radius
         }
 
         const imageWidth = screenFactor * 1.5;  // 调整宽高比例
@@ -141,7 +141,7 @@ class GalleryScene {
         //* Pointer listener for mouse event
         this.canvas.addEventListener("pointerdown", (event) => { this.onPointerDown(event) });
         this.canvas.addEventListener("pointerup", (event) => this.onPointerUp(event));
-        
+
         this.canvas.addEventListener("touchstart", (event) => this.onTouchStart(event));
         this.canvas.addEventListener("touchend", (event) => this.onTouchEnd(event));
 
@@ -156,7 +156,7 @@ class GalleryScene {
         const minDistance = this.config.circle.radius;
         // 最远距离，相机的距离
         const maxDistance = this.config.circle.radius * 3;
-        const scaleFactor = 0.7;
+        const scaleFactor = 1;
 
 
         this.projects.forEach(mesh => {
@@ -166,7 +166,10 @@ class GalleryScene {
             const normalizedDistance = Math.min(1, Math.max(0, (distance - minDistance) / (maxDistance - minDistance)));
 
             // 控制缩放（近处最大，远处最小）
-            const scale = mesh.userData.baseScale * (1 + scaleFactor * (1 - normalizedDistance));
+            // Apply exponential scaling (higher value for closer objects)
+            // Use Math.pow to create exponential scaling (higher base exponent increases the effect)
+            const scale = mesh.userData.baseScale * Math.pow((1 - normalizedDistance), 3) * (1 + scaleFactor);
+
 
             if (!this.isMouseDown) {
                 // mesh.scale.set(scale, scale, scale);
@@ -210,10 +213,6 @@ class GalleryScene {
     //* Calculate the move position
     onPointerDown(event) {
 
-        if(event.pointerType === "touch"){
-            return;
-        }
-
         this.isMouseDown = true;
         this.mouseDownPos = { x: event.clientX, y: event.clientY }
 
@@ -233,10 +232,6 @@ class GalleryScene {
     //* Mouse up
     onPointerUp(event) {
 
-        if(event.pointerType === "touch"){
-            return;
-        }
-
         this.isMouseDown = false;
 
 
@@ -252,12 +247,12 @@ class GalleryScene {
 
     }
 
-    onTouchStart(event){
-        this.controls.enabled = event.touches.length > 1; // Enable only for 2+ fingers
-    }   
+    onTouchStart(event) {
 
-    onTouchEnd(event){
-        this.controls.enabled = false;
+    }
+
+    onTouchEnd(event) {
+
     }
 
 
@@ -274,7 +269,7 @@ class GalleryScene {
 
 }
 
-const radius = 30;
+const radius = 45;
 
 const galleryConfig = {
     camera: {
@@ -291,10 +286,10 @@ const galleryConfig = {
         "/assets/images/ProjectImage/hygieia.png",
         "/assets/images/ProjectImage/vitalz.png",
         "/assets/images/ProjectImage/hygieia.png",
-        "/assets/images/ProjectImage/vitalz.png",
-        "/assets/images/ProjectImage/hygieia.png",
-        "/assets/images/ProjectImage/vitalz.png",
-        "/assets/images/ProjectImage/hygieia.png",
+        // "/assets/images/ProjectImage/vitalz.png",
+        // "/assets/images/ProjectImage/hygieia.png",
+        // "/assets/images/ProjectImage/vitalz.png",
+        // "/assets/images/ProjectImage/hygieia.png",
     ],
     circle: {
         radius: radius
