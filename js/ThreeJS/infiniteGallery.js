@@ -74,6 +74,10 @@ class GalleryScene {
         controls.enableDamping = this.config.controls.enableDamping;
         controls.enableZoom = this.config.controls.enableZoom;
         controls.enablePan = this.config.controls.enablePan;
+
+        //* 倒数
+        controls.rotateSpeed = (1 / this.config.projectImages.length) * 10;
+
         return controls;
     }
 
@@ -168,7 +172,7 @@ class GalleryScene {
             // 控制缩放（近处最大，远处最小）
             // Apply exponential scaling (higher value for closer objects)
             // Use Math.pow to create exponential scaling (higher base exponent increases the effect)
-            const scale = mesh.userData.baseScale * Math.pow((1 - normalizedDistance), 3) * (1 + scaleFactor);
+            const scale = mesh.userData.baseScale * Math.pow((1 - normalizedDistance), 1.1) * (1 + scaleFactor);
 
 
             if (!this.isMouseDown) {
@@ -286,10 +290,7 @@ const galleryConfig = {
         "/assets/images/ProjectImage/hygieia.png",
         "/assets/images/ProjectImage/vitalz.png",
         "/assets/images/ProjectImage/hygieia.png",
-        // "/assets/images/ProjectImage/vitalz.png",
-        // "/assets/images/ProjectImage/hygieia.png",
-        // "/assets/images/ProjectImage/vitalz.png",
-        // "/assets/images/ProjectImage/hygieia.png",
+
     ],
     circle: {
         radius: radius
