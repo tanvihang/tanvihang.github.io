@@ -13,21 +13,11 @@ class GalleryScene {
         }
 
         this.config = config;
+
         this.renderSize = {
             width: window.innerWidth,
-            height: window.innerHeight * 0.8
+            height: window.innerHeight * 0.8 //* Take 80% of the height
         };
-
-        this.canvas.width = this.renderSize.width * window.devicePixelRatio;  // Adjust for device pixel ratio
-        this.canvas.height = this.renderSize.height * window.devicePixelRatio; // Adjust for device pixel ratio
-
-
-        console.log("Device Pixel Ratio " + window.devicePixelRatio)
-
-        // Set canvas CSS to match the visual size
-        this.canvas.style.width = `${this.renderSize.width}px`;
-        this.canvas.style.height = `${this.renderSize.height}px`;
-
 
         this.projects = []; // Holds Three.js objects
 
@@ -44,7 +34,9 @@ class GalleryScene {
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
 
-        this.mouseDownPos = { x: 0, y: 0 }
+        this.mouseDownPos = { x: 0, y: 0 };
+        this.isTouching = false;
+        this.touchStartY = 0;
 
         this.loadImages();
 
@@ -66,7 +58,7 @@ class GalleryScene {
     }
 
     createRenderer() {
-        const renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: true });
+        const renderer = new THREE.WebGLRenderer({ canvas: this.canvas });
         renderer.setSize(this.renderSize.width, this.renderSize.height);
         renderer.setClearColor(0xfaf9fa)
         renderer.setPixelRatio(window.devicePixelRatio);
@@ -75,11 +67,11 @@ class GalleryScene {
 
     createControls() {
         const controls = new THREE.OrbitControls(this.camera, this.canvas);
-        // controls.enableDamping = this.config.controls.enableDamping;
 
-        controls.minPolarAngle = Math.PI / 2;  // 限制最低角度
-        controls.maxPolarAngle = Math.PI / 2;  // 限制最高角度
+        controls.minPolarAngle = Math.PI / 1.9;  // 限制最低角度
+        controls.maxPolarAngle = Math.PI / 1.9;  // 限制最高角度
 
+        controls.enableDamping = this.config.controls.enableDamping;
         controls.enableZoom = this.config.controls.enableZoom;
         controls.enablePan = this.config.controls.enablePan;
         return controls;
@@ -87,7 +79,7 @@ class GalleryScene {
 
     loadImages() {
 
-        const radius = 5;
+        const radius = this.config.circle.radius;
 
         const textureLoader = new THREE.TextureLoader();
 
@@ -97,15 +89,16 @@ class GalleryScene {
 
         let innerWidth = window.innerWidth;
 
-        if (innerWidth > 1080) {
+
+        if (innerWidth > 2160) {
+            screenFactor = innerWidth * 0.003
+        }
+        else if (innerWidth > 1080) {
             screenFactor = innerWidth * 0.005
         } else if (window.innerWidth > 720) {
             screenFactor = innerWidth * 0.007
-
         } else {
             screenFactor = innerWidth * 0.01
-            console.log(screenFactor)
-
         }
 
         const imageWidth = screenFactor * 1.5;  // 调整宽高比例
@@ -128,9 +121,9 @@ class GalleryScene {
                 Math.sin(angle) * radius
             );
 
-            mesh.userData = { 
+            mesh.userData = {
                 projectIndex: index,
-                baseScale: 0.7
+                baseScale: 1.0
             };
 
             // mesh.lookAt(new THREE.Vector3(0,0,0))
@@ -144,11 +137,15 @@ class GalleryScene {
 
     addEventListeners() {
         window.addEventListener("resize", () => this.onWindowResize());
-        // this.canvas.addEventListener("click", (event) => this.onMouseClick(event));
-        this.canvas.addEventListener("pointerdown", (event) => { this.onMouseDown(event) });
-        this.canvas.addEventListener("pointerup", (event) => this.onMouseUp(event));
-        this.canvas.addEventListener("mousedown", (event) => { this.onMouseDown(event) });
-        this.canvas.addEventListener("mouseup", (event) => this.onMouseUp(event));
+
+        //* Pointer listener for mouse event
+        this.canvas.addEventListener("pointerdown", (event) => { this.onPointerDown(event) });
+        this.canvas.addEventListener("pointerup", (event) => this.onPointerUp(event));
+        
+        this.canvas.addEventListener("touchstart", (event) => this.onTouchStart(event));
+        this.canvas.addEventListener("touchend", (event) => this.onTouchEnd(event));
+
+
     }
 
     animate() {
@@ -156,10 +153,10 @@ class GalleryScene {
         this.controls.update();
 
         // 最近的距离，圆的半径
-        const minDistance = 15;
+        const minDistance = this.config.circle.radius;
         // 最远距离，相机的距离
-        const maxDistance = 20;
-        const scaleFactor = 0.5;
+        const maxDistance = this.config.circle.radius * 3;
+        const scaleFactor = 0.7;
 
 
         this.projects.forEach(mesh => {
@@ -170,13 +167,13 @@ class GalleryScene {
 
             // 控制缩放（近处最大，远处最小）
             const scale = mesh.userData.baseScale * (1 + scaleFactor * (1 - normalizedDistance));
-            
-            if(!this.isMouseDown){
+
+            if (!this.isMouseDown) {
                 // mesh.scale.set(scale, scale, scale);
                 gsap.to(mesh.scale, {
-                    x: scale, 
-                    y: scale, 
-                    z: scale, 
+                    x: scale,
+                    y: scale,
+                    z: scale,
                     duration: 0.15
                 });
             }
@@ -190,6 +187,8 @@ class GalleryScene {
 
         this.renderer.render(this.scene, this.camera);
     }
+
+
 
     //* Handle Click Events for Image Selection
     onMouseClick(event) {
@@ -206,24 +205,23 @@ class GalleryScene {
             alert(`Clicked on project: ${this.config.projectImages[projectIndex]}`);
         }
 
-        console.log(event)
     }
 
     //* Calculate the move position
-    onMouseDown(event) {
+    onPointerDown(event) {
+
+        if(event.pointerType === "touch"){
+            return;
+        }
 
         this.isMouseDown = true;
         this.mouseDownPos = { x: event.clientX, y: event.clientY }
 
-        console.log("DOWN")
         this.projects.forEach(mesh => {
             gsap.to(mesh.scale, {
-                x: mesh.userData.baseScale , 
-                y: mesh.userData.baseScale , 
-                z: mesh.userData.baseScale , 
-                // x: mesh.scale.x * 0.8 , 
-                // y: mesh.scale.y * 0.8 , 
-                // z: mesh.scale.z * 0.8 , 
+                x: mesh.userData.baseScale,
+                y: mesh.userData.baseScale,
+                z: mesh.userData.baseScale,
                 duration: 0.25,
                 onUpdate: () => {
                     this.renderer.render(this.scene, this.camera); // Ensure re-rendering during animation
@@ -233,7 +231,12 @@ class GalleryScene {
     }
 
     //* Mouse up
-    onMouseUp(event) {
+    onPointerUp(event) {
+
+        if(event.pointerType === "touch"){
+            return;
+        }
+
         this.isMouseDown = false;
 
 
@@ -247,19 +250,16 @@ class GalleryScene {
             this.onMouseClick(event)
         }
 
-        console.log("UP")
-        // this.projects.forEach(mesh => {
-        //     gsap.to(mesh.scale, {
-        //         x: mesh.userData.baseScale, 
-        //         y: mesh.userData.baseScale, 
-        //         z: mesh.userData.baseScale, 
-        //         duration: 0.2, 
-        //         onUpdate: () => {
-        //             this.renderer.render(this.scene, this.camera); // Ensure re-rendering during animation
-        //         }
-        //     });
-        // });
     }
+
+    onTouchStart(event){
+        this.controls.enabled = event.touches.length > 1; // Enable only for 2+ fingers
+    }   
+
+    onTouchEnd(event){
+        this.controls.enabled = false;
+    }
+
 
     //* Handle Window Resizing
     onWindowResize() {
@@ -274,24 +274,31 @@ class GalleryScene {
 
 }
 
+const radius = 30;
+
 const galleryConfig = {
     camera: {
         fov: 45,
-        position: [0, 0, 20]
+        position: [0, 0, radius * 2]
     },
     controls: {
         enableDamping: true,
         enableZoom: false,
         enablePan: false
     },
-    imageSize: [4, 3], //Width, Height
-    randomPositionRange: 10,
     projectImages: [
         "/assets/images/ProjectImage/vitalz.png",
         "/assets/images/ProjectImage/hygieia.png",
         "/assets/images/ProjectImage/vitalz.png",
         "/assets/images/ProjectImage/hygieia.png",
-    ]
+        "/assets/images/ProjectImage/vitalz.png",
+        "/assets/images/ProjectImage/hygieia.png",
+        "/assets/images/ProjectImage/vitalz.png",
+        "/assets/images/ProjectImage/hygieia.png",
+    ],
+    circle: {
+        radius: radius
+    }
 };
 
 const gallery = new GalleryScene("#infinte-gallery", galleryConfig)
