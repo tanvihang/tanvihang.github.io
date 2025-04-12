@@ -1,4 +1,10 @@
-@media only screen and (min-width: 1080px) {}
+@media only screen and (min-width: 1080px) {
+
+  .project-footer{
+    display: block !important;
+  }
+
+}
 
 @media only screen and (min-width: 768px) {}
 
@@ -37,6 +43,8 @@
   right: 8px;
 }
 
-/* canvas{
-  pointer-events: auto;
-} */
+
+.project-footer{
+  display: none;
+
+}

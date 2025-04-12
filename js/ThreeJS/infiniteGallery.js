@@ -14,7 +14,7 @@ class GalleryScene {
 
         this.renderSize = {
             width: window.innerWidth,
-            height: window.innerHeight
+            height: window.innerHeight * 0.75
         };
 
         this.projects = [];
@@ -142,11 +142,6 @@ class GalleryScene {
         //* Pointer listener for mouse event
         this.canvas.addEventListener("pointerdown", (event) => { this.onPointerDown(event) });
         this.canvas.addEventListener("pointerup", (event) => this.onPointerUp(event));
-
-        this.canvas.addEventListener("touchstart", (event) => this.onTouchStart(event));
-        this.canvas.addEventListener("touchend", (event) => this.onTouchEnd(event));
-
-
     }
 
     animate() {
@@ -244,15 +239,15 @@ class GalleryScene {
 
         if (moveDistance > 20 && this.isAnimating == false){
 
-            this.canvas.style.pointerEvents = 'none';
-            this.isAnimating = true;
-
+            this.canvas.style.pointerEvents = "none"
+            this.isAnimating = true
+            
             setTimeout(() => {
                 let { nearestObject } = getNearestObject(this.camera, this.projects);
-        
+                
                 //* The thetha of object
                 let phi = Math.atan2(nearestObject.position.z, nearestObject.position.x)
-        
+                
                 if (nearestObject) {
                     gsap.to(this.camera.position, {
                         x: this.config.circle.radius * 2 * Math.cos(phi), // Calculate the new X position
@@ -263,13 +258,12 @@ class GalleryScene {
                             this.renderer.render(this.scene, this.camera); // Ensure re-rendering during animation
                         },
                         onComplete: () => {
-                            this.canvas.style.pointerEvents = 'auto';
-                            this.isAnimating = false;
+                            this.isAnimating = false
+                            this.canvas.style.pointerEvents = "auto"
                         }
                     });
                 }
-
-            }, 1000)
+            }, 500)
         }
 
 
