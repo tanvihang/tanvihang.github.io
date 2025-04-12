@@ -251,28 +251,31 @@ class GalleryScene {
             this.onMouseClick(event)
         }
 
-        setTimeout(() => {
-            let { nearestObject } = getNearestObject(this.camera, this.projects);
-    
-            //* The thetha of object
-            let phi = Math.atan2(nearestObject.position.z, nearestObject.position.x)
-            console.log("NEarest object x - ", nearestObject.position.x)
-            console.log("NEarest object z - ", nearestObject.position.z)
-            console.log("PHI - ", phi)
-    
-            if (nearestObject) {
-                //TODO after up, i want the camera to move around the orbit 
-                gsap.to(this.camera.position, {
-                    x: this.config.circle.radius * 2 * Math.cos(phi), // Calculate the new X position
-                    y: this.camera.position.y,       // Keep the Y position the same
-                    z: this.config.circle.radius * 2 * Math.sin(phi), // Calculate the new Z position
-                    duration: 1, // Duration of 1 second for the animation
-                    onUpdate: () => {
-                        this.renderer.render(this.scene, this.camera); // Ensure re-rendering during animation
-                    }
-                });
-            }
-        }, 1500)
+        if (moveDistance > 10){
+
+            setTimeout(() => {
+                let { nearestObject } = getNearestObject(this.camera, this.projects);
+        
+                //* The thetha of object
+                let phi = Math.atan2(nearestObject.position.z, nearestObject.position.x)
+                console.log("NEarest object x - ", nearestObject.position.x)
+                console.log("NEarest object z - ", nearestObject.position.z)
+                console.log("PHI - ", phi)
+        
+                if (nearestObject) {
+                    //TODO after up, i want the camera to move around the orbit 
+                    gsap.to(this.camera.position, {
+                        x: this.config.circle.radius * 2 * Math.cos(phi), // Calculate the new X position
+                        y: this.camera.position.y,       // Keep the Y position the same
+                        z: this.config.circle.radius * 2 * Math.sin(phi), // Calculate the new Z position
+                        duration: 1, // Duration of 1 second for the animation
+                        onUpdate: () => {
+                            this.renderer.render(this.scene, this.camera); // Ensure re-rendering during animation
+                        }
+                    });
+                }
+            }, 500)
+        }
 
 
     }
