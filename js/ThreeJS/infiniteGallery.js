@@ -2,9 +2,7 @@
 //* Ahh, long time not oop dy
 
 class GalleryScene {
-    //* Constructor, you know that, when you initialize the object (For OOP)
     constructor(canvasId, config) {
-        //? this means variable for this object
         this.canvas = document.querySelector(canvasId);
 
         if (!this.canvas) {
@@ -16,17 +14,15 @@ class GalleryScene {
 
         this.renderSize = {
             width: window.innerWidth,
-            height: window.innerHeight //* Take 80% of the height
+            height: window.innerHeight
         };
 
-        this.projects = []; // Holds Three.js objects
-
+        this.projects = [];
+        this.isAnimating = false;
         this.init();
     }
 
     init() {
-
-
         this.scene = new THREE.Scene();
         this.camera = this.createCamera();
         this.renderer = this.createRenderer();
@@ -38,11 +34,6 @@ class GalleryScene {
         this.mouseDownPos = { x: 0, y: 0 };
         this.isTouching = false;
         this.touchStartY = 0;
-
-        //* For auto rotating
-        this.nearestIndex = -1
-        this.autoRotateTarget = new THREE.Vector3();
-
 
         this.loadImages();
 
@@ -251,19 +242,18 @@ class GalleryScene {
             this.onMouseClick(event)
         }
 
-        if (moveDistance > 10){
+        if (moveDistance > 20 && this.isAnimating == false){
+
+            this.canvas.style.pointerEvents = 'none';
+            this.isAnimating = true;
 
             setTimeout(() => {
                 let { nearestObject } = getNearestObject(this.camera, this.projects);
         
                 //* The thetha of object
                 let phi = Math.atan2(nearestObject.position.z, nearestObject.position.x)
-                console.log("NEarest object x - ", nearestObject.position.x)
-                console.log("NEarest object z - ", nearestObject.position.z)
-                console.log("PHI - ", phi)
         
                 if (nearestObject) {
-                    //TODO after up, i want the camera to move around the orbit 
                     gsap.to(this.camera.position, {
                         x: this.config.circle.radius * 2 * Math.cos(phi), // Calculate the new X position
                         y: this.camera.position.y,       // Keep the Y position the same
@@ -271,10 +261,15 @@ class GalleryScene {
                         duration: 1, // Duration of 1 second for the animation
                         onUpdate: () => {
                             this.renderer.render(this.scene, this.camera); // Ensure re-rendering during animation
+                        },
+                        onComplete: () => {
+                            this.canvas.style.pointerEvents = 'auto';
+                            this.isAnimating = false;
                         }
                     });
                 }
-            }, 500)
+
+            }, 1000)
         }
 
 
@@ -333,6 +328,10 @@ const galleryConfig = {
         enablePan: false
     },
     projectImages: [
+        "/assets/images/ProjectImage/hygieia.png",
+        "/assets/images/ProjectImage/vitalz.png",
+        "/assets/images/ProjectImage/hygieia.png",
+        "/assets/images/ProjectImage/vitalz.png",
         "/assets/images/ProjectImage/hygieia.png",
         "/assets/images/ProjectImage/vitalz.png",
         "/assets/images/ProjectImage/hygieia.png",
