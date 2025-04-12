@@ -40,7 +40,6 @@ class GalleryScene {
         this.touchStartY = 0;
 
         //* For auto rotating
-        this.nearestObject = null;
         this.nearestIndex = -1
         this.autoRotateTarget = new THREE.Vector3();
 
@@ -109,7 +108,7 @@ class GalleryScene {
         } else if (window.innerWidth > 720) {
             screenFactor = innerWidth * 0.00017 * this.config.circle.radius
         } else {
-            screenFactor = innerWidth * 0.00023 * this.config.circle.radius
+            screenFactor = innerWidth * 0.0003 * this.config.circle.radius
         }
 
         const imageWidth = screenFactor * 1.5;  // 调整宽高比例
@@ -160,30 +159,27 @@ class GalleryScene {
     }
 
     animate() {
+
+        //* Keep repeating animate
         requestAnimationFrame(() => this.animate());
+
+        //* Animate的时候更新相机的位置
         this.controls.update();
 
-        // 最近的距离，圆的半径
         const minDistance = this.config.circle.radius;
-        // 最远距离，相机的距离
         const maxDistance = this.config.circle.radius * 3;
         const scaleFactor = 1;
 
 
         this.projects.forEach(mesh => {
-
             const distance = this.camera.position.distanceTo(mesh.position);
             // 归一化距离到 0 ~ 1（近处 0，远处 1）
             const normalizedDistance = Math.min(1, Math.max(0, (distance - minDistance) / (maxDistance - minDistance)));
 
             // 控制缩放（近处最大，远处最小）
-            // Apply exponential scaling (higher value for closer objects)
-            // Use Math.pow to create exponential scaling (higher base exponent increases the effect)
             const scale = mesh.userData.baseScale * Math.pow((1 - normalizedDistance), 1.1) * (1 + scaleFactor);
 
-
             if (!this.isMouseDown) {
-                // mesh.scale.set(scale, scale, scale);
                 gsap.to(mesh.scale, {
                     x: scale,
                     y: scale,
@@ -255,14 +251,29 @@ class GalleryScene {
             this.onMouseClick(event)
         }
 
+        setTimeout(() => {
+            let { nearestObject } = getNearestObject(this.camera, this.projects);
+    
+            //* The thetha of object
+            let phi = Math.atan2(nearestObject.position.z, nearestObject.position.x)
+            console.log("NEarest object x - ", nearestObject.position.x)
+            console.log("NEarest object z - ", nearestObject.position.z)
+            console.log("PHI - ", phi)
+    
+            if (nearestObject) {
+                //TODO after up, i want the camera to move around the orbit 
+                gsap.to(this.camera.position, {
+                    x: this.config.circle.radius * 2 * Math.cos(phi), // Calculate the new X position
+                    y: this.camera.position.y,       // Keep the Y position the same
+                    z: this.config.circle.radius * 2 * Math.sin(phi), // Calculate the new Z position
+                    duration: 1, // Duration of 1 second for the animation
+                    onUpdate: () => {
+                        this.renderer.render(this.scene, this.camera); // Ensure re-rendering during animation
+                    }
+                });
+            }
+        }, 1500)
 
-        let { nearestObject, nearestIndex } = getNearestObject(this.camera, this.projects);
-
-        if (nearestObject) {
-            this.nearestObject = nearestObject;
-
-            this.startAutoRotation(nearestIndex);
-        }
 
     }
 
@@ -274,51 +285,6 @@ class GalleryScene {
         this.camera.aspect = this.renderSize.width / this.renderSize.height;
         this.camera.updateProjectionMatrix();
         this.renderer.setSize(this.renderSize.width, this.renderSize.height);
-    }
-
-    startAutoRotation(nearestIndex) {
-        const targetObject = this.projects[nearestIndex];
-
-
-
-        //* 找相机以及最靠近图片的夹角
-        //* Damn get back to trig, i forgot alot..
-        const angle = this.getAngleBetweenCameraAndObject(this.camera, targetObject)
-
-        console.log("ORI camera pos, ", this.camera.position)
-
-        const newX = this.camera.position.x * Math.cos(angle)
-        const newZ = this.camera.position.z * Math.sin(angle)
-
-        console.log("New camera pos", newX, this.camera.position.y, newZ)
-
-        // gsap.to(this.camera.position, {
-        //     x: this.camera.position.x * Math.cos(angle), // Calculate the new X position
-        //     y: this.camera.position.y,       // Keep the Y position the same
-        //     z: this.camera.position.z * Math.sin(angle), // Calculate the new Z position
-        //     duration: 1, // Duration of 1 second for the animation
-        //     onUpdate: () => {
-        //         this.renderer.render(this.scene, this.camera); // Ensure re-rendering during animation
-        //     }
-        // });
-    }
-
-    getAngleBetweenCameraAndObject(camera, object) {
-        // Assuming the camera and object positions are on the x-z plane
-        const cameraAngle = Math.atan2(camera.position.z, camera.position.x); // Camera angle
-        const objectAngle = Math.atan2(object.position.z, object.position.x); // Object angle
-
-        // Angle difference
-        let angleDifference = cameraAngle - objectAngle;
-
-        // Ensure the angle is in the range -π to π
-        if (angleDifference > Math.PI) {
-            angleDifference -= 2 * Math.PI;
-        } else if (angleDifference < -Math.PI) {
-            angleDifference += 2 * Math.PI;
-        }
-
-        return angleDifference;
     }
 
 
@@ -347,7 +313,8 @@ function getNearestObject(camera, objects) {
         }
     })
 
-    return { nearestObject, nearestIndex };
+
+    return { nearestObject };
 }
 
 const radius = 45;
@@ -363,11 +330,10 @@ const galleryConfig = {
         enablePan: false
     },
     projectImages: [
-        "/assets/images/ProjectImage/vitalz.png",
         "/assets/images/ProjectImage/hygieia.png",
         "/assets/images/ProjectImage/vitalz.png",
         "/assets/images/ProjectImage/hygieia.png",
-
+        "/assets/images/ProjectImage/vitalz.png",
     ],
     circle: {
         radius: radius
