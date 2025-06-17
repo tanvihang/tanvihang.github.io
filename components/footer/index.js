@@ -35,7 +35,7 @@ class Footer extends HTMLElement{
                             <h2>IT'S</h2>
                             <h2>BOTTOM</h2>
                         </div>
-                        <h3>BROWSE MORE WORKS</h3>
+                        <h3>BROWSE MORE <a href="/projects/" style="color: var(--link-hover);" >WORKS</a></h3>
                         <h3>CHECK OUT MY PHOTOGRAPHY</h3>
                         <h6 class="goto-photo"><a style="text-decoration: none; color: var(--link-hover);" href="/lensvoyager/">[.LENSVOYAGER]</a></h6>
                     </div>
