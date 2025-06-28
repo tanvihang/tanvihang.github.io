@@ -1,7 +1,7 @@
 const works = [
   {
     id: 1,
-    title: 'Vitalz',
+    title: 'Yishii',
     year: '2024',
     jobType: 'Healthcare',
     projectType: 'Freelance',
@@ -12,7 +12,7 @@ const works = [
   },
   {
     id: 2,
-    title: 'Hygieia',
+    title: 'Angus Tan',
     year: '2024',
     jobType: 'Concept',
     projectType: 'Personal',

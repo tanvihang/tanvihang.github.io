@@ -7,7 +7,7 @@
  * DOM Element Size Adjustments
  */
 export function adjustFillerBlockHeight() {
-    const servicesText = document.querySelector('.services-text');
+    const servicesText = document.querySelector('.section2-header-text');
     const fillerBlock = document.querySelector('.filler-block');
     if (servicesText && fillerBlock) {
         const textHeight = servicesText.offsetHeight;

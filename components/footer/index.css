@@ -10,10 +10,7 @@
     }
     
 
-    .footer-main-title{
-        display: flex;
-        gap: var(--ultimate-padding);
-    }
+
 
 }
 
@@ -47,6 +44,41 @@
     & .footer-end{
         & h6{
             text-align: center;
+        }
+
+        & .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-fluid-md);
+            margin-top: var(--spacing-fluid-md);
+            margin-bottom: var(--spacing-fluid-md);
+
+            & .social-link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: transparent;
+                border: 1px solid var(--text-primary-transparent-50);
+                color: var(--text-body);
+                text-decoration: none;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    /* background-color: var(--text-body); */
+                    /* color: var(--surface-base); */
+                    /* border-color: var(--text-body); */
+                    transform: translateY(-2px);
+                }
+
+                & svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
         }
 
         & .line{
@@ -89,4 +121,56 @@
     100%{
         transform: translate(0, 0%);
     }
+}
+
+.build-button {
+    background-color: var(--link-hover) !important;
+    color: white !important;
+    padding: var(--spacing-fluid-sm) var(--spacing-fluid-lg) !important;
+    border-radius: var(--radius-rounded);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+}
+
+.build-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    background-color: var(--text-body) !important;
+}
+
+.build-button:active {
+    transform: translateY(-1px) scale(1.02);
+    transition: all 0.1s ease;
+}
+
+.build-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.build-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+@keyframes buildPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.build-button:hover {
+    animation: buildPulse 1.5s infinite ease-in-out;
 }
