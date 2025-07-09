@@ -120,6 +120,7 @@
   align-items: end;
   justify-content: center;
   padding-right: var(--spacing-fluid-lg);
+  padding-left: var(--spacing-fluid-lg);
   text-align: end;
 }
 
