@@ -47,7 +47,7 @@ class ProjectProblemCard extends HTMLElement {
             <div class="problem-card" data-cta="${cta || ''}" style="cursor: ${cta ? 'pointer' : 'default'};">
                 <div class="problem-card-content">
                     <div class="problem-card-header">
-                        <h4 class="problem-number">${number} /</h4>
+                        <h2 class="problem-number">${number} /</h2>
                         <h4>${title}</h4>
                     </div>
                     <p>${description}</p>

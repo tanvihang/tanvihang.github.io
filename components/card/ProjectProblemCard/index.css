@@ -1,53 +1,48 @@
+/* Desktop Responsive */
+@media (min-width: 1080px) {
+
+}
+
+/* Tablet Responsive */
+@media (min-width: 769px){
+  .problem-card {
+    width: 500px !important;
+  }
+
+  .problem-card-content {
+    width: 200px !important;
+  }
+
+  .problem-card-header {
+    width: 200px !important;
+  }
+}
+
 .problem-card {
+  width: 320px;
   flex: 0 0 auto;
-  background: var(--surface-secondary);
+  background: var(--surface-base);
   border-radius: var(--radius-rounded-lg);
   padding: var(--spacing-fluid-lg);
   display: flex;
   flex-direction: row;
   gap: var(--spacing-fluid-md);
-  border: 1px solid var(--border-primary);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
-}
-
-.problem-card[style*="cursor: pointer"]:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  border-color: var(--border-hover, var(--border-primary));
-}
-
-.problem-card[style*="cursor: pointer"]:active {
-  transform: translateY(-2px);
-}
-
-/* Add subtle background animation on hover for clickable cards */
-.problem-card[style*="cursor: pointer"]::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
-  transition: left 0.5s ease;
-  pointer-events: none;
-}
-
-.problem-card[style*="cursor: pointer"]:hover::before {
-  left: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
 .problem-card-content {
   display: flex;
+  width: 120px;
   flex-direction: column;
   gap: var(--spacing-fluid-sm);
-  flex-grow: 1;
 }
 
 .problem-card-header {
   display: flex;
+  width: 120px;
   flex-direction: column;
   gap: var(--spacing-fluid-xs);
   margin-bottom: var(--spacing-fluid-xs);
@@ -66,15 +61,8 @@
   transition: color 0.3s ease;
 }
 
-.problem-card[style*="cursor: pointer"]:hover h3 {
-  color: #A21518;
-}
-
 .problem-card p {
   color: var(--text-placeholder);
-  margin: 0;
-  line-height: 1.6;
-  font-size: var(--body-font-size);
 }
 
 .problem-card-image {
@@ -88,20 +76,12 @@
 }
 
 .problem-card-image img {
-  width: 100%;
+  flex: 1;
   height: auto;
+  width: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
-  display: block;
-}
-
-.problem-card[style*="cursor: pointer"]:hover .problem-card-image {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.problem-card[style*="cursor: pointer"]:hover .problem-card-image img {
-  transform: scale(1.02);
+  display: flex;
 }
 
 /* Focus styles for accessibility */
@@ -110,23 +90,13 @@
   outline-offset: 2px;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .problem-card {
-    width: 280px;
-  }
+.problem-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Tablet Responsive */
-@media (min-width: 769px) and (max-width: 1079px) {
-  .problem-card {
-    width: 300px;
-  }
+.problem-card[style*="cursor: pointer"]:active {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* Desktop Responsive */
-@media (min-width: 1080px) {
-  .problem-card {
-    width: 320px;
-  }
-}
