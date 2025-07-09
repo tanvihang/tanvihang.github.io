@@ -1,5 +1,6 @@
 //? A class structure
 //* Ahh, long time not oop dy
+import { works } from '../../datas/home.js';
 
 class GalleryScene {
     constructor(canvasId, config) {
@@ -18,6 +19,7 @@ class GalleryScene {
         };
 
         this.projects = [];
+        this.projectsData = works; // Store the works data
         this.isAnimating = false;
         this.init();
     }
@@ -73,7 +75,7 @@ class GalleryScene {
         controls.enablePan = this.config.controls.enablePan;
 
         //* 倒数
-        controls.rotateSpeed = (1 / this.config.projectImages.length) * 10;
+        controls.rotateSpeed = (1 / this.projectsData.length) * 10;
 
         return controls;
     }
@@ -105,17 +107,20 @@ class GalleryScene {
         const imageWidth = screenFactor * 1.5;  // 调整宽高比例
         const imageHeight = screenFactor;
 
-        this.config.projectImages.forEach((img, index) => {
+        // Calculate starting angle offset to center the first image in front
+        const angleOffset = -Math.PI / 2; // Start from front (negative Z-axis)
 
-            const angle = (index / this.config.projectImages.length) * Math.PI * 2;
 
-            const texture = textureLoader.load(img);
+        this.projectsData.forEach((project, index) => {
+
+            const angle = (index / this.projectsData.length) * Math.PI * 2 - angleOffset; // Calculate angle for each project
+
+            const texture = textureLoader.load(project.image1);
             // const geometry = new THREE.PlaneGeometry(...this.config.imageSize);
             const geometry = new THREE.PlaneGeometry(imageWidth, imageHeight);
             const material = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
             const mesh = new THREE.Mesh(geometry, material);
 
-            // Randomized Positioning
             mesh.position.set(
                 Math.cos(angle) * radius,
                 0,
@@ -124,7 +129,14 @@ class GalleryScene {
 
             mesh.userData = {
                 projectIndex: index,
-                baseScale: 1.0
+                baseScale: 1.0,
+                projectData: project, // Store the complete project data
+                title: project.title,
+                year: project.year,
+                jobType: project.jobType,
+                projectType: project.projectType,
+                tags: project.tags,
+                cta: project.cta
             };
 
             // mesh.lookAt(new THREE.Vector3(0,0,0))
@@ -197,8 +209,9 @@ class GalleryScene {
 
         if (intersects.length > 0) {
             const clickedProject = intersects[0].object;
-            const projectIndex = clickedProject.userData.projectIndex;
-            alert(`Clicked on project: ${this.config.projectImages[projectIndex]}`);
+            const projectData = clickedProject.userData.projectData;
+
+            this.navigateToProject(projectData.cta)
         }
 
     }
@@ -287,6 +300,13 @@ class GalleryScene {
 
     }
 
+    //* Navigate to project page
+    navigateToProject(ctaPath) {
+        if (ctaPath) {
+            window.location.href = `/${ctaPath}/index.html`;
+        }
+    }
+
 
 }
 
@@ -321,16 +341,6 @@ const galleryConfig = {
         enableZoom: false,
         enablePan: false
     },
-    projectImages: [
-        "/assets/images/ProjectImage/hygieia.png",
-        "/assets/images/ProjectImage/vitalz.png",
-        "/assets/images/ProjectImage/hygieia.png",
-        "/assets/images/ProjectImage/vitalz.png",
-        "/assets/images/ProjectImage/hygieia.png",
-        "/assets/images/ProjectImage/vitalz.png",
-        "/assets/images/ProjectImage/hygieia.png",
-        "/assets/images/ProjectImage/vitalz.png",
-    ],
     circle: {
         radius: radius
     }

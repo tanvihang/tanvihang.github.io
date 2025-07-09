@@ -1,0 +1,132 @@
+.problem-card {
+  flex: 0 0 auto;
+  background: var(--surface-secondary);
+  border-radius: var(--radius-rounded-lg);
+  padding: var(--spacing-fluid-lg);
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-fluid-md);
+  border: 1px solid var(--border-primary);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.problem-card[style*="cursor: pointer"]:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: var(--border-hover, var(--border-primary));
+}
+
+.problem-card[style*="cursor: pointer"]:active {
+  transform: translateY(-2px);
+}
+
+/* Add subtle background animation on hover for clickable cards */
+.problem-card[style*="cursor: pointer"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.problem-card[style*="cursor: pointer"]:hover::before {
+  left: 100%;
+}
+
+.problem-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-fluid-sm);
+  flex-grow: 1;
+}
+
+.problem-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-fluid-xs);
+  margin-bottom: var(--spacing-fluid-xs);
+}
+
+.problem-number {
+  color: #A21518;
+}
+
+.problem-card h3 {
+  color: var(--text-body);
+  margin: 0;
+  font-size: var(--h4-font-size);
+  font-weight: 600;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.problem-card[style*="cursor: pointer"]:hover h3 {
+  color: #A21518;
+}
+
+.problem-card p {
+  color: var(--text-placeholder);
+  margin: 0;
+  line-height: 1.6;
+  font-size: var(--body-font-size);
+}
+
+.problem-card-image {
+  min-width: 200px;
+  max-height: 500px;
+  border-radius: var(--radius-rounded);
+  overflow: hidden;
+  margin-top: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.problem-card-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.problem-card[style*="cursor: pointer"]:hover .problem-card-image {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.problem-card[style*="cursor: pointer"]:hover .problem-card-image img {
+  transform: scale(1.02);
+}
+
+/* Focus styles for accessibility */
+.problem-card[tabindex]:focus {
+  outline: 2px solid #A21518;
+  outline-offset: 2px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .problem-card {
+    width: 280px;
+  }
+}
+
+/* Tablet Responsive */
+@media (min-width: 769px) and (max-width: 1079px) {
+  .problem-card {
+    width: 300px;
+  }
+}
+
+/* Desktop Responsive */
+@media (min-width: 1080px) {
+  .problem-card {
+    width: 320px;
+  }
+}

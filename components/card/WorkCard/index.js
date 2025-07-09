@@ -7,6 +7,8 @@ class WorkCard extends HTMLElement {
     super();
     // can use other css
     this.attachShadow({ mode: "open" });
+    this.expansionManager = null;
+    this.isCollapsed = true;
     // initialize Component
     this.initializeComponent();
   }
@@ -49,7 +51,7 @@ class WorkCard extends HTMLElement {
             </style>
 
             <div class ="work-card-container">
-                <div class="work-card-header">
+                <div class="work-card-header" style="cursor: pointer;" data-cta="${cta}">
                     <h5 class="section3-text" style="color: var(--text-body-invert);">(0${id}) ${title}</h5>
                     <div class="circle-container">
                         <div class="triangle"></div>
@@ -58,14 +60,14 @@ class WorkCard extends HTMLElement {
                 <div class = "work-card-content">
                     ${
                       !isDesktop() && image1
-                        ? `<img class= "work-image-card" src="${image1}" alt="${title}" >`
+                        ? `<img class= "work-image-card" src="${image1}" alt="${title}" data-cta="${cta}" style="cursor: pointer;" >`
                         : !isDesktop() && !image1
                         ? `<div class = "work-image-card-empty">
                             <h1 style="color: var(--text-body-invert);">WIP</h1>
                         </div>`
                         : ""
                     }
-                    }
+                </div>
                 </div>
             </div>
         `;
@@ -73,13 +75,41 @@ class WorkCard extends HTMLElement {
     await Promise.resolve();
 
     // Get the h5 element and circle container
+    const titleHeader = this.shadowRoot.querySelector(".work-card-header");
     const titleElement = this.shadowRoot.querySelector("h5");
     const circleContainer = this.shadowRoot.querySelector(".circle-container");
     const triangle = this.shadowRoot.querySelector(".triangle");
     const container = this.shadowRoot.querySelector(".work-card-container");
-    const image = this.shadowRoot.querySelector(".work-card-image");
+    const image = this.shadowRoot.querySelector(".work-image-card");
 
     const content = this.shadowRoot.querySelector(".work-card-content");
+
+    // Add click handlers for navigation
+    const navigateToProject = (ctaPath) => {
+      if (ctaPath) {
+        window.location.href = `/${ctaPath}/index.html`;
+      }
+    };
+
+    // Desktop: Click on title to navigate
+    if (titleHeader && isDesktop()) {
+      titleHeader.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const ctaPath = titleHeader.getAttribute("data-cta");
+        navigateToProject(ctaPath);
+      });
+    }
+
+    // Mobile: Click on image to navigate
+    if (image) {
+      image.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const ctaPath = image.getAttribute("data-cta");
+        navigateToProject(ctaPath);
+      });
+    }
 
     // Set the circle container dimensions based on h5 height
     if (titleElement && circleContainer) {
@@ -99,7 +129,23 @@ class WorkCard extends HTMLElement {
         container.style.borderBottom = `1px solid var(--border-body)`
     }
 
+    // Add method to set expansion manager
+    this.setExpansionManager = (manager) => {
+        this.expansionManager = manager;
+    };
+
+    // Add method to collapse this card (called from external manager)
+    this.collapseCard = () => {
+        if (!this.isCollapsed) {
+            this.isCollapsed = true;
+            container.style.height = `${heights.headerHeight}px`;
+            content.classList.add('collapsed');
+            circleContainer.classList.remove("rotated");
+        }
+    };
+
     let isCollapsed = true;
+    this.isCollapsed = isCollapsed;
     // Function to calculate heights
     const calculateHeights = () => {
         // Temporarily remove collapsed class to get true height
@@ -113,7 +159,7 @@ class WorkCard extends HTMLElement {
         console.log("Content height:", contentHeight);
         
         // Add collapsed class back if we're in collapsed state
-        if (isCollapsed) {
+        if (this.isCollapsed) {
             content.classList.add('collapsed');
         }
         
@@ -140,19 +186,35 @@ class WorkCard extends HTMLElement {
     content.classList.add('collapsed'); // Add collapsed class after measuring
 
     // Click handler
-    circleContainer.addEventListener("click", () => {
-        isCollapsed = !isCollapsed;
+    circleContainer.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation(); // Prevent event bubbling to parent elements
         
-        if (isCollapsed) {
-            container.style.height = `${heights.headerHeight}px`;
-            content.classList.add('collapsed');
-        } else {
-            const newHeights = calculateHeights(); // Recalculate in case of dynamic content
+        const cardId = this.getAttribute('id');
+        
+        // If currently collapsed, expand this card and close others
+        if (this.isCollapsed) {
+            // Notify expansion manager to close other cards
+            if (this.expansionManager) {
+                this.expansionManager.expandCard(cardId);
+            }
+            
+            this.isCollapsed = false;
+            const newHeights = calculateHeights();
             container.style.height = `${newHeights.fullHeight}px`;
             content.classList.remove('collapsed');
+            circleContainer.classList.add("rotated");
+        } else {
+            // Collapse this card
+            if (this.expansionManager) {
+                this.expansionManager.collapseCard(cardId);
+            }
+            
+            this.isCollapsed = true;
+            container.style.height = `${heights.headerHeight}px`;
+            content.classList.add('collapsed');
+            circleContainer.classList.remove("rotated");
         }
-
-        circleContainer.classList.toggle("rotated");
     });
 
 

@@ -322,12 +322,48 @@ globalContext.headerHeight.subscribe(()=>{
 })
 
 window.addEventListener('DOMContentLoaded', ()=>{
+    // Global state for tracking which work card is expanded
+    window.expandedWorkCard = null;
+
     works.forEach((work, index)=>{
         const workCard = document.createElement("work-card-custom")
         workCard.setAttribute("imgDict", JSON.stringify(work))
         workCard.setAttribute("id", `work-card-${index}`)
+        
+        // Add a method to handle expansion state
+        workCard.setExpansionManager = (manager) => {
+            workCard.expansionManager = manager;
+        };
+        
         section3WorksContainer.appendChild(workCard)
     })
+
+    // Create expansion manager
+    const expansionManager = {
+        expandCard: (cardId) => {
+            // Close currently expanded card if different from the one being opened
+            if (window.expandedWorkCard && window.expandedWorkCard !== cardId) {
+                const currentCard = document.getElementById(window.expandedWorkCard);
+                if (currentCard && currentCard.collapseCard) {
+                    currentCard.collapseCard();
+                }
+            }
+            window.expandedWorkCard = cardId;
+        },
+        collapseCard: (cardId) => {
+            if (window.expandedWorkCard === cardId) {
+                window.expandedWorkCard = null;
+            }
+        }
+    };
+
+    // Set the expansion manager for all work cards
+    const workCards = section3WorksContainer.querySelectorAll('work-card-custom');
+    workCards.forEach(card => {
+        if (card.setExpansionManager) {
+            card.setExpansionManager(expansionManager);
+        }
+    });
 
     showHoverInfo();
 

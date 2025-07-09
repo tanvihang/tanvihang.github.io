@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Angus Tan | Yishii</title>
+
+    <link rel="icon" href="/assets/images/AutumnLeaf.gif" />
+    <link href="/css/base.css" type="text/css" rel="stylesheet" />
+    <link href="./index.css" type="text/css" rel="stylesheet" />
+    <script
+      type="module"
+      src="https://unpkg.com/@splinetool/viewer@1.6.9/build/spline-viewer.js"
+    ></script>
+  </head>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VPFYQJ4C7S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-VPFYQJ4C7S');
+  </script>
+
+  <body>
+    <scroll-top-button class="scroll-top-button"></scroll-top-button>
+    <header-custom title="ANGUS"></header-custom>
+
+    <div class="filler"></div>
+
+    <!-- Yishii Hero Section -->
+    <div class="pad yishii-hero">
+      <div class = "yishii-hero-title">
+        <h2>Follow The <span style="color: #A21518;">Signs</span>,<br> Keep The <span style="color: #A21518;">Beat</span></h2>
+        <p>Crafted in 2025<br>Health Application Design and Development<br>by Angus Tan</p>
+      </div>
+
+      <div class="yishii-hero-images">
+        <img class="yishii-hero-image-home" src="/assets/images/ProjectImage/Yishii/HomeScreen.png" />
+        <img class="yishii-hero-image-biometric" src="/assets/images/ProjectImage/Yishii/BiometricScreen.png" />
+      </div>
+
+      <div class = "yishii-hero-spline">
+        <p>[Scroll To Explore →]</p>
+      </div>
+    </div>
+
+    <!-- Yishii Company Section -->
+     <div class="yishii-company">
+      <div class="yishii-company-text">
+        <h2>/ About Signsbeat</h2>
+        <div class="yishii-company-description">  
+          <p>
+            <span><img src="/assets/icons/StarSVG.svg" width="16" height="16" alt="icon" /></span>
+            Signsbeat is a health tech startup based in Malaysia that focuses on turning biometric data into actionable health insights. Riding the trend of wearable health tech - like smart rings and watches - the platform helps users monitor their lifestyle by tracking key behaviors like food intake, drinks, activity and supplement usage.
+          </p>
+          <p>
+            <span><img src="/assets/icons/StarSVG.svg" width="16" height="16" alt="icon" /></span>
+            Through these insights, Signsbeat aims to empower people to make better, personalized health decisions in their daily lives.
+          </p>
+        </div>
+      </div>
+
+      <div class="yishii-company-illustration">
+        <div class="yishii-company-biometric-texts">
+          <h3>Heart Rate Variability</h3>
+          <h4>Heart Rate</h4>
+          <h4>Deep Sleep</h4>
+        </div>
+
+        <div class="yishii-company-biometric-score">
+          <h2>95</h2>
+        </div>
+      </div>
+     </div>
+
+    <!-- Yishii Problem Section -->
+    <div class="yishii-problem-section">
+      <div class="yishii-problem-title">
+        <h2>/ The <span style="color: #A21518;">Problem</span></h2>
+        <p>
+          <span><img src="/assets/icons/StarSVG.svg" width="16" height="16" alt="icon" /></span>
+          The original Signsbeat app successfully displayed health data and generated insights, but it fell short in key user experience.
+        </p>
+      </div>
+
+      <div class="yishii-problem-horizontal-scroll">
+
+      </div>
+
+      <div class="yishii-problem-bottom">
+        <div>
+            <p><span><img src="/assets/icons/FlowerSVG.svg" width="16" height="16" alt="icon" /></span> This led to missed opportunities and user churn, even among interested customers from other countries.</p>
+        </div>
+        
+        <div class="yishii-problem-navigation">
+          <button class="problem-nav-btn" id="problem-prev-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+          </button>
+          <button class="problem-nav-btn" id="problem-next-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    
+
+    <footer-custom></footer-custom>
+  </body>
+
+  <script type="module">
+    import "/components/header/index.js";
+    import "/components/footer/index.js";
+    import globalContext from "/datas/globalContext.js";
+    import {
+      elementIsInViewPort,
+      debounce,
+    } from "/js/IntersectionObserver/vi.js";
+    import "/components/button/ScrollTopButton/index.js"
+    import "/js/About/animation.js"
+    import "/components/card/ProjectProblemCard/index.js";
+    import { yishiiProblem } from "./data.js";
+
+    
+    // =================== Yishii Problem Section ===================
+    const problemHorizontalScroll = document.querySelector(".yishii-problem-horizontal-scroll");
+    const prevBtn = document.getElementById("problem-prev-btn");
+    const nextBtn = document.getElementById("problem-next-btn");
+    
+    let currentProblemIndex = 0;
+
+    // Render problem cards
+    function renderProblemCards() {
+      problemHorizontalScroll.innerHTML = '';
+      
+      yishiiProblem.forEach((problem, index) => {
+        const problemCard = document.createElement('project-problem-card');
+        
+        const problemData = {
+          number: problem.no.toString().padStart(2, '0'),
+          title: problem.title,
+          description: problem.description,
+          image: problem.image,
+          cta: problem.cta || null // Optional CTA for navigation
+        };
+        
+        problemCard.setAttribute('problemData', JSON.stringify(problemData));
+        problemHorizontalScroll.appendChild(problemCard);
+      });
+    }
+
+    // Scroll to specific problem
+    function scrollToProblem(index) {
+      const cards = problemHorizontalScroll.querySelectorAll('project-problem-card');
+      if (cards[index]) {
+        const cardWidth = cards[index].offsetWidth;
+        const gap = 20; // Adjust based on your CSS gap
+        const scrollPosition = index * (cardWidth + gap);
+        
+        problemHorizontalScroll.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth'
+        });
+        
+        currentProblemIndex = index;
+        updateNavigationButtons();
+      }
+    }
+
+    // Update navigation button states
+    function updateNavigationButtons() {
+      prevBtn.disabled = currentProblemIndex === 0;
+      nextBtn.disabled = currentProblemIndex === yishiiProblem.length - 1;
+      
+      prevBtn.style.opacity = prevBtn.disabled ? '0.5' : '1';
+      nextBtn.style.opacity = nextBtn.disabled ? '0.5' : '1';
+    }
+
+    // Navigation button event listeners
+    prevBtn.addEventListener('click', () => {
+      if (currentProblemIndex > 0) {
+        scrollToProblem(currentProblemIndex - 1);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentProblemIndex < yishiiProblem.length - 1) {
+        scrollToProblem(currentProblemIndex + 1);
+      }
+    });
+
+    // Initialize problem section
+    renderProblemCards();
+    updateNavigationButtons();
+
+    
+    // =================== Yishii Hero Animation ===================
+    const biometricImage = document.querySelector(".yishii-hero-image-biometric");
+    const homeImage = document.querySelector(".yishii-hero-image-home");
+
+    window.addEventListener("scroll", handleBiometricTilt);
+    window.addEventListener("resize", handleBiometricTilt);
+
+      function handleBiometricTilt() {
+      if (!biometricImage) return;
+
+      // Get scroll position
+      const scrollY = window.scrollY;
+      
+      // Calculate the scroll progress (0 to 1)
+      // You can adjust these values based on when you want the animation to start/end
+      const startScroll = 0;
+      const endScroll = window.innerHeight; // Animate over one viewport height
+      
+      // Calculate progress (0 to 1)
+      let progress = Math.min(Math.max((scrollY - startScroll) / (endScroll - startScroll), 0), 1);
+      
+      // Apply easing function for smoother animation (optional)
+      progress = easeOutCubic(progress);
+      
+      // Calculate rotation (0 to 20 degrees)
+      const maxRotation = 15;
+      const rotation = progress * maxRotation;
+
+
+      const isTablet = window.innerWidth >= 768;
+
+      let movement = 0
+
+      if(isTablet){
+        const maxMovement = 100;
+        movement = maxMovement * progress;  
+      }else{
+        const maxMovement = 5; // Adjust for more or less movement
+        movement = maxMovement * progress;
+      }
+      // Apply the transformation
+      biometricImage.style.transform = `rotate(${rotation}deg) translateX(${movement}px)`;
+      homeImage.style.transform = `rotate(-${rotation}deg) translateX(${-movement}px)`;
+    }
+
+    // Easing function for smoother animation (optional)
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    // Initialize the tilt on page load
+    handleBiometricTilt();
+
+    
+    // =================== Common Functions ===================
+    const filler = document.querySelector(".filler");
+    const footer = document.querySelector("footer-custom");
+    const about1 = document.querySelector(".transparent-box");
+
+    setHeaderHeight();
+
+    // height change listener
+    globalContext.headerHeight.subscribe(() => {
+      setHeaderHeight(globalContext.headerHeight.getState().height);
+      x = about1.clientWidth / 2;
+      y = about1.clientHeight / 2;
+    });
+
+    window.addEventListener("scroll", debounce(checkItemInView, 5));
+
+
+    function setHeaderHeight(height){
+    if(window.innerWidth > 319 && window.innerWidth < 768){
+        filler.style.height = '70px'
+    }else{
+        filler.style.height = '250px'
+    }
+}
+    function checkItemInView() {
+      // Check footer
+      if (elementIsInViewPort(footer, 5)) {
+        footer.shadowRoot
+          .querySelector(".footer")
+          .classList.add("outer-container-show");
+      }
+    }
+
+  </script>
+</html>

@@ -5,9 +5,9 @@ const works = [
     year: '2024',
     jobType: 'Healthcare',
     projectType: 'Freelance',
-    image1: '/assets/images/vitalz.png',
-    tags: ['React.JS', 'GSAP', 'Framer'],
-    cta: "photography/townbytheocean",
+    image1: '/assets/images/ProjectImage/yishii.png',
+    tags: ['React Native', 'Figma', 'OpenAI'],
+    cta: "projects/yishii",
     last: false
   },
   {
@@ -16,9 +16,9 @@ const works = [
     year: '2024',
     jobType: 'Concept',
     projectType: 'Personal',
-    image1: '/assets/images/hygieia.png',
-    tags: ['React.JS', 'GSAP', 'Figma'],
-    cta: "photography/townbytheocean",
+    image1: '/assets/images/ProjectImage/angus.png',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    cta: "projects/angustan",
     last: true
   }
 

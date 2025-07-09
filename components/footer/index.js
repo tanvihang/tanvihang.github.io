@@ -51,9 +51,6 @@ class Footer extends HTMLElement{
                             <a href="https://www.linkedin.com/in/angustan2001/" target="_blank" rel="noopener noreferrer" class="social-link">
                                 <img src="/assets/icons/LinkedIn SVG Icon.svg" width="20" height="20" alt="LinkedIn" />
                             </a>
-                            <a href="https://www.youtube.com/@vhan.g9607" target="_blank" rel="noopener noreferrer" class="social-link">
-                                <img src="/assets/icons/Youtube Vector Icon.svg" width="20" height="20" alt="Youtube" />
-                            </a>
                             <a href="https://www.xiaohongshu.com/user/profile/6314a574000000001200272c" target="_blank" rel="noopener noreferrer" class="social-link">
                                 <img src="/assets/icons/Xiaohongshu Logo.svg" width="20" height="20" alt="RedNote" />
                             </a>
