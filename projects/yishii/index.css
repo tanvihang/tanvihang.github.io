@@ -32,9 +32,19 @@
         align-items: start;
       }
 
+    }
   }
 
-}
+  .yishii-result-section {
+      min-height: 90vh !important; 
+
+      & .yishii-result-statistic {
+        flex-direction: row !important;
+        justify-content: space-around !important;
+      }
+
+    }
+
 
 }
 
@@ -270,7 +280,7 @@
     flex-direction: column;
     gap: var(--spacing-fluid-xxl);
     justify-content: center;
-    min-height: 50vh;
+    min-height: 70vh;
     flex: 1;
 
     & .yishii-solution-section-1-chat-box-text {
@@ -386,6 +396,48 @@
       }
     }
   }
+}
+
+.yishii-result-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-fluid-xl);
+  padding: var(--spacing-fluid-xl) var(--spacing-fluid-lg);
+  min-height: 80vh; 
+
+  & .yishii-result-summary {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-fluid-md);
+  }
+
+  & .yishii-result-statistic {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--spacing-fluid-xxl);
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-fluid-xxl) 0;
+
+    & .yishii-result-statistic-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-fluid-sm);
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+}
+
+.yishii-testimonial-section {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  gap: var(--spacing-fluid-xl);
+  padding: var(--spacing-fluid-xl) var(--spacing-fluid-lg);
+
 }
 
 .max-word-limit {

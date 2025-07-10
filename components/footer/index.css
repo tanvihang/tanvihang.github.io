@@ -5,7 +5,7 @@
 @media only screen and (min-width: 768px) {
 
     .container{
-        margin: 0 calc(var(--ultimate-padding) * 3) !important;
+        /* margin: 0 calc(var(--ultimate-padding) * 3) !important; */
         height: 80% !important;
     }
     
@@ -33,7 +33,8 @@
 }
 
 .container{
-    margin: 0 var(--ultimate-padding);
+    margin: 0 var(--spacing-fluid-lg);
+    /* background-color: aqua; */
     padding-bottom: var(--ultimate-padding);
     height: 80%;
 

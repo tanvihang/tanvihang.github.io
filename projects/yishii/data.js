@@ -3,19 +3,19 @@ export const yishiiProblem = [
         no: 1,
         title: "Inconsistent Interface",
         description: "Every page have different design system",
-        image: "/assets/images/ProjectImage/Yishii/HomeScreen.png",
+        image: "/assets/images/ProjectImage/Yishii/InconsistentInterface.gif",
     },
     {
         no: 2,
         title: "Slow Performance",
         description: "It took 20 seconds to change the page",
-        image: "/assets/images/ProjectImage/Yishii/BiometricScreen.png",
+        image: "/assets/images/ProjectImage/Yishii/SlowPerformance.gif",
     },
     {
         no: 3,
         title: "Confusing Usability",
         description: "Friend profile interface same as personal profile",
-        image: "/assets/images/ProjectImage/Yishii/BiometricScreen.png",
+        image: "/assets/images/ProjectImage/Yishii/ConfusingUsability.gif",
     },
 ]
 
