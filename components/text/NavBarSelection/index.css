@@ -55,6 +55,6 @@ p{
 
 
 .current-page{
-  color: #EF5A6F !important;
+  color: var(--link-hover) !important;
   font-size: x-large;
 }

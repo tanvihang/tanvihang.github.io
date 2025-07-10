@@ -24,6 +24,7 @@ class NavBarSelection extends HTMLElement{
         const title = this.getAttribute('title') || 'Default Title';
         const cta = this.getAttribute('cta') || '404';
         const icon = this.getAttribute('icon') 
+        const enabled = this.getAttribute('enabled') || 'true';
 
         this.shadowRoot.innerHTML = 
         `
@@ -49,7 +50,7 @@ class NavBarSelection extends HTMLElement{
             titleDOM.insertAdjacentElement('afterend', imageElement)
         }
 
-        if (titleDOM) {
+        if (titleDOM && enabled === 'true') {
             titleDOM.addEventListener('click', () => {
                 console.log("GOTO " + cta)
                 window.location.assign(`/${cta}/index.html`)

@@ -1,5 +1,21 @@
 @media only screen and (min-width: 1080px) {
 
+  .yishii-highlight-section {
+
+
+  & .yishi-highlight-rotate {
+    & .yishii-highlight-image-holder {
+  
+      & .yishii-highlight-image-column {
+  
+        & .yishii-highlight-image {
+          width: 300px !important;
+        }
+      }
+    }
+  }
+
+}
 
 }
 
@@ -330,6 +346,93 @@
     gap: var(--spacing-fluid-lg);
 
   }
+}
+
+.yishii-highlight-section {
+  background-image: linear-gradient(
+    0deg,
+    #4747B6,
+    #9191E8
+  );
+  overflow: hidden;
+  position: relative;
+  height: 90vh;
+
+  /* Top blur overlay */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(
+      to bottom,
+      var(--surface-base) 0%,
+      rgba(var(--surface-base-rgb, 255, 255, 255), 0.8) 30%,
+      rgba(var(--surface-base-rgb, 255, 255, 255), 0.4) 60%,
+      transparent 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Bottom blur overlay */
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(
+      to top,
+      var(--surface-base) 0%,
+      rgba(var(--surface-base-rgb, 255, 255, 255), 0.8) 30%,
+      rgba(var(--surface-base-rgb, 255, 255, 255), 0.4) 60%,
+      transparent 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  & .yishi-highlight-rotate {
+    transform: rotate(-20deg);
+    transform-origin: center center;
+    position: relative;
+    z-index: 1;
+
+    & .yishii-highlight-image-holder {
+      display: flex;
+      flex-direction: row;
+      gap: var(--spacing-fluid-lg);
+      align-items: flex-start; /* Align to top to allow different starting points */
+  
+      & .yishii-highlight-image-column {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-fluid-lg);
+        align-items: center;
+        justify-content: flex-start; /* Start from top */
+        
+        /* Stagger every second column */
+        &:nth-child(even) {
+          margin-top: 120px; /* Offset even columns downward */
+        }
+        
+        &:nth-child(odd) {
+          margin-top: 0; /* Keep odd columns at the top */
+        }
+  
+        & .yishii-highlight-image {
+          width: 100%;
+          width: 175px;
+          height: auto;
+        }
+      }
+    }
+  }
+
 }
 
 .yishii-result-section {

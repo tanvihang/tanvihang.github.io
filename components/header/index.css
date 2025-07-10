@@ -200,9 +200,9 @@
         font-size: 150px;
         letter-spacing: 0;
         line-height: 0;
-        transform: translateY(30px);
+        transform: translateY(10px);
 
-        background: linear-gradient(45deg, #EF5A6F, #EF5A6F,#ef5a6ede,#ef5a6ecf,#ef5a6ebd,#EF5A6Fd5);
+        background: linear-gradient(45deg, #E3955D, #E3955D,#E3955D,#E3955D,#dea176bf,#dea176bf);
         background-size: 300%;
         background-clip: text;
         -webkit-background-clip: text;

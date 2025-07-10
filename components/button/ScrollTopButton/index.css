@@ -18,8 +18,15 @@
 
     cursor: pointer;
 
+    transition: all 0.2s linear;
+
     -webkit-tap-highlight-color: transparent;
-    transition: opacity 0.2s linear;
+    transition: opacity 0.2s linear, transform 0.2s linear;
+
+}
+
+.container:hover{
+    transform: translateY(-2px);
 }
 
 .container-show{
