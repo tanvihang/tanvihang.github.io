@@ -21,6 +21,18 @@ class GalleryScene {
         this.projects = [];
         this.projectsData = works; // Store the works data
         this.isAnimating = false;
+        this.currentProjectIndex = 0;
+        
+        // Initialize UI elements
+        this.initUIElements();
+        
+        // Add error handling for debugging
+        if (!this.projectsData || this.projectsData.length === 0) {
+            console.error('No project data available');
+            return;
+        }
+        
+        console.log('Loading gallery with', this.projectsData.length, 'projects');
         this.init();
     }
 
@@ -40,6 +52,16 @@ class GalleryScene {
         this.loadImages();
 
         this.addEventListeners();
+        
+        // Initialize UI with first project
+        if (this.projectsData.length > 0) {
+            setTimeout(() => {
+                this.updateProjectInfo(this.projectsData[0], 0);
+                this.updateNavigationCounter(0);
+                console.log('Initial project info updated');
+            }, 1000);
+        }
+        
         this.animate();
 
     }
@@ -57,7 +79,10 @@ class GalleryScene {
     }
 
     createRenderer() {
-        const renderer = new THREE.WebGLRenderer({ canvas: this.canvas });
+        const renderer = new THREE.WebGLRenderer({ 
+            canvas: this.canvas,
+
+         });
         renderer.setSize(this.renderSize.width, this.renderSize.height);
         renderer.setClearColor(0xfaf9fa)
         renderer.setPixelRatio(window.devicePixelRatio);
@@ -116,6 +141,17 @@ class GalleryScene {
             const angle = (index / this.projectsData.length) * Math.PI * 2 - angleOffset; // Calculate angle for each project
 
             const texture = textureLoader.load(project.image1);
+
+            // Set texture properties for better quality
+            texture.generateMipmaps = true;
+            texture.minFilter = THREE.LinearMipmapLinearFilter;
+            texture.magFilter = THREE.LinearFilter;
+            texture.format = THREE.RGBAFormat;
+            
+            // Ensure proper texture wrapping
+            texture.wrapS = THREE.ClampToEdgeWrap;
+            texture.wrapT = THREE.ClampToEdgeWrap;
+
             // const geometry = new THREE.PlaneGeometry(...this.config.imageSize);
             const geometry = new THREE.PlaneGeometry(imageWidth, imageHeight);
             const material = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
@@ -192,6 +228,15 @@ class GalleryScene {
 
             mesh.lookAt(this.camera.position)
         })
+
+        // Update UI based on currently focused project
+        const focusedResult = this.getCurrentlyFocusedProject();
+        if (focusedResult && focusedResult.index !== this.currentProjectIndex) {
+            this.currentProjectIndex = focusedResult.index;
+            const projectData = this.projectsData[this.currentProjectIndex];
+            this.updateProjectInfo(projectData, this.currentProjectIndex);
+            this.updateNavigationCounter(this.currentProjectIndex);
+        }
 
         this.renderer.render(this.scene, this.camera);
     }
@@ -305,9 +350,128 @@ class GalleryScene {
         if (ctaPath) {
             window.location.href = `/${ctaPath}/index.html`;
         }
+    }    initUIElements() {
+        // Get UI elements
+        this.infoPanel = document.getElementById('project-info-panel');
+        this.projectTitle = document.getElementById('project-title');
+        this.projectYear = document.getElementById('project-year');
+        this.projectType = document.getElementById('project-type');
+        this.currentProjectSpan = document.getElementById('current-project');
+        this.totalProjectsSpan = document.getElementById('total-projects');
+        this.progressCircle = document.getElementById('progress-circle');
+        
+        console.log('UI Elements initialized:', {
+            infoPanel: !!this.infoPanel,
+            projectTitle: !!this.projectTitle,
+            navigation: !!this.currentProjectSpan
+        });
+        
+        // Set total projects count
+        if (this.totalProjectsSpan) {
+            this.totalProjectsSpan.textContent = this.projectsData.length;
+        }
+        
+        // Add click handler for info panel
+        if (this.infoPanel) {
+            this.infoPanel.addEventListener('click', () => {
+                const currentProject = this.projectsData[this.currentProjectIndex];
+                if (currentProject && currentProject.cta) {
+                    this.navigateToProject(currentProject.cta);
+                }
+            });
+        }
     }
 
+    getCurrentlyFocusedProject() {
+        if (this.projects.length === 0) return null;
+        
+        let minDistance = Infinity;
+        let focusedProject = null;
+        let focusedIndex = 0;
+        
+        this.projects.forEach((mesh, index) => {
+            const distance = this.camera.position.distanceTo(mesh.position);
+            if (distance < minDistance) {
+                minDistance = distance;
+                focusedProject = mesh;
+                focusedIndex = index;
+            }
+        });
+        
+        return { project: focusedProject, index: focusedIndex };
+    }
 
+    updateProjectInfo(projectData, index) {
+        if (!this.infoPanel || !projectData) return;
+        
+        // Update project info
+        if (this.projectTitle) {
+            this.projectTitle.textContent = projectData.title || 'Untitled Project';
+        }
+        
+        if (this.projectYear) {
+            this.projectYear.textContent = projectData.year || '';
+        }
+        
+        if (this.projectType) {
+            this.projectType.textContent = projectData.projectType || projectData.jobType || '';
+        }
+        
+        if (this.projectTags) {
+            this.projectTags.innerHTML = '';
+            if (projectData.tags && Array.isArray(projectData.tags)) {
+                projectData.tags.forEach(tag => {
+                    const tagElement = document.createElement('span');
+                    tagElement.className = 'project-tag';
+                    tagElement.textContent = tag;
+                    this.projectTags.appendChild(tagElement);
+                });
+            }
+        }
+        
+        if (this.projectDescription) {
+            // Create a description from available data if no description field exists
+            let description = projectData.description || projectData.subtitle || '';
+            if (!description) {
+                description = `A ${projectData.projectType || 'project'} in ${projectData.jobType || 'development'}`;
+                if (projectData.tags && projectData.tags.length > 0) {
+                    description += ` using ${projectData.tags.slice(0, 2).join(' and ')}`;
+                    if (projectData.tags.length > 2) {
+                        description += ` and more`;
+                    }
+                }
+                description += '.';
+            }
+            this.projectDescription.textContent = description;
+        }
+        
+        // Show the info panel
+        this.infoPanel.classList.add('active');
+        
+        // Add debug class for testing
+        this.infoPanel.classList.add('debug');
+        
+        console.log('Project info updated:', projectData.title);
+    }
+
+    updateNavigationCounter(currentIndex) {
+        // Update current project number (1-based)
+        if (this.currentProjectSpan) {
+            this.currentProjectSpan.textContent = currentIndex + 1;
+        }
+        
+        // Update circular progress
+        if (this.progressCircle) {
+            const progress = (currentIndex + 1) / this.projectsData.length;
+            const circumference = 157; // 2 * π * r (where r = 25)
+            const offset = circumference - (progress * circumference);
+            this.progressCircle.style.strokeDashoffset = offset;
+        }
+    }    hideProjectInfo() {
+        if (this.infoPanel) {
+            this.infoPanel.classList.remove('active');
+        }
+    }
 }
 
 //* Function to get the nearest object

@@ -4,7 +4,7 @@ const works = [
     title: 'Yishii',
     year: '2024',
     jobType: 'Healthcare',
-    projectType: 'Freelance',
+    projectType: 'Commission',
     image1: '/assets/images/ProjectImage/yishii.png',
     tags: ['React Native', 'Figma', 'OpenAI'],
     cta: "projects/yishii",
@@ -20,7 +20,7 @@ const works = [
     tags: ['HTML', 'CSS', 'JavaScript'],
     cta: "projects/angustan",
     last: true
-  }
+  },
 
 ];
 

@@ -40,6 +40,7 @@
 
   .scroll-container {
     border: var(--text-primary) 1px solid;
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
     background-color: var(--header-scroll-bg-desktop);
   
     transition: all 1.5s ease;
@@ -231,6 +232,7 @@
   z-index: 999;
 
   border: var(--text-primary) 1px solid;
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
   background-color: var(--header-scroll-bg);
   height: auto;
 

@@ -38,6 +38,30 @@
 
   <canvas id="infinte-gallery"></canvas>
   
+  <!-- Project Info Panel -->
+  <div id="project-info-panel" class="project-info-panel">
+    <div class="project-info-content">
+      <h5 id="project-title" class="project-title"></h5>
+      <div class="project-meta">
+        <p id="project-year"></p>
+        <p>-</p>
+        <p id="project-type"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery Navigation Counter -->
+  <div class="gallery-navigation">
+    <div class="circular-progress">
+      <svg width="60" height="60" viewBox="0 0 60 60">
+        <circle cx="30" cy="30" r="25" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="2"/>
+        <circle id="progress-circle" cx="30" cy="30" r="25" fill="none" stroke="var(--primary-color, #E3955D)" 
+                stroke-width="2" stroke-dasharray="157" stroke-dashoffset="157" class="progress-circle"/>
+      </svg>
+    </div>
+    <p>Drag to browse</p>
+  </div>
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/controls/OrbitControls.js"></script>
   
