@@ -19,6 +19,7 @@
     --spacing-fluid-lg: calc(16px + 1vw); 
     --spacing-fluid-xl: calc(24px + 1vw); 
     --spacing-fluid-xxl: calc(32px + 1vw); 
+    --spacing-fluid-xxxl: calc(64px + 1vw); 
 
     --ultimate-padding: var(--spacing-lg); /* Replacing with consistent spacing */
 

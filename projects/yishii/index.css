@@ -55,7 +55,7 @@
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  padding: calc(var(--spacing-fluid-xxl) * 2) 0;
+  padding: calc(var(--spacing-fluid-xxl) * 2) var(--spacing-fluid-lg);
   gap: var(--spacing-fluid-xxl);
 
   & .yishii-hero-title {
@@ -180,6 +180,7 @@
   flex-direction: column;
   gap: var(--spacing-fluid-xl);
   padding: var(--spacing-fluid-xl) 0;
+  margin: var(--spacing-fluid-xxxl) 0;
 
   & .yishii-problem-title {
     display: flex;
@@ -191,7 +192,7 @@
   & .yishii-problem-horizontal-scroll {
     
     display: flex;
-    gap: 20px;
+    gap: var(--ultimate-padding);
     overflow-x: auto;
     scroll-behavior: smooth;
     padding: var(--spacing-fluid-sm) var(--spacing-fluid-lg);
@@ -212,39 +213,6 @@
     align-items: flex-end;
     gap: var(--spacing-fluid-lg);
 
-    & .yishii-problem-navigation {
-      display: flex;
-      gap: var(--spacing-fluid-sm);
-
-      & .problem-nav-btn {
-        background: var(--surface-secondary);
-        border: 1px solid var(--border-primary);
-        border-radius: var(--radius-rounded);
-        width: 48px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        color: var(--text-body);
-
-        &:hover:not(:disabled) {
-          background: var(--surface-primary);
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        &:disabled {
-          cursor: not-allowed;
-          opacity: 0.5;
-        }
-
-        &:active:not(:disabled) {
-          transform: translateY(0);
-        }
-      }
-    }
   }
 }
 
@@ -293,7 +261,6 @@
       & img {
         border-radius: var(--radius-full);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
       }
 
       & .bubble-signsbeat{
@@ -341,7 +308,7 @@
   & .yishii-approach-horizontal-scroll {
     
     display: flex;
-    gap: 20px;
+    gap: var(--ultimate-padding);
     overflow-x: auto;
     scroll-behavior: smooth;
     padding: var(--spacing-fluid-sm) var(--spacing-fluid-lg);
@@ -362,39 +329,6 @@
     align-items: flex-end;
     gap: var(--spacing-fluid-lg);
 
-    & .yishii-approach-navigation {
-      display: flex;
-      gap: var(--spacing-fluid-sm);
-
-      & .approach-nav-btn {
-        background: var(--surface-secondary);
-        border: 1px solid var(--border-primary);
-        border-radius: var(--radius-rounded);
-        width: 48px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        color: var(--text-body);
-
-        &:hover:not(:disabled) {
-          background: var(--surface-primary);
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        &:disabled {
-          cursor: not-allowed;
-          opacity: 0.5;
-        }
-
-        &:active:not(:disabled) {
-          transform: translateY(0);
-        }
-      }
-    }
   }
 }
 
@@ -403,6 +337,7 @@
   flex-direction: column;
   gap: var(--spacing-fluid-xl);
   padding: var(--spacing-fluid-xl) var(--spacing-fluid-lg);
+    margin-top: var(--spacing-fluid-xxxl);
   min-height: 80vh; 
 
   & .yishii-result-summary {

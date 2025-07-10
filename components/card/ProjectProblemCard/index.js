@@ -38,6 +38,7 @@ class ProjectProblemCard extends HTMLElement {
     const description = problemJson.description;
     const image = problemJson.image;
     const cta = problemJson.cta;
+    const titleColor = problemJson.titleColor || '#000'; // Default to black if not provided
 
     this.shadowRoot.innerHTML = `
             <style>
@@ -47,14 +48,14 @@ class ProjectProblemCard extends HTMLElement {
             <div class="problem-card" data-cta="${cta || ''}" style="cursor: ${cta ? 'pointer' : 'default'};">
                 <div class="problem-card-content">
                     <div class="problem-card-header">
-                        <h2 class="problem-number">${number} /</h2>
+                        <h2 style="color:${titleColor}">${number} /</h2>
                         <h4>${title}</h4>
                     </div>
                     <p>${description}</p>
                 </div>
                 ${image ? `
                     <div class="problem-card-image">
-                        <img src="${image}" alt="${title}" loading="lazy">
+                        <img src="${image}" alt="${title}">
                     </div>
                 ` : ''}
             </div>

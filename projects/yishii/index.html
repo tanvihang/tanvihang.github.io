@@ -58,7 +58,11 @@
         <p class="max-word-limit">
           <span><img src="/assets/icons/StarSVG.svg" width="12" height="12" alt="icon" /></span>
           Signsbeat is a health tech startup based in Malaysia that focuses on turning biometric data into actionable
-          health insights. Riding the trend of wearable health tech - like smart rings and watches - the platform helps
+          health insights. 
+        </p>
+        <p class="max-word-limit">
+          <span><img src="/assets/icons/StarSVG.svg" width="12" height="12" alt="icon" /></span>
+          Riding the trend of wearable health tech - like smart rings and watches - the platform helps
           users monitor their lifestyle by tracking key behaviors like food intake, drinks, activity and supplement
           usage.
         </p>
@@ -105,18 +109,6 @@
           other countries.</p>
       </div>
 
-      <div class="yishii-problem-navigation">
-        <button class="problem-nav-btn" id="problem-prev-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-          </svg>
-        </button>
-        <button class="problem-nav-btn" id="problem-next-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-          </svg>
-        </button>
-      </div>
     </div>
 
   </div>
@@ -193,18 +185,7 @@
               alt="icon" /></span> With well defined workflow, the result of the product will be awesome!</p>
       </div>
 
-      <div class="yishii-approach-navigation">
-        <button class="approach-nav-btn" id="approach-prev-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-          </svg>
-        </button>
-        <button class="approach-nav-btn" id="approach-next-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-          </svg>
-        </button>
-      </div>
+
     </div>
 
   </div>
@@ -276,8 +257,6 @@
 
   // =================== Yishii Problem Section ===================
   const problemHorizontalScroll = document.querySelector(".yishii-problem-horizontal-scroll");
-  const prevBtn = document.getElementById("problem-prev-btn");
-  const nextBtn = document.getElementById("problem-next-btn");
   const approachHorizontalScroll = document.querySelector(".yishii-approach-horizontal-scroll");
 
   let currentProblemIndex = 0;
@@ -294,7 +273,7 @@
         title: problem.title,
         description: problem.description,
         image: problem.image,
-        cta: problem.cta || null // Optional CTA for navigation
+        titleColor: problem.titleColor
       };
 
       problemCard.setAttribute('problemData', JSON.stringify(problemData));
@@ -306,14 +285,15 @@
   function renderApproachCards() {
     approachHorizontalScroll.innerHTML = '';
 
-    yishiiApproach.forEach((problem, index) => {
+    yishiiApproach.forEach((approach, index) => {
       const approachCard = document.createElement('project-problem-card');
 
       const approachData = {
-        number: problem.no.toString().padStart(2, '0'),
-        title: problem.title,
-        description: problem.description,
-        image: problem.image,
+        number: approach.no.toString().padStart(2, '0'),
+        title: approach.title,
+        description: approach.description,
+        image: approach.image,
+        titleColor: approach.titleColor
       };
 
       approachCard.setAttribute('problemData', JSON.stringify(approachData));
@@ -321,50 +301,10 @@
     });
   }
 
-  // Scroll to specific problem
-  function scrollToProblem(index) {
-    const cards = problemHorizontalScroll.querySelectorAll('project-problem-card');
-    if (cards[index]) {
-      const cardWidth = cards[index].offsetWidth;
-      const gap = 20; // Adjust based on your CSS gap
-      const scrollPosition = index * (cardWidth + gap);
-
-      problemHorizontalScroll.scrollTo({
-        left: scrollPosition,
-        behavior: 'smooth'
-      });
-
-      currentProblemIndex = index;
-      updateNavigationButtons();
-    }
-  }
-
-  // Update navigation button states
-  function updateNavigationButtons() {
-    prevBtn.disabled = currentProblemIndex === 0;
-    nextBtn.disabled = currentProblemIndex === yishiiProblem.length - 1;
-
-    prevBtn.style.opacity = prevBtn.disabled ? '0.5' : '1';
-    nextBtn.style.opacity = nextBtn.disabled ? '0.5' : '1';
-  }
-
-  // Navigation button event listeners
-  prevBtn.addEventListener('click', () => {
-    if (currentProblemIndex > 0) {
-      scrollToProblem(currentProblemIndex - 1);
-    }
-  });
-
-  nextBtn.addEventListener('click', () => {
-    if (currentProblemIndex < yishiiProblem.length - 1) {
-      scrollToProblem(currentProblemIndex + 1);
-    }
-  });
 
   // Initialize problem section
   renderProblemCards();
   renderApproachCards();
-  updateNavigationButtons();
 
 
   // =================== Yishii Hero Animation ===================
