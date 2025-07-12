@@ -63,7 +63,22 @@ class Footer extends HTMLElement{
                 </div>
             </div>
         `
+
+        await Promise.resolve();
+
+        // ...existing code...
+        this.shadowRoot.querySelector('.build-button')?.addEventListener('click', () => {
+            
+            if (window.gtag) {
+                console.log('Build button clicked');
+                window.gtag('event', 'click', {
+                    'event_category': 'Footer',
+                    'event_label': 'BUILD Button'
+                });
+            }
+        });
     }
+
 }
 
 customElements.define('footer-custom', Footer)
