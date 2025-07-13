@@ -75,7 +75,7 @@ class Footer extends HTMLElement{
                     'event_category': 'Footer',
                     'event_label': 'BUILD Button'
                 });
-                window.location.href = '/openForWork/index.html';
+                // window.location.href = '/openForWork/index.html';
             }
         });
     }
