@@ -18,7 +18,7 @@ const works = [
     projectType: 'Personal',
     image1: '/assets/images/ProjectImage/angus.png',
     tags: ['HTML', 'CSS', 'JavaScript'],
-    cta: "projects/angustan",
+    cta: "lensvoyager",
     last: true
   },
 

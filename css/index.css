@@ -576,6 +576,18 @@ li.animate::after {
 
 }
 
+.video-fallback {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  border-radius: var(--spacing-fluid-xxl) var(--spacing-fluid-xxl) 0 0;
+
+}
+
+
 
 
 

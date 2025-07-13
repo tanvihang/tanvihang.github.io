@@ -103,6 +103,10 @@ class CTAButton extends HTMLElement {
             subCategory: cta,
           });
           break;
+
+        case "/about":
+          window.location.href = "/about";
+          break;
       }
 
 
