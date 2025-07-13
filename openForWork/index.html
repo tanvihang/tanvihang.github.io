@@ -20,15 +20,46 @@
     gtag('config', 'G-VPFYQJ4C7S');
   </script>
 
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
   <body>
     <scroll-top-button class="scroll-top-button"></scroll-top-button>
     <header-custom title="ANGUS"></header-custom>
 
     <div class="filler"></div>
 
-    <div class="empty">
-      <h2>WIP</h2>
-      <p>work</p>
+    <div class="contact-container">
+      
+      <form id="contact-form" class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">How can I help you?</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, goals, and how I can help bring your vision to life..." required></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span class="btn-text">Send Message</span>
+          <span class="btn-loading" style="display: none;">Sending...</span>
+        </button>
+      </form>
+      
+      <div id="form-message" class="form-message" style="display: none;"></div>
     </div>
 
     <footer-custom></footer-custom>
@@ -47,8 +78,76 @@
     const filler = document.querySelector(".filler");
     const footer = document.querySelector("footer-custom");
 
+    // Initialize EmailJS
+    emailjs.init("qRxV4lTfQW9onc2V2"); // Replace with your actual EmailJS public key
 
-    
+    // Contact form handling
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submitBtn');
+    const formMessage = document.getElementById('form-message');
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Show loading state
+      submitBtn.disabled = true;
+      submitBtn.querySelector('.btn-text').style.display = 'none';
+      submitBtn.querySelector('.btn-loading').style.display = 'inline';
+      
+      // Get form data
+      const formData = new FormData(contactForm);
+      const templateParams = {
+        firstName: formData.get('firstName'),
+        lastName: formData.get('lastName'),
+        email: formData.get('email'),
+        message: formData.get('message'),
+        to_email: 'angustanworkspace@gmail.com' // Your email
+      };
+
+      try {
+        // Send email using EmailJS
+        await emailjs.send(
+          'service_48zpb4a', // Replace with your EmailJS service ID
+          'template_h8v9kou', // Replace with your EmailJS template ID
+          templateParams
+        );
+
+        // Success message
+        showMessage('Thank you! Your message has been sent successfully. I\'ll get back to you soon!', 'success');
+        contactForm.reset();
+
+        // Track form submission
+        if (window.gtag) {
+          gtag('event', 'form_submit', {
+            'event_category': 'Contact',
+            'event_label': 'Contact Form Submission'
+          });
+        }
+
+      } catch (error) {
+        console.error('Email send failed:', error);
+        showMessage('Sorry, there was an error sending your message. Please try again or contact me directly at angustanworkspace@gmail.com', 'error');
+      } finally {
+        // Reset button state
+        submitBtn.disabled = false;
+        submitBtn.querySelector('.btn-text').style.display = 'inline';
+        submitBtn.querySelector('.btn-loading').style.display = 'none';
+      }
+    });
+
+    function showMessage(text, type) {
+      formMessage.textContent = text;
+      formMessage.className = `form-message ${type}`;
+      formMessage.style.display = 'block';
+      
+      // Auto-hide success messages after 5 seconds
+      if (type === 'success') {
+        setTimeout(() => {
+          formMessage.style.display = 'none';
+        }, 5000);
+      }
+    }
+
     setHeaderHeight();
 
     
