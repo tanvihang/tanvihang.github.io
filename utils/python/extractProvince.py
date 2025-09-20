@@ -7,7 +7,7 @@ def GetRoot():
 
     parts = cur_dir.split(os.sep)
     # Find the index of 'LensVoyager'
-    index = parts.index('LensVoyager')
+    index = parts.index('tanvihang.github.io')
 
     # Join the parts up to and including 'LensVoyager'
     root_directory = os.sep.join(parts[:index + 1])
@@ -43,12 +43,12 @@ def CreateFile(data, output):
     
 
 # Things to change for every new Map
-countryCode = "China"
-prefix = "MY"
+countryCode = "Indonesia"
+prefix = "ID"
 root_directory = GetRoot()
 
 svg_file_name = f'{root_directory}/assets/svg/world/{countryCode}.svg'
-output_dir = f'{root_directory}/datas/country/{countryCode}.json'
+output_dir = f'{root_directory}/datas/countries/{countryCode}.json'
 province = []
 
 # Extract ids from svg_file
