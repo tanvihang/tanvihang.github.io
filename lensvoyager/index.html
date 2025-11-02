@@ -249,8 +249,9 @@
 
       if (type == "province") {
         let country = globalContext.selectedCountry.getState().country;
-
-        jsonFilePath += `Countries/${country}/${name}.json`;
+        const escapedName = name.replace(/\s+/g, "");
+        jsonFilePath += `Countries/${country}/${escapedName}.json`;
+      
       } else {
         jsonFilePath += `${type}/${name}.json`;
       }

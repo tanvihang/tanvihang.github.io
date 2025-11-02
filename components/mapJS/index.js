@@ -76,7 +76,7 @@ class MapJS extends HTMLElement {
     svgMap.addEventListener("load", async () => {
       const svgDoc = svgMap.contentDocument;
       const theme = await fetch(`${rootPath}/theme.json`).then(response => response.json()).then(themes => themes.light);
-      
+
       // 3. Paint Map
       paintMap(theme, hasTravelled, svgDoc);
 
@@ -89,7 +89,8 @@ class MapJS extends HTMLElement {
 
       function paintMap(theme, ids, svg) {
         ids.forEach((id) => {
-          var countryObj = svg.querySelectorAll(`#${id}`);
+
+          var countryObj = svg.querySelectorAll(`#${CSS.escape(id)}`);
 
           countryObj.forEach((coun) => {
             coun.style.fill = theme.colors.accent_trans;
@@ -135,7 +136,8 @@ class MapJS extends HTMLElement {
       function mapClick(event) {
         var countryCode = getCountryCode(event);
 
-        var country = svgDoc.querySelector(`#${countryCode}`);
+        
+        var country = svgDoc.querySelector(`#${CSS.escape(countryCode)}`);
 
         globalContext.selectedCountry.setState({ country: countryCode });
         if (country) {
@@ -160,7 +162,7 @@ class MapJS extends HTMLElement {
       function mapHover(event, color, doc = svgDoc) {
         var countryCode = getCountryCode(event);
 
-        var country = doc.querySelector(`#${countryCode}`);
+        var country = doc.querySelector(`#${CSS.escape(countryCode)}`);
 
         country.style.fill = color;
 
@@ -173,7 +175,7 @@ class MapJS extends HTMLElement {
       function mapLeave(event, color, doc = svgDoc) {
         var countryCode = getCountryCode(event);
 
-        var country = doc.querySelector(`#${countryCode}`);
+        var country = doc.querySelector(`#${CSS.escape(countryCode)}`);
 
         country.style.fill = color;
 
@@ -200,7 +202,7 @@ class MapJS extends HTMLElement {
     //   The one that provides you functionality when selected province/state 省
       function provinceClick(event, doc) {
         let countryCode = getCountryCode(event);
-        let province = doc.querySelector(`#${countryCode}`);
+        let province = doc.querySelector(`#${CSS.escape(countryCode)}`);
 
         globalContext.selectedProvince.setState({ province: countryCode });
       }

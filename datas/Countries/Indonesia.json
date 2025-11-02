@@ -1,13 +1,13 @@
 {
-    "hasTravelled": ["Bali", "NusaTenggaraBarat"],
+    "hasTravelled": ["Bali", "Nusa Tenggara Barat"],
     "provinces": {
-        "Bali": "/datas/Country/Indonesia/IDKU.json",
+        "Bali": "/datas/Country/Indonesia/Bali.json",
         "IDNT": "",
         "IDKB": "",
         "IDPA": "",
         "IDJI": "",
         "IDMA": "",
-        "NusaTenggaraBarat": "/datas/Country/Indonesia/IDKU.json",
+        "Nusa Tenggara Barat": "/datas/Country/Indonesia/NusaTenggaraBarat.json",
         "IDSN": "",
         "IDJT": "",
         "IDJB": "",

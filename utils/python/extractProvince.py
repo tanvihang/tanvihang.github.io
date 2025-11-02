@@ -47,7 +47,7 @@ countryCode = "Indonesia"
 prefix = "ID"
 root_directory = GetRoot()
 
-svg_file_name = f'{root_directory}/assets/svg/world/{countryCode}.svg'
+svg_file_name = f'{root_directory}/components/mapJS/svg/countries/{countryCode}.svg'
 output_dir = f'{root_directory}/datas/countries/{countryCode}.json'
 province = []
 
