@@ -274,7 +274,7 @@
 
       console.log(jsonData.images.length)
 
-      let wholeHTML = `<h2>${title} <span style="font-size: 0.2em;">(${jsonData.images.length})</span></h2>`;
+      let wholeHTML = `<h2 style="text-align: center">${title} <span style="font-size: 0.2em;">(${jsonData.images.length})</span></h2>`;
 
       jsonData.images.forEach((image) => {
         let path = imagePath + image.url + ".avif";
