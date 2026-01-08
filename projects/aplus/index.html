@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Angus Tan | APlus</title>
+
+  <link rel="icon" href="/assets/images/AutumnLeaf.gif" />
+  <link href="/css/base.css" type="text/css" rel="stylesheet" />
+  <link href="./index.css" type="text/css" rel="stylesheet" />
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.6.9/build/spline-viewer.js"></script>
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VPFYQJ4C7S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-VPFYQJ4C7S');
+</script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "sdhhef8tte");
+</script>
+
+<body>
+  <scroll-top-button class="scroll-top-button"></scroll-top-button>
+  <header-custom title="ANGUS"></header-custom>
+
+  <div class="filler"></div>
+
+  <!-- Yishii Hero Section -->
+  <div class="pad yishii-hero">
+
+    <div class="yishii-hero-title">
+      <p>Crafted in 2025<br>Design and Developed<br>by Angus Tan</p>
+    </div>
+
+    <div class="yishii-hero-images">
+      <img class="yishii-hero-image-home" src="/assets/images/ProjectImage/APlus/aplus.png" />
+    </div>
+
+    <div class="yishii-hero-spline">
+      <p>[Scroll To Explore →]</p>
+    </div>
+  </div>
+
+  <!-- Yishii Company Section -->
+  <div class="yishii-company">
+    <div class="yishii-company-text">
+      <h2>/ About Aplus</h2>
+      <div class="yishii-company-description">
+        <p class="max-word-limit">
+          <span><img src="/assets/icons/StarSVG.svg" width="12" height="12" alt="icon" /></span>
+          APlus Image & Brand Strategist is based in Malaysia that focuses on building confidence for individual & corporate.
+        </p>
+        <p class="max-word-limit">
+          <span><img src="/assets/icons/StarSVG.svg" width="12" height="12" alt="icon" /></span>
+          With RADIANCE as their signature program.
+        </p>
+        <p class="max-word-limit">
+          <span><img src="/assets/icons/StarSVG.svg" width="12" height="12" alt="icon" /></span>
+          HRDCorp certified training provider
+        </p>
+      </div>
+    </div>
+
+    <div class="yishii-company-illustration">
+      <div class="yishii-company-biometric-texts">
+        <h3>RADIANCE</h3>
+        <h4 style="text-align: center;">Positive Psychology</h4>
+        <h4>Image Branding</h4>
+        <h4 class="show-tablet" style="padding-left: 100px;"></h4>
+        <h4 class="show-tablet">Inner Self</h4>
+        <h3 class="show-tablet" style="padding-left: 20px;">Outer Presence</h3>
+      </div>
+
+      <div class="yishii-company-biometric-score">
+        <img class="yishii-company-abstract" src="/assets/icons/AbstractOneSVG.svg"/>
+        <img class="aplus-company-logo" src="/assets/images/ProjectImage/APlus/APlusLogo.png"/>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Yishii Approach Section -->
+  <div class="yishii-approach-section">
+    <div class="yishii-approach-title">
+      <h2>/ My <span style="color: #1563A2;">Approach</span></h2>
+    </div>
+
+    <div class="yishii-approach-horizontal-scroll">
+
+    </div>
+
+    <div class="yishii-approach-bottom">
+      <div>
+        <p class="max-word-limit"><span><img src="/assets/icons/StarSVG.svg" width="12" height="12" alt="icon" /></span>
+          With well defined workflow, this is what We've created</p>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <!-- Yishii Testimonial Section -->
+  <!-- <div class="yishii-testimonial-section">
+    <div class="yishii-testimonial-title">
+      <h2>/ Testimonial</h2>
+    </div>
+
+    <div class="yishii-testimonial-content">
+
+    </div>
+
+   </div> -->
+
+  <footer-custom></footer-custom>
+</body>
+
+<script type="module">
+  import "/components/header/index.js";
+  import "/components/footer/index.js";
+  import globalContext from "/datas/globalContext.js";
+  import {
+    elementIsInViewPort,
+    debounce,
+  } from "/js/IntersectionObserver/vi.js";
+  import "/components/button/ScrollTopButton/index.js"
+  import "/js/About/animation.js"
+  import "/components/card/ProjectProblemCard/index.js";
+  import { yishiiProblem, yishiiApproach } from "./data.js";
+
+
+  // =================== Yishii Problem Section ===================
+
+  const approachHorizontalScroll = document.querySelector(".yishii-approach-horizontal-scroll");
+
+  let currentProblemIndex = 0;
+
+  // Render problem cards
+  function renderProblemCards() {
+    problemHorizontalScroll.innerHTML = '';
+
+    yishiiProblem.forEach((problem, index) => {
+      const problemCard = document.createElement('project-problem-card');
+
+      const problemData = {
+        number: problem.no.toString().padStart(2, '0'),
+        title: problem.title,
+        description: problem.description,
+        image: problem.image,
+        titleColor: problem.titleColor
+      };
+
+      problemCard.setAttribute('problemData', JSON.stringify(problemData));
+      problemHorizontalScroll.appendChild(problemCard);
+    });
+  }
+
+  // Render approach cards
+  function renderApproachCards() {
+    approachHorizontalScroll.innerHTML = '';
+
+    yishiiApproach.forEach((approach, index) => {
+      const approachCard = document.createElement('project-problem-card');
+
+      const approachData = {
+        number: approach.no.toString().padStart(2, '0'),
+        title: approach.title,
+        description: approach.description,
+        image: approach.image,
+        titleColor: approach.titleColor
+      };
+
+      approachCard.setAttribute('problemData', JSON.stringify(approachData));
+      approachHorizontalScroll.appendChild(approachCard);
+    });
+  }
+
+
+  // Initialize problem section
+
+  renderApproachCards();
+
+
+  // =================== Yishii Hero Animation ===================
+  const biometricImage = document.querySelector(".yishii-hero-image-biometric");
+  const homeImage = document.querySelector(".yishii-hero-image-home");
+
+  window.addEventListener("scroll", handleBiometricTilt);
+  window.addEventListener("resize", handleBiometricTilt);
+
+  function handleBiometricTilt() {
+    if (!biometricImage) return;
+
+    // Get scroll position
+    const scrollY = window.scrollY;
+
+    // Calculate the scroll progress (0 to 1)
+    // You can adjust these values based on when you want the animation to start/end
+    const startScroll = 0;
+    const endScroll = window.innerHeight; // Animate over one viewport height
+
+    // Calculate progress (0 to 1)
+    let progress = Math.min(Math.max((scrollY - startScroll) / (endScroll - startScroll), 0), 1);
+
+    // Apply easing function for smoother animation (optional)
+    progress = easeOutCubic(progress);
+
+    // Calculate rotation (0 to 20 degrees)
+    const maxRotation = 15;
+    const rotation = progress * maxRotation;
+
+
+    const isTablet = window.innerWidth >= 768;
+
+    let movement = 0
+
+    if (isTablet) {
+      const maxMovement = 100;
+      movement = maxMovement * progress;
+    } else {
+      const maxMovement = 5; // Adjust for more or less movement
+      movement = maxMovement * progress;
+    }
+    // Apply the transformation
+    biometricImage.style.transform = `rotate(${rotation}deg) translateX(${movement}px)`;
+    homeImage.style.transform = `rotate(-${rotation}deg) translateX(${-movement}px)`;
+  }
+
+  // Easing function for smoother animation (optional)
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  // Initialize the tilt on page load
+  handleBiometricTilt();
+
+  // =================== Yishii Highlight Parallax Animation ===================
+  const highlightColumns = document.querySelectorAll('.yishii-highlight-image-column');
+  const highlightSection = document.querySelector('.yishii-highlight-section');
+
+  function handleHighlightParallax() {
+    if (!highlightSection || highlightColumns.length === 0) return;
+
+    // Get the highlight section's position relative to viewport
+    const sectionRect = highlightSection.getBoundingClientRect();
+    const sectionTop = sectionRect.top;
+    const sectionHeight = sectionRect.height;
+    const windowHeight = window.innerHeight;
+
+    // Calculate scroll progress through the section (-1 to 1)
+    // -1 when section is completely below viewport
+    // 0 when section center is at viewport center
+    // 1 when section is completely above viewport
+    const scrollProgress = (windowHeight / 2 - sectionTop - sectionHeight / 2) / (windowHeight + sectionHeight);
+
+    // Only animate when the section is in or near the viewport
+    if (scrollProgress >= -0.5 && scrollProgress <= 1.5) {
+      highlightColumns.forEach((column, index) => {
+        const isEven = (index + 1) % 2 === 0;
+        
+        // Different animation speeds and directions for even/odd columns
+        let translateY;
+        
+        if (isEven) {
+          // Even columns: move down (positive Y) as we scroll
+          translateY = scrollProgress * 100; // Adjust multiplier for speed
+        } else {
+          // Odd columns: move up (negative Y) as we scroll
+          translateY = scrollProgress * -100; // Adjust multiplier for speed
+        }
+        
+        // Apply the transform while preserving the existing margin-top from CSS
+        column.style.transform = `translateY(${translateY}px)`;
+      });
+    }
+  }
+
+  // Add scroll listener for parallax effect
+  window.addEventListener("scroll", handleHighlightParallax);
+  window.addEventListener("resize", handleHighlightParallax);
+
+  // Initialize parallax on page load
+  handleHighlightParallax();
+
+
+  // =================== Common Functions ===================
+  const filler = document.querySelector(".filler");
+  const footer = document.querySelector("footer-custom");
+  const about1 = document.querySelector(".transparent-box");
+
+  setHeaderHeight();
+
+  // height change listener
+  globalContext.headerHeight.subscribe(() => {
+    setHeaderHeight(globalContext.headerHeight.getState().height);
+    x = about1.clientWidth / 2;
+    y = about1.clientHeight / 2;
+  });
+
+  window.addEventListener("scroll", debounce(checkItemInView, 5));
+
+
+  function setHeaderHeight(height) {
+    if (window.innerWidth > 319 && window.innerWidth < 768) {
+      filler.style.height = '70px'
+    } else {
+      filler.style.height = '250px'
+    }
+  }
+  function checkItemInView() {
+    // Check footer
+    if (elementIsInViewPort(footer, 5)) {
+      footer.shadowRoot
+        .querySelector(".footer")
+        .classList.add("outer-container-show");
+    }
+  }
+
+</script>
+
+</html>

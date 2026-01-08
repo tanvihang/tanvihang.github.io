@@ -29,7 +29,7 @@ const works = [
     projectType: 'Commission',
     image1: '/assets/images/ProjectImage/aplus.png',
     tags: ['Podia', 'Figma', 'UX'],
-    cta: "",
+    cta: "projects/aplus",
     last: true
   }
 ];
