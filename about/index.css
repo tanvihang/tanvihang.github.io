@@ -223,6 +223,19 @@
   }
 }
 
+.ixdf-description{
+  background: linear-gradient(90deg, 
+  #4285F4 0%,   /* Blue */
+  #4285F4 33%,  /* Red */
+  #1e15d8 66%,  /* Yellow */ /* Green */
+  #1e15d8 100%  /* Blue */
+  );
+  background-clip: text; /* Clip the background to the text */
+  -webkit-background-clip: text; /* For Safari */
+  color: transparent; /* Make the text color transparent */
+  text-align: center; /* Center the text */
+}
+
 .google-description{
   background: linear-gradient(90deg, 
   #4285F4 0%,   /* Blue */

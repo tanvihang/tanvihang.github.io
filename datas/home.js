@@ -19,9 +19,19 @@ const works = [
     image1: '/assets/images/ProjectImage/angus.png',
     tags: ['HTML', 'CSS', 'JavaScript'],
     cta: "lensvoyager",
-    last: true
+    last: false
   },
-
+  {
+    id: 3,
+    title: 'APlus',
+    year: '2025',
+    jobType: 'Image & Branding',
+    projectType: 'Commission',
+    image1: '/assets/images/ProjectImage/aplus.png',
+    tags: ['Podia', 'Figma', 'UX'],
+    cta: "",
+    last: true
+  }
 ];
 
 export {
