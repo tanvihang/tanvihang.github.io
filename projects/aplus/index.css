@@ -274,7 +274,7 @@
   flex-direction: column;
   gap: var(--spacing-fluid-lg);
   padding: var(--spacing-fluid-xxl) var(--spacing-fluid-lg);
-  min-height: 100vh;
+  /* min-height: 100vh; */
 
   & .yishii-solution-section-1-role{
     display: flex;
