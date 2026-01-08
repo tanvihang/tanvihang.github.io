@@ -1,0 +1,333 @@
+{
+    "image_root_path": "/assets/images/Countries/Indonesia/NusaTenggaraBarat/",
+    "images": [
+        {
+            "url": "AloneTree1",
+            "title": "Serinity",
+            "description": "A\nlone\ntree\nin\nthe\nmisty\nmountains.",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/14",
+            "tags": []
+        },
+        {
+            "url": "AloneTree2",
+            "title": "Serinity 2",
+            "description": "Another\nlone\ntree\nin\nthe\nmisty\nmountains.",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/14",
+            "tags": []
+        },
+        {
+            "url": "Andreas",
+            "title": "Andreas",
+            "description": "The\nguide\nwho\nled\nus\nup\nMount\nRinjani.",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/14",
+            "tags": []
+        },
+        {
+            "url": "Bird1",
+            "title": "肥秋2",
+            "description": "Same\nbird\nI've\nseen\nin\nBeijing\nduring\nwinter!",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/14",
+            "tags": []
+        },
+        {
+            "url": "Bird2",
+            "title": "Oriental\nWhite-eye",
+            "description": "Another\nfluffy\nbird\nspotted\non\nMount\nRinjani.",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/14",
+            "tags": []
+        },
+        {
+            "url": "CloudAroundAlps",
+            "title": "Apls\nof\nRinjani",
+            "description": "Clouds\nswirling\naround\nthe\nmountain\npeaks.",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/15",
+            "tags": []
+        },
+        {
+            "url": "CloudHeaven1",
+            "title": "Cloud\nHeaven\n1",
+            "description": "",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/15",
+            "tags": []
+        },
+        {
+            "url": "CloudHeaven2",
+            "title": "Cloud\nHeaven\n2",
+            "description": "",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/15",
+            "tags": []
+        },
+        {
+            "url": "CloudHeaven3",
+            "title": "Cloud\nHeaven\n3",
+            "description": "One\nof\nmy\nfavorite\nshots\nfrom\nthe\ntrip.",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/15",
+            "tags": []
+        },
+        {
+            "url": "Dream",
+            "title": "Misty\nDream",
+            "description": "It's\ncold\nand\nfoggy\nthat\nmorning\non\nMount\nRinjani.",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/16",
+            "tags": []
+        },
+        {
+            "url": "Fern",
+            "title": "Fern",
+            "description": "",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/14",
+            "tags": []
+        },
+        {
+            "url": "Guide",
+            "title": "Our\nGuide",
+            "description": "",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/15",
+            "tags": []
+        },
+        {
+            "url": "Halen",
+            "title": "Halen",
+            "description": "",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/15",
+            "tags": []
+        },
+        {
+            "url": "Hazy",
+            "title": "Hazy",
+            "description": "8:02\nHeading\ndown\nfrom\nthe\npeak\nthrough\nthe\nhaze.",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/15",
+            "tags": []
+        },
+        {
+            "url": "HeadingUpMountain",
+            "title": "Start\nof\nPos\n2",
+            "description": "12:20\nAfter\nlunch\nwe\ncontinue\nour\nascent\nup\nthe\nmountain.",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/14",
+            "tags": []
+        },
+        {
+            "url": "HeadingUpMountain2",
+            "title": "Reaching\nthe\ntop\nof\nRinjani\nMountain",
+            "description": "6:12",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/15",
+            "tags": []
+        },
+        {
+            "url": "HeadingUpMountain3",
+            "title": "Focus",
+            "description": "6:17",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/15",
+            "tags": []
+        },
+        {
+            "url": "Mist",
+            "title": "Walking\ninto\nthe\nMist",
+            "description": "9:49",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/15",
+            "tags": []
+        },
+        {
+            "url": "Mist2",
+            "title": "Resting\nin\nthe\nMist",
+            "description": "",
+            "location": "Rinjani\nMountain",
+            "date": "2025/9/16",
+            "tags": []
+        },
+        {
+            "url": "Mist3",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "Peak1",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "Peak2",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "Peak3",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "Peak4",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "Peak5",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "Peak6",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "PineTree",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "PineTree2",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "PineTreeWithMoss",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "Porter1",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "Pos",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "Pos2",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "Resting",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "RinjaniBottom",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "RinjaniBottomWithTree",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "RinjaniNightSky",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "SavannahCheckPoint",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "SavannahFlower",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "TheirDaily",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "Valley",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "Waiting",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        }
+    ]
+}
