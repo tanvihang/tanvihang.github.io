@@ -1,0 +1,61 @@
+{
+    "image_root_path": "/assets/images/Countries/Japan/Hokkaido/",
+    "images": [
+        {
+            "url": "NoboribetsuIceCreamShop",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "NoboribetsuNightVendingMachine",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "NoboribetsuRamenShop",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "NoboribetsuSevenEleven",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "NoboribetsuSnowfall1",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "NoboribetsuSnowfall2",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        },
+        {
+            "url": "NoboribetsuSnowfall3",
+            "title": "SET-TITLE",
+            "description": "",
+            "location": "",
+            "date": "",
+            "tags": []
+        }
+    ]
+}

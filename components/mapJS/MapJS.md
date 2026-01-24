@@ -27,7 +27,7 @@ World Map
 - not founded yet, included in the package
 
 Country Map
-https://simplemaps.com/resources/svg-us
+https://simplemaps.com/resources/svg-maps
 
 ---
 
@@ -38,15 +38,17 @@ https://simplemaps.com/resources/svg-us
 2. const worldJsonPath = "/datas/mapProperties.json"; (Store the country that you've gone to.)
 3. const countriesJsonRootPath = "/datas/Countries"; (Store the province that you've gone to.)
 
-### How to add countries
-1. Create a folder under the **worldJsonPath**.
-2. With structure like this.
+### How to add Countries
+1. Under `mapProperties.json` add the country that you've been
+2. Something like this (Example: Japan)
 ```json
 {
 	"hasTravelled":["China","Malaysia","Japan"]
 }
 ```
-3. IMPORTANT - the name should be same with the id in world-map svg
+3. Download the Country SVG Map from https://simplemaps.com/resources/svg-maps
+4. Paste the downloaded Country SVG Map to `./mapJS/svg/countries`, MAKE Sure is same name on step 2.
+5. IMPORTANT - the name should be same with the id in world-map svg
 ![alt text](assets/image-3.png)
 - picture above shown **jp** changed to **Japan**
 - **ke** should be changed to fullname if you've been

@@ -43,8 +43,8 @@ def CreateFile(data, output):
     
 
 # Things to change for every new Map
-countryCode = "Indonesia"
-prefix = "ID"
+countryCode = "Japan"
+prefix = "JP"
 root_directory = GetRoot()
 
 svg_file_name = f'{root_directory}/components/mapJS/svg/countries/{countryCode}.svg'
