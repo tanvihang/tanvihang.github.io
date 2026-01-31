@@ -39,7 +39,7 @@ class Footer extends HTMLElement{
                     </div>
 
                     <div class = "footer-end">
-                        <h6>@angustan - 2025</h6>
+                        <h6>@angustan - 2026</h6>
                         <h6>angustanworkspce@gmail.com</h6>
 
                         <div class="social-icons">
