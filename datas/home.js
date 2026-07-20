@@ -12,7 +12,7 @@ const works = [
   },
   {
     id: 2,
-    title: 'Angus Tan',
+    title: 'Personal Portfolio',
     year: '2024',
     jobType: 'Concept',
     projectType: 'Personal',
