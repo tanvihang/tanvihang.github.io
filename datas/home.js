@@ -30,6 +30,17 @@ const works = [
     image1: '/assets/images/ProjectImage/aplus.png',
     tags: ['Podia', 'Figma', 'UX'],
     cta: "projects/aplus",
+    last: false
+  },
+  {
+    id: 4,
+    title: 'OM Film Lab',
+    year: '2026',
+    jobType: 'Photography',
+    projectType: 'Personal',
+    image1: '/assets/images/ProjectImage/OMFilmLab/banner.jpg',
+    tags: ['React Native', 'Figma', 'Product Design'],
+    cta: "projects/om-film-lab",
     last: true
   }
 ];

@@ -49,8 +49,8 @@
     </div>
 
     <div class="yishii-hero-images">
-      <img class="yishii-hero-image-home" src="/assets/images/ProjectImage/Yishii/HomeScreen.png" />
-      <img class="yishii-hero-image-biometric" src="/assets/images/ProjectImage/Yishii/BiometricScreen.png" />
+      <img class="yishii-hero-image-home" src="/assets/images/ProjectImage/Yishii/HomeScreen.png" alt="Yishii home screen phone mockup" />
+      <img class="yishii-hero-image-biometric" src="/assets/images/ProjectImage/Yishii/BiometricScreen.png" alt="Yishii biometric screen phone mockup" />
     </div>
 
     <div class="yishii-hero-spline">
@@ -379,54 +379,50 @@
   const biometricImage = document.querySelector(".yishii-hero-image-biometric");
   const homeImage = document.querySelector(".yishii-hero-image-home");
 
-  window.addEventListener("scroll", handleBiometricTilt);
-  window.addEventListener("resize", handleBiometricTilt);
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const coarsePointer = window.matchMedia('(pointer: coarse)');
+  let heroViewportWidth = window.innerWidth;
+  let heroViewportHeight = Math.max(window.innerHeight, 1);
+  let heroFrame = null;
+  let lastHeroProgress = null;
+  let lastHeroMovement = null;
 
-  function handleBiometricTilt() {
-    if (!biometricImage) return;
+  function handleHeroTilt() {
+    heroFrame = null;
+    const progress = reducedMotion.matches ? 0 : Math.min(Math.max(window.scrollY / heroViewportHeight, 0), 1);
+    const maxMovement = heroViewportWidth >= 768 ? 100 : 5;
+    // Avoid rewriting identical transforms after the opening animation ends.
+    if (progress === lastHeroProgress && maxMovement === lastHeroMovement) return;
+    lastHeroProgress = progress;
+    lastHeroMovement = maxMovement;
+    const easedProgress = 1 - Math.pow(1 - progress, 3);
+    const rotation = easedProgress * 15;
+    const movement = easedProgress * maxMovement;
+    biometricImage.style.transform = `rotate(${rotation}deg) translate3d(${movement}px, 0, 0)`;
+    homeImage.style.transform = `translate3d(0, 0, 0) rotate(${-rotation}deg) translate3d(${-movement}px, 0, 0)`;
+  }
 
-    // Get scroll position
-    const scrollY = window.scrollY;
+  function scheduleHeroTilt() {
+    // Coalesce updates into one paint; do not start a continuous animation loop.
+    if (heroFrame === null) heroFrame = requestAnimationFrame(handleHeroTilt);
+  }
 
-    // Calculate the scroll progress (0 to 1)
-    // You can adjust these values based on when you want the animation to start/end
-    const startScroll = 0;
-    const endScroll = window.innerHeight; // Animate over one viewport height
-
-    // Calculate progress (0 to 1)
-    let progress = Math.min(Math.max((scrollY - startScroll) / (endScroll - startScroll), 0), 1);
-
-    // Apply easing function for smoother animation (optional)
-    progress = easeOutCubic(progress);
-
-    // Calculate rotation (0 to 20 degrees)
-    const maxRotation = 15;
-    const rotation = progress * maxRotation;
-
-
-    const isTablet = window.innerWidth >= 768;
-
-    let movement = 0
-
-    if (isTablet) {
-      const maxMovement = 100;
-      movement = maxMovement * progress;
-    } else {
-      const maxMovement = 5; // Adjust for more or less movement
-      movement = maxMovement * progress;
+  function handleHeroResize() {
+    const width = window.innerWidth;
+    // Safari's mobile toolbar resizes the viewport during a scroll. Keep the
+    // animation range stable until rotation/width changes; allow desktop resizing.
+    if (width !== heroViewportWidth || !coarsePointer.matches) {
+      heroViewportWidth = width;
+      heroViewportHeight = Math.max(window.innerHeight, 1);
     }
-    // Apply the transformation
-    biometricImage.style.transform = `rotate(${rotation}deg) translateX(${movement}px)`;
-    homeImage.style.transform = `rotate(-${rotation}deg) translateX(${-movement}px)`;
+    scheduleHeroTilt();
   }
 
-  // Easing function for smoother animation (optional)
-  function easeOutCubic(t) {
-    return 1 - Math.pow(1 - t, 3);
-  }
 
-  // Initialize the tilt on page load
-  handleBiometricTilt();
+  window.addEventListener("scroll", scheduleHeroTilt, { passive: true });
+  window.addEventListener("resize", handleHeroResize);
+  reducedMotion.addEventListener("change", scheduleHeroTilt);
+  handleHeroTilt();
 
   // =================== Yishii Highlight Parallax Animation ===================
   const highlightColumns = document.querySelectorAll('.yishii-highlight-image-column');

@@ -119,14 +119,19 @@
     align-items: center;
     justify-content: center;
     display: flex;
+    & img {
+      transform-origin: center center;
+      will-change: transform;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
 
     & .yishii-hero-image-home {
       min-width: 200px;
       max-height: 500px;
       z-index: 1;
 
-      transform-origin: center center; /* Set rotation origin */
-      transition: transform 0.1s ease-out; /* Smooth transition */
+      transform: translate3d(0, 0, 0);
 
     }
 
@@ -135,8 +140,7 @@
       min-width: 200px;
       max-height: 450px;
 
-      transform-origin: center center; /* Set rotation origin */
-      transition: transform 0.1s ease-out; /* Smooth transition */
+      transform: translate3d(0, 0, 0);
     }
   }
 
@@ -523,6 +527,10 @@
 
 .max-word-limit {
   max-width: 350px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yishii-hero-images img { will-change: auto; }
 }
 
 /* Mobile Responsive */
