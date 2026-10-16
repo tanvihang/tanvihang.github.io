@@ -41,6 +41,17 @@ const works = [
     image1: '/assets/images/ProjectImage/OMFilmLab/banner.jpg',
     tags: ['React Native', 'Figma', 'Product Design'],
     cta: "projects/om-film-lab",
+    last: false
+  },
+  {
+    id: 5,
+    title: 'Days Left',
+    year: '2026',
+    jobType: 'Countdown & Memories',
+    projectType: 'Personal',
+    image1: '/assets/images/ProjectImage/DaysLeft/banner.png',
+    tags: ['React Native', 'Codex', 'Product Design'],
+    cta: "projects/days-left",
     last: true
   }
 ];
