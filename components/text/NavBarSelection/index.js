@@ -23,6 +23,7 @@ class NavBarSelection extends HTMLElement{
     async render(){
         const title = this.getAttribute('title') || 'Default Title';
         const cta = this.getAttribute('cta') || '404';
+        const href = this.getAttribute('href');
         const icon = this.getAttribute('icon') 
         const enabled = this.getAttribute('enabled') || 'true';
 
@@ -52,8 +53,12 @@ class NavBarSelection extends HTMLElement{
 
         if (titleDOM && enabled === 'true') {
             titleDOM.addEventListener('click', () => {
-                console.log("GOTO " + cta)
-                window.location.assign(`/${cta}/index.html`)
+                if (href) {
+                    window.open(href, '_blank', 'noopener');
+                } else {
+                    console.log("GOTO " + cta)
+                    window.location.assign(`/${cta}/index.html`)
+                }
             });
         }
     }
